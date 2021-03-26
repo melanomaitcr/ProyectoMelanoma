@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "http://melanomaitcr.pythonanywhere.com",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
