@@ -36,13 +36,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { UsuarioComponent } from './usuario/usuario.component';
+import { UsuariosComponent, UsuariosComponentYesNoDialog } from './usuarios/usuarios.component';
+import { UsuarioComponent, UsuarioComponentYesNoDialog } from './usuario/usuario.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { RegistroCitaComponent } from './registro-cita/registro-cita.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { IngresoCitaComponent } from './ingreso-cita/ingreso-cita.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,9 @@ import { IngresoCitaComponent } from './ingreso-cita/ingreso-cita.component';
     RegistroUsuarioComponent,
     RegistroCitaComponent,
     InicioSesionComponent,
-    IngresoCitaComponent
+    IngresoCitaComponent,
+    UsuariosComponentYesNoDialog,
+    UsuarioComponentYesNoDialog,
   ],
   imports: [
     HttpClientModule,
@@ -61,8 +63,8 @@ import { IngresoCitaComponent } from './ingreso-cita/ingreso-cita.component';
     BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
-    MatButtonModule,
     MatInputModule,
+    MatButtonModule,
     MatAutocompleteModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -89,7 +91,9 @@ import { IngresoCitaComponent } from './ingreso-cita/ingreso-cita.component';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

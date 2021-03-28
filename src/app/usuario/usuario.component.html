@@ -1,1 +1,108 @@
-<p>usuario works!</p>
+<div class="mi-div">
+
+    <mat-card class="mi-card">
+
+        <mat-card-header style="display: inline; float:center; text-align: center;">
+            <mat-card-title>Actualizar Usuario
+            </mat-card-title>
+        </mat-card-header>
+        <br />
+
+        <mat-card-content>
+
+            <form #formUsuario="ngForm" (ngSubmit)="actualizarUsuario()" novalidate>
+
+                <div class="mi-form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Número de Cédula</mat-label>
+                        <input matInput placeholder="Número de cédula del usuario" name="cedula"
+                            [(ngModel)]="usuario.cedula" [formControl]="cedulaFC" required>
+                        <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula del
+                            usuario')}}</mat-error>
+                    </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Nombre del usuario" name="nombre" [(ngModel)]="usuario.nombre"
+                            [formControl]="nombreFC" required>
+                        <mat-error *ngIf="nombreFC.invalid">{{getErrorMessage(nombreFC, 'nombre del usuario')}}
+                        </mat-error>
+                    </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Primer Apellido</mat-label>
+                        <input matInput placeholder="Primer apellido del usuario" name="primer_apellido"
+                            [(ngModel)]="usuario.primer_apellido" [formControl]="primer_apellidoFC" required>
+                        <mat-error *ngIf="primer_apellidoFC.invalid">{{getErrorMessage(primer_apellidoFC, 'primer
+                            apellido del usuario')}}
+                        </mat-error>
+                    </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Segundo Apellido</mat-label>
+                        <input matInput placeholder="Segundo apellido del usuario" name="segundo_apellido"
+                            [(ngModel)]="usuario.segundo_apellido">
+                    </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Correo Electrónico</mat-label>
+                        <input matInput placeholder="Correo electrónico del usuario" name="correo_electronico"
+                            [(ngModel)]="usuario.correo_electronico" [formControl]="correo_electronicoFC" required>
+                        <mat-error *ngIf="correo_electronicoFC.invalid">{{getErrorMessage(correo_electronicoFC, 'correo
+                            electrónico del usuario')}}
+                        </mat-error>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Rol de Usuario</mat-label>
+                        <mat-select placeholder="Rol del usuario" name="rol" [(ngModel)]="usuario.rol"
+                            [formControl]="rolFC" required>
+                            <mat-option *ngFor="let rol_ of roles" [value]="rol_">
+                                {{rol_}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="rolFC.invalid">{{getErrorMessage(rolFC, 'rol del usuario')}}
+                        </mat-error>
+                    </mat-form-field>
+
+                </div>
+                <!-- <button mat-raised-button color="accent">Actualizar Información</button> -->
+
+            </form>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" [disabled]="!formularioValido()"
+                (click)="actualizarUsuario()">Actualizar Información</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>
+<br />
+<!--
+<mat-card class="example-card">
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>-->
