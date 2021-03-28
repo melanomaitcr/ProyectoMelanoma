@@ -42,6 +42,10 @@ export class UsuariosComponent implements OnInit {
 
   }
 
+  filtrarUsuarios() {
+    this.dataSource;
+  }
+
   idiomarPaginator() {
     this.paginator._intl.itemsPerPageLabel = 'Usuarios por página:';
     this.paginator._intl.firstPageLabel = 'Primera página';
