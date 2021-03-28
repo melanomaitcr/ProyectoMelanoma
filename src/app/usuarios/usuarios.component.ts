@@ -7,6 +7,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-usuarios',
@@ -18,6 +19,7 @@ export class UsuariosComponent implements OnInit {
   displayedColumns: string[] = ['consultar', 'cedula', 'nombre', 'rol', 'borrar'];
   dataSource: MatTableDataSource<Usuario>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   paginatorIntl: MatPaginatorIntl = new MatPaginatorIntl();
   dataVista = { busqueda: "" };
 
@@ -43,7 +45,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   filtrarUsuarios() {
-    this.dataSource;
+    //    this.dataSource.filter;
   }
 
   idiomarPaginator() {
@@ -74,6 +76,7 @@ export class UsuariosComponent implements OnInit {
 
     this.dataSource = new MatTableDataSource(usuarios);
     this.dataSource.paginator = (this.paginator);
+    this.dataSource.sort = this.sort;
   }
 
   mostrarUsuario(usuario: Usuario) {

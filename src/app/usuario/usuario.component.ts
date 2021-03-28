@@ -56,7 +56,7 @@ export class UsuarioComponent implements OnInit {
 
     } catch (error) {
 
-      const dialogRef = this.dialog.open(UsuarioComponentYesNoDialog, {
+      const dialogRef = this.dialog.open(UsuarioComponentOkDialog, {
         width: '250px', data: this.usuario
       });
 
@@ -118,10 +118,10 @@ export class UsuarioComponent implements OnInit {
 </div>
   `
 })
-export class UsuarioComponentYesNoDialog {
+export class UsuarioComponentOkDialog {
 
   constructor(
-    public dialogRef: MatDialogRef<UsuarioComponentYesNoDialog>,
+    public dialogRef: MatDialogRef<UsuarioComponentOkDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Usuario) {
 
   }

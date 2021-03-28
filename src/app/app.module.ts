@@ -37,7 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsuariosComponent, UsuariosComponentYesNoDialog } from './usuarios/usuarios.component';
-import { UsuarioComponent, UsuarioComponentYesNoDialog } from './usuario/usuario.component';
+import { UsuarioComponent, UsuarioComponentOkDialog } from './usuario/usuario.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { RegistroCitaComponent } from './registro-cita/registro-cita.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
@@ -48,13 +48,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     UsuariosComponent,
+
     UsuarioComponent,
     RegistroUsuarioComponent,
     RegistroCitaComponent,
     InicioSesionComponent,
     IngresoCitaComponent,
     UsuariosComponentYesNoDialog,
-    UsuarioComponentYesNoDialog,
+    UsuarioComponentOkDialog,
   ],
   imports: [
     HttpClientModule,
