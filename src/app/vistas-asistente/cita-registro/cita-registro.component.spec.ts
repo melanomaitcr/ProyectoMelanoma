@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { RegistroCitaComponent } from './registro-cita.component';
+import { CitaRegistroComponent } from './cita-registro.component';
 
 describe('RegistroCitaComponent', () => {
-  let component: RegistroCitaComponent;
-  let fixture: ComponentFixture<RegistroCitaComponent>;
+  let component: CitaRegistroComponent;
+  let fixture: ComponentFixture<CitaRegistroComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistroCitaComponent ]
+      declarations: [CitaRegistroComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegistroCitaComponent);
+    fixture = TestBed.createComponent(CitaRegistroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

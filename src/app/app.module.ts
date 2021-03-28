@@ -36,13 +36,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsuariosComponent, UsuariosComponentYesNoDialog } from './usuarios/usuarios.component';
-import { UsuarioComponent, UsuarioComponentOkDialog } from './usuario/usuario.component';
-import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
-import { RegistroCitaComponent } from './registro-cita/registro-cita.component';
-import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-import { IngresoCitaComponent } from './ingreso-cita/ingreso-cita.component';
+
+import { IngresoCitaComponent } from './vistas-inicio/ingreso-cita/ingreso-cita.component';
+import { InicioSesionComponent } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
+import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-registro.component';
+import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
+import { UsuarioComponent, UsuarioComponentOkDialog } from './vistas-administrador/usuario/usuario.component';
+import { UsuariosComponent, UsuariosComponentYesNoDialog } from './vistas-administrador/usuarios/usuarios.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarInicioComponent } from './navbars/navbar-inicio/navbar-inicio.component';
+import { NavbarMedicoComponent } from './navbars/navbar-medico/navbar-medico.component';
+import { NavbarAsistenteComponent } from './navbars/navbar-asistente/navbar-asistente.component';
+import { NavbarAdministradorComponent } from './navbars/navbar-administrador/navbar-administrador.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +56,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsuariosComponent,
 
     UsuarioComponent,
-    RegistroUsuarioComponent,
-    RegistroCitaComponent,
+    UsuarioRegistroComponent,
+    CitaRegistroComponent,
     InicioSesionComponent,
     IngresoCitaComponent,
     UsuariosComponentYesNoDialog,
     UsuarioComponentOkDialog,
+    NavbarInicioComponent,
+    NavbarMedicoComponent,
+    NavbarAsistenteComponent,
+    NavbarAdministradorComponent,
   ],
   imports: [
     HttpClientModule,

@@ -3,8 +3,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Usuario } from '../models/usuario';
-import { UsuarioService } from '../services/usuario.service';
+import { Usuario } from "../../models/usuario";
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-usuario',
