@@ -208,9 +208,9 @@ export class UsuarioComponentNoActulizacionDialog {
   template: `
   <h1 mat-dialog-title>Confirmar elección</h1>
 <div mat-dialog-content> ¿Está seguro de querer borrar este usuario?</div>
-<div mat-dialog-actions>
-<button mat-button color="primary" (click)=siClick()>Sí</button>
-  <button mat-button color="primary" (click)=noClick()>No</button>
+<div mat-dialog-actions style="justify-content: center;">
+  <button mat-raised-button color="primary" (click)=siClick()>Sí</button>
+  <button mat-raised-button color="primary" style="margin-left: 50px" (click)=noClick()>No</button>
 </div>
   `
 })
