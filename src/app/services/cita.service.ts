@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UsuarioService } from './usuario.service';
 
 const baseUrl = 'http://localhost:4200/api/cita';
 
@@ -8,17 +9,17 @@ const baseUrl = 'http://localhost:4200/api/cita';
 })
 export class CitaService {
 
-  constructor(private https: HttpClient) { }
+  constructor(private https: HttpClient, private usuarioService: UsuarioService) { }
 
   findAll() {
-    return this.https.get(baseUrl);
+    return this.https.get(baseUrl); // { headers: { 'auth-token': this.usuarioService.auth_token } }
   }
 
   findByPk(id_cita) {
     return this.https.get(`${baseUrl}/${id_cita}`);
   }
 
-  findByUser(cedula){
+  findByUser(cedula) {
     return this.https.get(`${baseUrl}/paciente/${cedula}`);
   }
 

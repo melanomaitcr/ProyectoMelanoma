@@ -51,6 +51,8 @@ import { NavbarMedicoComponent } from './navbars/navbar-medico/navbar-medico.com
 import { NavbarAsistenteComponent } from './navbars/navbar-asistente/navbar-asistente.component';
 import { NavbarAdministradorComponent } from './navbars/navbar-administrador/navbar-administrador.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CitaComponent } from './vistas-paciente/cita/cita.component';
+//import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NavbarMedicoComponent,
     NavbarAsistenteComponent,
     NavbarAdministradorComponent,
-    IngresoCitaComponentOkDialog
+    IngresoCitaComponentOkDialog,
+    CitaComponent
   ],
   imports: [
     FlexLayoutModule,

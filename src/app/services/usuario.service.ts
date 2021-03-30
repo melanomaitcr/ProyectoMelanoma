@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AutenticacionService } from './autenticacion.service';
 
 const baseUrl = 'http://localhost:4200/api/usuario';
 
@@ -8,11 +9,12 @@ const baseUrl = 'http://localhost:4200/api/usuario';
 })
 export class UsuarioService {
 
-  auth_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcxNDk4MDgsImlhdCI6MTYxNzA2MzQwOCwic3ViIjoiMTAxMTEwMTExIn0.TYmcPThDF6ZcYcR14nrN9FZ0UhVRdgRz7s3iRC3whBY";//"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcxNDk2OTUsImlhdCI6MTYxNzA2MzI5NSwic3ViIjoiMTA1MjgwODcyIn0.05v4uc6ESxOC73C6JYahewuV0qdtcmYCHlYX1gJVQ30"; // 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcwNjA4NjQsImlhdCI6MTYxNzA2MDM2NCwic3ViIjoiMTAxMTEwMTExIn0.UsGcH3sFZy8Q27hyN4HVI2iKYgyn4QChYWGfRM3uTj8'
-  constructor(private https: HttpClient) { }
+  //auth_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcxNDk4MDgsImlhdCI6MTYxNzA2MzQwOCwic3ViIjoiMTAxMTEwMTExIn0.TYmcPThDF6ZcYcR14nrN9FZ0UhVRdgRz7s3iRC3whBY";
+  //"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcxNDk2OTUsImlhdCI6MTYxNzA2MzI5NSwic3ViIjoiMTA1MjgwODcyIn0.05v4uc6ESxOC73C6JYahewuV0qdtcmYCHlYX1gJVQ30"; // 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcwNjA4NjQsImlhdCI6MTYxNzA2MDM2NCwic3ViIjoiMTAxMTEwMTExIn0.UsGcH3sFZy8Q27hyN4HVI2iKYgyn4QChYWGfRM3uTj8'
+  constructor(private https: HttpClient, private autenticacionService: AutenticacionService) { }
 
   findAll() {
-    return this.https.get(baseUrl, { headers: { 'auth-token': this.auth_token } });
+    return this.https.get(baseUrl, { headers: { 'auth-token': this.autenticacionService.auth_token } });
   }
 
   findByPk(cedula) {
