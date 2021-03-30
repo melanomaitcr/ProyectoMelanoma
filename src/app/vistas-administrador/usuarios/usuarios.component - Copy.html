@@ -4,69 +4,61 @@
     <mat-card class="mi-card">
 
         <mat-card-header>
-            <mat-card-title style="padding-top: 10px; padding-bottom: 10px; flex: 1 1 80%;">Usuarios del Sistema
+            <mat-card-title>Usuarios del Sistema
             </mat-card-title>
 
+            <mat-form-field appearance="outline">
+                <mat-label>Correo Electrónico</mat-label>
+                <input matInput placeholder="Correo electrónico del usuario" name="busqueda"
+                    [(ngModel)]="dataVista.busqueda">
 
-            <button mat-raised-button color="primary" style="position: absolute; right: 20px;"
-                (click)="registrarUsuario()">Agregar
-                Usuario</button>
-
-        </mat-card-header>
-
-
-        <mat-card-content class="mat-elevation-z2">
-
-            <mat-form-field appearance="outline" style="width: 96%; padding-left: 20px; padding-top: 10px;">
-                <mat-label>Buscar</mat-label>
-                <input matInput placeholder="Inserte cualquier dato para buscar al usuario" name="busqueda"
-                    [(ngModel)]="dataVista.busqueda" (keyup)="filtrarUsuarios()">
-                <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
 
+        </mat-card-header>
+        <br />
+
+        <mat-card-content class="mat-elevation-z2">
 
             <table mat-table [dataSource]="dataSource" matSort class=" mi-table">
 
                 <!-- Position Column -->
-                <ng-container matColumnDef="cedula" class="columnaCedula">
+                <ng-container matColumnDef="consultar">
+                    <th mat-header-cell *matHeaderCellDef> Consultar </th>
+                    <td mat-cell *matCellDef="let usuario">
+                        <button mat-icon-button color="primary" (click)="mostrarUsuario(usuario)">
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="cedula">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Cédula </th>
                     <td mat-cell *matCellDef="let usuario"> {{usuario.cedula}} </td>
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container matColumnDef="nombre" class="columnaCedula">
+                <ng-container matColumnDef="nombre">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
                     <td mat-cell *matCellDef="let usuario"> {{getNombre(usuario)}}
                     </td>
                 </ng-container>
 
                 <!-- Weight Column -->
-                <ng-container matColumnDef="rol" class="columnaCedula">
+                <ng-container matColumnDef="rol">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol </th>
                     <td mat-cell *matCellDef="let usuario"> {{rolExtendido(usuario.rol)}} </td>
                 </ng-container>
 
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="consultar" class="columnaCedula">
-                    <th mat-header-cell *matHeaderCellDef> Consultar </th>
-                    <td mat-cell *matCellDef="let usuario">
-                        <button mat-raised-button color="primary" (click)="mostrarUsuario(usuario)">
-                            Ver usuario
-                        </button>
-                    </td>
-                </ng-container>
-
-                <!-- Symbol Column 
-                <ng-container matColumnDef="borrar" class="columnaCedula">
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="borrar">
                     <th mat-header-cell *matHeaderCellDef class="mi-icon-cell"> Borrar </th>
                     <td mat-cell *matCellDef="let usuario" class="mi-icon-cell">
-                        <button mat-raised-button color="accent" (click)="borrarUsuario(usuario)">
-                            Borrar usuario
+                        <button mat-icon-button color="accent" (click)="borrarUsuario(usuario)">
+                            <mat-icon>delete</mat-icon>
                         </button>
                     </td>
                 </ng-container>
-                -->
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns" style="text-align:center;"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -75,11 +67,11 @@
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
         </mat-card-content>
-        <!--
+
         <mat-card-actions style="text-align:center;">
             <button mat-raised-button color="primary" (click)="registrarUsuario()">Agregar Usuario</button>
         </mat-card-actions>
--->
+
     </mat-card>
 </div>
 <br />

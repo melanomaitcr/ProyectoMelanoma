@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'usuario', component: UsuarioComponent },
   { path: 'ingreso-cita', component: IngresoCitaComponent },
   { path: 'inicio-sesion', component: InicioSesionComponent },
-  { path: 'registro-cita', component: CitaRegistroComponent },
-  { path: 'registro-usuario', component: UsuarioRegistroComponent },
+  { path: 'cita-registro', component: CitaRegistroComponent },
+  { path: 'usuario-registro', component: UsuarioRegistroComponent },
 ];
 
 @NgModule({

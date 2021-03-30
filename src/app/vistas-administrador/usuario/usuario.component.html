@@ -1,3 +1,5 @@
+<app-navbar-administrador> </app-navbar-administrador>
+
 <div class="mi-div">
 
     <mat-card class="mi-card">
@@ -16,17 +18,20 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Número de Cédula</mat-label>
                         <input matInput placeholder="Número de cédula del usuario" name="cedula"
-                            [(ngModel)]="usuario.cedula" [formControl]="cedulaFC" required>
-                        <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula del
+                            [(ngModel)]="usuario.cedula" [formControl]="cedulaFC" required
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula para el
                             usuario')}}</mat-error>
+
+
                     </mat-form-field>
                     <br />
 
                     <mat-form-field appearance="outline">
                         <mat-label>Nombre</mat-label>
                         <input matInput placeholder="Nombre del usuario" name="nombre" [(ngModel)]="usuario.nombre"
-                            [formControl]="nombreFC" required>
-                        <mat-error *ngIf="nombreFC.invalid">{{getErrorMessage(nombreFC, 'nombre del usuario')}}
+                            [formControl]="nombreFC" required [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="nombreFC.invalid">{{getErrorMessage(nombreFC, 'nombre para el usuario')}}
                         </mat-error>
                     </mat-form-field>
                     <br />
@@ -34,9 +39,10 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Primer Apellido</mat-label>
                         <input matInput placeholder="Primer apellido del usuario" name="primer_apellido"
-                            [(ngModel)]="usuario.primer_apellido" [formControl]="primer_apellidoFC" required>
+                            [(ngModel)]="usuario.primer_apellido" [formControl]="primer_apellidoFC" required
+                            [errorStateMatcher]="matcher">
                         <mat-error *ngIf="primer_apellidoFC.invalid">{{getErrorMessage(primer_apellidoFC, 'primer
-                            apellido del usuario')}}
+                            apellido para el usuario')}}
                         </mat-error>
                     </mat-form-field>
                     <br />
@@ -44,29 +50,31 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Segundo Apellido</mat-label>
                         <input matInput placeholder="Segundo apellido del usuario" name="segundo_apellido"
-                            [(ngModel)]="usuario.segundo_apellido">
+                            [(ngModel)]="usuario.segundo_apellido" [errorStateMatcher]="matcher">
                     </mat-form-field>
                     <br />
 
                     <mat-form-field appearance="outline">
                         <mat-label>Correo Electrónico</mat-label>
                         <input matInput placeholder="Correo electrónico del usuario" name="correo_electronico"
-                            [(ngModel)]="usuario.correo_electronico" [formControl]="correo_electronicoFC" required>
+                            [(ngModel)]="usuario.correo_electronico" [formControl]="correo_electronicoFC" required
+                            [errorStateMatcher]="matcher">
                         <mat-error *ngIf="correo_electronicoFC.invalid">{{getErrorMessage(correo_electronicoFC, 'correo
-                            electrónico del usuario')}}
+                            electrónico para el usuario')}}
                         </mat-error>
+
                     </mat-form-field>
                     <br />
 
                     <mat-form-field appearance="outline">
                         <mat-label>Rol de Usuario</mat-label>
                         <mat-select placeholder="Rol del usuario" name="rol" [(ngModel)]="usuario.rol"
-                            [formControl]="rolFC" required>
+                            [formControl]="rolFC" required [errorStateMatcher]="matcher">
                             <mat-option *ngFor="let rol_ of roles" [value]="rol_">
                                 {{rol_}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="rolFC.invalid">{{getErrorMessage(rolFC, 'rol del usuario')}}
+                        <mat-error *ngIf="rolFC.invalid">{{getErrorMessage(rolFC, 'rol para el usuario')}}
                         </mat-error>
                     </mat-form-field>
 
@@ -80,6 +88,8 @@
         <mat-card-actions>
             <button mat-raised-button color="primary" [disabled]="!formularioValido()"
                 (click)="actualizarUsuario()">Actualizar Información</button>
+            <br /><br />
+            <button mat-raised-button color="accent" (click)="borrarUsuario()">Borrar Usuario</button>
         </mat-card-actions>
     </mat-card>
 

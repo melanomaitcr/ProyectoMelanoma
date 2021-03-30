@@ -42,8 +42,8 @@ import { IngresoCitaComponent, IngresoCitaComponentOkDialog } from './vistas-ini
 import { InicioSesionComponent, InicioSesionComponentOkDialog } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
 import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-registro.component';
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
-import { UsuarioComponent, UsuarioComponentOkDialog } from './vistas-administrador/usuario/usuario.component';
-import { UsuariosComponent, UsuariosComponentYesNoDialog } from './vistas-administrador/usuarios/usuarios.component';
+import { UsuarioComponent, UsuarioComponentBorradoDialog } from './vistas-administrador/usuario/usuario.component';
+import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarInicioComponent } from './navbars/navbar-inicio/navbar-inicio.component';
@@ -61,8 +61,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CitaRegistroComponent,
     InicioSesionComponent,
     IngresoCitaComponent,
-    UsuariosComponentYesNoDialog,
-    UsuarioComponentOkDialog,
+    UsuarioComponentBorradoDialog,
     InicioSesionComponentOkDialog,
     NavbarInicioComponent,
     NavbarMedicoComponent,
