@@ -70,7 +70,7 @@ export class UsuariosComponent implements OnInit {
   async cargarUsuarios() {
     let usuariosBD = await this.usuarioService.findAll().toPromise();
     let usuarios = usuariosBD["data"] as Usuario[]
-    //console.log(usuarios);
+    console.log(usuarios);
 
     this.idiomarPaginator();
 

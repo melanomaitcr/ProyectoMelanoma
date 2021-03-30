@@ -1,1 +1,63 @@
-<p>registro-cita works!</p>
+<div class="mi-div">
+
+    <mat-card class="mi-card">
+
+        <mat-card-header style="display: inline; float:center; text-align: center;">
+            <mat-card-title>Registro de cita
+            </mat-card-title>
+        </mat-card-header>
+        <br />
+
+        <mat-card-content>
+
+            <form>
+
+                <div class="mi-form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Número de Cédula</mat-label>
+                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="cita.cedula_paciente" [formControl]="cedulaFC" name="cedula" required>
+                        <mat-error *ngIf="!revisaString(cita.cedula_paciente)">{{getErrorMessageDate(cedulaFC, 'fecha')}}
+                        </mat-error>
+                    </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Medico</mat-label>
+                        <mat-select placeholder="Medico" required>
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let medico of medicos">{{medico}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+                      <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput [matDatepicker]="picker"  [(ngModel)]="cita.fecha_cita" [formControl]="fechaFC" name = "fecha" required>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="fechaFC.invalid">{{getErrorMessageDate(fechaFC, 'fecha')}}
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <br />
+                    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Hora</mat-label>
+                        <input matInput type = "time" placeholder="Fecha de la cita"  name = "hora" required>
+                    </mat-form-field>
+                    
+
+                </div>
+
+            </form>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Registrar cita</button>
+        </mat-card-actions>
+        <br />
+    </mat-card>
+
+</div>
+<br />
