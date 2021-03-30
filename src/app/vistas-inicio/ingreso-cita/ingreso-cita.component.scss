@@ -1,0 +1,67 @@
+.contenedor-ingreso-cita{
+  margin-top:20px;
+}
+
+.card-descripcion-logo{
+  background-color:transparent;
+  width: 15*2.54vw;
+}
+
+.logo{
+  min-width: 330px;
+  width: 15*2.56vw;
+  height: 14vw;
+}
+
+.descripcion{
+  padding-top: 20px;
+  display:block;
+  font-size: 20px;
+  line-height: 22px;
+  text-align:justify;
+}
+
+.card-ingreso-cita{
+  width: 75%;
+  margin-left:min(1vw, 10px);
+  border-radius: 20px;
+}
+
+.card-ingreso-cita .content-ingreso-cita{
+  margin-left: 4vw;
+  margin-right:  4vw;
+}
+
+.card-ingreso-cita .title-ingreso-cita{
+  text-align:center;
+  display:block;
+  font-size: min(2.8vw, 48px);
+  font-family: 'Roboto';
+  font-weight:700;
+  font-style: normal;
+  margin-top: 10px;
+  line-height: 3vw;
+}
+
+.card-ingreso-cita .form-ingreso-cita{
+  margin-top: 10vh;
+}
+ 
+.card-ingreso-cita .field-ingreso-cita{
+  width: 100%;
+  border-radius: 15px;
+  border-width: 2px;
+}
+
+.card-ingreso-cita .actions-ingreso-cita{
+  margin-left: 4vw;
+  margin-right:4vw;
+  margin-top: 10vh;
+  margin-bottom: 10px;
+}
+
+.card-ingreso-cita .boton-ingreso-cita{
+  border-radius: 15px;
+  line-height: 54px;
+  width: 100%;
+}

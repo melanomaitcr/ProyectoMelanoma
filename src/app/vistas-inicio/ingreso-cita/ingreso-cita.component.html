@@ -1,1 +1,40 @@
-<p>ingreso-cita works!</p>
+<app-navbar-inicio paginaActual="ingreso-cita"></app-navbar-inicio>
+<div class="contenedor-ingreso-cita" fxLayout="row">
+  <div fxFlex=55% fxLayoutAlign="center">
+    <mat-card class="mat-elevation-z0 card-descripcion-logo" fxLayoutAlign="center center">
+      <mat-card-content>
+        <img class="logo" src="assets/images/Praesidia.png">
+        <mat-label class="descripcion">Nuestro sistema gestor de citas y expendientes médicos y asistente de predicción de cáncer de piel tipo melanoma mediante imágenes</mat-label> 
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex=45% fxLayoutAlign="center center">
+    <mat-card  class="card-ingreso-cita mat-elevation-z6">
+      <mat-card-header>
+        <mat-card-title class = "title-ingreso-cita">Bienvenido al Sistema Praesidia!</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="content-ingreso-cita">
+        <form class="form-ingreso-cita">  
+         <mat-form-field appearance="outline" class="field-ingreso-cita">
+            <mat-label>Número de cédula</mat-label>
+            <input [(ngModel)]="cedula"  matInput placeholder="Ingrese número de cédula" name="cedula"
+            [formControl]="cedulaFC" required>
+            <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'a cédula')}}
+          </mat-error>
+          </mat-form-field>
+          <br><br>
+          <mat-form-field appearance="outline" class="field-ingreso-cita">
+            <mat-label>Código de la cita</mat-label>
+            <input [(ngModel)]="codigo"  matInput placeholder="Ingrese el código de la cita" name="codigo"
+            [formControl]="codigoFC" required>
+            <mat-error *ngIf="codigoFC.invalid">{{getErrorMessage(codigoFC, ' código de cita')}}
+          </mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions class="actions-ingreso-cita">
+      <button class="boton-ingreso-cita" style="transition: none;" (click)="validarDatos()" color="primary"
+       mat-raised-button [disabled]="!ingresoValido()">Ingresar a Cita</button>
+    </mat-card-actions>
+    </mat-card>
+  </div>

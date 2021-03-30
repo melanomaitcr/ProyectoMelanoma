@@ -38,8 +38,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { IngresoCitaComponent } from './vistas-inicio/ingreso-cita/ingreso-cita.component';
-import { InicioSesionComponent } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
+import { IngresoCitaComponent, IngresoCitaComponentOkDialog } from './vistas-inicio/ingreso-cita/ingreso-cita.component';
+import { InicioSesionComponent, InicioSesionComponentOkDialog } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
 import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-registro.component';
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
 import { UsuarioComponent, UsuarioComponentOkDialog } from './vistas-administrador/usuario/usuario.component';
@@ -50,12 +50,12 @@ import { NavbarInicioComponent } from './navbars/navbar-inicio/navbar-inicio.com
 import { NavbarMedicoComponent } from './navbars/navbar-medico/navbar-medico.component';
 import { NavbarAsistenteComponent } from './navbars/navbar-asistente/navbar-asistente.component';
 import { NavbarAdministradorComponent } from './navbars/navbar-administrador/navbar-administrador.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosComponent,
-
     UsuarioComponent,
     UsuarioRegistroComponent,
     CitaRegistroComponent,
@@ -63,12 +63,15 @@ import { NavbarAdministradorComponent } from './navbars/navbar-administrador/nav
     IngresoCitaComponent,
     UsuariosComponentYesNoDialog,
     UsuarioComponentOkDialog,
+    InicioSesionComponentOkDialog,
     NavbarInicioComponent,
     NavbarMedicoComponent,
     NavbarAsistenteComponent,
     NavbarAdministradorComponent,
+    IngresoCitaComponentOkDialog
   ],
   imports: [
+    FlexLayoutModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

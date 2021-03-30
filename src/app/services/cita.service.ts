@@ -18,6 +18,10 @@ export class CitaService {
     return this.https.get(`${baseUrl}/${id_cita}`);
   }
 
+  findByUser(cedula){
+    return this.https.get(`${baseUrl}/paciente/${cedula}`);
+  }
+
   create(data) {
     return this.https.post(baseUrl, data);
   }

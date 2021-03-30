@@ -1,0 +1,16 @@
+.navbar-inicio {
+    background-color:transparent;
+    justify-content: flex-end;
+    padding-right: 4.2vw;
+    
+}
+.mat-button{
+    border-radius: 20px;
+    margin-left: 15px;
+}
+
+.mat-button:disabled{
+    border-radius: 20px;
+    background-color: gray;
+    color: white;
+}
