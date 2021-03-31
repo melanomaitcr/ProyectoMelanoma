@@ -15,24 +15,28 @@
                 <div class="mi-form">
                     <mat-form-field appearance="outline">
                         <mat-label>Número de Cédula</mat-label>
-                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="cita.cedula_paciente" [formControl]="cedulaFC" name="cedula" required>
-                        <mat-error *ngIf="!revisaString(cita.cedula_paciente)">{{getErrorMessageDate(cedulaFC, 'fecha')}}
-                        </mat-error>
+                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="cita.cedula_paciente" [formControl]="cedulaFC" name="cedula" (keyup)="obtenerDatosUsuario($event.target.value)" required>
+                        <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula para el usuario')}}</mat-error>
                     </mat-form-field>
                     <br />
-
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre del usuario</mat-label>
+                        <input matInput placeholder="Número del paciente" [(ngModel)]="nombre" name="nombre" disabled>
+                    
+                    </mat-form-field>
+                    <br />
+                   
                     <mat-form-field appearance="outline">
                         <mat-label>Medico</mat-label>
-                        <mat-select placeholder="Medico" required>
-                            <mat-option>None</mat-option>
-                            <mat-option *ngFor="let medico of medicos">{{medico}}</mat-option>
+                        <mat-select placeholder="Medico" [(ngModel)]="medicoSeleccionado" name="medicoSeleccionado" required>
+                            <mat-option *ngFor="let medico of medicos" [value]="medico">{{medico.nombre}}</mat-option>
                         </mat-select>
                       </mat-form-field>
                       
                       <br />
                     <mat-form-field appearance="outline">
                         <mat-label>Fecha</mat-label>
-                        <input matInput [matDatepicker]="picker"  [(ngModel)]="cita.fecha_cita" [formControl]="fechaFC" name = "fecha" required>
+                        <input matInput [matDatepicker]="picker"  [(ngModel)]="cita.fecha_cita" [formControl]="fechaFC" name = "fecha" placeholder="dd/MM/yyyy" required>
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                         <mat-error *ngIf="fechaFC.invalid">{{getErrorMessageDate(fechaFC, 'fecha')}}
