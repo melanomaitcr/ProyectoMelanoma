@@ -6,6 +6,7 @@ import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-reg
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
 import { UsuarioComponent } from './vistas-administrador/usuario/usuario.component';
 import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.component';
+import { CitaComponent } from './vistas-paciente/cita/cita.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'inicio-sesion', component: InicioSesionComponent },
   { path: 'cita-registro', component: CitaRegistroComponent },
   { path: 'usuario-registro', component: UsuarioRegistroComponent },
+  { path: 'cita', component: CitaComponent}
 ];
 
 @NgModule({

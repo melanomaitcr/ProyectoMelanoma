@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { Usuario } from '../../models/usuario';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+}
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -11,15 +18,18 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
   styleUrls: ['./inicio-sesion.component.scss']
 })
 
+
 export class InicioSesionComponent implements OnInit {
-  correo_electronicoFC = new FormControl('', [Validators.required, Validators.email]);
+  matcher = new MyErrorStateMatcher();
+  cedulaFC = new FormControl('', [Validators.required]);
   contrasennaFC = new FormControl('', [Validators.required]);
   esconder = true;
-  correoElectronico: string;
+  cedula: string;
   contrasenna: string;
   constructor(private router: Router, 
     private usuarioService: UsuarioService, 
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private autenticacionService: AutenticacionService) { }
 
   ngOnInit(): void {
     
@@ -27,13 +37,12 @@ export class InicioSesionComponent implements OnInit {
 
   getErrorMessage(fc: FormControl, campo: String) {
     if (fc.hasError('required')) {
-      return 'Debe ingresar un ' + campo;
+      return 'Debe ingresar un' + campo;
     }
-    return this.correo_electronicoFC.hasError('email') ? 'Debe ingresar un correo electrónico válido' : '';
   }
 
   inicioValido() {
-    return this.correo_electronicoFC.valid && this.contrasennaFC.valid;
+    return this.cedulaFC.valid && this.contrasennaFC.valid;
   }
 
   async dialogoDatosInvalidos() {
@@ -45,29 +54,31 @@ export class InicioSesionComponent implements OnInit {
 
   async verificarDatos(){
     try {
-      let usuariosBD = await this.usuarioService.findAll().toPromise();
-      let usuarios = usuariosBD["data"] as Usuario[];
-      let encontrado: boolean;
-      usuarios.forEach(usuario => {
-        if (this.correoElectronico == usuario.correo_electronico && this.contrasenna == usuario.contrasenna){
-          if (usuario.rol=="D") {
-            this.router.navigate(['/usuarios']);
-          }else if (usuario.rol =="A"){
-            this.router.navigate(['/registro-cita']);
-          }else{
-  
-          }
-          encontrado=true;
-        }
-      }); 
-      if (!encontrado) this.dialogoDatosInvalidos();
+      let data={"cedula":this.cedula, "contrasenna":this.contrasenna};
+      let informacion = await this.usuarioService.validarInicioSesion(data).toPromise();
+      window.localStorage.setItem("auth_token",informacion["auth_token"]);
+      this.autenticacionService.auth_token = informacion["auth_token"];
+      switch (informacion["rol"]) {
+        case "A":
+          this.router.navigate(['/cita-registro']);
+          break;
+
+        case "M":
+
+          break;
+
+        case "D":
+          this.router.navigate(['/usuarios']);
+          break;
+
+        default:
+          this.dialogoDatosInvalidos();
+          break;
+      }
     } catch (error) {
       this.dialogoDatosInvalidos();
     }
-    
-    
-  }
-    
+  }  
 }
   
 
@@ -76,7 +87,7 @@ export class InicioSesionComponent implements OnInit {
     template: `
     <h1 mat-dialog-title style="text-align:center;">Datos ingresados son incorrectos</h1>
   <div mat-dialog-content> 
-  <div mat-label style="text-align:center;"> El correo o contraseña ingresados son incorrectos, por favor compruebe los datos e intentelo nuevamente.</div>
+  <div mat-label style="text-align:center;"> La cédula o contraseña ingresadas son incorrectas, por favor compruebe los datos e intentelo nuevamente.</div>
   </div>
   <div mat-dialog-actions style="justify-content: center;">
   <button mat-raised-button style="margin-top: 15px; margin-bottom:15px"  color="primary" (click)=siClick()>Entendido</button>

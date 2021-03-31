@@ -17,8 +17,8 @@
         <form class="form-ingreso-cita">  
          <mat-form-field appearance="outline" class="field-ingreso-cita">
             <mat-label>Número de cédula</mat-label>
-            <input [(ngModel)]="cedula"  matInput placeholder="Ingrese número de cédula" name="cedula"
-            [formControl]="cedulaFC" required>
+            <input [(ngModel)]="cedula"  matInput placeholder="Ingrese su número de cédula" name="cedula"
+            [formControl]="cedulaFC" [errorStateMatcher]="matcher" required>
             <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'a cédula')}}
           </mat-error>
           </mat-form-field>
@@ -26,7 +26,7 @@
           <mat-form-field appearance="outline" class="field-ingreso-cita">
             <mat-label>Código de la cita</mat-label>
             <input [(ngModel)]="codigo"  matInput placeholder="Ingrese el código de la cita" name="codigo"
-            [formControl]="codigoFC" required>
+            [formControl]="codigoFC" [errorStateMatcher]="matcher" required>
             <mat-error *ngIf="codigoFC.invalid">{{getErrorMessage(codigoFC, ' código de cita')}}
           </mat-error>
           </mat-form-field>

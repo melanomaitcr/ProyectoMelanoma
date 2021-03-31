@@ -1,17 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Cita } from 'src/app/models/cita';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { CitaService } from 'src/app/services/cita.service';
 import { ExpedienteService } from 'src/app/services/expediente.service';
+
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control && control.invalid && (control.dirty || control.touched));
+  }
+}
 
 @Component({
   selector: 'app-ingreso-cita',
   templateUrl: './ingreso-cita.component.html',
   styleUrls: ['./ingreso-cita.component.scss']
 })
+
+
+
 export class IngresoCitaComponent implements OnInit {
+  matcher = new MyErrorStateMatcher();
   cedulaFC = new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]);
   codigoFC = new FormControl('', [Validators.required]);
   cedula: string;
@@ -19,7 +32,8 @@ export class IngresoCitaComponent implements OnInit {
   constructor(private router: Router, 
     private expedienteService: ExpedienteService,
     private citaService: CitaService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private autenticacionService: AutenticacionService) { }
 
   ngOnInit(): void {
   }
@@ -44,23 +58,18 @@ export class IngresoCitaComponent implements OnInit {
 
 
   async validarDatos(){
-   try {
-    let encontrado=false;
-    let cedula = await this.expedienteService.findByPk(this.cedula).toPromise();
-    let citasBD = await this.citaService.findByUser(this.cedula).toPromise();
-    let citas = citasBD["data"] as Cita[];
-    citas.forEach(cita => {
-      if (this.codigo == cita.clave){
-        this.router.navigate(['/usuarios']);
-        encontrado=true;
-      }
-    });
-    if(!encontrado) this.dialogoDatosInvalidos();;
-   } catch (error) {
-    this.dialogoDatosInvalidos();
-   } 
-
-  }
+    try {
+      let data={"cedula":this.cedula, "codigo":this.codigo};
+      console.log(data);
+      let informacion = await this.expedienteService.validarIngresoCita(data).toPromise();
+      console.log(informacion);
+      window.localStorage.setItem("auth_token",informacion["auth_token"]);
+      this.router.navigate(['/cita']);
+      this.autenticacionService.auth_token = informacion["auth_token"];
+    } catch (error) {
+      this.dialogoDatosInvalidos();
+    }
+  } 
 }
 
 @Component({

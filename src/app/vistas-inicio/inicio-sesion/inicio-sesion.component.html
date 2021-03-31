@@ -16,21 +16,21 @@
       <mat-card-content class="content-inicio-sesion">
         <form class="form-inicio-sesion">        
           <mat-form-field  appearance="outline" class="field-inicio-sesion">
-            <mat-label>Correo electrónico</mat-label>
-            <input matInput  placeholder="Ingrese su correo electrónico" [(ngModel)]="correoElectronico" 
-             name="correo_electronico" [formControl]="correo_electronicoFC" required>
-            <mat-error *ngIf="correo_electronicoFC.invalid">{{getErrorMessage(correo_electronicoFC, 'correo electrónico')}}
+            <mat-label>Número de cédula</mat-label>
+            <input matInput [errorStateMatcher]="matcher"  placeholder="Ingrese su número de cédula" [(ngModel)]="cedula" 
+             name="cedula" [formControl]="cedulaFC" required>
+            <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, ' número de cedula')}}
           </mat-error>
           </mat-form-field>
           <br><br>
           <mat-form-field appearance="outline" class="field-inicio-sesion">
             <mat-label>Contraseña</mat-label>
             <input matInput  placeholder="Ingrese su contraseña" [type]="esconder ? 'password' : 'text'"
-             name="contrasenna"  [(ngModel)]="contrasenna" [formControl]="contrasennaFC" required>
+             name="contrasenna" [errorStateMatcher]="matcher"  [(ngModel)]="contrasenna" [formControl]="contrasennaFC" required>
             <button mat-icon-button matSuffix (click)="esconder = !esconder">
               <mat-icon>{{esconder ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
-            <mat-error *ngIf="contrasennaFC.invalid">{{getErrorMessage(contrasennaFC, 'contraseña')}}
+            <mat-error *ngIf="contrasennaFC.invalid">{{getErrorMessage(contrasennaFC, 'a contraseña')}}
           </mat-error>
           </mat-form-field>    
         </form>

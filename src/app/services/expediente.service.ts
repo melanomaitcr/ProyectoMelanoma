@@ -31,4 +31,7 @@ export class ExpedienteService {
     return this.https.delete(`${baseUrl}/${cedula}`, { headers: { 'auth-token': this.autenticacionService.auth_token } });
   }
 
+  validarIngresoCita(data){
+    return this.https.post("http://localhost:4200/api/ingreso-cita", data);
+  }
 }

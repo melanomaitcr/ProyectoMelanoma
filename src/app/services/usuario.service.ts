@@ -32,6 +32,12 @@ export class UsuarioService {
     return this.https.delete(`${baseUrl}/${cedula}`, { headers: { 'auth-token': this.autenticacionService.auth_token } });
   }
 
+  validarInicioSesion(data){
+    return this.https.post("http://localhost:4200/api/inicio-sesion", data);
+  }
+
+
+
 }
 
 /*
