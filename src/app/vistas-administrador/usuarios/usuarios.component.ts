@@ -27,12 +27,6 @@ export class UsuariosComponent implements OnInit {
     private _snackBar: MatSnackBar) {
   }
 
-  openSnackBar(message: string) {
-    this._snackBar.open(message, null, {
-      duration: 2000,
-    });
-  }
-
   ngOnInit(): void {
     this.cargarUsuarios();
   }

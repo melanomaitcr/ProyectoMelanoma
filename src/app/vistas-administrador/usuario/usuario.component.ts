@@ -22,12 +22,14 @@ export class UsuarioComponent implements OnInit {
 
   roles = ["Médico", "Asistente"]
 
+  esconder = true;
   usuario: Usuario = new Usuario(null, null, null, null, null, null, null);
   cedulaFC = new FormControl('', [Validators.required, this.pkDuplicadaValidator(), Validators.pattern('[0-9]*')]);
   nombreFC = new FormControl('', [Validators.required]);
   primer_apellidoFC = new FormControl('', [Validators.required]);
   correo_electronicoFC = new FormControl('', [Validators.required, Validators.email, this.correoDuplicadoValidator()]);
   rolFC = new FormControl('', [Validators.required]);
+  contrasennaFC = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
   cedulaUsuario: String;
@@ -108,6 +110,12 @@ export class UsuarioComponent implements OnInit {
   }
 
 
+  volver() {
+    this.router.navigate(['/usuarios']);
+
+  }
+
+
   openSnackBar(message: string) {
     this._snackBar.open(message, "Cerrar", {
       duration: 2000,
@@ -159,7 +167,7 @@ export class UsuarioComponent implements OnInit {
   async borrarUsuario() {
 
     const dialogRef = this.dialog.open(UsuarioComponentBorradoDialog, {
-      data: null
+      width: '400px', data: null
     });
 
     dialogRef.afterClosed().subscribe(async result => {

@@ -9,6 +9,12 @@ td {
     padding-bottom: 9px !important;
 }
 
+.mi-boton{
+    border-radius: 20px !important;
+    width: 120px;
+    background-color: #F5F5F5F5;
+  }
+
 .mat-column-cedula{
     word-wrap: break-word !important;
     white-space: unset !important;
@@ -44,8 +50,8 @@ td {
 .mat-column-rol{
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 53% !important;
-    width: 53% !important;
+    flex: 0 0 45% !important;
+    width: 45% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
   
@@ -60,8 +66,8 @@ td {
 .mat-column-consultar{
     word-wrap: break-word !important;
     white-space: unset !important;
-    flex: 0 0 12% !important;
-    width: 12% !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
     overflow-wrap: break-word;
     word-wrap: break-word;
   

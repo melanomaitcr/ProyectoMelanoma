@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-administrador',
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarAdministradorComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  paginaActual: string;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  f() {
+
+  }
+
+  getPaginaActual() {
+    return this.paginaActual;
+  }
+
+  vistaUsuarios() {
+    this.paginaActual = 'usuarios';
+    this.router.navigate(['/usuarios']);
+  }
+
+  vistaCitas() {
+    this.paginaActual = 'citas';
+    this.router.navigate(['/citas']);
+  }
+
+  vistaExpedientes() {
+    this.paginaActual = 'expedientes';
+    this.router.navigate(['/expedientes']);
   }
 
 }

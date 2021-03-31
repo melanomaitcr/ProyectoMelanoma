@@ -52,6 +52,8 @@ import { NavbarAsistenteComponent } from './navbars/navbar-asistente/navbar-asis
 import { NavbarAdministradorComponent } from './navbars/navbar-administrador/navbar-administrador.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CitaComponent } from './vistas-paciente/cita/cita.component';
+import { CitasComponent } from './vistas-administrador/citas/citas.component';
+import { ExpedientesComponent } from './vistas-administrador/expedientes/expedientes.component';
 //import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
@@ -70,7 +72,9 @@ import { CitaComponent } from './vistas-paciente/cita/cita.component';
     NavbarAsistenteComponent,
     NavbarAdministradorComponent,
     IngresoCitaComponentOkDialog,
-    CitaComponent
+    CitaComponent,
+    CitasComponent,
+    ExpedientesComponent
   ],
   imports: [
     FlexLayoutModule,

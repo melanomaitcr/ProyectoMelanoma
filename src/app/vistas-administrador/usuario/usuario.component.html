@@ -1,12 +1,27 @@
-<app-navbar-administrador> </app-navbar-administrador>
+<app-navbar-administrador paginaActual="usuarios"> </app-navbar-administrador>
 
 <div class="mi-div">
 
     <mat-card class="mi-card">
 
-        <mat-card-header style="display: inline; float:center; text-align: center;">
-            <mat-card-title>Actualizar Usuario
-            </mat-card-title>
+        <mat-card-header>
+            <!-- style="display: inline; float:center; text-align: center;" -->
+
+            <button mat-icon-button matSuffix (click)="volver()" disabled>
+                <mat-icon>arrow_back_ios</mat-icon>
+            </button>
+
+            <span class="mi-spacer"> </span>
+
+            <mat-label style="font-size: 20px; font-weight: 600; padding-top: 10px;">
+                Actualizar Usuario
+            </mat-label>
+
+            <span class="mi-spacer"> </span>
+
+            <button mat-icon-button matSuffix (click)="esconder = !esconder">
+                <mat-icon>arrow_barwios</mat-icon>
+            </button>
         </mat-card-header>
         <br />
 
@@ -15,15 +30,13 @@
             <form>
 
                 <div class="mi-form">
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" class="mi-input">
                         <mat-label>Número de Cédula</mat-label>
                         <input matInput placeholder="Número de cédula del usuario" name="cedula"
                             [(ngModel)]="usuario.cedula" [formControl]="cedulaFC" required
                             [errorStateMatcher]="matcher">
                         <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula para el
                             usuario')}}</mat-error>
-
-
                     </mat-form-field>
                     <br />
 
@@ -77,6 +90,21 @@
                         <mat-error *ngIf="rolFC.invalid">{{getErrorMessage(rolFC, 'rol para el usuario')}}
                         </mat-error>
                     </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput placeholder="Contraseña del usuario" name="contrasenna"
+                            [(ngModel)]="usuario.contrasenna" [formControl]="contrasennaFC"
+                            [type]="esconder ? 'password' : 'text'" required [errorStateMatcher]="matcher">
+                        <button mat-icon-button matSuffix (click)="esconder = !esconder">
+                            <mat-icon>{{esconder ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="contrasennaFC.invalid">{{getErrorMessage(contrasennaFC, 'una contraseña para
+                            el usuario')}}
+                        </mat-error>
+                    </mat-form-field>
+
 
                 </div>
                 <!-- <button mat-raised-button color="accent">Actualizar Información</button> -->
@@ -86,10 +114,11 @@
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-raised-button color="primary" [disabled]="!formularioValido()"
+            <button mat-raised-button color="secondary" class="mi-boton" [disabled]="!formularioValido()"
                 (click)="actualizarUsuario()">Actualizar Información</button>
-            <br /><br />
-            <button mat-raised-button color="accent" (click)="borrarUsuario()">Borrar Usuario</button>
+
+            <button mat-raised-button color="secondary" class="mi-boton" style="margin-left: 75px;"
+                (click)="borrarUsuario()">Borrar Usuario</button>
         </mat-card-actions>
     </mat-card>
 
