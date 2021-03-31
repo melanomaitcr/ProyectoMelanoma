@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { IngresoCitaComponent } from './vistas-inicio/ingreso-cita/ingreso-cita.component';
 import { InicioSesionComponent } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
 import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-registro.component';
@@ -9,18 +9,20 @@ import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.comp
 import { CitaComponent } from './vistas-paciente/cita/cita.component';
 import { CitasComponent } from './vistas-administrador/citas/citas.component';
 import { ExpedientesComponent } from './vistas-administrador/expedientes/expedientes.component';
+import { InicioSesionGuard } from './guards/inicio-sesion.guard';
 
 const routes: Routes = [
-  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [InicioSesionGuard] },
   { path: 'usuario', component: UsuarioComponent },
   { path: 'ingreso-cita', component: IngresoCitaComponent },
   { path: 'inicio-sesion', component: InicioSesionComponent },
   { path: 'cita-registro', component: CitaRegistroComponent },
   { path: 'usuario-registro', component: UsuarioRegistroComponent },
-  { path: 'cita', component: CitaComponent}
+  { path: 'cita', component: CitaComponent },
   { path: 'citas', component: CitasComponent },
   { path: 'expedientes', component: ExpedientesComponent },
 ];
+
 
 // { path: 'cita', component: CitaComponent }, MEDi y ADmin
 // { path: 'formulario-cjta', component: CitaComponent },
@@ -30,3 +32,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

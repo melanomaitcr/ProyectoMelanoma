@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -54,6 +54,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CitaComponent } from './vistas-paciente/cita/cita.component';
 import { CitasComponent } from './vistas-administrador/citas/citas.component';
 import { ExpedientesComponent } from './vistas-administrador/expedientes/expedientes.component';
+import { InterceptorService } from './services/interceptor.service';
+import { InicioSesionGuard } from './guards/inicio-sesion.guard';
+
 //import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
@@ -117,7 +120,8 @@ import { ExpedientesComponent } from './vistas-administrador/expedientes/expedie
     ReactiveFormsModule,
     MatNativeDateModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, InicioSesionGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

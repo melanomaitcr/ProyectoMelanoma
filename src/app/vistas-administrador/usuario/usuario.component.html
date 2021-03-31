@@ -7,7 +7,7 @@
         <mat-card-header>
             <!-- style="display: inline; float:center; text-align: center;" -->
 
-            <button mat-icon-button matSuffix (click)="volver()" disabled>
+            <button mat-icon-button matSuffix (click)="volver()">
                 <mat-icon>arrow_back_ios</mat-icon>
             </button>
 
@@ -19,7 +19,7 @@
 
             <span class="mi-spacer"> </span>
 
-            <button mat-icon-button matSuffix (click)="esconder = !esconder">
+            <button mat-icon-button matSuffix (click)="esconder = !esconder" disabled>
                 <mat-icon>arrow_barwios</mat-icon>
             </button>
         </mat-card-header>
