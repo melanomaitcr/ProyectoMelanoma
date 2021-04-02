@@ -3,7 +3,7 @@
     max-width: 1000px;
     text-align:center;
     align-items: center;
-    border-radius: 20px !important;
+    border-radius: 20px;
 
   }
   .mi-div {
@@ -30,17 +30,33 @@
   mat-form-field {
     width: 90%;
   }
-
-  /* Border */
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  border-radius:30px !important;
-  border-width:6px !important;
+/*
+  .mat-form-field-outline{
+    border-radius: 60px !important;
 }
 
-  .mi-input {
-    border-radius:30px !important;
-    border-width:6px !important;
-  }
+  .mat-form-field-flex {
+  border-radius: 60px !important;
+}*/
+/*
+.mat-form-field-appearance-outline .mat-form-field-outline .mat-form-field-outline-start,
+.mat-form-field-appearance-outline .mat-form-field-outline .mat-form-field-outline-end {
+  border-radius: 4 !important;
+}*/
+
+//.mat-form-field-appearance-outline .mat-form-field-outline {
+//  border-bottom-left-radius: 60px !important;
+//@at-root}
+
+  /* Border */
+//.mat-form-field-appearance-outline .mat-form-field-outline {
+//  border-radius:30px !important;
+//  border-width:6px !important;
+//}
+
+  //.mi-input {
+    
+  //}
 
   .miX-boton{
     border-radius: 20px;

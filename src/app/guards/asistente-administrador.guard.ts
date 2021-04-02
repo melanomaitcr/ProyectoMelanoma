@@ -5,19 +5,19 @@ import { AutenticacionService } from '../services/autenticacion.service';
 @Injectable({
   providedIn: 'root'
 })
-export class InicioSesionGuard implements CanActivate {
+export class AsistenteAdministradorGuard implements CanActivate {
 
   constructor(private autenticacionService: AutenticacionService, private router: Router) { }
 
   canActivate() {
-    if (this.autenticacionService.auth_token)
+    if (this.autenticacionService.rol == 'D' || this.autenticacionService.rol == 'A')
       return true;
-    console.log(this.autenticacionService);
+    else if (this.autenticacionService.rol == 'M')
+      this.router.navigate(['/jajaSalu2']);
+    else if (this.autenticacionService.rol == 'P')
+      this.router.navigate(['/jajaSalu2']);
 
-    this.router.navigate(['/inicio-sesion']);
     return false;
   }
 
 }
-
-

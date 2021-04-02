@@ -26,13 +26,13 @@ export class InicioSesionComponent implements OnInit {
   esconder = true;
   cedula: string;
   contrasenna: string;
-  constructor(private router: Router, 
-    private usuarioService: UsuarioService, 
+  constructor(private router: Router,
+    private usuarioService: UsuarioService,
     public dialog: MatDialog,
     private autenticacionService: AutenticacionService) { }
 
   ngOnInit(): void {
-    
+
   }
 
   getErrorMessage(fc: FormControl, campo: String) {
@@ -52,39 +52,25 @@ export class InicioSesionComponent implements OnInit {
     });
   }
 
-  async verificarDatos(){
+  async verificarDatos() {
     try {
-      let data={"cedula":this.cedula, "contrasenna":this.contrasenna};
+      let data = { "cedula": this.cedula, "contrasenna": this.contrasenna };
       let informacion = await this.usuarioService.validarInicioSesion(data).toPromise();
-      window.localStorage.setItem("auth_token",informacion["auth_token"]);
-      this.autenticacionService.auth_token = informacion["auth_token"];
-      switch (informacion["rol"]) {
-        case "A":
-          this.router.navigate(['/cita-registro']);
-          break;
+      console.log(informacion);
 
-        case "M":
 
-          break;
+      this.autenticacionService.iniciarSesion(informacion["auth_token"], informacion["rol"]);
 
-        case "D":
-          this.router.navigate(['/usuarios']);
-          break;
-
-        default:
-          this.dialogoDatosInvalidos();
-          break;
-      }
     } catch (error) {
       this.dialogoDatosInvalidos();
     }
-  }  
+  }
 }
-  
+
 
 @Component({
-    selector: 'not-important',
-    template: `
+  selector: 'not-important',
+  template: `
     <h1 mat-dialog-title style="text-align:center;">Datos ingresados son incorrectos</h1>
   <div mat-dialog-content> 
   <div mat-label style="text-align:center;"> La cédula o contraseña ingresadas son incorrectas, por favor compruebe los datos e intentelo nuevamente.</div>
@@ -93,17 +79,17 @@ export class InicioSesionComponent implements OnInit {
   <button mat-raised-button style="margin-top: 15px; margin-bottom:15px"  color="primary" (click)=siClick()>Entendido</button>
   </div>
     `
-  })
+})
 
 export class InicioSesionComponentOkDialog {
-  
-    constructor(
-      public dialogRef: MatDialogRef<InicioSesionComponentOkDialog>
-     ) {
-     }
-    
-  
-    siClick(): void {
-      this.dialogRef.close("Ok");
-    }
+
+  constructor(
+    public dialogRef: MatDialogRef<InicioSesionComponentOkDialog>
+  ) {
+  }
+
+
+  siClick(): void {
+    this.dialogRef.close("Ok");
+  }
 }

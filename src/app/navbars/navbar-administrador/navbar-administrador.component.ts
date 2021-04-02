@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-navbar-administrador',
@@ -11,13 +12,13 @@ export class NavbarAdministradorComponent implements OnInit {
   @Input()
   paginaActual: string;
 
-  constructor(private router: Router) { }
+  constructor(private autenticacionService: AutenticacionService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  f() {
-
+  cerrarSesion() {
+    this.autenticacionService.cerrarSesion();
   }
 
   getPaginaActual() {

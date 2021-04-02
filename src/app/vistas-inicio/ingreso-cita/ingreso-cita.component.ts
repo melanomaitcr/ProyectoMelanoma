@@ -29,8 +29,7 @@ export class IngresoCitaComponent implements OnInit {
   codigoFC = new FormControl('', [Validators.required]);
   cedula: string;
   codigo: string;
-  constructor(private router: Router, 
-    private expedienteService: ExpedienteService,
+  constructor(private expedienteService: ExpedienteService,
     private citaService: CitaService,
     public dialog: MatDialog,
     private autenticacionService: AutenticacionService) { }
@@ -57,19 +56,16 @@ export class IngresoCitaComponent implements OnInit {
   }
 
 
-  async validarDatos(){
+  async validarDatos() {
     try {
-      let data={"cedula":this.cedula, "codigo":this.codigo};
-      console.log(data);
+      let data = { "cedula": this.cedula, "clave": this.codigo };
       let informacion = await this.expedienteService.validarIngresoCita(data).toPromise();
-      console.log(informacion);
-      window.localStorage.setItem("auth_token",informacion["auth_token"]);
-      this.router.navigate(['/cita']);
-      this.autenticacionService.auth_token = informacion["auth_token"];
+
+      this.autenticacionService.ingresarCita(informacion["auth_token"], informacion["rol"], informacion["id_cita"]);
     } catch (error) {
       this.dialogoDatosInvalidos();
     }
-  } 
+  }
 }
 
 @Component({
@@ -89,9 +85,9 @@ export class IngresoCitaComponentOkDialog {
 
   constructor(
     public dialogRef: MatDialogRef<IngresoCitaComponentOkDialog>
-   ) {
-   }
-  
+  ) {
+  }
+
 
   siClick(): void {
     this.dialogRef.close("Ok");

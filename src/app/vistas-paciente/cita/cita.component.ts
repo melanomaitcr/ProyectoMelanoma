@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-cita',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CitaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private autenticacionService: AutenticacionService) {
+    this.autenticacionService.removeData();
+
+  }
 
   ngOnInit(): void {
   }

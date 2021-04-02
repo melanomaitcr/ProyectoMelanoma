@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AutenticacionService } from './autenticacion.service';
 
 const baseUrl = 'http://localhost:4200/api/expediente';
 
@@ -9,29 +8,29 @@ const baseUrl = 'http://localhost:4200/api/expediente';
 })
 export class ExpedienteService {
 
-  constructor(private https: HttpClient, private autenticacionService: AutenticacionService) { }
+  constructor(private https: HttpClient) { }
 
   findAll() {
-    return this.https.get(baseUrl, { headers: { 'auth-token': this.autenticacionService.auth_token } });
+    return this.https.get(baseUrl);
   }
 
   findByPk(cedula) {
-    return this.https.get(`${baseUrl}/${cedula}`, { headers: { 'auth-token': this.autenticacionService.auth_token } });
+    return this.https.get(`${baseUrl}/${cedula}`);
   }
 
   create(data) {
-    return this.https.post(baseUrl, data, { headers: { 'auth-token': this.autenticacionService.auth_token } });
+    return this.https.post(baseUrl, data);
   }
 
   update(cedula, data) {
-    return this.https.put(`${baseUrl}/${cedula}`, data, { headers: { 'auth-token': this.autenticacionService.auth_token } });
+    return this.https.put(`${baseUrl}/${cedula}`, data);
   }
 
   delete(cedula) {
-    return this.https.delete(`${baseUrl}/${cedula}`, { headers: { 'auth-token': this.autenticacionService.auth_token } });
+    return this.https.delete(`${baseUrl}/${cedula}`);
   }
 
-  validarIngresoCita(data){
+  validarIngresoCita(data) {
     return this.https.post("http://localhost:4200/api/ingreso-cita", data);
   }
 }
