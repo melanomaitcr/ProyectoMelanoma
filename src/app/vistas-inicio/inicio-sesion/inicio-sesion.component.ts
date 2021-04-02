@@ -21,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class InicioSesionComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
-  cedulaFC = new FormControl('', [Validators.required]);
+  cedulaFC = new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]);
   contrasennaFC = new FormControl('', [Validators.required]);
   esconder = true;
   cedula: string;
@@ -39,6 +39,7 @@ export class InicioSesionComponent implements OnInit {
     if (fc.hasError('required')) {
       return 'Debe ingresar un' + campo;
     }
+    return 'La cédula debe contener únicamente números'
   }
 
   inicioValido() {
@@ -90,7 +91,7 @@ export class InicioSesionComponent implements OnInit {
   <div mat-label style="text-align:center;"> La cédula o contraseña ingresadas son incorrectas, por favor compruebe los datos e intentelo nuevamente.</div>
   </div>
   <div mat-dialog-actions style="justify-content: center;">
-  <button mat-raised-button style="margin-top: 15px; margin-bottom:15px"  color="primary" (click)=siClick()>Entendido</button>
+  <button mat-raised-button style="border-radius:20px; margin-top: 15px; margin-bottom:15px;"  color="primary" (click)=siClick()>Entendido</button>
   </div>
     `
   })
