@@ -15,5 +15,10 @@
     display: flex;
     flex-direction: column;
  }
+ .mi-boton{
+  border-radius: 20px !important;
+  width: 250px;
+  margin-bottom: 20px !important;
+}
 
  mat-card-title { text-align: center }

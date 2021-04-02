@@ -76,7 +76,7 @@ export class IngresoCitaComponent implements OnInit {
 <div mat-label style="text-align:center;">El número de cédula o el código de cita ingresados no están asociados a una cita, por favor compruebe los datos e intentelo nuevamente.</div>
 </div>
 <div mat-dialog-actions style="justify-content: center;">
-<button mat-raised-button style="margin-top: 15px; margin-bottom:15px"  color="primary" (click)=siClick()>Entendido</button>
+<button mat-raised-button style="border-radius: 20px;margin-top: 15px; margin-bottom:15px"  color="primary" (click)=siClick()>Entendido</button>
 </div>
   `
 })
