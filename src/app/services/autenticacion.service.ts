@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 /*
@@ -14,7 +15,7 @@ export class AutenticacionService {
   auth_token: string = undefined;
   rol: string = undefined;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private _snackBar: MatSnackBar) {
     if (!window.localStorage.getItem('auth_token')) {
       this.auth_token = this.rol = undefined;
       return;
@@ -29,9 +30,12 @@ export class AutenticacionService {
 
     if (rol == 'A')
       this.router.navigate(['/cita-registro']);
-    else if (rol == 'M')
-      return;
-    else
+    else if (rol == 'M') {
+      this._snackBar.open("Se ha ingresado como médico pero actualmente este no cuenta con funcionalidades implementadas", "Cerrar", {
+        duration: 4000,
+      });
+      this.cerrarSesion();
+    } else
       this.router.navigate(['/usuarios']);
 
   }

@@ -56,6 +56,8 @@ import { CitasComponent } from './vistas-administrador/citas/citas.component';
 import { ExpedientesComponent } from './vistas-administrador/expedientes/expedientes.component';
 import { InterceptorService } from './services/interceptor.service';
 import { InicioSesionGuard } from './guards/inicio-sesion.guard';
+import { NavbarPacienteComponent } from './navbars/navbar-paciente/navbar-paciente.component';
+import { DatePipe } from '@angular/common';
 
 //import { StorageServiceModule } from 'ngx-webstorage-service';
 
@@ -77,7 +79,8 @@ import { InicioSesionGuard } from './guards/inicio-sesion.guard';
     IngresoCitaComponentOkDialog,
     CitaComponent,
     CitasComponent,
-    ExpedientesComponent
+    ExpedientesComponent,
+    NavbarPacienteComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -120,7 +123,7 @@ import { InicioSesionGuard } from './guards/inicio-sesion.guard';
     ReactiveFormsModule,
     MatNativeDateModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe,
   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, InicioSesionGuard],
   bootstrap: [AppComponent]
 })

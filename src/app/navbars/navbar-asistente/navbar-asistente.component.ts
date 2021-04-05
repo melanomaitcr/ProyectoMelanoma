@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-navbar-asistente',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarAsistenteComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  paginaActual: string;
+
+  constructor(private autenticacionService: AutenticacionService, private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  cerrarSesion() {
+    this.autenticacionService.cerrarSesion();
+  }
+
+  getPaginaActual() {
+    return this.paginaActual;
+  }
+
+  vistaCitaRegistro() {
+    this.paginaActual = 'cita-registro';
+    this.router.navigate(['/cita-registro']);
+  }
+
+  vistaExpedienteRegistro() {
+    //    this.paginaActual = 'expediente-registro';
+    //  this.router.navigate(['/expediente-registro']);
+  }
+
 
 }

@@ -1,3 +1,6 @@
+<app-navbar-asistente paginaActual="cita-registro"> </app-navbar-asistente>
+
+
 <div class="mi-div">
 
     <mat-card class="mi-card">
@@ -14,9 +17,10 @@
 
                 <div class="mi-form">
                     <mat-form-field appearance="outline">
-                        <mat-label>Número de Cédula</mat-label>
-                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="cita.cedula_paciente" [formControl]="cedulaFC" name="cedula" (keyup)="obtenerDatosUsuario($event.target.value)" required>
-                        <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula para el usuario')}}</mat-error>
+                        <mat-label>Número de cédula del paciente</mat-label>
+                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="cita.cedula_paciente"
+                            [formControl]="cedulaFC" name="cedula" required [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'cedulaPac')}}</mat-error>
                     </mat-form-field>
                     <br />
                     <mat-form-field appearance="outline">
@@ -24,44 +28,52 @@
                         <input matInput placeholder="Número del paciente" [(ngModel)]="nombre" name="nombre" disabled>
                     </mat-form-field>
                     <br />
-                   
+
                     <mat-form-field appearance="outline">
-                        <mat-label>Medico</mat-label>
-                        <mat-select placeholder="Medico" [(ngModel)]="medicoSeleccionado" name="medicoSeleccionado" required>
-                            <mat-option *ngFor="let medico of medicos" [value]="medico">{{medico.nombre}}</mat-option>
+                        <mat-label>Médico</mat-label>
+                        <mat-select placeholder="Medico" [(ngModel)]="medicoSeleccionado" name="medicoSeleccionado"
+                            required [errorStateMatcher]="matcher">
+                            <mat-option *ngFor="let medico of medicos" [value]="medico">
+                                {{medico.nombre}}</mat-option>
                         </mat-select>
-                      </mat-form-field>
-                      
-                      <br />
+                    </mat-form-field>
+
+                    <br />
                     <mat-form-field appearance="outline">
                         <mat-label>Fecha</mat-label>
-                        <input matInput [matDatepicker]="picker"  [(ngModel)]="cita.fecha_hora_cita" [formControl]="fechaFC" name = "fecha" placeholder="dd/MM/yyyy" required>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="cita.fecha_hora_cita"
+                            [formControl]="fechaFC" name="fecha" placeholder="dd/MM/yyyy" required
+                            [errorStateMatcher]="matcher">
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                        </mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                        <mat-error *ngIf="fechaFC.invalid">{{getErrorMessageDate(fechaFC, 'fecha')}}
+                        <mat-error *ngIf="fechaFC.invalid">{{getErrorMessageDate(fechaFC, 'fecha para la cita')}}
                         </mat-error>
                     </mat-form-field>
-                    
+
                     <br />
-                    
+
                     <mat-form-field appearance="outline">
                         <mat-label>Hora</mat-label>
-                        <input matInput type = "time" placeholder="Fecha de la cita"  [(ngModel)]="hora" [formControl]="horaFC" name = "hora" required>
-                        <mat-error *ngIf="horaFC.invalid">{{getErrorMessage(horaFC, 'hora')}}</mat-error>
+                        <input matInput type="time" placeholder="Fecha de la cita" [(ngModel)]="hora"
+                            [formControl]="horaFC" name="hora" required [errorStateMatcher]="matcher"
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="horaFC.invalid">{{getErrorMessage(horaFC,
+                            'hora')}}</mat-error>
                     </mat-form-field>
-                    
+
 
                 </div>
 
             </form>
 
         </mat-card-content>
-        <br />
+
         <mat-card-actions>
-            <button mat-raised-button color="primary" class="mi-boton" [disabled]="!formularioValido()"
+            <button mat-raised-button color="secondary" class="mi-boton" [disabled]="!formularioValido()"
                 (click)="registrarCita()">Registrar cita</button>
         </mat-card-actions>
-        
+
     </mat-card>
 
 </div>

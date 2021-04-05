@@ -22,12 +22,14 @@ export class UsuarioRegistroComponent implements OnInit {
 
   roles = ["Médico", "Asistente"]
 
+  esconder = true;
   usuario: Usuario = new Usuario("", "", "", "", "", "", "M");
   cedulaFC = new FormControl('', [Validators.required, this.pkDuplicadaValidator(), Validators.pattern('[0-9]*')]);
   nombreFC = new FormControl('', [Validators.required]);
   primer_apellidoFC = new FormControl('', [Validators.required]);
   correo_electronicoFC = new FormControl('', [Validators.required, Validators.email, this.correoDuplicadoValidator()]);
   rolFC = new FormControl('', [Validators.required]);
+  contrasennaFC = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
   usuarios: Usuario[];
@@ -74,6 +76,10 @@ export class UsuarioRegistroComponent implements OnInit {
 
       return encontrado ? { correoDuplicado: { value: control.value } } : null;
     };
+  }
+
+  volver() {
+    this.router.navigate(['/usuarios']);
   }
 
   async registrarUsuario() {

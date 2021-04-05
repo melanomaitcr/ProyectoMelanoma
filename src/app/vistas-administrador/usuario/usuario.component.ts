@@ -112,7 +112,6 @@ export class UsuarioComponent implements OnInit {
 
   volver() {
     this.router.navigate(['/usuarios']);
-
   }
 
 
@@ -217,8 +216,8 @@ export class UsuarioComponentNoActulizacionDialog {
   <h1 mat-dialog-title>Confirmar elección</h1>
 <div mat-dialog-content> ¿Está seguro de querer borrar este usuario?</div>
 <div mat-dialog-actions style="justify-content: center;">
-  <button mat-raised-button color="secondary" style="border-radius: 20px !important; width: 125px; background-color: #F5F5F5F5;" (click)=siClick()>Sí</button>
-  <button mat-raised-button color="secondary" style="margin-left: 35px; border-radius: 20px !important; width: 125px; background-color: #F5F5F5F5;" (click)=noClick()>No</button>
+  <button mat-raised-button color="secondary" style="border-radius: 20px !important; line-height: 40px; width: 125px; background-color: #F5F5F5F5;" (click)=siClick()>Sí</button>
+  <button mat-raised-button color="secondary" style="margin-left: 25px; line-height: 40px;border-radius: 20px !important; width: 125px; background-color: #F5F5F5F5;" (click)=noClick()>No</button>
 </div>
   `
 })

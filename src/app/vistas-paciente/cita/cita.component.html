@@ -1,1 +1,68 @@
-<p>cita works!</p>
+<app-navbar-paciente id_cita="{{id_cita}}"> </app-navbar-paciente>
+
+<div class="mi-div">
+
+    <mat-card class="mi-card">
+
+        <mat-card-header style="display: inline; float:center; text-align: center;">
+            <mat-card-title>Información de cita
+            </mat-card-title>
+        </mat-card-header>
+        <br />
+
+        <mat-card-content>
+
+            <form>
+
+                <div class="mi-form">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Número de cédula del paciente</mat-label>
+                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="cita.cedula_paciente"
+                            name="cedulaPaciente" disabled>
+                    </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre del paciente</mat-label>
+                        <input matInput placeholder="Número del paciente" [(ngModel)]="expediente.nombre" name="nombre"
+                            disabled>
+                    </mat-form-field>
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Número de cédula del médico</mat-label>
+                        <input matInput placeholder="Número de cédula del médico" [(ngModel)]="cita.cedula_medico"
+                            name="cedulaMedico" disabled>
+                    </mat-form-field>
+
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="fecha" name="fecha"
+                            disabled>
+                    </mat-form-field>
+
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Hora</mat-label>
+                        <input matInput placeholder="Número de cédula del usuario" [(ngModel)]="hora" name="hora"
+                            disabled>
+                    </mat-form-field>
+
+
+                </div>
+
+            </form>
+
+        </mat-card-content>
+        <!--
+        <mat-card-actions>
+            <button mat-raised-button color="secondary" class="mi-boton" [disabled]="!formularioValido()"
+                (click)="registrarCita()">Registrar cita</button>
+        </mat-card-actions>
+-->
+    </mat-card>
+
+</div>
+<br />

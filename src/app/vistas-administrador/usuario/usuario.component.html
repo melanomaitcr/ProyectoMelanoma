@@ -13,15 +13,13 @@
 
             <span class="mi-spacer"> </span>
 
-            <mat-label style="font-size: 20px; font-weight: 600; padding-top: 10px;">
-                Actualizar Usuario
+            <mat-label style="font-size: 20px; padding-top: 10px; padding-right: 40px;">
+                Información del usuario
             </mat-label>
 
             <span class="mi-spacer"> </span>
 
-            <button mat-icon-button matSuffix (click)="esconder = !esconder" disabled>
-                <mat-icon>arrow_barwios</mat-icon>
-            </button>
+
         </mat-card-header>
         <br />
 
@@ -100,8 +98,8 @@
                         <button mat-icon-button matSuffix (click)="esconder = !esconder">
                             <mat-icon>{{esconder ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-error *ngIf="contrasennaFC.invalid">{{getErrorMessage(contrasennaFC, 'una contraseña para
-                            el usuario')}}
+                        <mat-error *ngIf="contrasennaFC.invalid">Debe ingresar una contraseña para
+                            el usuario
                         </mat-error>
                     </mat-form-field>
 
@@ -115,10 +113,10 @@
 
         <mat-card-actions>
             <button mat-raised-button color="secondary" class="mi-boton" [disabled]="!formularioValido()"
-                (click)="actualizarUsuario()">Actualizar Información</button>
+                (click)="actualizarUsuario()">Actualizar información</button>
 
             <button mat-raised-button color="secondary" class="mi-boton" style="margin-left: 75px;"
-                (click)="borrarUsuario()">Borrar Usuario</button>
+                (click)="borrarUsuario()">Borrar usuario</button>
         </mat-card-actions>
     </mat-card>
 

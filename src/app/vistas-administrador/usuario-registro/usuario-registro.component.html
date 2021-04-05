@@ -4,9 +4,22 @@
 
     <mat-card class="mi-card">
 
-        <mat-card-header style="display: inline; float:center; text-align: center;">
-            <mat-card-title>Registrar Usuario
-            </mat-card-title>
+        <mat-card-header>
+
+
+            <button mat-icon-button matSuffix (click)="volver()">
+                <mat-icon>arrow_back_ios</mat-icon>
+            </button>
+
+            <span class="mi-spacer"> </span>
+
+            <mat-label style="font-size: 20px; padding-top: 10px; padding-right: 40px;">
+                Registrar nuevo usuario
+            </mat-label>
+
+            <span class="mi-spacer"> </span>
+
+
         </mat-card-header>
         <br />
 
@@ -58,7 +71,7 @@
                         <mat-label>Correo Electrónico</mat-label>
                         <input matInput placeholder="Correo electrónico del usuario" name="correo_electronico"
                             [(ngModel)]="usuario.correo_electronico" [formControl]="correo_electronicoFC" required
-                            [errorStateMatcher]="matcher" type="password">
+                            [errorStateMatcher]="matcher">
                         <mat-error *ngIf="correo_electronicoFC.invalid">{{getErrorMessage(correo_electronicoFC, 'correo
                             electrónico para el usuario')}}
                         </mat-error>
@@ -78,6 +91,23 @@
                         </mat-error>
                     </mat-form-field>
 
+
+                    <br />
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput placeholder="Contraseña del usuario" name="contrasenna"
+                            [(ngModel)]="usuario.contrasenna" [formControl]="contrasennaFC"
+                            [type]="esconder ? 'password' : 'text'" required [errorStateMatcher]="matcher">
+                        <button mat-icon-button matSuffix (click)="esconder = !esconder">
+                            <mat-icon>{{esconder ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="contrasennaFC.invalid">{{getErrorMessage(contrasennaFC, 'una contraseña para
+                            el usuario')}}
+                        </mat-error>
+                    </mat-form-field>
+
+
                 </div>
                 <!-- <button mat-raised-button color="accent">Actualizar Información</button> -->
 
@@ -86,8 +116,8 @@
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-raised-button color="primary" [disabled]="!formularioValido()"
-                (click)="registrarUsuario()">Registrar</button>
+            <button mat-raised-button color="secondary" class="mi-boton" [disabled]="!formularioValido()"
+                (click)="registrarUsuario()">Registrar usuario</button>
 
         </mat-card-actions>
     </mat-card>

@@ -12,11 +12,10 @@ import { ExpedientesComponent } from './vistas-administrador/expedientes/expedie
 import { InicioSesionGuard } from './guards/inicio-sesion.guard';
 import { AdministradorGuard } from './guards/administrador.guard';
 import { AsistenteAdministradorGuard } from './guards/asistente-administrador.guard';
-import { AppComponent } from './app.component';
 import { SesionAbiertaGuard } from './guards/sesion-abierta.guard';
 
 const routes: Routes = [
-  { path: 'perrito', component: AppComponent },
+  { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },
 
   { path: 'usuarios', component: UsuariosComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
   { path: 'usuario', component: UsuarioComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },

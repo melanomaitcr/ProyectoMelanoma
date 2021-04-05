@@ -1,0 +1,66 @@
+.mi-card {
+    width: 60%;
+        text-align:center;
+        align-items: center;
+        border-radius: 20px;
+    
+      }
+      .mi-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+      }
+    
+      .mi-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+     mat-card-title { text-align: center }
+    
+      mat-form-field {
+        width: 90%;
+      }
+      .mi-boton{
+        border-radius: 20px !important;
+        width: 250px;
+        background-color: #F5F5F5F5;
+        line-height: 40px;
+        margin-bottom: 25px !important;
+      }
+    
+      .mi-spacer{
+        flex: 1 1 auto;
+      }
+      
+/*
+      .mat-input-element:disabled, .mat-form-field-type-mat-native-select.mat-form-field-disabled .mat-form-field-infix::after, .mat-form-field-appearance-outline, .mat-form-field-disabled {
+        color: rgba(0,11,250,.38) !important;
+    }
+*/
+  /*input[type="time"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block; // https://github.com/google/material-design-icons/blob/master/png/action/watch_later/materialicons/24dp/2x/baseline_watch_later_black_24dp.png
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 20px;
+    height: 20px;
+
+"""¡Buenas, {}! 
+Como paciente del Sistema PraesidIA, se ha registrado una cita a su nombre, para ingresar a esta debe ingresar al sistema desde nuestra página web o nuestra aplicación móvil.
+
++ Para ingresar desde la web debe hacer click en el siguiente enlace: http://melanomaitcr.pythonanywhere.com/ingreso-cita
++ Para ingresar desde la aplicación móvil debe descagar el archivo apk presente en el siguiente enlace: http://melanomaitcr.pythonanywhere.com/ingreso-cita
+
+En ambos, debe ingresar usando su número de cédula y el código de la cita, el cual corresponde a {}, al ingresar puede adjuntar la información y los archivos de la cita que sean requeridos por su doctor.
+
+¡Muchas gracias!
+""".format("", "")
+
+    border-width: thin;
+  }*/
+  
+  
+   mat-card-title { text-align: center }

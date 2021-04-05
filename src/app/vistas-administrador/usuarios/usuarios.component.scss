@@ -1,7 +1,11 @@
 .mi-table {
-  width: 1000px;
+  width: 100%;
   border-collapse: separate!important;
 //  border-spacing:0 20px!important;
+}
+
+.mi-card{
+    width: 75%;
 }
 
 td {
