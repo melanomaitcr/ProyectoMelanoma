@@ -14,6 +14,8 @@ import { AdministradorGuard } from './guards/administrador.guard';
 import { AsistenteAdministradorGuard } from './guards/asistente-administrador.guard';
 import { SesionAbiertaGuard } from './guards/sesion-abierta.guard';
 
+import { FormularioCitaComponent} from './vistas-paciente/formulario-cita/formulario-cita.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },
 
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'cita-registro', component: CitaRegistroComponent, canActivate: [InicioSesionGuard, AsistenteAdministradorGuard] },
 
   { path: 'expedientes', component: ExpedientesComponent, canActivate: [InicioSesionGuard] },
+
+  { path: 'formulario-cita', component: FormularioCitaComponent},
 ];
 
 

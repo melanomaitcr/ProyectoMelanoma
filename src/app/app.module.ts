@@ -35,6 +35,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -44,6 +45,7 @@ import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-reg
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
 import { UsuarioComponent, UsuarioComponentBorradoDialog } from './vistas-administrador/usuario/usuario.component';
 import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.component';
+import { FormularioCitaComponent} from './vistas-paciente/formulario-cita/formulario-cita.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarInicioComponent } from './navbars/navbar-inicio/navbar-inicio.component';
@@ -58,6 +60,10 @@ import { InterceptorService } from './services/interceptor.service';
 import { InicioSesionGuard } from './guards/inicio-sesion.guard';
 import { NavbarPacienteComponent } from './navbars/navbar-paciente/navbar-paciente.component';
 import { DatePipe } from '@angular/common';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+
+
+
 
 //import { StorageServiceModule } from 'ngx-webstorage-service';
 
@@ -80,7 +86,8 @@ import { DatePipe } from '@angular/common';
     CitaComponent,
     CitasComponent,
     ExpedientesComponent,
-    NavbarPacienteComponent
+    NavbarPacienteComponent,
+    FormularioCitaComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -121,7 +128,9 @@ import { DatePipe } from '@angular/common';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MaterialFileInputModule
+
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe,
   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, InicioSesionGuard],
