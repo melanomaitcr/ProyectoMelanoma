@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 .contenedor-inicio-sesion{
   margin-top:20px;
 }
@@ -56,10 +58,6 @@
 
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline{
-  border-radius: 60px;
-}
-
 .card-inicio-sesion .actions-inicio-sesion{
   margin-left: 4vw;
   margin-right:4vw;
@@ -73,3 +71,50 @@
   width: 100%;
   background-color: #F5F5F5F5;
 }
+
+
+
+
+mat-form-field mat-label {
+  margin-left: 20px;
+}
+mat-form-field input {
+  padding-left: 10px;
+} 
+::ng-deep .mat-dialog-container {
+  border-radius: 20px !important;
+  @include mat-elevation(20);
+}
+
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 10px 0 10px 0 !important;
+      border-bottom: 5px solid transparent;
+    }
+
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end  {
+    border-radius: 0 40px 40px 0 !important;
+  }
+//  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-gap  {
+    //border-top-color: initial !important;
+ // }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 40px 0 0 40px !important;
+    flex-grow: 1;
+    max-width: 20px !important;
+  }
+
+
+  ::ng-deep {
+    ng-scrollbar.scroll-event {
+      --scrollbar-size: 8px;
+      --scrollbar-thumb-color: gray;
+      --scrollbar-hover-size: 12px;
+      --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+      --scrollbar-border-radius: 20px;
+  
+      height: 5000px;
+      width: 5000px;
+    }
+  }
+  

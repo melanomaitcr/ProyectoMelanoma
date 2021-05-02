@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { UsuarioComponent } from './usuario.component';
+import { UsuarioEdicionComponent } from './usuario-edicion.component';
 
 describe('UsuarioComponent', () => {
-  let component: UsuarioComponent;
-  let fixture: ComponentFixture<UsuarioComponent>;
+  let component: UsuarioEdicionComponent;
+  let fixture: ComponentFixture<UsuarioEdicionComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsuarioComponent ]
+      declarations: [UsuarioEdicionComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsuarioComponent);
+    fixture = TestBed.createComponent(UsuarioEdicionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

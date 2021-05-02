@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IngresoCitaComponent } from './vistas-inicio/ingreso-cita/ingreso-cita.component';
 import { InicioSesionComponent } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
-import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-registro.component';
+import { CitaRegistroComponent } from './vistas-administrador/cita-registro/cita-registro.component';
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
-import { UsuarioComponent } from './vistas-administrador/usuario/usuario.component';
+import { UsuarioEdicionComponent } from './vistas-administrador/usuario-edicion/usuario-edicion.component';
 import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.component';
 import { CitaComponent } from './vistas-paciente/cita/cita.component';
 import { CitasComponent } from './vistas-administrador/citas/citas.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },
 
   { path: 'usuarios', component: UsuariosComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
-  { path: 'usuario', component: UsuarioComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
+  { path: 'usuario', component: UsuarioEdicionComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
   { path: 'usuario-registro', component: UsuarioRegistroComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
 
   { path: 'ingreso-cita', component: IngresoCitaComponent, canActivate: [SesionAbiertaGuard] },
@@ -36,6 +36,7 @@ const routes: Routes = [
 
   { path: 'formulario-cita', component: FormularioCitaComponent},
 ];
+
 
 
 // { path: 'cita', component: CitaComponent }, MEDi y ADmin

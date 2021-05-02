@@ -1,0 +1,41 @@
+<mat-dialog-content>
+
+    <mat-card class="mi-card" style="box-shadow: none;">
+
+        <mat-card-header>
+
+            <mat-label class="mi-titulo" style="padding-left: 20%;">
+                Usuario registrado
+            </mat-label>
+
+        </mat-card-header>
+        <br /> <br /><br />
+
+        <mat-card-content style="text-align: left !important; align-items: flex-start;">
+
+            <mat-label class="mi-titulo"> Usuario: </mat-label>
+            <mat-label class="mi-cuerpo">
+                {{getNombre(usuario)}} <br /><br />
+            </mat-label>
+
+            <mat-label class="mi-titulo"> Identificación: </mat-label>
+            <mat-label class="mi-cuerpo"> {{usuario.cedula}} <br /> <br /></mat-label>
+
+            <mat-label class="mi-titulo"> Correo Electrónico: </mat-label>
+            <mat-label class="mi-cuerpo"> {{usuario.correo_electronico}} <br /><br />
+            </mat-label>
+
+            <mat-label class="mi-titulo"> Rol: </mat-label>
+            <mat-label class="mi-cuerpo"> {{usuario.rol}} <br /><br /> </mat-label>
+
+        </mat-card-content>
+
+        <mat-card-actions style="margin-left: 50%; align-self: flex-end; ">
+
+            <button mat-raised-button class="mi-boton" (click)="cerrar()">Aceptar</button>
+
+        </mat-card-actions>
+
+    </mat-card>
+
+</mat-dialog-content>

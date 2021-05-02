@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+//const baseUrl = 'http://melanomaitcr.pythonanywhere.com/api/expediente';
 const baseUrl = 'http://localhost:4200/api/expediente';
 
 @Injectable({

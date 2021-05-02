@@ -24,6 +24,12 @@
     "@angular/router": "~11.2.7",
     "angular-material-fileupload": "^3.0.2",
     "ngx-material-file-input": "^2.1.1",
+    "@ng-bootstrap/ng-bootstrap": "^9.1.0",
+    "angular-calendar": "^0.28.22",
+    "angularx-flatpickr": "^6.5.2",
+    "date-fns": "^2.21.1",
+    "flatpickr": "^4.6.9",
+    "ngx-scrollbar": "^7.5.4",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

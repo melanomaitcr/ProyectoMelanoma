@@ -1,36 +1,24 @@
 <p>
-    <mat-toolbar color="Ecrft4g" class="navbar-inicio">
+    <mat-toolbar class="navbar-inicio" class="mi-navbar">
 
-        <!--
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <span>My App</span>
-
-        <span class="example-spacer"></span>
-
-
-        <mat-tab-group mat-align-tabs="center" color="primary">
-            <mat-tab label="First"> </mat-tab>
-            <mat-tab label="Second"></mat-tab>
-            <mat-tab label="Third"></mat-tab>
-        </mat-tab-group>-->
-
-        <button mat-raised-button (click)="vistaUsuarios()" color="seefr3condary"
-            [disabled]="paginaActual == 'usuarios'" style="margin-left: 20px;" class="mi-boton"> Usuarios
+        <button mat-raised-button (click)="vistaUsuarios()" [disabled]="getPaginaActual() == 'usuarios'"
+            style="margin-left: 20px;" class="mi-boton"> Usuarios
         </button>
 
-        <button mat-raised-button (click)="vistaCitas()" color="secondary" [disabled]="paginaActual == 'citas'"
-            style="margin-left: 20px;" class="mi-boton">
+        <button mat-raised-button (click)="vistaExpedientes()" [disabled]="getPaginaActual() == 'expedientes'"
+            style="margin-left: 40px;" class="mi-boton">Pacientes</button>
+
+        <button mat-raised-button (click)="vistaCitas()" [disabled]="getPaginaActual() == 'citas'"
+            style="margin-left: 40px;" class="mi-boton">
             Citas </button>
-        <button mat-raised-button (click)="vistaExpedientes()" color="secondary"
-            [disabled]="paginaActual == 'expedientes'" style="margin-left: 20px;" class="mi-boton">Pacientes</button>
 
-        <span class="example-spacer"></span>
 
-        <button mat-raised-button color="secondary" style="margin-right: 20px;" class="mi-boton">Perfil</button>
-        <button mat-raised-button (click)="cerrarSesion()" color="secondary" [disabled]="paginaActual == 'xd'"
-            style="margin-right: 20px;" class="mi-boton">Cerrar
+        <button mat-raised-button style="margin-left: 40px;" class="mi-boton">Perfil</button>
+
+        <span style="flex: 1 1 auto;"></span>
+
+
+        <button mat-raised-button (click)="cerrarSesion()" style="margin-right: 20px;" class="mi-boton">Cerrar
             sesión</button>
 
 

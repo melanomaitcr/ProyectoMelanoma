@@ -1,0 +1,121 @@
+<mat-dialog-content>
+
+    <ng-scrollbar class="scroll-evento" thumbClass="white-scrollbars" track="all">
+
+        <mat-card class="mi-card" style="box-shadow: none;">
+
+            <mat-card-header>
+
+                <mat-label
+                    style="padding-top: 10px; padding-right: 40px; font-size: 32px; font-weight: 700; color: #4F4E4E;">
+                    Usuario - Editar
+                </mat-label>
+
+            </mat-card-header>
+            <br /> <br />
+
+            <mat-card-content>
+
+                <form>
+
+                    <div class="mi-form">
+
+                        <div class="mi-field">
+
+                            <mat-form-field appearance="outline" style="width: 31%;">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput placeholder="Nombre" name="nombre" [(ngModel)]="usuario.nombre"
+                                    [formControl]="nombreFC" required [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="nombreFC.invalid">{{getErrorMessage(nombreFC, 'nombre para el
+                                    usuario')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" style="margin-left: 3%; width: 31%;">
+                                <mat-label>Primer apellido</mat-label>
+                                <input matInput placeholder="Primer apellido" name="primer_apellido"
+                                    [(ngModel)]="usuario.primer_apellido" [formControl]="primer_apellidoFC" required
+                                    [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="primer_apellidoFC.invalid">{{getErrorMessage(primer_apellidoFC,
+                                    'primer
+                                    apellido para el usuario')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" style="margin-left: 3%; width: 31%;">
+                                <mat-label>Segundo apellido</mat-label>
+                                <input matInput placeholder="Segundo apellido" name="segundo_apellido"
+                                    [(ngModel)]="usuario.segundo_apellido" [errorStateMatcher]="matcher">
+                            </mat-form-field>
+                        </div>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label style="margin-left: 20px;">Número de identificación</mat-label>
+                            <input matInput placeholder="Número de identificación del usuario" name="cedula"
+                                [(ngModel)]="usuario.cedula" [formControl]="cedulaFC" required
+                                [errorStateMatcher]="matcher" style="padding-left: 10px;">
+                            <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula para el
+                                usuario')}}</mat-error>
+                        </mat-form-field>
+                        <br />
+
+
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Correo electrónico</mat-label>
+                            <input matInput placeholder="Correo electrónico del usuario" name="correo_electronico"
+                                [(ngModel)]="usuario.correo_electronico" [formControl]="correo_electronicoFC" required
+                                [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="correo_electronicoFC.invalid">{{getErrorMessage(correo_electronicoFC,
+                                'correo
+                                electrónico para el usuario')}}
+                            </mat-error>
+
+                        </mat-form-field>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput placeholder="Contraseña del usuario" name="contrasenna"
+                                [(ngModel)]="usuario.contrasenna" [formControl]="contrasennaFC"
+                                [type]="esconder ? 'password' : 'text'" required [errorStateMatcher]="matcher">
+                            <button mat-icon-button matSuffix (click)="esconder = !esconder">
+                                <mat-icon>{{esconder ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="contrasennaFC.invalid">Debe ingresar una contraseña para
+                                el usuario
+                            </mat-error>
+                        </mat-form-field>
+
+                        <br />
+                        <mat-form-field appearance="outline"
+                            style="padding-left: 5%; width: 45%; align-self: flex-start;">
+                            <mat-label>Rol de usuario</mat-label>
+                            <mat-select placeholder="Rol del usuario" name="rol" [(ngModel)]="usuario.rol"
+                                [formControl]="rolFC" required [errorStateMatcher]="matcher">
+                                <mat-option *ngFor="let rol_ of roles" [value]="rol_">
+                                    {{rol_}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="rolFC.invalid">{{getErrorMessage(rolFC, 'rol para el usuario')}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                </form>
+
+            </mat-card-content>
+
+            <mat-card-actions style="margin-left: 48%; align-self: flex-end; ">
+
+                <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
+
+                <button mat-raised-button class="mi-boton" [disabled]="!formularioValido()" style="margin-left: 20px;"
+                    (click)="actualizarUsuario()">Actualizar</button>
+
+            </mat-card-actions>
+        </mat-card>
+
+    </ng-scrollbar>
+</mat-dialog-content>

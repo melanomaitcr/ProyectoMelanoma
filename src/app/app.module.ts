@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,9 +41,9 @@ import { AppComponent } from './app.component';
 
 import { IngresoCitaComponent, IngresoCitaComponentOkDialog } from './vistas-inicio/ingreso-cita/ingreso-cita.component';
 import { InicioSesionComponent, InicioSesionComponentOkDialog } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
-import { CitaRegistroComponent } from './vistas-asistente/cita-registro/cita-registro.component';
+import { CitaRegistroComponent } from './vistas-administrador/cita-registro/cita-registro.component';
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
-import { UsuarioComponent, UsuarioComponentBorradoDialog } from './vistas-administrador/usuario/usuario.component';
+import { UsuarioEdicionComponent } from './vistas-administrador/usuario-edicion/usuario-edicion.component';
 import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.component';
 import { FormularioCitaComponent} from './vistas-paciente/formulario-cita/formulario-cita.component';
 
@@ -60,24 +60,36 @@ import { InterceptorService } from './services/interceptor.service';
 import { InicioSesionGuard } from './guards/inicio-sesion.guard';
 import { NavbarPacienteComponent } from './navbars/navbar-paciente/navbar-paciente.component';
 import { DatePipe } from '@angular/common';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { UsuarioBorradoComponent } from './vistas-administrador/usuario-borrado/usuario-borrado.component';
+import { UsuarioRegistroConfirmacionComponent } from './vistas-administrador/usuario-registro-confirmacion/usuario-registro-confirmacion.component';
+import { ExpedienteEdicionComponent } from './vistas-administrador/expediente-edicion/expediente-edicion.component';
+import { ExpedienteBorradoComponent } from './vistas-administrador/expediente-borrado/expediente-borrado.component';
+import { ExpedienteRegistroComponent } from './vistas-administrador/expediente-registro/expediente-registro.component';
+import { ExpedienteRegistroConfirmacionComponent } from './vistas-administrador/expediente-registro-confirmacion/expediente-registro-confirmacion.component';
+import { CitaBorradoComponent } from './vistas-administrador/cita-borrado/cita-borrado.component';
 import { ExpedienteComponent } from './vistas-administrador/expediente/expediente.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-
-//import { StorageServiceModule } from 'ngx-webstorage-service';
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
+import { CitaEdicionComponent } from './vistas-administrador/cita-edicion/cita-edicion.component';
+registerLocaleData(es);
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuariosComponent,
-    UsuarioComponent,
+    UsuarioEdicionComponent,
     UsuarioRegistroComponent,
     CitaRegistroComponent,
     InicioSesionComponent,
     IngresoCitaComponent,
-    UsuarioComponentBorradoDialog,
     InicioSesionComponentOkDialog,
     NavbarInicioComponent,
     NavbarMedicoComponent,
@@ -88,8 +100,16 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     CitasComponent,
     ExpedientesComponent,
     NavbarPacienteComponent,
-    ExpedienteComponent,
+    UsuarioBorradoComponent,
+    UsuarioRegistroConfirmacionComponent,
+    ExpedienteEdicionComponent,
+    ExpedienteBorradoComponent,
+    ExpedienteRegistroComponent,
+    ExpedienteRegistroConfirmacionComponent,
+    CitaBorradoComponent,
+    CitaEdicionComponent
     FormularioCitaComponent
+    ExpedienteComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -131,10 +151,18 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    NgScrollbarModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
     MaterialFileInputModule
-
   ],
+  exports: [CitasComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe,
+  { provide: LOCALE_ID, useValue: 'es-ES' },
   { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, InicioSesionGuard],
   bootstrap: [AppComponent]
 })

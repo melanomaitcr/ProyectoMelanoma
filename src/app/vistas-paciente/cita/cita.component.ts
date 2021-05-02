@@ -12,8 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Expediente } from 'src/app/models/expediente';
 import { DatePipe } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-cita',
   templateUrl: './cita.component.html',
@@ -22,7 +20,7 @@ import { DatePipe } from '@angular/common';
 export class CitaComponent implements OnInit {
 
   id_cita: string;
-  expediente: Expediente = new Expediente("", "", "", "", "");
+  expediente: Expediente = new Expediente("", "", "", "", "", "", "", "", "", "", "", 0);
   cita: Cita = new Cita("", null, null, null, "", "0", "0");
   hora = "";
   fecha = "";

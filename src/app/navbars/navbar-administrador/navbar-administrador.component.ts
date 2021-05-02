@@ -31,13 +31,13 @@ export class NavbarAdministradorComponent implements OnInit {
   }
 
   vistaCitas() {
-    //  this.paginaActual = 'citas';
-    //  this.router.navigate(['/citas']);
+    this.paginaActual = 'citas';
+    this.router.navigate(['/citas']);
   }
 
   vistaExpedientes() {
-    //  this.paginaActual = 'expedientes';
-    //  this.router.navigate(['/expedientes']);
+    this.paginaActual = 'expedientes';
+    this.router.navigate(['/expedientes']);
   }
 
 }

@@ -5,8 +5,15 @@ import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../services/usuario.service';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { UsuarioEdicionComponent } from '../usuario-edicion/usuario-edicion.component';
+import { UsuarioBorradoComponent } from '../usuario-borrado/usuario-borrado.component';
+import { UsuarioRegistroComponent } from '../usuario-registro/usuario-registro.component';
+import { UsuarioRegistroConfirmacionComponent } from '../usuario-registro-confirmacion/usuario-registro-confirmacion.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+let ROLES_BASICOS = { 'A': 'Asistente', 'M': 'Médico', 'D': 'Administrador', 'P': 'Paciente' }
 
 @Component({
   selector: 'app-usuarios',
@@ -15,32 +22,76 @@ import { MatSort } from '@angular/material/sort';
 })
 export class UsuariosComponent implements OnInit {
 
-  displayedColumns: string[] = ['cedula', 'nombre', 'rol', 'consultar',];
+  displayedColumns: string[] = ['nombre', 'cedula', 'rol', 'editar', 'borrar'];
   dataSource: MatTableDataSource<Usuario>;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   paginatorIntl: MatPaginatorIntl = new MatPaginatorIntl();
-  dataVista = { busqueda: "", cargando: true }
+
+  dataVista = { busqueda: "" }
 
   constructor(private usuarioService: UsuarioService,
-    private router: Router,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.cargarUsuarios();
   }
 
+  editarUsuario(usuario: Usuario): void {
+    const referenciaDialogo = this.dialog.open(UsuarioEdicionComponent, {
+      data: { cedula: usuario.cedula }
+    });
+
+    referenciaDialogo.afterClosed().subscribe(result => {
+      this.cargarUsuarios()
+    });
+  }
+
+  borrarUsuario(usuario: Usuario): void {
+    const referenciaDialogo = this.dialog.open(UsuarioBorradoComponent, {
+      data: { cedula: usuario.cedula }, minWidth: 400
+    });
+
+    referenciaDialogo.afterClosed().subscribe(result => {
+      this.cargarUsuarios()
+    });
+  }
+
   registrarUsuario() {
-    this.router.navigate(['/usuario-registro']);
+    const referenciaDialogo = this.dialog.open(UsuarioRegistroComponent, {
+      minWidth: 400
+    });
+
+    referenciaDialogo.afterClosed().subscribe(result => {
+      if (result == undefined) return;
+
+      const referenciaDialogoNueva = this.dialog.open(UsuarioRegistroConfirmacionComponent, {
+        data: { cedula: result.cedula }, minWidth: 400
+      });
+
+      referenciaDialogoNueva.afterClosed().subscribe(result => {
+        this.cargarUsuarios()
+        this.openSnackBar("¡Usuario registrado exitosamente!");
+      });
+
+    });
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Cerrar", {
+      duration: 2000,
+    });
   }
 
   filtrarUsuarios() {
     this.dataSource.filter = this.dataVista.busqueda.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
+    if (this.dataSource.paginator)
       this.dataSource.paginator.firstPage();
-    }
 
   }
 
@@ -77,58 +128,19 @@ export class UsuariosComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.filterPredicate = (data: Usuario, filter: string) => {
       let nombre = this.getNombre(data).toLocaleLowerCase().trim();
-      let rol = this.rolExtendido(data.rol).toLocaleLowerCase().trim();
+      let rol = ROLES_BASICOS[data.rol].toLocaleLowerCase().trim();
       let cedula = data.cedula.toLocaleLowerCase().trim();
       filter = filter.toLocaleLowerCase().trim();
       return nombre.includes(filter) || rol.includes(filter) || cedula.includes(filter);
     };
   }
 
-  mostrarUsuario(usuario: Usuario) {
-    this.router.navigate(['/usuario', { cedula: usuario.cedula }]);
-  }
-
-  rolExtendido(rolBasico: String) {
-    switch (rolBasico) {
-      case 'A':
-        return "Asistente";
-      case 'M':
-        return "Médico";
-      default:
-        return "Administrador";
-    }
-  }
-
-
-
   getNombre(usuario: Usuario) {
     return usuario.nombre + " " + usuario.primer_apellido + " " + usuario.segundo_apellido;
   }
 
-  async ejecutarAccion() {
-    console.log("Ejecutando...");
-
-    let usuario: Usuario = new Usuario("500", "Felipe", "Pacheco", "Cerdas", "melanoma2021", "felipepace09@gmail.com", "M");
-
-    /* DELETE */
-    let respuesta = await this.usuarioService.delete(usuario.cedula).toPromise();
-    console.log(respuesta);
-
-    /* POST */
-    respuesta = await this.usuarioService.create(usuario).toPromise();
-    console.log(respuesta);
-
-    /* GETALL */
-    let usuariosBD = await this.usuarioService.findAll().toPromise();
-    let usuarios = usuariosBD["data"] as Usuario[]
-    console.log(usuarios);
-
-    /* PUT */
-    usuario["nombre"] = "Epilef"
-    respuesta = await this.usuarioService.update(usuario.cedula, usuario).toPromise();
-    let nuevoUsuario = respuesta as Usuario;
-    console.log(nuevoUsuario.nombre);
-
+  getRol(usuario: Usuario) {
+    return ROLES_BASICOS[usuario.rol];
   }
 
 }

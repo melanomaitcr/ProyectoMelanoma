@@ -3,9 +3,11 @@ import { AbstractControl, FormControl, FormGroupDirective, NgForm, ValidatorFn, 
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from "../../models/usuario";
 import { UsuarioService } from '../../services/usuario.service';
+
+let ROLES_BASICOS = { 'A': 'Asistente', 'M': 'Médico', 'D': 'Administrador', 'P': 'Paciente' }
+let ROLES_EXTENDIDOS = { 'Asistente': 'A', 'Médico': 'M', 'Administrador': 'D', 'Paciente': 'P' }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -15,10 +17,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 @Component({
   selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.scss']
+  templateUrl: './usuario-edicion.component.html',
+  styleUrls: ['./usuario-edicion.component.scss']
 })
-export class UsuarioComponent implements OnInit {
+export class UsuarioEdicionComponent implements OnInit {
 
   roles = ["Médico", "Asistente"]
 
@@ -37,13 +39,14 @@ export class UsuarioComponent implements OnInit {
 
 
   constructor(private usuarioService: UsuarioService,
-    private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
-    private router: Router,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    public referenciaDialogo: MatDialogRef<UsuarioEdicionComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this.cedulaUsuario = this.route.snapshot.paramMap.get('cedula');
+    //this.cedulaUsuario = this.route.snapshot.paramMap.get('cedula');
+    this.cedulaUsuario = this.data['cedula']
     this.cargarUsuario(this.cedulaUsuario);
     this.cargarUsuarios();
   }
@@ -55,7 +58,7 @@ export class UsuarioComponent implements OnInit {
 
   async cargarUsuario(cedulaUsuario: String) {
     this.usuario = await this.usuarioService.findByPk(cedulaUsuario).toPromise() as Usuario;
-    this.usuario.rol = this.rolExtendido(this.usuario.rol);
+    this.usuario.rol = ROLES_BASICOS[this.usuario.rol];
     console.log(this.usuario);
   }
 
@@ -87,31 +90,20 @@ export class UsuarioComponent implements OnInit {
   }
 
   async actualizarUsuario() {
-    this.usuario.rol = this.rolBasico(this.usuario.rol);
+    this.usuario.rol = ROLES_EXTENDIDOS[this.usuario.rol];
 
     let respuesta = await this.usuarioService.update(this.cedulaUsuario, this.usuario).toPromise();
     let nuevoUsuario = respuesta as Usuario;
-    this.usuario.rol = this.rolExtendido(this.usuario.rol);
+    this.usuario.rol = ROLES_BASICOS[this.usuario.rol];
 
     console.log(nuevoUsuario);
     this.openSnackBar("¡Usuario actualizado correctamente!");
-    this.router.navigate(['/usuarios']);
-
-    /* catch (error) {
-
-      const dialogRef = this.dialog.open(UsuarioComponentNoActulizacionDialog, {
-        data: this.usuario
-      });
-
-      dialogRef.afterClosed().subscribe(async result => { });
-
-    }*/
+    this.referenciaDialogo.close();
 
   }
 
-
-  volver() {
-    this.router.navigate(['/usuarios']);
+  cerrar() {
+    this.referenciaDialogo.close();
   }
 
 
@@ -122,7 +114,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   formularioValido() {
-    return this.cedulaFC.valid && this.nombreFC.valid && this.primer_apellidoFC.valid && this.correo_electronicoFC.valid && this.rolFC.valid;
+    return this.cedulaFC.valid && this.nombreFC.valid && this.primer_apellidoFC.valid && this.correo_electronicoFC.valid && this.rolFC.valid && this.contrasennaFC.valid;
   }
 
   getErrorMessage(fc: FormControl, campo: String) {
@@ -141,100 +133,4 @@ export class UsuarioComponent implements OnInit {
     return '';
   }
 
-  rolExtendido(rolBasico: String) {
-    switch (rolBasico) {
-      case 'A':
-        return "Asistente";
-      case 'M':
-        return "Médico";
-      default:
-        return "Administrador";
-    }
-  }
-
-  rolBasico(rolExtendido: String) {
-    switch (rolExtendido) {
-      case 'Asistente':
-        return "A";
-      case 'Médico':
-        return "M";
-      default:
-        return "D";
-    }
-  }
-
-  async borrarUsuario() {
-
-    const dialogRef = this.dialog.open(UsuarioComponentBorradoDialog, {
-      width: '400px', data: null
-    });
-
-    dialogRef.afterClosed().subscribe(async result => {
-      if (result == "Sí")
-        this.borrarUsuarioAux();
-    });
-  }
-
-  async borrarUsuarioAux() {
-    let respuesta = await this.usuarioService.delete(this.cedulaUsuario).toPromise();
-    console.log(respuesta);
-    this.openSnackBar("¡Usuario eliminado correctamente!");
-    this.router.navigate(['/usuarios']);
-  }
-
-
-}
-
-/*
- @Component({
-  selector: 'not-important',
-  template: `
-  <h1 mat-dialog-title>Error de Actualización</h1>
-<div mat-dialog-content> ¡No se ha podido actualizar el usuario! Ya existe un usuario con cédula: {{data.cedula}}</div>
-<div mat-dialog-actions>
-<button mat-button color="primary" (click)=okClick()>Cerrar</button>
-</div>
-  `
-})
-export class UsuarioComponentNoActulizacionDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<UsuarioComponentNoActulizacionDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Usuario) {
-
-  }
-
-  okClick(): void {
-    this.dialogRef.close("Sí");
-  }
-}
-*/
-
-@Component({
-  selector: 'not-important',
-  template: `
-  <h1 mat-dialog-title>Confirmar elección</h1>
-<div mat-dialog-content> ¿Está seguro de querer borrar este usuario?</div>
-<div mat-dialog-actions style="justify-content: center;">
-  <button mat-raised-button color="secondary" style="border-radius: 20px !important; line-height: 40px; width: 125px; background-color: #F5F5F5F5;" (click)=siClick()>Sí</button>
-  <button mat-raised-button color="secondary" style="margin-left: 25px; line-height: 40px;border-radius: 20px !important; width: 125px; background-color: #F5F5F5F5;" (click)=noClick()>No</button>
-</div>
-  `
-})
-export class UsuarioComponentBorradoDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<UsuarioComponentBorradoDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Usuario) {
-
-  }
-
-  siClick(): void {
-    this.dialogRef.close("Sí");
-  }
-
-
-  noClick(): void {
-    this.dialogRef.close("No");
-  }
 }

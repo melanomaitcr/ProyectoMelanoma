@@ -1,11 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroupDirective, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Usuario } from "../../models/usuario";
 import { UsuarioService } from '../../services/usuario.service';
+
+let ROLES_BASICOS = { 'A': 'Asistente', 'M': 'Médico', 'D': 'Administrador', 'P': 'Paciente' }
+let ROLES_EXTENDIDOS = { 'Asistente': 'A', 'Médico': 'M', 'Administrador': 'D', 'Paciente': 'P' }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -14,7 +15,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-usuario-registro',
+  selector: 'app-usuario',
   templateUrl: './usuario-registro.component.html',
   styleUrls: ['./usuario-registro.component.scss']
 })
@@ -32,18 +33,16 @@ export class UsuarioRegistroComponent implements OnInit {
   contrasennaFC = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
+  cedulaUsuario: String;
   usuarios: Usuario[];
 
-
   constructor(private usuarioService: UsuarioService,
-    private route: ActivatedRoute,
-    private _snackBar: MatSnackBar,
-    private router: Router,
-    public dialog: MatDialog) {
-  }
+    public dialog: MatDialog,
+    public referenciaDialogo: MatDialogRef<UsuarioRegistroComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this.usuario.rol = this.rolExtendido(this.usuario.rol);
+    this.usuario.rol = ROLES_BASICOS[this.usuario.rol];
     this.cargarUsuarios();
   }
 
@@ -78,32 +77,25 @@ export class UsuarioRegistroComponent implements OnInit {
     };
   }
 
-  volver() {
-    this.router.navigate(['/usuarios']);
-  }
 
   async registrarUsuario() {
-    this.usuario.rol = this.rolBasico(this.usuario.rol);
+    this.usuario.rol = ROLES_EXTENDIDOS[this.usuario.rol];
 
     let respuesta = await this.usuarioService.create(this.usuario).toPromise();
     let nuevoUsuario = respuesta as Usuario;
-    this.usuario.rol = this.rolExtendido(this.usuario.rol);
+    this.usuario.rol = ROLES_BASICOS[this.usuario.rol];
 
     console.log(nuevoUsuario);
-    this.openSnackBar("¡Usuario registrado exitosamente!");
-    this.router.navigate(['/usuarios']);
+    this.referenciaDialogo.close(nuevoUsuario);
 
   }
 
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, "Cerrar", {
-      duration: 2000,
-    });
+  cerrar() {
+    this.referenciaDialogo.close();
   }
 
   formularioValido() {
-    return this.cedulaFC.valid && this.nombreFC.valid && this.primer_apellidoFC.valid && this.correo_electronicoFC.valid && this.rolFC.valid;
+    return this.cedulaFC.valid && this.nombreFC.valid && this.primer_apellidoFC.valid && this.correo_electronicoFC.valid && this.rolFC.valid && this.contrasennaFC.valid;
   }
 
   getErrorMessage(fc: FormControl, campo: String) {
@@ -120,28 +112,6 @@ export class UsuarioRegistroComponent implements OnInit {
       return 'La cédula debe contener únicamente números';
     }
     return '';
-  }
-
-  rolExtendido(rolBasico: String) {
-    switch (rolBasico) {
-      case 'A':
-        return "Asistente";
-      case 'M':
-        return "Médico";
-      default:
-        return "Administrador";
-    }
-  }
-
-  rolBasico(rolExtendido: String) {
-    switch (rolExtendido) {
-      case 'Asistente':
-        return "A";
-      case 'Médico':
-        return "M";
-      default:
-        return "D";
-    }
   }
 
 }

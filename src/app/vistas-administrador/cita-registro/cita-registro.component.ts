@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { CitaService } from '../../services/cita.service';
 import { CitaMedico } from '../../models/citaMedico';
@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExpedienteService } from '../../services/expediente.service';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Expediente } from 'src/app/models/expediente';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -43,6 +45,8 @@ export class CitaRegistroComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private citaService: CitaService,
     private router: Router,
+    public referenciaDialogo: MatDialogRef<CitaRegistroComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.router.onSameUrlNavigation = "reload";
   }
@@ -55,6 +59,7 @@ export class CitaRegistroComponent implements OnInit {
   async sacarMedicos() {
 
     let usuariosBD = await this.usuarioService.findAll().toPromise();
+
     //let usuariosBD = {"data": [{"cedula": "12", "nombre":"F P C"}, {"cedula": "17", "nombre":"J M Z"}]}
     let usuarios = usuariosBD["data"] as CitaMedico[];
     this.medicos = usuarios;
@@ -108,10 +113,15 @@ export class CitaRegistroComponent implements OnInit {
 
     try {
       let usuarioPaciente = await this.expedienteService.findByPk(cedula).toPromise();
-      this.nombre = usuarioPaciente['nombre'];
+      let paciente = usuarioPaciente as Expediente;
+      this.nombre = paciente.nombre + " " + paciente.primer_apellido + " " + paciente.segundo_apellido;
     } catch (error) {
       this.nombre = "";
     }
+  }
+
+  cerrar() {
+    this.referenciaDialogo.close();
   }
 
   revisarNombre() {
@@ -132,30 +142,16 @@ export class CitaRegistroComponent implements OnInit {
   }
 
   async registrarCita() {
-
     this.splittedHora = this.hora.split(":")
     let fechaCita: Date = new Date(this.cita.fecha_hora_cita);
     fechaCita.setHours(parseInt(this.splittedHora[0]), parseInt(this.splittedHora[1]), 0, 0);
-    let respaldo = this.cita.fecha_hora_cita;
     this.cita.fecha_hora_cita = String(fechaCita);
+
     this.cita.cedula_medico = this.medicoSeleccionado.cedula;
-
     let respuesta = await this.citaService.create(this.cita).toPromise();
-
-    this.cita.fecha_hora_cita = respaldo;
-
     let nuevaCita = respuesta as Cita;
 
     this.openSnackBar("¡Cita registrada exitosamente!");
-
-    this.cita = new Cita("", null, null, null, "", "0", "0");
-    this.cedulaFC.reset();
-    this.horaFC.reset();
-    this.fechaFC.reset();
-    this.medicoSeleccionado = this.medicos[0];
-    this.nombre = "";
-    //    this.router.navigate(['/cita-registro']);
-    //  window.location.reload()
-
+    this.cerrar()
   }
 }

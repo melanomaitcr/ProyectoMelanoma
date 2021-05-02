@@ -1,300 +1,149 @@
+
+@import '~@angular/material/theming';
+
 .mi-table {
   width: 100%;
   border-collapse: separate!important;
-//  border-spacing:0 20px!important;
+  overflow: hidden !important;
+  border-spacing:0 5px;
 }
 
 .mi-card{
-    width: 75%;
+  width: 90%;
+  border-radius: 20px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-td {
-    padding-top: 15px !important; // 15 ES LA WEA
-    padding-bottom: 15px !important;
+.mat-header-cell {
+  font-size:medium !important;
+  font-weight: 700;
+  color: #AAAAAA;
+}
+
+.mat-cell {
+  color: #AAAAAA;
+}
+
+.mi-header {
+  background-color: #fafafa;
+}
+
+.mi-row {
+  background-color: #F0F0F0;
+}
+
+.mi-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mi-boton{
-    border-radius: 20px !important;
-    width: 120px;
-    background-color: #F5F5F5F5;
-  }
+  border-radius: 20px !important;
+  line-height: 40px;
+  margin-bottom: 15px !important;
+  width: 130px !important; 
+  background-color: #AAAAAA; 
+  color: white;
+}
+
+.mi-primera-columna {
+  border-radius: 20px 0 0 20px;
+}
+
+.mi-ultima-columna {
+  border-radius: 0 20px 20px 0;
+}
+
+.mi-column {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-nombre{
+    flex: 0 0 30% !important;
+    width: 30% !important;
+}
+
 
 .mat-column-cedula{
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 15% !important;
-    width: 15% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
-//  displayedColumns: string[] = ['cedula', 'nombre', 'rol', 'consultar', 'borrar'];
-.mat-column-nombre{
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 25% !important;
-    width: 25% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 30% !important;
+    width: 30% !important;
 }
 
 .mat-column-rol{
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 45% !important;
-    width: 45% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 25% !important;
+    width: 25% !important;
 }
 
-.mat-column-consultar{
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 15% !important;
-    width: 15% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+.mat-column-editar{
+    flex: 0 0 7% !important;
+    width: 7% !important;
 }
 
 .mat-column-borrar{
-    word-wrap: break-word !important;
-    white-space: unset !important;
-    flex: 0 0 15% !important;
-    width: 15% !important;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  
-    word-break: break-word;
-  
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
+    flex: 0 0 8% !important;
+    width: 8% !important;
 }
-.mi-card {
-//    max-width: 1000px;
-//    text-align:center;
+
+td {
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}
+
+td.mat-cell {
+  border-bottom: none !important;
+}
+
+
+mat-form-field mat-label {
+  margin-left: 20px;
+}
+mat-form-field input {
+  padding-left: 10px;
+} 
+
+
+::ng-deep .mat-dialog-container {
+  border-radius: 20px !important;
+  @include mat-elevation(20);
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px 0 !important;
+  border-bottom: 5px solid transparent;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end  {
+  border-radius: 0 40px 40px 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border-radius: 40px 0 0 40px !important;
+  flex-grow: 1;
+  max-width: 20px !important;
+}
+
+
+::ng-deep {
+  ng-scrollbar.scroll-event {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb-color: gray;
+    --scrollbar-hover-size: 12px;
+    --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+    --scrollbar-border-radius: 20px;
+    height: 5000px;
+    width: 5000px;
   }
-  .mi-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
- //   text-align:center;
-  }
-
-  mat-header-cell {
-    display:flex;
-    justify-content:flex-end;
-   }
-
-   .mi-icon-cell{
-    flex: 0 0 10px;
- }
-
- mat-card-title { text-align: center }
-/*
-
-<!--
-<h2>Basic mat-select Example</h2>
-<mat-form-field>
-    <mat-label>Your Team</mat-label>
-    <mat-select [(ngModel)]="selectedItem">
-        <mat-option *ngFor="let team of teams" [value]="team.name">
-            {{team.name}}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
-
-    <div class="content" role="main">
-
-    <p>usuarios works!</p>
-    <section>
-        <div class="example-label">Basic</div>
-        <div class="example-button-row">
-            <button mat-button>Basic</button>
-            <button mat-button color="primary">Primary</button>
-            <button mat-button color="accent">Accent</button>
-            <button mat-button color="warn">Warn</button>
-            <button mat-button disabled>Disabled</button>
-            <a mat-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>
-    </section>
-    <mat-divider></mat-divider>
-    <section>
-        <div class="example-label">Raised</div>
-        <div class="example-button-row">
-            <button mat-raised-button>Basic</button>
-            <button mat-raised-button color="primary">Primary</button>
-            <button mat-raised-button color="accent" (click)="ejecutarAccion()">TOCAME!!!</button>
-            <button mat-raised-button color="warn">Warn</button>
-            <button mat-raised-button disabled>Disabled</button>
-            <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>
-    </section>
-    <mat-divider></mat-divider>
-    <section>
-        <div class="example-label">Stroked</div>
-        <div class="example-button-row">
-            <button mat-stroked-button>Basic</button>
-            <button mat-stroked-button color="primary">Primary</button>
-            <button mat-stroked-button color="accent">Accent</button>
-            <button mat-stroked-button color="warn">Warn</button>
-            <button mat-stroked-button disabled>Disabled</button>
-            <a mat-stroked-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>
-    </section>
-    <mat-divider></mat-divider>
-    <section>
-        <div class="example-label">Flat</div>
-        <div class="example-button-row">
-            <button mat-flat-button>Basic</button>
-            <button mat-flat-button color="primary">Primary</button>
-            <button mat-flat-button color="accent">Accent</button>
-            <button mat-flat-button color="warn">Warn</button>
-            <button mat-flat-button disabled>Disabled</button>
-            <a mat-flat-button href="https://www.google.com/" target="_blank">Link</a>
-        </div>
-    </section>
-    <mat-divider></mat-divider>
-    <section>
-        <div class="example-label">Icon</div>
-        <div class="example-button-row">
-            <div class="example-flex-container">
-                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon>more_vert</mat-icon>
-                </button>
-                <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-                    <mat-icon>home</mat-icon>
-                </button>
-                <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
-                    <mat-icon>menu</mat-icon>
-                </button>
-                <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
-                    <mat-icon>favorite</mat-icon>
-                </button>
-                <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
-                    <mat-icon>open_in_new</mat-icon>
-                </button>
-            </div>
-        </div>
-    </section>
-    <mat-divider></mat-divider>
-    <section>
-        <div class="example-label">FAB</div>
-        <div class="example-button-row">
-            <div class="example-flex-container">
-                <div class="example-button-container">
-                    <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
-                <div class="example-button-container">
-                    <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
-                        <mat-icon>bookmark</mat-icon>
-                    </button>
-                </div>
-                <div class="example-button-container">
-                    <button mat-fab color="warn" aria-label="Example icon button with a home icon">
-                        <mat-icon>home</mat-icon>
-                    </button>
-                </div>
-                <div class="example-button-container">
-                    <button mat-fab disabled aria-label="Example icon button with a heart icon">
-                        <mat-icon>favorite</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <mat-divider></mat-divider>
-    <section>
-        <div class="example-label">Mini FAB</div>
-        <div class="example-button-row">
-            <div class="example-flex-container">
-                <div class="example-button-container">
-                    <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
-                        <mat-icon>menu</mat-icon>
-                    </button>
-                </div>
-                <div class="example-button-container">
-                    <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
-                        <mat-icon>plus_one</mat-icon>
-                    </button>
-                </div>
-                <div class="example-button-container">
-                    <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
-                        <mat-icon>filter_list</mat-icon>
-                    </button>
-                </div>
-                <div class="example-button-container">
-                    <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
-                        <mat-icon>home</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
--->
-
-
-
-section {
-    display: table;
-  }
-  
-  .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
-  }
-  
-  .example-button-row {
-    display: table-cell;
-    width: 490px;
-  }
-  
-  .example-button-row .mat-button-base {
-    margin: 8px 8px 8px 0;
-  }
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
-*/
+}

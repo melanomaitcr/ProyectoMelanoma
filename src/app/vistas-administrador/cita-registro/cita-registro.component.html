@@ -1,0 +1,87 @@
+<mat-dialog-content>
+
+    <ng-scrollbar class="scroll-evento" thumbClass="white-scrollbars" track="all">
+
+        <mat-card class="mi-card" style="box-shadow: none;">
+
+            <mat-card-header>
+                <mat-label
+                    style="padding-top: 10px; padding-right: 40px; font-size: 32px; font-weight: 700; color: #4F4E4E;">
+                    Registro de Cita
+                </mat-label>
+            </mat-card-header>
+            <br /><br />
+
+            <mat-card-content>
+
+                <form>
+
+                    <div class="mi-form">
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Número de cédula del paciente</mat-label>
+                            <input matInput placeholder="Número de cédula del usuario"
+                                [(ngModel)]="cita.cedula_paciente" [formControl]="cedulaFC" name="cedula" required
+                                [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'cedulaPac')}}</mat-error>
+                        </mat-form-field>
+                        <br />
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Nombre del paciente</mat-label>
+                            <input matInput placeholder="Nombre del paciente" [(ngModel)]="nombre" name="nombre"
+                                disabled>
+                        </mat-form-field>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Médico</mat-label>
+                            <mat-select placeholder="Medico" [(ngModel)]="medicoSeleccionado" name="medicoSeleccionado"
+                                required [errorStateMatcher]="matcher">
+                                <mat-option *ngFor="let medico of medicos" [value]="medico">
+                                    {{medico.nombre}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <br />
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Fecha</mat-label>
+                            <input matInput [matDatepicker]="picker" [(ngModel)]="cita.fecha_hora_cita"
+                                [formControl]="fechaFC" name="fecha" placeholder="dd/MM/yyyy" required
+                                [errorStateMatcher]="matcher">
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="fechaFC.invalid">{{getErrorMessageDate(fechaFC, 'fecha para la cita')}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Hora</mat-label>
+                            <input matInput type="time" placeholder="Fecha de la cita" [(ngModel)]="hora"
+                                [formControl]="horaFC" name="hora" required [errorStateMatcher]="matcher"
+                                [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="horaFC.invalid">{{getErrorMessage(horaFC,
+                                'hora')}}</mat-error>
+                        </mat-form-field>
+
+
+                    </div>
+
+                </form>
+
+            </mat-card-content>
+
+            <mat-card-actions style="margin-left: 48%; align-self: flex-end; ">
+
+                <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
+
+                <button mat-raised-button class="mi-boton" [disabled]="!formularioValido()" style="margin-left: 20px;"
+                    (click)="registrarCita()">Registrar</button>
+
+            </mat-card-actions>
+
+        </mat-card>
+
+    </ng-scrollbar>
+</mat-dialog-content>
