@@ -107,8 +107,8 @@ registerLocaleData(es);
     ExpedienteRegistroComponent,
     ExpedienteRegistroConfirmacionComponent,
     CitaBorradoComponent,
-    CitaEdicionComponent
-    FormularioCitaComponent
+    CitaEdicionComponent,
+    FormularioCitaComponent,
     ExpedienteComponent,
   ],
   imports: [

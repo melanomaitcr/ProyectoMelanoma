@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'cita-registro', component: CitaRegistroComponent, canActivate: [InicioSesionGuard, AsistenteAdministradorGuard] },
 
   { path: 'expedientes', component: ExpedientesComponent, canActivate: [InicioSesionGuard] },
-  {path: 'expediente', component:ExpedienteComponent}
+  {path: 'expediente', component:ExpedienteComponent},
 
   { path: 'formulario-cita', component: FormularioCitaComponent},
 ];
