@@ -1,0 +1,117 @@
+<app-navbar-administrador paginaActual="expedientes"> </app-navbar-administrador>
+<div class="contenedor-inicio-sesion" fxLayout="row">
+    <div fxFlex=40% fxLayoutAlign="center center">
+      <mat-card class="card-inicio-sesion mat-elevation-z6">
+        <mat-card-header class="title-inicio-sesion">
+          <mat-card-title class="title-inicio-sesion">Datos Personales</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="content-inicio-sesion">
+          <form class="form-inicio-sesion">
+            <mat-label class="subtitulos-info-personal">Información Básica</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Nombre: </mat-label>
+            <mat-label>Monserrath Sanabria Jara</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Fecha de Nacimiento: </mat-label>
+            <mat-label>20/11/1999</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Edad: </mat-label>
+            <mat-label>21 años</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Nacionalidad: </mat-label>
+            <mat-label>Costarricense</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Residencia: </mat-label>
+            <mat-label>Costa Rica</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Padecimiento: </mat-label>
+            <mat-label>Cáncer de melanoma XX</mat-label>
+            <br><br><br>
+            <mat-label class="subtitulos-info-personal">Información de Contacto</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Correo electrónico: </mat-label>
+            <mat-label>monsesanabria@gmail.com</mat-label>
+            <br><br>
+            <mat-label class="subtitulos-atributo">Número de teléfono: </mat-label>
+            <mat-label>84752932</mat-label>
+        </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    
+    <div fxFlex=55%>
+      <!--
+      <mat-card class="card-expediente-historial mat-elevation-z6" >
+      <mat-card-content>
+        <mat-tab-group style="border-radius: 30px;" animationDuration="0ms">
+          <mat-tab label="First" class="my-custom-class" >
+            <form style="height: 200; margin-top: 20px;" fxLayout = "row">
+              <div fxFlex=48%>Hola</div>
+              <div fxFlex=4% class="vl"></div>
+              <div fxFlex=48%>HO</div>
+            </form>
+          </mat-tab>
+          <mat-tab label="Second"> Content 2 </mat-tab>
+          
+        </mat-tab-group>
+        <button class="boton-inicio-sesion" color="secondary" style="transition: none;" 
+        mat-raised-button>Ingresar al sistema</button>
+      </mat-card-content>
+    </mat-card>
+      -->
+    <!-- Tab links -->
+<div class="tab">
+  <button mat-button  class="tablinks" [disabled]="tabActual==0" (click)="openCity('Expediente' ,0)">Expedientes</button>
+  <button mat-button [disabled]="tabActual==1" class="tablinks " (click)="openCity('Historial',1)">Historial</button>
+</div>
+<div>
+<!-- Tab content -->
+<mat-card id="Expediente" style="border-top-left-radius: 0px;"  class="tabcontent mat-elevation-z3">
+  <mat-card-content class="expediente-info"  fxLayout = "row">
+    <div class="familiar" fxFlex=48%>
+      <mat-label class="subtitulos-info-personal">Personal</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">Peso: </mat-label>
+      <mat-label>57kg</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">Estatura: </mat-label>
+      <mat-label>1.57m</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">IMC: </mat-label>
+      <mat-label>28.3</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">Actividad física: </mat-label>
+      <mat-label>Sí</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">Consumo de bebidas alcohólicas: </mat-label>
+      <mat-label>No</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">Fumador/a: </mat-label>
+      <mat-label>No</mat-label>     
+    </div>
+    <div fxFlex=3% class="vl"></div>
+    <div class="familiar" fxFlex=48%>
+      <mat-label class="subtitulos-info-personal">Familiar</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">Familiares con cáncer de melanoma </mat-label>
+      <br><br>
+      <mat-label>57kg</mat-label>
+      <br><br>
+      <mat-label class="subtitulos-atributo">Familiares con otro tipo de cáncer </mat-label>
+      <br><br>
+      <mat-label>1.57m</mat-label>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card id="Historial" style="border-top-left-radius: 0px;"  class="tabcontent mat-elevation-z3">
+  <mat-card-content style="margin-top: 20px;" fxLayout = "row">
+    
+  </mat-card-content>
+</mat-card>
+
+      
+        
+  </div>
+  </div>
+</div>

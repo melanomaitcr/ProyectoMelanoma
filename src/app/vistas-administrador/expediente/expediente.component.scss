@@ -1,0 +1,150 @@
+@import '~@angular/material/theming';
+.contenedor-inicio-sesion{
+    margin-top:20px;
+  }
+  
+  .card-descripcion-logo{
+    background-color:transparent;
+    width: 15*2.54vw;
+  }
+  
+  .logo{
+    width: 15*2.56vw;
+    height: 14vw;
+  }
+  
+  .descripcion{
+    padding-top: 20px;
+    display:block;
+    font-size: min(2vw, 20px);
+    line-height: 22px;
+    text-align:justify;
+  }
+  
+  .card-inicio-sesion{
+    width: 75%;
+    margin-left:min(1vw, 10px);
+    border-radius: 20px;
+    
+    margin-bottom: 5px;
+  }
+  .card-expediente-historial{
+    width: 88%;
+    margin-left:min(1vw, 10px);
+    border-radius: 20px;
+    height: 500px;
+  }
+  
+  .card-inicio-sesion .content-inicio-sesion{
+    margin-left: 2vw;
+    margin-right:  2vw;
+    padding-bottom: 20px;
+  }
+
+  .subtitulos-info-personal{
+    font-weight: bold;
+    font-size: 17px;
+  }
+
+  .subtitulos-atributo{
+    font-weight: bold;
+    font-size: 15px;
+    color: gray;
+  }
+  
+  .card-inicio-sesion .title-inicio-sesion{
+    text-align:center;
+    display:block;
+    font-size: min(2.8vw, 48px);
+  //  font-family: 'Roboto';
+    font-weight:700;
+    font-style: normal;
+    margin-top: 20px;
+    line-height: 3vw;
+  }
+  
+  .card-inicio-sesion .form-inicio-sesion{
+    margin-top: 5vh;
+  }
+   
+  .card-inicio-sesion .field-inicio-sesion{
+    
+    width: 100%;
+    
+  
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline{
+    border-radius: 60px;
+  }
+  
+  .card-inicio-sesion .actions-inicio-sesion{
+    margin-left: 4vw;
+    margin-right:4vw;
+    margin-top: 10vh;
+    margin-bottom: 20px;
+  }
+  
+  .boton-inicio-sesion{
+      position:absolute;
+      top: 15px;
+      right:10px;
+      z-index:10;
+  }
+
+  .vl {
+    border-left: 2px solid gray;
+    height: 300px;
+    top: 0;
+  }
+
+  /* Style the tab */
+.tab {
+  padding-left: 3px;
+  padding-top: 1px;
+  overflow:hidden;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  float: left;
+  border: none;
+  outline: none;
+  border-radius: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-style: none;
+  transition: 0.3s;
+  z-index: 1;
+  color:#DEDEDE
+}
+
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  border-radius: 10px;
+  z-index: 0;
+  background-color: white;
+  margin-left: 3px;
+  
+}
+
+.tablinks:disabled{
+  z-index: 1;
+  background-color: white;
+  @include mat-elevation(3);
+  color: black !important;
+  text-decoration: underline;
+
+}
+
+.familiar{
+  padding-left: 20px;
+}
+
+.tabcontent .expediente-info{
+  margin-top: 60px;
+  padding-bottom: 30px;
+}

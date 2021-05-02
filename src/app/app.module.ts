@@ -60,6 +60,7 @@ import { InterceptorService } from './services/interceptor.service';
 import { InicioSesionGuard } from './guards/inicio-sesion.guard';
 import { NavbarPacienteComponent } from './navbars/navbar-paciente/navbar-paciente.component';
 import { DatePipe } from '@angular/common';
+import { ExpedienteComponent } from './vistas-administrador/expediente/expediente.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
@@ -87,6 +88,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     CitasComponent,
     ExpedientesComponent,
     NavbarPacienteComponent,
+    ExpedienteComponent,
     FormularioCitaComponent
   ],
   imports: [
