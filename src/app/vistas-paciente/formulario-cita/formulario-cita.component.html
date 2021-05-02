@@ -1,106 +1,348 @@
 <div class="mi-div">
 
-    <mat-card class="mi-card">
-      <mat-card-header style="display: inline; float:center; text-align: center;">
-        <mat-card-title style=" font-size: 180%;">Datos personales
-        </mat-card-title>
-    </mat-card-header>
-    <br />
-        <mat-card-content>
+  <mat-card class="mi-card">
+    <mat-card-header style="display: inline; float:center; text-align: center;">
+      <mat-card-title style=" font-size: 180%;">Datos personales
+      </mat-card-title>
+  </mat-card-header>
+  <br />
+      <mat-card-content>
 
-        <form>
-        <div class="mi-form">
+      <form>
+      <div class="mi-form">
 
-        <mat-horizontal-stepper #stepper class="mi-stepper">
-          
-            <!-- Pagina 1 -->
-            <mat-step>
-              <form>
-                <ng-template  matStepLabel></ng-template>
+      <mat-horizontal-stepper #stepper class="mi-stepper">
+        
+          <!-- Pagina 1 -->
+          <mat-step>
+            <form>
+              <ng-template  matStepLabel></ng-template>
 
-                <br />
-                <br/>
-                  <h1 style="margin-bottom: 5%;">Información personal</h1>
+              <br />
+              <br/>
+                <h1 style="margin-bottom: 5%;">Información personal</h1>
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Nombre Apellido Apellido</mat-label>
-                  <input matInput placeholder="Nombre Apellido Apellido" [(ngModel)]="nombre" [formControl]="nombreFC" required>
-                </mat-form-field>
-
-                <br />
-                <br />
-
-                <mat-form-field appearance="outline">
-                  <mat-label>Número de identificación</mat-label>
-                  <input matInput placeholder="Número de cedulo del usuario" [(ngModel)]="cedula" [formControl]="cedulaFC" required>
-                </mat-form-field>
-
-                <br />
-                <br />
-
-                <mat-form-field appearance="outline">
-                  <mat-label>Fecha</mat-label>
-                  <input matInput [matDatepicker]="picker"
-                      name="fecha" placeholder="dd/MM/yyyy" [(ngModel)]="fecha" [formControl]="fechaFC" required>
-                  <mat-datepicker-toggle matSuffix [for]="picker">
-                  </mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre Apellido Apellido</mat-label>
+                <input matInput placeholder="Nombre Apellido Apellido" [(ngModel)]="nombre" [formControl]="nombreFC" >
               </mat-form-field>
+
               <br />
               <br />
 
-                <mat-form-field appearance="outline">
-                  <mat-label>Nacionalidad</mat-label>
-                  <input matInput placeholder="Nacionalidad" [(ngModel)]="nacionalidad" [formControl]="nacionalidadFC"required>
+              <mat-form-field appearance="outline">
+                <mat-label>Número de identificación</mat-label>
+                <input matInput placeholder="Número de cedulo del usuario" [(ngModel)]="cedula" [formControl]="cedulaFC" >
+              </mat-form-field>
+
+              <br />
+              <br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker"
+                    name="fecha" placeholder="dd/MM/yyyy" [(ngModel)]="fecha" [formControl]="fechaFC" >
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <br />
+            <br />
+
+              <mat-form-field appearance="outline">
+                <mat-label>Nacionalidad</mat-label>
+                <select matNativeControl [(ngModel)]="nacionalidad" [formControl]="nacionalidadFC">
+                  <option value="Indigena">Indigena</option>
+                  <option value="Afrodescendiente">Afrodescendiente</option>
+                  <option value="Mulato(a)">Mulato(a)</option>
+                  <option value="Chino(a) o de origen asiático">Chino(a) o de origen asiático</option>
+                  <option value="Mestizo">Mestizo</option>
+                  <option value="Blanco">Blanco</option>
+                  <option value="Ninguna">Ninguna</option>
+                  <option value="No sabe">No sabe</option>
+                </select>
+              </mat-form-field>
+
+            <br />
+              <div>
+                
+                <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <!-- Pagina 2 -->
+          <mat-step>
+            <form>
+              
+              <ng-template matStepLabel></ng-template>
+
+              <br />
+              <br/>
+                <h1 style="margin-bottom: 5%;">Información de contacto</h1>
+
+              <div class="mi-field3">
+                <mat-form-field appearance="outline" style="width: 40%;">
+                  <mat-label>Correo Electrónico</mat-label>
+                  <input matInput placeholder="Correo Electrónico" [(ngModel)]="correoElectronico" [formControl]="correoElectronicoFC" >
                 </mat-form-field>
 
-              <br />
-                <div>
-                  
-                  <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
-                </div>
-              </form>
-            </mat-step>
+                <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;">
+                  <mat-label>Número de Teléfono</mat-label>
+                  <input matInput placeholder="telefono" [(ngModel)]="telefono" [formControl]="telefonoFC" >
+                </mat-form-field>
 
-            <!-- Pagina 2 -->
+              </div>
+
+            <h2 style="margin-bottom: 5%;">Domicilio</h2>
+            <mat-form-field appearance="outline">
+              <mat-label>Provincia</mat-label>
+              <input matInput placeholder="Provincia" [(ngModel)]="provincia" [formControl]="provinciaFC">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Cantón</mat-label>
+              <input matInput placeholder="Cantón" [(ngModel)]="canton" [formControl]="cantonFC" >
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Distrito</mat-label>
+              <input matInput placeholder="Distrito" [(ngModel)]="distrito" [formControl]="distritoFC" >
+            </mat-form-field>
+
+              <div>
+                
+                <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
+                <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <!-- Pagina 3 -->
+          <mat-step>
+            <form>
+              
+              <ng-template matStepLabel></ng-template>
+
+              <br />
+              <br/>
+              <h1 style="margin-bottom: 5%;">Historial personal</h1>
+              <div class="mi-field3">
+                <mat-form-field appearance="outline" style="width: 30%;">
+                  <mat-label>Peso(kg)</mat-label>
+                  <input matInput placeholder="Peso(kg)" [(ngModel)]="peso" [formControl]="pesoFC" >
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" style="margin-left: 5%; width: 30%;">
+                  <mat-label>Estatura(cm)</mat-label>
+                  <input matInput placeholder="Estatura(cm)" [(ngModel)]="estatura" [formControl]="estaturaFC" >
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" style="margin-left: 5%; width: 30%;">
+                  <mat-label>IMC</mat-label>
+                  <input matInput placeholder="IMC(kg/cm^2)" value="" [(ngModel)]="imc" [formControl]="imcFC" disabled>
+                </mat-form-field>
+              </div>
+            <br/>
+              <label class="radio-group-label">¿Realiza actividad física?</label>
+              <div class="mi-field2">
+              
+                <mat-radio-group aria-label="¿Realiza la actividad física?" style="width: 40%;" [(ngModel)]="actividadFisicaRadioButton" [formControl]="actividadFisicaRadioButtonFC" >
+                  <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
+                  <mat-radio-button class="radio-button" value="0">No</mat-radio-button>
+                </mat-radio-group>
+              
+
+                <mat-form-field appearance="outline" style="margin-left: 12%;   width: 40%;">
+                  <mat-label>¿Cuánto tiempo por semana?</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="actividadFisicaPorSemana" [formControl]="actividadFisicaPorSemanaFC" >
+                </mat-form-field>
+
+              </div>
+
+              
+              <label class="radio-group-label">¿Fuma o ha fumado?</label>
+              <div class="mi-field2">
+              
+                <mat-radio-group aria-label="¿Fuma o ha fumado?" style="width: 40%;" [(ngModel)]="fumaRadioButton" [formControl]="fumaRadioButtonFC" >
+                  <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
+                  <mat-radio-button class="radio-button" value="0">No</mat-radio-button>
+                </mat-radio-group>
+              
+
+                <mat-form-field appearance="outline" style="margin-left: 12%;   width: 40%;">
+                  <mat-label>¿A que edad empezó a fumar?</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="empezoFumar" [formControl]="empezoFumarFC" >
+                </mat-form-field>
+
+              </div>
+
+              
+              <label class="radio-group-label">¿Fuma actualmente?</label>
+              <div class="mi-field2">
+              
+                <mat-radio-group aria-label="¿Fuma actualmente?" style="width: 40%;" [(ngModel)]="fumaActualmenteRadioButton" [formControl]="fumaActualmenteRadioButtonFC" >
+                  <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
+                  <mat-radio-button class="radio-button" value="0">No</mat-radio-button>
+                </mat-radio-group>
+              
+
+                <mat-form-field appearance="outline" style="margin-left: 12%;   width: 40%;">
+                  <mat-label>¿Desde hace cuánto?</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="periodoFumado" [formControl]="periodoFumadoFC" >
+                </mat-form-field>
+
+              </div>
+
+              <div>
+                
+                <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
+                <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
+              </div>
+            </form>
+          </mat-step>
+          <!-- Pagina 4 -->
+
+          <mat-step>
+            <form>
+              
+              <ng-template matStepLabel></ng-template>
+
+              <br />
+            <br/>
+              <h1 style="margin-bottom: 5%;">Historial personal</h1>
+              <label class="radio-group-label">¿Consume bebidas alcohólicas?</label>
+              <br/>
+              <div class="mi-field2" style="margin-top: 2%; margin-bottom: 2%;">
+                <mat-radio-group aria-label="¿Consume bebidas alcohólicas?" style="margin-right: 55%;" [(ngModel)]="bebidasAlcoholicasRadioButton" [formControl]="bebidasAlcoholicasRadioButtonFC" >
+                  <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
+                  <mat-radio-button class="radio-button" value="0">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+              <label class="radio-group-label">¿Cuánto consume en total?</label>
+              <div style="margin-top: 2%; margin-bottom: 2%;">
+                <mat-radio-group
+                  aria-labelledby="vertical-radio-group-label"
+                  class="vertical-radio-group" [(ngModel)]="consumoTotalRadioButton" [formControl]="consumoTotalRadioButtonFC">
+                  <mat-radio-button class="vertical-radio-button" value="1-3">1-3 bebidas alcohólicas por semana</mat-radio-button>
+                  <mat-radio-button class="vertical-radio-button" value="4-6">4-6 bebidas alcohólicas por semana</mat-radio-button>
+                  <mat-radio-button class="vertical-radio-button" value="7-9">7-9 bebidas alcohólicas por semana</mat-radio-button>
+                  <mat-radio-button class="vertical-radio-button" value="10+">Más de 10 </mat-radio-button>
+                </mat-radio-group>
+               </div>
+
+               <label class="radio-group-label" style="margin-left: 3%;">¿Le han diagnosticado algún otro tipo de cáncer?</label>
+               <div class="mi-field2">
+              
+                <mat-radio-group aria-label="Le han diagnosticado algún otro tipo de cáncer?" style="width: 40%;" [(ngModel)]="diagnosticadoCancerRadioButton" [formControl]="diagnosticadoCancerRadioButtonFC" >
+                  <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
+                  <mat-radio-button class="radio-button" value="0">No</mat-radio-button>
+                </mat-radio-group>
+              
+
+                <mat-form-field appearance="outline" style="margin-left: 25%;   width: 40%;">
+                  <mat-label>¿De qué tipo?</mat-label>
+                  <input matInput placeholder="" [(ngModel)]="tipoCancer" [formControl]="tipoCancerFC" >
+                </mat-form-field>
+
+              </div>
+                
+
+              <div>
+                
+                <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
+                <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
+              </div>
+            </form>
+          </mat-step>
+
+            <!-- Pagina 5 -->
+
             <mat-step>
               <form>
                 
                 <ng-template matStepLabel></ng-template>
 
                 <br />
+              <br/>
+                <h1 style="margin-bottom: 5%;">Historial familiar</h1>
+                <label class="radio-group-label" style="margin-left: -9%; position: relative; left: 50px;">¿Tiene familiares que hayan presentado cáncer de melanoma?</label>
                 <br/>
-                  <h1 style="margin-bottom: 5%;">Información de contacto</h1>
+                <div style="margin-top: 2%; margin-bottom: 2%;">
+                  <mat-radio-group aria-label="¿Tiene familiares que hayan presentado cáncer de melanoma?" style="margin-right: 55%;" [(ngModel)]="familiaresConCancerRadioButton" [formControl]="familiaresConCancerRadioButtonFC" >
+                    <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
+                    <mat-radio-button class="radio-button" value="0">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
 
-                <div class="mi-field3">
+                
+                <div style="margin-top: 2%; margin-bottom: 5%;">
+                  <label class="radio-group-label" >Parentesco</label>
+                  <div>
+                    <section style="position: relative; right: 20px; width: 50%;">
+                   
+                        <span>
+                          <ul class="cb-wrapper" [ngClass]="{'cb-vertival': !false }">
+                            <li *ngFor="let x of listaFamiliares.familiares" >
+                              <mat-checkbox [(ngModel)]="x.completed" (ngModelChange)="updateAllComplete()" name="x.name">
+                                {{x.name}}
+                              </mat-checkbox>
+                            </li>
+                          </ul>
+                        </span>
+                      
+                    </section>
+                  </div>
+
+                  <mat-form-field appearance="outline" style="margin-right: 75%; width: 20%; height: -10px; top: -20px; ">
+                    <mat-label></mat-label>
+                    <input matInput placeholder="Otro"  [(ngModel)]="otroFamiliarCancerMelanomaCheckbox" [formControl]="otroFamiliarCancerMelanomaCheckboxFC">
+                  </mat-form-field>
+                 </div>
+                  
+              
+                <div style="margin-top: -12%;">
+                  
+                  <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
+                  <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
+                </div>
+              </form>
+            </mat-step>
+
+            <!-- Pagina 6 -->
+
+            <mat-step>
+              <form>
+                
+                <ng-template matStepLabel></ng-template>
+
+                <br />
+              <br/>
+                <h1 style="margin-bottom: 5%;">Historial Familiar</h1>
+                <label class="radio-group-label" style="margin-left: -12%; position:relative; left: 90px;">¿Tiene familiares que hayan presentado algún otro tipo de cáncer?</label>
+                <br/>
+                <div style="margin-top: 2%; margin-bottom: 2%;">
+                  <mat-radio-group aria-label="¿Tiene familiares que hayan presentado algún otro tipo de cáncer?" style="margin-right: 55%;"  [(ngModel)]="familiaresConOtroCancerRadioButton" [formControl]="familiaresConOtroCancerRadioButtonFC" >
+                    <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
+                    <mat-radio-button class="radio-button" value="0">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                  
+                
+                <div class="mi-field3" style="margin-top: 5%;">
+                  
                   <mat-form-field appearance="outline" style="width: 40%;">
-                    <mat-label>Correo Electrónico</mat-label>
-                    <input matInput placeholder="Correo Electrónico" [(ngModel)]="correoElectronico" [formControl]="correoElectronicoFC" required>
+                    <mat-label>Parentesco</mat-label>
+                    <input matInput placeholder="" [(ngModel)]="parentesco" [formControl]="parentescoFC" >
                   </mat-form-field>
 
                   <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;">
-                    <mat-label>Número de Teléfono</mat-label>
-                    <input matInput placeholder="Last name, First name" [(ngModel)]="telefono" [formControl]="telefonoFC" required>
+                    <mat-label>Tipo</mat-label>
+                    <input matInput placeholder="" [(ngModel)]="tipoParentescoCancer" [formControl]="tipoParentescoCancerFC" >
                   </mat-form-field>
-
+                  
                 </div>
-
-              <h2 style="margin-bottom: 5%;">Domicilio</h2>
-              <mat-form-field appearance="outline">
-                <mat-label>Provincia</mat-label>
-                <input matInput placeholder="Provincia" [(ngModel)]="provincia" [formControl]="provinciaFC"required>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Cantón</mat-label>
-                <input matInput placeholder="Cantón" [(ngModel)]="canton" [formControl]="cantonFC" required>
-              </mat-form-field>
-
-              <mat-form-field appearance="outline">
-                <mat-label>Distrito</mat-label>
-                <input matInput placeholder="Distrito" [(ngModel)]="distrito" [formControl]="distritoFC" required>
-              </mat-form-field>
-
                 <div>
                   
                   <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
@@ -109,282 +351,43 @@
               </form>
             </mat-step>
 
-            <!-- Pagina 3 -->
-            <mat-step>
-              <form>
-                
+            <!-- Pagina 7 -->
+
+          <mat-step >
+              <form >
+                  
                 <ng-template matStepLabel></ng-template>
-
-                <br />
-                <br />
-
-                <div class="mi-field3">
-                  <mat-form-field appearance="outline" style="width: 30%;">
-                    <mat-label>Peso(kg)</mat-label>
-                    <input matInput placeholder="Peso(kg)" [(ngModel)]="peso" [formControl]="pesoFC" required>
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline" style="margin-left: 5%; width: 30%;">
-                    <mat-label>Estatura(cm)</mat-label>
-                    <input matInput placeholder="Estatura(cm)" [(ngModel)]="estatura" [formControl]="estaturaFC" required>
-                  </mat-form-field>
-
-                  <mat-form-field appearance="outline" style="margin-left: 5%; width: 30%;">
-                    <mat-label>IMC</mat-label>
-                    <input matInput placeholder="IMC(kg/m^2)" [(ngModel)]="imc" [formControl]="imcFC" required>
-                  </mat-form-field>
-                </div>
-              <br/>
-                <label class="radio-group-label">¿Realiza actividad física?</label>
-                <div class="mi-field2">
-                
-                  <mat-radio-group aria-label="¿Realiza la actividad física?" style="width: 40%;" [(ngModel)]="actividadFisicaRadioButton" [formControl]="actividadFisicaRadioButtonFC" required>
-                    <mat-radio-button class="radio-button" value="0">Si</mat-radio-button>
-                    <mat-radio-button class="radio-button" value="1">No</mat-radio-button>
-                  </mat-radio-group>
-                
-
-                  <mat-form-field appearance="outline" style="margin-left: 12%;   width: 40%;">
-                    <mat-label>¿Cuánto tiempo por semana?</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="actividadFisicaPorSemana" [formControl]="actividadFisicaPorSemanaFC" required>
-                  </mat-form-field>
-
-                </div>
-
-                
-                <label class="radio-group-label">¿Fuma o ha fumado?</label>
-                <div class="mi-field2">
-                
-                  <mat-radio-group aria-label="¿Fuma o ha fumado?" style="width: 40%;" [(ngModel)]="fumaRadioButton" [formControl]="fumaRadioButtonFC" required>
-                    <mat-radio-button class="radio-button" value="0">Si</mat-radio-button>
-                    <mat-radio-button class="radio-button" value="1">No</mat-radio-button>
-                  </mat-radio-group>
-                
-
-                  <mat-form-field appearance="outline" style="margin-left: 12%;   width: 40%;">
-                    <mat-label>¿A que edad empezó a fumar?</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="empezoFumar" [formControl]="empezoFumarFC" required>
-                  </mat-form-field>
-
-                </div>
-
-                
-                <label class="radio-group-label">¿Fuma actualmente?</label>
-                <div class="mi-field2">
-                
-                  <mat-radio-group aria-label="¿Fuma actualmente?" style="width: 40%;" [(ngModel)]="fumaActualmenteRadioButton" [formControl]="fumaActualmenteRadioButtonFC" required>
-                    <mat-radio-button class="radio-button" value="0">Si</mat-radio-button>
-                    <mat-radio-button class="radio-button" value="1">No</mat-radio-button>
-                  </mat-radio-group>
-                
-
-                  <mat-form-field appearance="outline" style="margin-left: 12%;   width: 40%;">
-                    <mat-label>¿Desde hace cuánto?</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="fumaActualmente" [formControl]="fumaActualmenteFC" required>
-                  </mat-form-field>
-
-                </div>
-
-                <div>
-                  
-                  <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
-                  <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
-                </div>
-              </form>
-            </mat-step>
-            <!-- Pagina 4 -->
-
-            <mat-step>
-              <form>
-                
-                <ng-template matStepLabel></ng-template>
-
-                <br />
-              <br/>
-                <h1 style="margin-bottom: 5%;">Historial personal</h1>
-                <label class="radio-group-label">¿Consume bebidas alcohólicas?</label>
                 <br/>
-                <div class="mi-field2" style="margin-top: 2%; margin-bottom: 2%;">
-                  <mat-radio-group aria-label="¿Consume bebidas alcohólicas?" style="margin-right: 55%;" [(ngModel)]="bebidasAlcoholicasRadioButton" [formControl]="bebidasAlcoholicasRadioButtonFC" required>
-                    <mat-radio-button class="radio-button" value="0">Si</mat-radio-button>
-                    <mat-radio-button class="radio-button" value="1">No</mat-radio-button>
-                  </mat-radio-group>
-                </div>
+                <br/>
+                  <h1 style="margin-bottom: 5%;">Archivos - Cita</h1>
 
-                <label class="radio-group-label">¿Cuánto consume en total?</label>
-                <div style="margin-top: 2%; margin-bottom: 2%;">
-                  <mat-radio-group
-                    aria-labelledby="vertical-radio-group-label"
-                    class="vertical-radio-group" [(ngModel)]="consumoTotalRadioButton" [formControl]="consumoTotalRadioButtonFC">
-                    <mat-radio-button class="vertical-radio-button" value="1">1-3 bebidas alcohólicas por semana</mat-radio-button>
-                    <mat-radio-button class="vertical-radio-button" value="2">4-6 bebidas alcohólicas por semana</mat-radio-button>
-                    <mat-radio-button class="vertical-radio-button" value="3">7-9 bebidas alcohólicas por semana</mat-radio-button>
-                    <mat-radio-button class="vertical-radio-button" value="4">Más de 10 </mat-radio-button>
-                  </mat-radio-group>
-                 </div>
+                  <h3 style="margin-bottom: 5%;">En esta sección deberá adjuntar todos los archivos que sean importantes para el día de su cita (archivos, fotografías, diagnósticos previos)</h3>
 
-                 <label class="radio-group-label" style="margin-left: 3%;">¿Le han diagnosticado algún otro tipo de cáncer?</label>
-                 <div class="mi-field2">
-                
-                  <mat-radio-group aria-label="¿Realiza la actividad física?" style="width: 40%;" [(ngModel)]="diagnosticadoCancerRadioButton" [formControl]="diagnosticadoCancerRadioButtonFC" required>
-                    <mat-radio-button class="radio-button" value="0">Si</mat-radio-button>
-                    <mat-radio-button class="radio-button" value="1">No</mat-radio-button>
-                  </mat-radio-group>
-                
-
-                  <mat-form-field appearance="outline" style="margin-left: 25%;   width: 40%;">
-                    <mat-label>¿De qué tipo?</mat-label>
-                    <input matInput placeholder="" [(ngModel)]="tipoCancer" [formControl]="tipoCancerFC" required>
-                  </mat-form-field>
-
-                </div>
-                  
+                <mat-form-field>
+                  <ngx-mat-file-input appearance="outline" placeholder="Imagenes" [(ngModel)]="archivoImagenes" [formControl]="archivoImagenesFC"  multiple></ngx-mat-file-input>
+                  <mat-icon matSuffix>folder</mat-icon>
+                </mat-form-field>
+                <br />
+                <br/>
+                <mat-form-field>
+                  <ngx-mat-file-input appearance="outline" placeholder="Archivos" [(ngModel)]="archivoDocumentos" [formControl]="archivoDocumentosFC"  multiple></ngx-mat-file-input>
+                  <mat-icon matSuffix>folder</mat-icon>
+                </mat-form-field>
 
                 <div>
-                  
                   <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
-                  <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
+                  <button mat-raised-button color="secondary" (click)="registrarFormularioCita()" class="mi-boton">Finalizar</button>
+                  
                 </div>
               </form>
             </mat-step>
 
-              <!-- Pagina 5 -->
-
-              <mat-step>
-                <form>
-                  
-                  <ng-template matStepLabel></ng-template>
-  
-                  <br />
-                <br/>
-                  <h1 style="margin-bottom: 5%;">Historial familiar</h1>
-                  <label class="radio-group-label" style="margin-left: -9%; position: relative; left: 50px;">¿Tiene familiares que hayan presentado cáncer de melanoma?</label>
-                  <br/>
-                  <div style="margin-top: 2%; margin-bottom: 2%;">
-                    <mat-radio-group aria-label="¿Tiene familiares que hayan presentado cáncer de melanoma?" style="margin-right: 55%;" [(ngModel)]="familiaresConCancerRadioButton" [formControl]="familiaresConCancerRadioButtonFC" required>
-                      <mat-radio-button class="radio-button" value="1">Si</mat-radio-button>
-                      <mat-radio-button class="radio-button" value="2">No</mat-radio-button>
-                    </mat-radio-group>
-                  </div>
-  
-                  
-                  <div style="margin-top: 2%; margin-bottom: 5%;">
-                    <label class="radio-group-label" >Parentesco</label>
-                    <div>
-                      <section class="double-vertical-radio-group" style="position: relative; right: 50px; width: 50%;">
-                        <div class="cb-wrapper" [ngClass]="{'cb-vertival': !false }">
-                          <mat-checkbox (change)="show2($event.checked)">Madre</mat-checkbox >
-                          <mat-checkbox>Hermana</mat-checkbox>
-                          <mat-checkbox>Tía Materna</mat-checkbox>
-                          <mat-checkbox>Tía Paterna</mat-checkbox>
-                          <mat-checkbox>Abuela Materna</mat-checkbox>
-                          <mat-checkbox>Abuela Paterna</mat-checkbox>
-                          <mat-checkbox>Otro:</mat-checkbox>
-
-                          <mat-checkbox>Padre</mat-checkbox>
-                          <mat-checkbox>Hermano</mat-checkbox>
-                          <mat-checkbox>Tío Materna</mat-checkbox>
-                          <mat-checkbox>Tío Paterna</mat-checkbox>
-                          <mat-checkbox>Abuelo Materna</mat-checkbox>
-                          <mat-checkbox>Abuelo Paterna </mat-checkbox>
-                        </div>
-                      </section>
-                    </div>
-
-                    <mat-form-field appearance="outline" style="margin-right: 75%; width: 20%; height: -10px; top: -20px; ">
-                      <mat-label></mat-label>
-                      <input matInput placeholder="Otro">
-                    </mat-form-field>
-                   </div>
-                    
-                
-                  <div style="margin-top: -12%;">
-                    
-                    <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
-                    <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
-                  </div>
-                </form>
-              </mat-step>
-
-              <!-- Pagina 6 -->
-
-              <mat-step>
-                <form>
-                  
-                  <ng-template matStepLabel></ng-template>
-  
-                  <br />
-                <br/>
-                  <h1 style="margin-bottom: 5%;">Historial Familiar</h1>
-                  <label class="radio-group-label" style="margin-left: -12%; position:relative; left: 90px;">¿Tiene familiares que hayan presentado algún otro tipo de cáncer?</label>
-                  <br/>
-                  <div style="margin-top: 2%; margin-bottom: 2%;">
-                    <mat-radio-group aria-label="¿Tiene familiares que hayan presentado algún otro tipo de cáncer?" style="margin-right: 55%;"  [(ngModel)]="familiaresConOtroCancerRadioButton" [formControl]="familiaresConOtroCancerRadioButtonFC" required>
-                      <mat-radio-button class="radio-button" value="0">Si</mat-radio-button>
-                      <mat-radio-button class="radio-button" value="1">No</mat-radio-button>
-                    </mat-radio-group>
-                  </div>
-                    
-                  
-                  <div class="mi-field3" style="margin-top: 5%;">
-                    
-                    <mat-form-field appearance="outline" style="width: 40%;">
-                      <mat-label>Parentesco</mat-label>
-                      <input matInput placeholder="" [(ngModel)]="parentesco" [formControl]="parentescoFC" required>
-                    </mat-form-field>
-  
-                    <mat-form-field appearance="outline" style="margin-left: 10%; width: 40%;">
-                      <mat-label>Tipo</mat-label>
-                      <input matInput placeholder="" [(ngModel)]="tipoParentesco" [formControl]="tipoParentescoFC" required>
-                    </mat-form-field>
-                    
-                  </div>
-                    
-                  <div>
-                    
-                    <button mat-raised-button color="secondary" class="mi-boton" matStepperPrevious>Anterior</button>
-                    <button mat-raised-button color="secondary" class="mi-boton" matStepperNext>Siguiente</button>
-                  </div>
-                </form>
-              </mat-step>
-
-              <!-- Pagina 7 -->
-
-            <mat-step >
-                <form >
-                    
-                  <ng-template matStepLabel></ng-template>
-                  <br/>
-                  <br/>
-                    <h1 style="margin-bottom: 5%;">Archivos - Cita</h1>
-
-                    <h3 style="margin-bottom: 5%;">En esta sección deberá adjuntar todos los archivos que sean importantes para el día de su cita (archivos, fotografías, diagnósticos previos)</h3>
-
-                  <mat-form-field>
-                    <ngx-mat-file-input appearance="outline" placeholder="Imagenes" [(ngModel)]="archivoImagenes" [formControl]="archivoImagenesFC" required multiple></ngx-mat-file-input>
-                    <mat-icon matSuffix>folder</mat-icon>
-                  </mat-form-field>
-                  <br />
-                  <br/>
-                  <mat-form-field>
-                    <ngx-mat-file-input appearance="outline" placeholder="Archivos" [(ngModel)]="archivoDocumentos" [formControl]="archivoDocumentosFC" required multiple></ngx-mat-file-input>
-                    <mat-icon matSuffix>folder</mat-icon>
-                  </mat-form-field>
-
-                  <div>
-                    
-                    <button mat-raised-button color="secondary" class="mi-boton">Finalizar</button>
-                    
-                  </div>
-                </form>
-              </mat-step>
-
-          </mat-horizontal-stepper>
-          
-        </div>
-    </form>
-  </mat-card-content>
-    </mat-card>
+        </mat-horizontal-stepper>
+        
+      </div>
+  </form>
+</mat-card-content>
+  </mat-card>
 
 </div>
 

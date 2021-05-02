@@ -85,15 +85,6 @@ mat-card-title { text-align: center }
   margin: 4px;
 }
 
-.double-vertical-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 10px 5px;
-  margin-left: 8%;
-  flex-wrap: wrap;
-  height: 13em;
-}
-
 .cb-wrapper {
   display: flex;
   justify-content:left;
@@ -110,5 +101,8 @@ mat-card-title { text-align: center }
   flex-wrap: wrap;
 }
 
-
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
 
