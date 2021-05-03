@@ -10,11 +10,11 @@ import { Cita } from "../../models/cita";
 import { CitaService } from '../../services/cita.service';
 
 @Component({
-  selector: 'app-cita-borrado',
-  templateUrl: './cita-borrado.component.html',
-  styleUrls: ['./cita-borrado.component.scss']
+  selector: 'app-cita-inicio',
+  templateUrl: './cita-inicio.component.html',
+  styleUrls: ['./cita-inicio.component.scss']
 })
-export class CitaBorradoComponent implements OnInit {
+export class CitaInicioComponent implements OnInit {
 
   idCita: String;
   cita: Cita = new Cita("", "", "", "", "", "", "", "", "");
@@ -31,7 +31,7 @@ export class CitaBorradoComponent implements OnInit {
     private usuarioService: UsuarioService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    public referenciaDialogo: MatDialogRef<CitaBorradoComponent>,
+    public referenciaDialogo: MatDialogRef<CitaInicioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
@@ -61,11 +61,10 @@ export class CitaBorradoComponent implements OnInit {
     this.referenciaDialogo.close();
   }
 
-  async borrarCita() {
-    let respuesta = await this.citaService.delete(this.idCita).toPromise();
-    console.log(respuesta);
-    this.openSnackBar("¡Cita eliminada correctamente!");
-    this.referenciaDialogo.close();
+  iniciarCita() {
+    this.referenciaDialogo.close("Si");
+    console.log("HERE1");
+
   }
 
 

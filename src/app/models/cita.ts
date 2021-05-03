@@ -6,7 +6,9 @@ export class Cita {
         public fecha_hora_cita: string,
         public clave: string,
         public datos_ingresados_paciente: string,
-        public cita_finalizada: string
+        public cita_finalizada: string,
+        public descripcion: string,
+        public anotaciones: string
     ) { }
 
 }

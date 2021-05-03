@@ -1,0 +1,290 @@
+<ng-scrollbar class="scroll-event" thumbClass="white-scrollbars" track="all">
+    <app-navbar-administrador paginaActual="citas"> </app-navbar-administrador>
+
+    <div class="mi-div">
+
+        <div>
+            <div fxFlex=2%></div>
+
+            <div fxFlex=23% style="width: 25vw;">
+
+
+
+                <mat-card class="mi-card mat-elevation-z2">
+
+                    <mat-card-content style="padding-left: 5px;">
+
+                        <ng-scrollbar class="scroll-datosCita" thumbClass="white-scrollbars" track="all">
+
+                            <input type="file" style="display:none" (change)="archivosSubidos($event)" multiple>
+
+                            <br />
+                            <mat-label class="mi-super-titulo">Historial Personal</mat-label>
+                            <br /><br />
+
+                            <div>
+                                <div fxFlex=45%>
+                                    <mat-label class="mi-titulo">Peso: </mat-label>
+                                    <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.peso_kg}} kg
+                                        &nbsp;&nbsp;&nbsp;
+                                    </mat-label>
+                                </div>
+                                <div fxFlex=55%>
+                                    <mat-label class="mi-titulo">Estatura: </mat-label>
+                                    <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.estatura_cm}}m
+                                        &nbsp;&nbsp;&nbsp;
+                                    </mat-label>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <mat-label class="mi-titulo">IMC: </mat-label>
+                            <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.imc}} kg &nbsp;&nbsp;&nbsp;
+                            </mat-label>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Actividad física:
+                            </mat-label>
+                            <mat-radio-group [(ngModel)]="hpc.realizacion_actividad_fisica"
+                                name="realizacion_actividad_fisica">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Consumo de bebidas alcohólicas: </mat-label>
+                            <br />
+                            <mat-radio-group [(ngModel)]="hpc.consume_bebidas_alcoholicas"
+                                name="consume_bebidas_alcoholicas">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Fumador/a: </mat-label>
+                            <mat-radio-group [(ngModel)]="hpc.fuma_o_ha_fumado" name="fuma_o_ha_fumado">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+
+
+                            <br /><br /><br />
+                            <mat-label class="mi-super-titulo">Historial Familiar</mat-label>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Familiares con cáncer de melanoma
+                            </mat-label>
+                            <br />
+                            <mat-radio-group [(ngModel)]="hfc.familiares_con_cancer_melanoma"
+                                name="familiares_con_cancer_melanoma">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Familiares con otros tipos de cáncer
+                            </mat-label>
+                            <br />
+                            <mat-radio-group [(ngModel)]="hfc.familiares_con_otro_tipo_cancer"
+                                name="familiares_con_otro_tipo_cancer">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+
+                            <mat-card *ngFor="let familiarOtroCancer of familiaresOtroCancer"
+                                style="padding: 5px; padding-left: 10px;">
+
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    Parentesco:
+                                </mat-label>
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    {{familiarOtroCancer.parentesco}}
+                                </mat-label>
+                                <br />
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    Tipo de cáncer:
+                                </mat-label>
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    {{familiarOtroCancer.tipo_cancer}}
+                                </mat-label>
+
+                            </mat-card>
+
+                        </ng-scrollbar>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+
+            <div fxFlex=5%></div>
+
+            <div fxFlex=70% style="width: 70vw;">
+
+                <mat-card class="mi-card mat-elevation-z2">
+
+
+                    <mat-card-content>
+
+                        <div style="padding-left: 5%;">
+                            <br />
+                            <mat-label class="mi-super-titulo">Paciente: </mat-label>
+                            <mat-label class="mi-cuerpo"> {{this.citaData.nombrePaciente}} </mat-label>
+
+                            <mat-label
+                                style="position: absolute; right: 20px; font-size: 12px !important; margin-top: -10px; padding-right: 30px;"
+                                class="mi-cuerpo">
+                                Fecha: {{this.citaData.fecha}} &nbsp;&nbsp;&nbsp; Hora: {{this.citaData.hora}}
+                            </mat-label>
+                            <br /><br />
+
+                            <mat-label class="mi-super-titulo">Médico: </mat-label>
+                            <mat-label class="mi-cuerpo"> {{this.citaData.nombreMedico}} </mat-label>
+                        </div>
+                        <br />
+
+                        <div>
+                            <div fxFlex=5%></div>
+                            <div fxFlex=40%>
+
+                                <mat-form-field appearance="outline" class="mi-field"
+                                    style="font-size: 16px; text-align: center;">
+
+                                    <input matInput style="color: #AAAAAA;" placeholder="Añadir descripción"
+                                        [(ngModel)]="cita.descripcion">
+                                </mat-form-field>
+
+                                <br />
+
+                                <mat-form-field appearance="outline" class="mi-field">
+                                    <textarea matInput placeholder="Anotaciones de la cita"
+                                        [(ngModel)]="cita.anotaciones"
+                                        style="color: #AAAAAA; padding-left: 15px; padding-top: 15px; height: 225px; width: 90%;">  </textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div fxFlex=28% style="padding-left: 4%; padding-top: 1%;">
+
+                                <mat-label class="mi-titulo" style="font-size: 16px;">Imágenes registradas
+                                </mat-label>
+                                <button mat-icon-button (click)="subirArchivos()"
+                                    style="color: white; background-color: #AAAAAA; transform: scale(0.7, 0.7);">
+
+                                    <mat-icon>add</mat-icon>
+                                </button>
+
+                                <br /><br />
+
+                                <ng-scrollbar class="scroll-imagenes" thumbClass="white-scrollbars" track="all">
+
+                                    <div *ngFor="let imagen of imagenes">
+
+                                        <img [src]="imagen.url_archivo" height="100" class="center"
+                                            (click)="abrirImagen(imagen)">
+
+
+                                        <mat-label class="mi-cuerpo" style="margin-top: -30px !important; ">
+                                            {{imagen.nombre_archivo}}
+                                        </mat-label>
+
+                                        <button mat-icon-button (click)="borrarArchivo(imagen)"
+                                            style="color: #AAAAAA;transform: scale(0.7, 0.7);">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+
+                                        <br />
+
+                                        <button mat-raised-button class="mi-boton"
+                                            *ngIf="imagen.imagen_prediagnostico == undefined"
+                                            (click)="prediagnosticarImagen(imagen)">
+                                            Prediagnóstico
+                                        </button>
+
+                                        <button mat-raised-button class="mi-boton"
+                                            *ngIf="imagen.imagen_prediagnostico != undefined"
+                                            (click)="descagarPrediagnostico(imagen)">
+                                            Descargar resultado
+                                        </button>
+
+                                        <br /> <br />
+
+                                    </div>
+
+                                </ng-scrollbar>
+
+
+                            </div>
+
+                            <div fxFlex=25% style="padding-left: 3%; padding-top: 1%;">
+
+                                <div style="text-align: center;">
+                                    <mat-label class="mi-titulo" style="font-size: 16px;">Archivos adjuntos
+                                    </mat-label>
+                                    <button mat-icon-button (click)="subirArchivos()"
+                                        style="color: white; background-color: #AAAAAA; transform: scale(0.7, 0.7);">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                </div>
+
+                                <br />
+
+                                <ng-scrollbar class="scroll-archivos" thumbClass="white-scrollbars" track="all">
+
+                                    <div *ngFor="let archivo of archivos">
+
+                                        <mat-label fxFlex=55% class="mi-cuerpo" style="margin-top: 10px !important; ">
+                                            {{archivo.nombre_archivo}}
+                                        </mat-label>
+
+                                        <button mat-icon-button fxFlex=20% (click)="descargarArchivo(archivo)"
+                                            style="color: white; background-color: #AAAAAA;transform: scale(0.5, 0.5);">
+                                            <mat-icon>get_app</mat-icon>
+                                        </button>
+
+                                        <button mat-icon-button fxFlex=15% (click)="borrarArchivo(archivo)"
+                                            style="color: #AAAAAA;transform: scale(0.7, 0.7);">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+
+                                        <br />
+
+                                    </div>
+
+                                </ng-scrollbar>
+
+                            </div>
+
+
+                            <div fxFlex=3%></div>
+
+                        </div>
+
+                        <div style="margin-left: 60%;">
+                            <button mat-raised-button (click)="abandonarCita()" class="mi-boton"
+                                style=" line-height: 40px;">
+                                Abandonar cita
+                            </button>
+                            <button mat-raised-button (click)="finalizarCita()" class="mi-boton"
+                                style=" line-height: 40px; margin-left: 5%;">
+                                Finalizar cita
+                            </button>
+                        </div>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+
+        </div>
+
+        <div fxFlex=2%></div>
+
+        <br />
+    </div>
+</ng-scrollbar>

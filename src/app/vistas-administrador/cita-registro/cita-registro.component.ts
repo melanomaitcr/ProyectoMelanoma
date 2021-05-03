@@ -26,7 +26,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class CitaRegistroComponent implements OnInit {
 
 
-  cita: Cita = new Cita("", null, null, null, "", "0", "0");
+  cita: Cita = new Cita("", null, null, null, "", "0", "0", "", "");
   nombre = '';
   hora = '';
   splittedHora = [];

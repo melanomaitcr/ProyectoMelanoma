@@ -6,7 +6,7 @@ import { CitaRegistroComponent } from './vistas-administrador/cita-registro/cita
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
 import { UsuarioEdicionComponent } from './vistas-administrador/usuario-edicion/usuario-edicion.component';
 import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.component';
-import { CitaComponent } from './vistas-paciente/cita/cita.component';
+import { CitaComponent } from './vistas-administrador/cita/cita.component';
 import { CitasComponent } from './vistas-administrador/citas/citas.component';
 import { ExpedientesComponent } from './vistas-administrador/expedientes/expedientes.component';
 import { InicioSesionGuard } from './guards/inicio-sesion.guard';
@@ -15,7 +15,7 @@ import { AsistenteAdministradorGuard } from './guards/asistente-administrador.gu
 import { SesionAbiertaGuard } from './guards/sesion-abierta.guard';
 import { ExpedienteComponent } from './vistas-administrador/expediente/expediente.component';
 
-import { FormularioCitaComponent} from './vistas-paciente/formulario-cita/formulario-cita.component';
+import { FormularioCitaComponent } from './vistas-paciente/formulario-cita/formulario-cita.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },
@@ -32,9 +32,9 @@ const routes: Routes = [
   { path: 'cita-registro', component: CitaRegistroComponent, canActivate: [InicioSesionGuard, AsistenteAdministradorGuard] },
 
   { path: 'expedientes', component: ExpedientesComponent, canActivate: [InicioSesionGuard] },
-  {path: 'expediente', component:ExpedienteComponent},
+  { path: 'expediente', component: ExpedienteComponent },
 
-  { path: 'formulario-cita', component: FormularioCitaComponent},
+  { path: 'formulario-cita', component: FormularioCitaComponent },
 ];
 
 

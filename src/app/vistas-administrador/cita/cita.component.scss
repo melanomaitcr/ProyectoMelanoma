@@ -1,0 +1,144 @@
+.mi-card {
+    border-radius: 20px;
+    width: 100%;
+}
+
+  .mi-super-titulo {
+    font-size: 18px; 
+    font-weight: 700; 
+    color: #AAAAAA; 
+  }
+
+  .mi-titulo {
+    font-size: 14px; 
+    font-weight: 700; 
+    color: #AAAAAA; 
+  }
+  
+  .mi-cuerpo {
+    font-size: 14px;
+    color: #AAAAAA;
+  }
+  
+  .mi-cuerpo-pequenno {
+    font-size: 12px;
+    color: #AAAAAA;
+  }
+
+  ::ng-deep .mat-radio-label-content {
+    font-size: 20px;
+    color: #AAAAAA;
+  }
+
+  .mi-cuerpo-subrayado {
+    font-size: 14px;
+    color: #AAAAAA;
+    text-decoration: underline;
+  }
+
+  ::ng-deep .mat-radio-label {
+    transform: scale(0.7, 0.7);
+  }
+
+
+  .mi-boton{
+    border-radius: 20px !important;
+    line-height: 30px;
+    width: 160px !important; 
+    background-color: #AAAAAA; 
+    color: white;
+  }
+  
+  .mi-field {
+    width: 100%;
+    color: #AAAAAA;
+  }
+  
+
+
+  mat-form-field mat-label {
+    margin-left: 20px;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 10px 0 10px 0 !important;
+    border-bottom: 5px solid transparent;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end  {
+    border-radius: 0 40px 40px 0 !important;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 40px 0 0 40px !important;
+    flex-grow: 1;
+    max-width: 40px !important;
+  }
+  
+  mat-form-field, ::ng-deep .mat-select-value{
+      color: #4F4E4E !important;
+    }
+    
+  ::ng-deep .mat-select-arrow{
+      margin: 0 10px !important;
+    }
+  
+  
+  ::ng-deep {
+    ng-scrollbar.scroll-evento {
+      --scrollbar-size: 8px;
+      --scrollbar-thumb-color: gray;
+      --scrollbar-hover-size: 12px;
+      --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+      --scrollbar-border-radius: 20px;
+  
+      height: 420px;
+      width: 650px;
+    }
+  }
+
+  ::ng-deep {
+    ng-scrollbar.scroll-imagenes {
+      --scrollbar-size: 8px;
+      --scrollbar-thumb-color: gray;
+      --scrollbar-hover-size: 12px;
+      --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+      --scrollbar-border-radius: 20px;
+  
+      height: 300px;
+      width: 650px;
+    }
+  }
+
+  ::ng-deep {
+    ng-scrollbar.scroll-archivos {
+      --scrollbar-size: 8px;
+      --scrollbar-thumb-color: gray;
+      --scrollbar-hover-size: 12px;
+      --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+      --scrollbar-border-radius: 20px;
+  
+      height: 300px;
+      width: 650px;
+    }
+  }
+
+  ::ng-deep {
+    ng-scrollbar.scroll-datosCita {
+      --scrollbar-size: 8px;
+      --scrollbar-thumb-color: gray;
+      --scrollbar-hover-size: 12px;
+      --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+      --scrollbar-border-radius: 20px;
+  
+      height: 525px;
+      width: 650px;
+    }
+  }

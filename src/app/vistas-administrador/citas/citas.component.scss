@@ -16,6 +16,22 @@
   align-items: center;
 }
 
+.mi-card2{
+  width: 90%;
+  border-radius: 20px !important;
+  
+ background-color: #F0F0F0;
+}
+
+::ng-deep .cal-month-view .cal-cell-top {
+  min-height: 10px;
+  flex: 1;
+}
+
+::ng-deep .cal-month-view .cal-day-cell {
+  min-height: 0px;
+}
+
 .mat-header-cell {
   font-size:medium !important;
   font-weight: 700;
@@ -148,8 +164,22 @@ mat-form-field, ::ng-deep .mat-select-value{
   }
 
 
-::ng-deep .cal-month-view .cal-day-cell, ::ng-deep .cal-month-view .cal-cell-top {
+::ng-deep .cal-month-view .cal-open-day-events {
+  color: #4F4E4E;
+  background-color: #F0F0F0;
+  box-shadow: none;
+}
 
+::ng-deep .cal-month-view .cal-day-badge {
+  background-color: #AAAAAA;
+}
+
+::ng-deep .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+  color: rgba(0,0,0,.87);
+}
+
+::ng-deep .cal-month-view .cal-day-cell.cal-today {
+  background-color: #AAAAAA;
 }
 
 ::ng-deep {
@@ -172,6 +202,9 @@ pre {
   background-color: #f5f5f5;
   padding: 15px;
 }
+
+
+
 
 
 

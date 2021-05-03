@@ -45,7 +45,7 @@ import { CitaRegistroComponent } from './vistas-administrador/cita-registro/cita
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
 import { UsuarioEdicionComponent } from './vistas-administrador/usuario-edicion/usuario-edicion.component';
 import { UsuariosComponent } from './vistas-administrador/usuarios/usuarios.component';
-import { FormularioCitaComponent} from './vistas-paciente/formulario-cita/formulario-cita.component';
+import { FormularioCitaComponent } from './vistas-paciente/formulario-cita/formulario-cita.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarInicioComponent } from './navbars/navbar-inicio/navbar-inicio.component';
@@ -53,7 +53,7 @@ import { NavbarMedicoComponent } from './navbars/navbar-medico/navbar-medico.com
 import { NavbarAsistenteComponent } from './navbars/navbar-asistente/navbar-asistente.component';
 import { NavbarAdministradorComponent } from './navbars/navbar-administrador/navbar-administrador.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { CitaComponent } from './vistas-paciente/cita/cita.component';
+import { CitaComponent } from './vistas-administrador/cita/cita.component';
 import { CitasComponent } from './vistas-administrador/citas/citas.component';
 import { ExpedientesComponent } from './vistas-administrador/expedientes/expedientes.component';
 import { InterceptorService } from './services/interceptor.service';
@@ -79,6 +79,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { CitaEdicionComponent } from './vistas-administrador/cita-edicion/cita-edicion.component';
+import { CitaInicioComponent } from './vistas-administrador/cita-inicio/cita-inicio.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -110,6 +111,7 @@ registerLocaleData(es);
     CitaEdicionComponent,
     FormularioCitaComponent,
     ExpedienteComponent,
+    CitaInicioComponent,
   ],
   imports: [
     FlexLayoutModule,

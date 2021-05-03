@@ -34,27 +34,24 @@ import {
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
+  CalendarDateFormatter,
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
+  CalendarNativeDateFormatter,
   CalendarView,
+  DateFormatterParams,
 } from 'angular-calendar';
 import { HistorialFamiliarCitaService } from 'src/app/services/historial-familiar-cita.service';
+import { CitaInicioComponent } from '../cita-inicio/cita-inicio.component';
+import { Router } from '@angular/router';
 
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
+class CustomDateFormatter extends CalendarNativeDateFormatter {
+
+  public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
+    return new Intl.DateTimeFormat(locale, { weekday: 'narrow' }).format(date);
+  }
+}
 
 
 
@@ -62,14 +59,25 @@ const colors: any = {
   selector: 'app-citas',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './citas.component.html',
-  styleUrls: ['./citas.component.scss']
+  styleUrls: ['./citas.component.scss'],
+  providers: [
+    {
+      provide: CalendarDateFormatter,
+      useClass: CustomDateFormatter,
+
+    },
+  ]
 })
 export class CitasComponent implements OnInit {
 
   displayedColumns: string[] = ['nombre', 'cedula', 'fechahora', 'descargar', 'editar', 'borrar', 'acciones'];
   dataSource: MatTableDataSource<Cita>;
+  citas: Cita[];
   fechaDt: Date = new Date();
+  fechaMesDt: Date = new Date();
   fecha = "";
+  fechaMes = "";
+  fechaDia = "";
   expedientes: Expediente[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -84,13 +92,13 @@ export class CitasComponent implements OnInit {
     private expedienteService: ExpedienteService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private modal: NgbModal) {
+    private router: Router) {
   }
 
   ngOnInit(): void {
+    this.actualizarFechaMes();
     this.actualizarFecha();
     this.cargarCitas();
-    this.cargarExpedientes();
   }
 
   fechaSiguiente() {
@@ -104,9 +112,53 @@ export class CitasComponent implements OnInit {
   }
 
   actualizarFecha() {
-    this.fecha = this.datepipe.transform(new Date(this.fechaDt), 'dd LLLL yyyy');
+    this.fecha = this.datepipe.transform(new Date(this.fechaDt), 'dd ') +
+      this.capitalizar(this.datepipe.transform(new Date(this.fechaDt), 'LLLL')) +
+      this.datepipe.transform(new Date(this.fechaDt), ' yyyy');
     let fechaFixed = this.datepipe.transform(new Date(this.fechaDt), 'MM/dd/yyyy');
     if (this.dataSource != undefined) this.dataSource.filter = fechaFixed;
+  }
+
+  mesSiguiente() {
+    this.fechaMesDt.setMonth(this.fechaMesDt.getMonth() + 1);
+    this.actualizarFechaMes();
+  }
+
+  mesAnterior() {
+    this.fechaMesDt.setMonth(this.fechaMesDt.getMonth() - 1);
+    this.actualizarFechaMes();
+  }
+
+  actualizarFechaMes() {
+    this.fechaMes = this.capitalizar(this.datepipe.transform(new Date(this.fechaMesDt), 'LLLL')) +
+      this.datepipe.transform(new Date(this.fechaMesDt), ' yyyy');
+    let fechaFixed = this.datepipe.transform(new Date(this.fechaMesDt), 'MM/dd/yyyy');
+  }
+
+  capitalizar(palabra: string) {
+    return palabra[0].toUpperCase() + palabra.substr(1).toLowerCase();
+  }
+
+  cargarEventos() {
+    this.fechaDia = "Seleccione un día";
+    this.activeDayIsOpen = false;
+    this.events = []
+
+    for (let cita of this.citas) {
+      let fhc = new Date(cita.fecha_hora_cita);
+      fhc.setHours(fhc.getHours() + 6);
+
+      this.events.push({
+        start: startOfDay(fhc),
+        end: addHours(startOfDay(fhc), 1),
+        title: this.getNombre(cita) + ": " + this.getHora(cita),
+        color: { primary: '#4F4E4E', secondary: '#AAAAAA', },
+        actions: [],
+        resizable: { beforeStart: false, afterEnd: false, },
+        draggable: false,
+        id: cita.id_cita
+      })
+    }
   }
 
   editarCita(cita: Cita): void {
@@ -128,6 +180,21 @@ export class CitasComponent implements OnInit {
       this.cargarCitas()
     });
   }
+
+  iniciarCita(cita: Cita): void {
+    const referenciaDialogo = this.dialog.open(CitaInicioComponent, {
+      data: { idCita: cita.id_cita }, minWidth: 400
+    });
+
+    referenciaDialogo.afterClosed().subscribe(result => {
+      if (result != undefined) this.router.navigate(['/cita', { idCita: cita.id_cita }])
+      /**
+      if (result != undefined) this.dataVista.visualizacion = "Cita";
+      console.log("HERE2"); */
+    });
+  }
+
+
 
   registrarCita() {
     const referenciaDialogo = this.dialog.open(CitaRegistroComponent, {
@@ -155,15 +222,6 @@ export class CitasComponent implements OnInit {
     });
   }
 
-  /*
-  filtrarCitas() {
-    this.dataSource.filter = this.dataVista.busqueda.trim().toLowerCase();
-
-    if (this.dataSource.paginator)
-      this.dataSource.paginator.firstPage();
-
-  }*/
-
   idiomarPaginator() {
     this.paginator._intl.itemsPerPageLabel = 'Citas por página:';
     this.paginator._intl.firstPageLabel = 'Primera página';
@@ -185,11 +243,11 @@ export class CitasComponent implements OnInit {
 
   async cargarCitas() {
     let citasBD = await this.citaService.findAll().toPromise();
-    let citas = citasBD["data"] as Cita[]
+    this.citas = citasBD["data"] as Cita[]
 
     this.idiomarPaginator();
 
-    this.dataSource = new MatTableDataSource(citas);
+    this.dataSource = new MatTableDataSource(this.citas);
     this.dataSource.paginator = (this.paginator);
     this.dataSource.sort = this.sort;
     this.dataSource.filterPredicate = (data: Cita, filter: string) => {
@@ -202,6 +260,9 @@ export class CitasComponent implements OnInit {
 
     let fechaFixed = this.datepipe.transform(new Date(this.fechaDt), 'MM/dd/yyyy');
     if (this.dataSource != undefined) this.dataSource.filter = fechaFixed;
+
+    await this.cargarExpedientes();
+    this.cargarEventos();
   }
 
   async cargarExpedientes() {
@@ -210,9 +271,20 @@ export class CitasComponent implements OnInit {
   }
 
   getNombre(cita: Cita) {
+    if (this.expedientes == undefined) return "";
+
     for (let expediente of this.expedientes) {
       if (expediente.cedula == cita.cedula_paciente)
         return expediente.nombre + " " + expediente.primer_apellido + " " + expediente.segundo_apellido;
+    }
+  }
+
+  getCita(idCita: string) {
+    if (this.citas == undefined) return undefined;
+
+    for (let cita of this.citas) {
+      if (cita.id_cita == idCita)
+        return cita;
     }
   }
 
@@ -220,6 +292,12 @@ export class CitasComponent implements OnInit {
     let fhc = new Date(cita.fecha_hora_cita);
     fhc.setHours(fhc.getHours() + 6);
     return this.datepipe.transform(fhc, 'dd/MM/yyyy hh:mm aa');
+  }
+
+  getHora(cita: Cita) {
+    let fhc = new Date(cita.fecha_hora_cita);
+    fhc.setHours(fhc.getHours() + 6);
+    return this.datepipe.transform(fhc, 'hh:mm aa');
   }
 
 
@@ -236,131 +314,32 @@ export class CitasComponent implements OnInit {
     event: CalendarEvent;
   };
 
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
-
   refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
-
+  events: CalendarEvent[] = [];
+  eventosDia: CalendarEvent[] = [];
   activeDayIsOpen: boolean = true;
 
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
+      if ((isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) || events.length === 0)
         this.activeDayIsOpen = false;
-      } else {
+      else
         this.activeDayIsOpen = true;
-      }
       this.viewDate = date;
     }
+    this.eventosDia = events;
+    this.fechaDia = this.capitalizar(this.datepipe.transform(new Date(date), 'EEEE, d ')) + 'de ' + this.capitalizar(this.datepipe.transform(new Date(date), 'MMMM'));
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
+  eventTimesChanged({ event, newStart, newEnd, }: CalendarEventTimesChangedEvent): void {
     this.handleEvent('Dropped or resized', event);
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.iniciarCita(this.getCita(String(event.id)));
   }
 
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
-  }
-
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
-  }
-
-  setView(view: CalendarView) {
-    this.view = view;
-  }
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;

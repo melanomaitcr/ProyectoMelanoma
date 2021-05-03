@@ -28,7 +28,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class CitaEdicionComponent implements OnInit {
 
   idCita = "";
-  cita: Cita = new Cita("", null, null, null, "", "0", "0");
+  cita: Cita = new Cita("", null, null, null, "", "0", "0", "", "");
   nombre = '';
   fecha = new Date();
   hora = '';
@@ -81,6 +81,9 @@ export class CitaEdicionComponent implements OnInit {
     //let usuariosBD = {"data": [{"cedula": "12", "nombre":"F P C"}, {"cedula": "17", "nombre":"J M Z"}]}
     this.medicos = usuariosBD["data"] as Usuario[];
     this.medicoSeleccionado = this.medicos[0];
+
+    for (let medico of this.medicos)
+      medico.nombre = medico.nombre + " " + medico.primer_apellido + " " + medico.segundo_apellido
 
     for (let medico of this.medicos)
       if (medico.cedula == this.cita.cedula_medico)

@@ -4,7 +4,8 @@ export class ArchivoCita {
         public id_cita: string,
         public nombre_archivo: string,
         public url_archivo: string,
-        public tipo_archivo: string
+        public tipo_archivo: string,
+        public imagen_prediagnostico: string
     ) { }
 
 }
