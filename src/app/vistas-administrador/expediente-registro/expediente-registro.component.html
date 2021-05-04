@@ -138,9 +138,13 @@
 
                         <mat-form-field appearance="outline" class="mi-field">
                             <mat-label style="margin-left: 20px;">Identidad étnica</mat-label>
-                            <input matInput placeholder="Identidad étnica  del paciente" name="identidad_etnica"
+                            <mat-select placeholder="Identidad étnica del paciente" name="identidad_etnica"
                                 [(ngModel)]="expediente.identidad_etnica" [formControl]="identidad_etnicaFC" required
-                                [errorStateMatcher]="matcher" style="padding-left: 10px;">
+                                [errorStateMatcher]="matcher">
+                                <mat-option *ngFor="let ie of identidadesEtnicas" [value]="ie">
+                                    {{ie}}
+                                </mat-option>
+                            </mat-select>
                             <mat-error *ngIf="identidad_etnicaFC.invalid">{{getErrorMessage(identidad_etnicaFC,
                                 'identidad étnica para el
                                 paciente')}}</mat-error>

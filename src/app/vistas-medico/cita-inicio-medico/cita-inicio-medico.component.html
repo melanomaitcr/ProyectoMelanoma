@@ -1,0 +1,44 @@
+<mat-dialog-content>
+
+    <mat-card class="mi-card" style="box-shadow: none;">
+
+        <mat-card-header>
+
+            <mat-label class="mi-titulo" style="padding-left: 50px;">
+                ¿Desea iniciar esta cita?
+            </mat-label>
+
+        </mat-card-header>
+        <br /> <br /><br />
+
+        <mat-card-content style="text-align: left !important; align-items: flex-start;">
+
+            <mat-label class="mi-titulo"> Nombre: </mat-label>
+            <mat-label class="mi-cuerpo">
+                {{citaData.nombrePaciente}} <br /><br />
+            </mat-label>
+
+            <mat-label class="mi-titulo"> Médico: </mat-label>
+            <mat-label class="mi-cuerpo"> {{citaData.nombreMedico}} <br /> <br /></mat-label>
+
+            <mat-label class="mi-titulo"> Fecha: </mat-label>
+            <mat-label class="mi-cuerpo"> {{citaData.fecha}} <br /><br />
+            </mat-label>
+
+            <mat-label class="mi-titulo"> Hora: </mat-label>
+            <mat-label class="mi-cuerpo"> {{citaData.hora}} <br /> <br /></mat-label>
+
+        </mat-card-content>
+
+        <mat-card-actions style="align-self:center;">
+
+            <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
+
+            <button mat-raised-button class="mi-boton" style="margin-left: 20px; "
+                (click)="iniciarCita()">Aceptar</button>
+
+        </mat-card-actions>
+
+    </mat-card>
+
+</mat-dialog-content>

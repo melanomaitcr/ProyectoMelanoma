@@ -10,6 +10,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Expediente } from 'src/app/models/expediente';
+import { Usuario } from 'src/app/models/usuario';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -36,8 +37,8 @@ export class CitaRegistroComponent implements OnInit {
   horaFC = new FormControl('', [Validators.required]);
 
   matcher = new MyErrorStateMatcher();
-  medicos: Array<CitaMedico> = [];
-  medicoSeleccionado: CitaMedico;
+  medicos: Array<Usuario> = [];
+  medicoSeleccionado: Usuario;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -61,8 +62,12 @@ export class CitaRegistroComponent implements OnInit {
     let usuariosBD = await this.usuarioService.findAll().toPromise();
 
     //let usuariosBD = {"data": [{"cedula": "12", "nombre":"F P C"}, {"cedula": "17", "nombre":"J M Z"}]}
-    let usuarios = usuariosBD["data"] as CitaMedico[];
-    this.medicos = usuarios;
+    let usuarios = usuariosBD["data"] as Usuario[];
+    for (let usuario of usuarios) if (usuario.rol == 'M') this.medicos.push(usuario)
+
+    for (let medico of this.medicos)
+      medico.nombre = medico.nombre + " " + medico.primer_apellido + " " + medico.segundo_apellido
+
     this.medicoSeleccionado = this.medicos[0];
   }
 
@@ -120,8 +125,8 @@ export class CitaRegistroComponent implements OnInit {
     }
   }
 
-  cerrar() {
-    this.referenciaDialogo.close();
+  cerrar(cita?) {
+    this.referenciaDialogo.close(cita);
   }
 
   revisarNombre() {
@@ -152,6 +157,6 @@ export class CitaRegistroComponent implements OnInit {
     let nuevaCita = respuesta as Cita;
 
     this.openSnackBar("¡Cita registrada exitosamente!");
-    this.cerrar()
+    this.cerrar(nuevaCita)
   }
 }

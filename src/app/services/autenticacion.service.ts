@@ -29,12 +29,13 @@ export class AutenticacionService {
     this.setData(auth_token, rol);
 
     if (rol == 'A')
-      this.router.navigate(['/cita-registro']);
+      this.router.navigate(['/citas-asistente']);
     else if (rol == 'M') {
-      this._snackBar.open("Se ha ingresado como médico pero actualmente este no cuenta con funcionalidades implementadas", "Cerrar", {
-        duration: 4000,
-      });
-      this.cerrarSesion();
+      this.router.navigate(['/citas-medico']);
+      //this._snackBar.open("Se ha ingresado como médico pero actualmente este no cuenta con funcionalidades implementadas", "Cerrar", {
+      //  duration: 4000,
+      //});
+      //this.cerrarSesion();
     } else
       this.router.navigate(['/usuarios']);
 
@@ -42,7 +43,7 @@ export class AutenticacionService {
 
   ingresarCita(auth_token: string, rol: string, id_cita: string) {
     this.setData(auth_token, rol);
-    this.router.navigate(['/cita', { id_cita: id_cita }]);
+    this.router.navigate(['/formulario-cita', { id_cita: id_cita }]);
   }
 
   setData(auth_token: string, rol: string) {

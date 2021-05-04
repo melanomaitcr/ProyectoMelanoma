@@ -1,0 +1,177 @@
+<mat-dialog-content>
+
+    <ng-scrollbar class="scroll-evento" thumbClass="white-scrollbars" track="all">
+
+        <mat-card class="mi-card" style="box-shadow: none;">
+
+            <mat-card-header>
+
+                <mat-label
+                    style="padding-top: 10px; padding-right: 40px; font-size: 32px; font-weight: 700; color: #4F4E4E;">
+                    Paciente - Editar
+                </mat-label>
+
+            </mat-card-header>
+            <br /> <br />
+
+            <mat-card-content>
+
+                <form>
+
+                    <div class="mi-form">
+
+                        <div class="mi-field">
+
+                            <mat-form-field appearance="outline" style="width: 31%;">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput placeholder="Nombre" name="nombre" [(ngModel)]="expediente.nombre"
+                                    [formControl]="nombreFC" required [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="nombreFC.invalid">{{getErrorMessage(nombreFC, 'nombre para el
+                                    paciente')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" style="margin-left: 3%; width: 31%;">
+                                <mat-label>Primer apellido</mat-label>
+                                <input matInput placeholder="Primer apellido" name="primer_apellido"
+                                    [(ngModel)]="expediente.primer_apellido" [formControl]="primer_apellidoFC" required
+                                    [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="primer_apellidoFC.invalid">{{getErrorMessage(primer_apellidoFC,
+                                    'primer
+                                    apellido para el paciente')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" style="margin-left: 3%; width: 31%;">
+                                <mat-label>Segundo apellido</mat-label>
+                                <input matInput placeholder="Segundo apellido" name="segundo_apellido"
+                                    [(ngModel)]="expediente.segundo_apellido" [errorStateMatcher]="matcher">
+                            </mat-form-field>
+                        </div>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label style="margin-left: 20px;">Número de identificación</mat-label>
+                            <input matInput placeholder="Número de identificación del paciente" name="cedula"
+                                [(ngModel)]="expediente.cedula" [formControl]="cedulaFC" required
+                                [errorStateMatcher]="matcher" style="padding-left: 10px;">
+                            <mat-error *ngIf="cedulaFC.invalid">{{getErrorMessage(cedulaFC, 'número de cédula para el
+                                paciente')}}</mat-error>
+                        </mat-form-field>
+                        <br />
+
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label>Correo electrónico</mat-label>
+                            <input matInput placeholder="Correo electrónico del paciente" name="correo_electronico"
+                                [(ngModel)]="expediente.correo_electronico" [formControl]="correo_electronicoFC"
+                                required [errorStateMatcher]="matcher">
+                            <mat-error *ngIf="correo_electronicoFC.invalid">{{getErrorMessage(correo_electronicoFC,
+                                'correo
+                                electrónico para el paciente')}}
+                            </mat-error>
+                        </mat-form-field>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label style="margin-left: 20px;">Nacionalidad</mat-label>
+                            <input matInput placeholder="Nacionalidad del paciente" name="nacionalidad"
+                                [(ngModel)]="expediente.nacionalidad" [formControl]="nacionalidadFC" required
+                                [errorStateMatcher]="matcher" style="padding-left: 10px;">
+                            <mat-error *ngIf="nacionalidadFC.invalid">{{getErrorMessage(nacionalidadFC, 'nacionalidad
+                                para el
+                                paciente')}}</mat-error>
+                        </mat-form-field>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label style="margin-left: 20px;">Fecha de nacimiento</mat-label>
+                            <input matInput placeholder="Fecha de nacimiento del paciente" name="fecha_nacimiento"
+                                [(ngModel)]="fecha" [formControl]="fecha_nacimientoFC" required
+                                [errorStateMatcher]="matcher" style="padding-left: 10px;" [matDatepicker]="picker">
+                            <mat-datepicker-toggle matSuffix [for]="picker">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="fecha_nacimientoFC.invalid">{{getErrorMessage(fecha_nacimientoFC, 'fecha
+                                de nacimiento para el paciente')}}</mat-error>
+                        </mat-form-field>
+                        <br />
+
+
+                        <div class="mi-field">
+
+                            <mat-form-field appearance="outline" style="width: 31%;">
+                                <mat-label>Provincia</mat-label>
+                                <input matInput placeholder="Provincia" name="domicilio_provincia"
+                                    [(ngModel)]="expediente.domicilio_provincia" [formControl]="domicilio_provinciaFC"
+                                    required [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="domicilio_provinciaFC.invalid">
+                                    {{getErrorMessage(domicilio_provinciaFC, 'provincia
+                                    para el
+                                    paciente')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" style="margin-left: 3%; width: 31%;">
+                                <mat-label>Cantón</mat-label>
+                                <input matInput placeholder="Cantón" name="domicilio_canton"
+                                    [(ngModel)]="expediente.domicilio_canton" [formControl]="domicilio_cantonFC"
+                                    required [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="domicilio_cantonFC.invalid">{{getErrorMessage(domicilio_cantonFC,
+                                    'cantón para el paciente')}}
+                                </mat-error>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="outline" style="margin-left: 3%; width: 31%;">
+                                <mat-label>Distrito</mat-label>
+                                <input matInput placeholder="Distrito" name="domicilio_distrito"
+                                    [(ngModel)]="expediente.domicilio_distrito" [formControl]="domicilio_distritoFC"
+                                    required [errorStateMatcher]="matcher">
+                                <mat-error *ngIf="domicilio_distritoFC.invalid">{{getErrorMessage(domicilio_distritoFC,
+                                    'distrito para el paciente')}}
+                                </mat-error>
+                            </mat-form-field>
+
+                        </div>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label style="margin-left: 20px;">Identidad étnica</mat-label>
+                            <input matInput placeholder="Identidad étnica  del paciente" name="identidad_etnica"
+                                [(ngModel)]="expediente.identidad_etnica" [formControl]="identidad_etnicaFC" required
+                                [errorStateMatcher]="matcher" style="padding-left: 10px;">
+                            <mat-error *ngIf="identidad_etnicaFC.invalid">{{getErrorMessage(identidad_etnicaFC,
+                                'identidad étnica para el
+                                paciente')}}</mat-error>
+                        </mat-form-field>
+                        <br />
+
+                        <mat-form-field appearance="outline" class="mi-field">
+                            <mat-label style="margin-left: 20px;">Número de teléfono</mat-label>
+                            <input matInput placeholder="Número de teléfono del paciente" name="cedula"
+                                [(ngModel)]="expediente.numero_telefono" [formControl]="numero_telefonoFC" required
+                                [errorStateMatcher]="matcher" style="padding-left: 10px;">
+                            <mat-error *ngIf="numero_telefonoFC.invalid">{{getErrorMessage(numero_telefonoFC, 'numero de
+                                teléfono para el
+                                paciente')}}</mat-error>
+                        </mat-form-field>
+
+                    </div>
+
+                </form>
+
+            </mat-card-content>
+
+            <mat-card-actions style="margin-left: 48%; align-self: flex-end; ">
+
+                <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
+
+                <button mat-raised-button class="mi-boton" [disabled]="!formularioValido()" style="margin-left: 20px;"
+                    (click)="actualizarExpediente()">Actualizar</button>
+
+            </mat-card-actions>
+        </mat-card>
+
+    </ng-scrollbar>
+</mat-dialog-content>

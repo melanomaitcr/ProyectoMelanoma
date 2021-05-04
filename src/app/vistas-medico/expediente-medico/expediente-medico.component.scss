@@ -1,0 +1,281 @@
+@import '~@angular/material/theming';
+.contenedor-inicio-sesion{
+    margin-top:20px;
+  }
+  
+  .card-descripcion-logo{
+    background-color:transparent;
+    width: 15*2.54vw;
+  }
+  
+  .logo{
+    width: 15*2.56vw;
+    height: 14vw;
+  }
+  
+  .descripcion{
+    padding-top: 20px;
+    display:block;
+    font-size: min(2vw, 20px);
+    line-height: 22px;
+    text-align:justify;
+  }
+  
+  .card-inicio-sesion{
+    width: 75%;
+    margin-left:min(1vw, 10px);
+    border-radius: 20px;
+    
+    margin-bottom: 5px;
+  }
+  .card-expediente-historial{
+    width: 88%;
+    margin-left:min(1vw, 10px);
+    border-radius: 20px;
+    height: 500px;
+  }
+  
+  .card-inicio-sesion .content-inicio-sesion{
+    margin-left: 2vw;
+    margin-right:  2vw;
+    padding-bottom: 20px;
+  }
+
+  .subtitulos-info-personal{
+    font-weight: bold;
+    font-size: 15px;
+    color: #4F4E4E;
+  }
+
+  .subtitulos-atributo{
+    font-weight: bold;
+    font-size: 14px;
+    color: #AAAAAA;
+  }
+  
+  .subtitulos-contenido{
+    font-size: 14px;
+    color: #AAAAAA;
+  }
+
+  .cardX {
+    background-color: #F0F0F0 !important;
+    box-shadow: none;
+  }
+
+  .card-inicio-sesion .title-inicio-sesion{
+    text-align:center;
+    display:block;
+    font-size: min(2.8vw, 36px);
+  //  font-family: 'Roboto';
+    font-weight:700;
+    font-style: normal;
+    margin-top: 20px;
+    line-height: 3vw;
+  }
+  
+  .card-inicio-sesion .form-inicio-sesion{
+    margin-top: 5vh;
+  }
+   
+  .card-inicio-sesion .field-inicio-sesion{
+    
+    width: 100%;
+    
+  
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline{
+    border-radius: 60px;
+  }
+  
+  .card-inicio-sesion .actions-inicio-sesion{
+    margin-left: 4vw;
+    margin-right:4vw;
+    margin-top: 10vh;
+    margin-bottom: 20px;
+  }
+  
+  .boton-inicio-sesion{
+      position:absolute;
+      top: 15px;
+      right:10px;
+      z-index:10;
+  }
+
+  .vl {
+    border-left: 1px solid #4F4E4E;
+    height: 300px;
+    top: 0;
+  }
+
+  /* Style the tab */
+.tab {
+  padding-left: 3px;
+  padding-top: 1px;
+  overflow:hidden;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  float: left;
+  border: none;
+  outline: none;
+  height: 50px;
+  border-radius: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-style: none;
+  transition: 0.3s;
+  z-index: 1;
+  color:#DEDEDE
+}
+
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  border-radius: 10px;
+  z-index: 0;
+  background-color: white;
+  margin-left: 3px;
+  
+}
+
+.tablinks:disabled{
+  z-index: 1;
+  background-color: white;
+  @include mat-elevation(3);
+  color: #4F4E4E !important;
+  text-decoration: underline;
+
+}
+
+.familiar{
+  padding-left: 20px;
+}
+
+.tabcontent .expediente-info{
+  margin-top: 60px;
+  padding-bottom: 30px;
+}
+
+.mi-card {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.mi-super-titulo {
+  font-size: 18px; 
+  font-weight: 700; 
+  color: #AAAAAA; 
+}
+
+.mi-titulo {
+  font-size: 14px; 
+  font-weight: 700; 
+  color: #AAAAAA; 
+}
+
+.mi-cuerpo {
+  font-size: 14px;
+  color: #AAAAAA;
+}
+
+.mi-cuerpo-pequenno {
+  font-size: 12px;
+  color: #AAAAAA;
+}
+
+::ng-deep .mat-radio-label-content {
+  font-size: 20px;
+  color: #AAAAAA;
+}
+
+.mi-cuerpo-subrayado {
+  font-size: 14px;
+  color: #AAAAAA;
+  text-decoration: underline;
+}
+
+::ng-deep .mat-radio-label {
+  transform: scale(0.7, 0.7);
+}
+
+
+.mi-boton{
+  border-radius: 20px !important;
+  line-height: 30px;
+  width: 170px !important; 
+  background-color: #AAAAAA; 
+  color: white;
+}
+
+.mi-field {
+  width: 100%;
+  color: #AAAAAA;
+}
+
+
+
+mat-form-field mat-label {
+  margin-left: 20px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px 0 !important;
+  border-bottom: 5px solid transparent;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end  {
+  border-radius: 0 40px 40px 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border-radius: 40px 0 0 40px !important;
+  flex-grow: 1;
+  max-width: 20px !important;
+}
+
+mat-form-field, ::ng-deep .mat-select-value{
+    color: #4F4E4E !important;
+  }
+  
+::ng-deep .mat-select-arrow{
+    margin: 0 10px !important;
+  }
+
+
+::ng-deep {
+  ng-scrollbar.scroll-datosCita {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb-color: gray;
+    --scrollbar-hover-size: 12px;
+    --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+    --scrollbar-border-radius: 20px;
+
+    height: 300px;
+    width: 650px;
+  }
+}
+
+::ng-deep {
+  ng-scrollbar.scroll-datosCita2 {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb-color: gray;
+    --scrollbar-hover-size: 12px;
+    --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+    --scrollbar-border-radius: 20px;
+
+    height: 300px;
+    width: 650px;
+  }
+}

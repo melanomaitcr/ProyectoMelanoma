@@ -1,0 +1,196 @@
+<app-navbar-medico paginaActual="expedientes"> </app-navbar-medico>
+<div class="contenedor-inicio-sesion" fxLayout="row">
+    <div fxFlex=40% fxLayoutAlign="center center">
+
+        <mat-card class="card-inicio-sesion cardX">
+            <mat-card-header class="title-inicio-sesion">
+                <mat-card-title class="title-inicio-sesion">Datos Personales</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="content-inicio-sesion">
+                <form class="form-inicio-sesion">
+                    <mat-label class="subtitulos-info-personal">Información Básica</mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Nombre: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{expediente.nombre +" "+ expediente.primer_apellido +" "+
+                        expediente.segundo_apellido}}</mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Fecha de Nacimiento: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{expediente.fecha_nacimiento}}</mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Edad: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{edad}}</mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Nacionalidad: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{expediente.nacionalidad}}</mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Domicilio: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{expediente.domicilio_distrito +", "+
+                        expediente.domicilio_canton +",
+                        "+ expediente.domicilio_provincia}}</mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Identidad étnica-racial: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{expediente.identidad_etnica}}</mat-label>
+                    <br><br><br>
+                    <mat-label class="subtitulos-info-personal">Información de Contacto</mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Correo electrónico: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{expediente.correo_electronico}} </mat-label>
+                    <br><br>
+                    <mat-label class="subtitulos-atributo">Número de teléfono: </mat-label>
+                    <mat-label class="subtitulos-contenido">{{expediente.numero_telefono}}</mat-label>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div fxFlex=55%>
+
+        <button mat-raised-button class="mi-boton" (click)="volver()"
+            style="position: absolute; margin-left: 33%; line-height: 35px; width: 100px !important;">
+            Atrás
+        </button>
+
+        <button mat-raised-button class="mi-boton" style="position: absolute; margin-left: 43%; line-height: 35px; ">
+            Exportar expediente
+        </button>
+
+        <div class="tab">
+            <button mat-button class="tablinks" [disabled]="tabActual==0"
+                style="padding-left: 30px;padding-right: 30px;" (click)="cambiarTab('Expediente' ,0)">
+                Expediente</button>
+            <button mat-button [disabled]="tabActual==1" class="tablinks"
+                style="padding-left: 30px;padding-right: 30px;" (click)="cambiarTab('Historial',1)">Historial</button>
+        </div>
+        <div>
+            <mat-card id="Expediente" style="border-top-left-radius: 0px;" class="tabcontent mat-elevation-z3">
+                <mat-card-content class="expediente-info" fxLayout="row">
+                    <div class="familiar" fxFlex=48%>
+
+                        <ng-scrollbar class="scroll-datosCita2" thumbClass="white-scrollbars" track="all">
+
+                            <mat-label class="mi-super-titulo">Historial Personal</mat-label>
+                            <br /><br />
+
+                            <div>
+                                <div fxFlex=45%>
+                                    <mat-label class="mi-titulo">Peso: </mat-label>
+                                    <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.peso_kg}} kg
+                                        &nbsp;&nbsp;&nbsp;
+                                    </mat-label>
+                                </div>
+                                <div fxFlex=55%>
+                                    <mat-label class="mi-titulo">Estatura: </mat-label>
+                                    <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.estatura_cm}}m
+                                        &nbsp;&nbsp;&nbsp;
+                                    </mat-label>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <mat-label class="mi-titulo">IMC: </mat-label>
+                            <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.imc}} kg &nbsp;&nbsp;&nbsp;
+                            </mat-label>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Actividad física:
+                            </mat-label>
+                            <mat-radio-group disabled [(ngModel)]="hpc.realizacion_actividad_fisica"
+                                name="realizacion_actividad_fisica">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Consumo de bebidas alcohólicas: </mat-label>
+                            <br />
+                            <mat-radio-group disabled [(ngModel)]="hpc.consume_bebidas_alcoholicas"
+                                name="consume_bebidas_alcoholicas">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Fumador/a: </mat-label>
+                            <mat-radio-group disabled [(ngModel)]="hpc.fuma_o_ha_fumado" name="fuma_o_ha_fumado">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+                        </ng-scrollbar>
+
+                    </div>
+
+                    <div fxFlex=3% class="vl"></div>
+
+                    <div class="familiar" fxFlex=48%>
+
+
+
+                        <ng-scrollbar class="scroll-datosCita" thumbClass="white-scrollbars" track="all">
+                            <mat-label class="mi-super-titulo">Historial Familiar</mat-label>
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Familiares con cáncer de melanoma
+                            </mat-label>
+                            <br />
+                            <mat-radio-group disabled [(ngModel)]="hfc.familiares_con_cancer_melanoma"
+                                name="familiares_con_cancer_melanoma">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">Familiares con otros tipos de cáncer
+                            </mat-label>
+                            <br />
+                            <mat-radio-group disabled [(ngModel)]="hfc.familiares_con_otro_tipo_cancer"
+                                name="familiares_con_otro_tipo_cancer">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+
+                            <br style="padding-top: 100px;" />
+                            <mat-card *ngFor="let familiarOtroCancer of familiaresOtroCancer"
+                                style="padding: 5px; padding-left: 10px; box-shadow: none;">
+
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    Parentesco:
+                                </mat-label>
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    {{familiarOtroCancer.parentesco}}
+                                </mat-label>
+                                <br />
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    Tipo de cáncer:
+                                </mat-label>
+                                <mat-label class="mi-cuerpo-pequenno">
+                                    {{familiarOtroCancer.tipo_cancer}}
+                                </mat-label>
+
+                            </mat-card>
+
+                        </ng-scrollbar>
+
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card id="Historial" style="border-top-left-radius: 0px;" class="tabcontent mat-elevation-z3">
+                <mat-card-content style="margin-top: 20px;" fxLayout="row">
+
+                </mat-card-content>
+            </mat-card>
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+
+@import '~@angular/material/theming';
+
+.mi-boton{
+  border-radius: 20px !important;
+  width: 120px;  
+  box-shadow: none;
+}
+
+.mat-raised-button.mat-button-disabled {
+  @include mat-elevation(2);
+}
+
+.mi-navbar {
+  justify-content: flex-start;  
+  background-color: white;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+

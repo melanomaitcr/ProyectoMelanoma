@@ -32,7 +32,8 @@ export class ExpedientesComponent implements OnInit {
 
   constructor(private expedienteService: ExpedienteService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -47,6 +48,10 @@ export class ExpedientesComponent implements OnInit {
     referenciaDialogo.afterClosed().subscribe(result => {
       this.cargarExpedientes()
     });
+  }
+
+  verExpediente(expediente: Expediente): void {
+    this.router.navigate(['/expediente', { cedula: expediente.cedula }])
   }
 
   borrarExpediente(expediente: Expediente): void {

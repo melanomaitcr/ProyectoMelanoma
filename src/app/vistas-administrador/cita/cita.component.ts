@@ -35,7 +35,7 @@ import { FamiliarOtroCancerService } from 'src/app/services/familiar-otro-cancer
 })
 export class CitaComponent implements OnInit {
 
-  idCita = "";
+  idCita = "1";
   cita: Cita = new Cita("", "", "", "", "", "", "", "", "");
   citaData = {
     nombrePaciente: "",
@@ -166,9 +166,7 @@ export class CitaComponent implements OnInit {
 
           await ref.archivoCitaService.create(archivoCita).toPromise();
 
-
-          if (i == archivos.length - 1)
-            ref.cargarArchivos();
+          ref.cargarArchivos();
           //  await ref.enviarArchivos(archivosBase64, nombresArchivos);
         };
 

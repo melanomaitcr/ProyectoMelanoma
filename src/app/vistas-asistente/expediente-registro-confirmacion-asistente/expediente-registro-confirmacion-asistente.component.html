@@ -1,0 +1,57 @@
+<mat-dialog-content>
+
+    <ng-scrollbar class="scroll-evento2" thumbClass="white-scrollbars" track="all">
+
+        <mat-card class="mi-card" style="box-shadow: none;">
+
+            <mat-card-header>
+
+                <mat-label class="mi-titulo" style="padding-left: 75px;">
+                    Paciente registrado
+                </mat-label>
+
+            </mat-card-header>
+            <br /> <br /><br />
+
+            <mat-card-content style="text-align: left !important; align-items: flex-start;">
+
+                <mat-label class="mi-titulo"> Nombre: </mat-label>
+                <mat-label class="mi-cuerpo">
+                    {{getNombre(expediente)}} <br /><br />
+                </mat-label>
+
+                <mat-label class="mi-titulo"> Identificación: </mat-label>
+                <mat-label class="mi-cuerpo"> {{expediente.cedula}} <br /> <br /></mat-label>
+
+                <mat-label class="mi-titulo"> Correo Electrónico: </mat-label>
+                <mat-label class="mi-cuerpo"> {{expediente.correo_electronico}} <br /><br />
+                </mat-label>
+
+                <mat-label class="mi-titulo"> Nacionalidad: </mat-label>
+                <mat-label class="mi-cuerpo"> {{expediente.nacionalidad}} <br /> <br /></mat-label>
+
+                <mat-label class="mi-titulo"> Fecha de Nacimiento: </mat-label>
+                <mat-label class="mi-cuerpo"> {{expediente.fecha_nacimiento}} <br /> <br /></mat-label>
+
+                <mat-label class="mi-titulo"> Domicilio: </mat-label>
+                <mat-label class="mi-cuerpo"> {{getDomicilio(expediente)}} <br /> <br /></mat-label>
+
+                <mat-label class="mi-titulo"> Identidad Étnica: </mat-label>
+                <mat-label class="mi-cuerpo"> {{expediente.identidad_etnica}} <br /> <br /></mat-label>
+
+                <mat-label class="mi-titulo"> Número de Teléfono: </mat-label>
+                <mat-label class="mi-cuerpo"> {{expediente.numero_telefono}} <br /> <br /></mat-label>
+
+            </mat-card-content>
+
+            <mat-card-actions style="margin-left: 50%; align-self: flex-end; ">
+
+                <button mat-raised-button class="mi-boton" (click)="cerrar()">Aceptar</button>
+
+            </mat-card-actions>
+
+        </mat-card>
+
+    </ng-scrollbar>
+
+</mat-dialog-content>

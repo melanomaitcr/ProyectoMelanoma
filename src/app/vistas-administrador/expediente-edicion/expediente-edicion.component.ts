@@ -20,7 +20,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class ExpedienteEdicionComponent implements OnInit {
 
-  roles = ["Médico", "Asistente"]
+  identidadesEtnicas = ['Indígena', 'Negro(a) o afrodescendiente', 'Mulato(a)', 'Chino(a) o de origen chino/asiático', 'Mestizo(a)', 'Blanco(a)', 'Ninguna', 'No sabe']
+
 
   esconder = true;
   fecha = new Date();

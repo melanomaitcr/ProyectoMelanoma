@@ -55,7 +55,7 @@ export class CitaEdicionComponent implements OnInit {
 
   ngOnInit(): void {
     this.idCita = this.data['idCita']
-    this.sacarMedicos();
+
     this.cargarCita();
   }
 
@@ -72,18 +72,24 @@ export class CitaEdicionComponent implements OnInit {
     this.fecha = fhc;
     this.hora = this.datepipe.transform(new Date(fhc), 'HH:mm');
 
+    await this.sacarMedicos();
+
   }
 
   async sacarMedicos() {
 
     let usuariosBD = await this.usuarioService.findAll().toPromise();
+    let usuarios = usuariosBD["data"] as Usuario[];
+    for (let usuario of usuarios) if (usuario.rol == 'M') this.medicos.push(usuario)
 
-    //let usuariosBD = {"data": [{"cedula": "12", "nombre":"F P C"}, {"cedula": "17", "nombre":"J M Z"}]}
-    this.medicos = usuariosBD["data"] as Usuario[];
     this.medicoSeleccionado = this.medicos[0];
 
     for (let medico of this.medicos)
       medico.nombre = medico.nombre + " " + medico.primer_apellido + " " + medico.segundo_apellido
+
+    console.log(this.medicos);
+    console.log(this.cita);
+
 
     for (let medico of this.medicos)
       if (medico.cedula == this.cita.cedula_medico)

@@ -1,18 +1,22 @@
 <p>
-    <mat-toolbar color="Ecrft4g" class="navbar-inicio">
+    <mat-toolbar class="navbar-inicio" class="mi-navbar">
 
-        <button mat-raised-button (click)="vistaCitaRegistro()" color="secondary"
-            [disabled]="paginaActual == 'cita-registro'" style="margin-left: 20px;" class="mi-boton">
+        <button mat-raised-button (click)="vistaCitas()" [disabled]="getPaginaActual() == 'citas'"
+            style="margin-left: 40px;" class="mi-boton">
             Citas </button>
-        <button mat-raised-button (click)="vistaExpedienteRegistro()" color="secondary"
-            [disabled]="paginaActual == 'expediente-registro'" style="margin-left: 20px;"
-            class="mi-boton">Pacientes</button>
 
-        <span class="example-spacer"></span>
+        <button mat-raised-button (click)="vistaExpedientes()" [disabled]="getPaginaActual() == 'expedientes'"
+            style="margin-left: 40px;" class="mi-boton">Pacientes</button>
 
-        <button mat-raised-button color="secondary" style="margin-right: 20px;" class="mi-boton">Perfil</button>
-        <button mat-raised-button (click)="cerrarSesion()" color="secondary" style="margin-right: 20px;"
-            class="mi-boton">Cerrar
+
+
+
+        <button mat-raised-button style="margin-left: 40px;" class="mi-boton">Perfil</button>
+
+        <span style="flex: 1 1 auto;"></span>
+
+
+        <button mat-raised-button (click)="cerrarSesion()" style="margin-right: 20px;" class="mi-boton">Cerrar
             sesión</button>
 
 

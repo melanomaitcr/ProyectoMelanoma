@@ -1,1 +1,24 @@
-<p>navbar-medico works!</p>
+<p>
+    <mat-toolbar class="navbar-inicio" class="mi-navbar">
+
+        <button mat-raised-button (click)="vistaCitas()" [disabled]="getPaginaActual() == 'citas'"
+            style="margin-left: 40px;" class="mi-boton">
+            Agenda </button>
+
+        <button mat-raised-button (click)="vistaExpedientes()" [disabled]="getPaginaActual() == 'expedientes'"
+            style="margin-left: 40px;" class="mi-boton">Pacientes</button>
+
+
+
+
+        <button mat-raised-button style="margin-left: 40px;" class="mi-boton">Perfil</button>
+
+        <span style="flex: 1 1 auto;"></span>
+
+
+        <button mat-raised-button (click)="cerrarSesion()" style="margin-right: 20px;" class="mi-boton">Cerrar
+            sesión</button>
+
+
+    </mat-toolbar>
+</p>

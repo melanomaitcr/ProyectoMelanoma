@@ -80,6 +80,21 @@ import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { CitaEdicionComponent } from './vistas-administrador/cita-edicion/cita-edicion.component';
 import { CitaInicioComponent } from './vistas-administrador/cita-inicio/cita-inicio.component';
+import { CitaRegistroConfirmacionComponent } from './vistas-administrador/cita-registro-confirmacion/cita-registro-confirmacion.component';
+import { CitasAsistenteComponent } from './vistas-asistente/citas-asistente/citas-asistente.component';
+import { CitaRegistroAsistenteComponent } from './vistas-asistente/cita-registro-asistente/cita-registro-asistente.component';
+import { CitaVisualizacionAsistenteComponent } from './vistas-asistente/cita-visualizacion-asistente/cita-visualizacion-asistente.component';
+import { CitaRegistroConfirmacionAsistenteComponent } from './vistas-asistente/cita-registro-confirmacion-asistente/cita-registro-confirmacion-asistente.component';
+import { ExpedientesAsistenteComponent } from './vistas-asistente/expedientes-asistente/expedientes-asistente.component';
+import { ExpedienteRegistroAsistenteComponent } from './vistas-asistente/expediente-registro-asistente/expediente-registro-asistente.component';
+import { ExpedienteRegistroConfirmacionAsistenteComponent } from './vistas-asistente/expediente-registro-confirmacion-asistente/expediente-registro-confirmacion-asistente.component';
+import { ExpedienteRegistroVisualizacionAsistenteComponent } from './vistas-asistente/expediente-registro-visualizacion-asistente/expediente-registro-visualizacion-asistente.component';
+import { ExpedientesMedicoComponent } from './vistas-medico/expedientes-medico/expedientes-medico.component';
+import { ExpedienteEdicionMedicoComponent } from './vistas-medico/expediente-edicion-medico/expediente-edicion-medico.component';
+import { ExpedienteMedicoComponent } from './vistas-medico/expediente-medico/expediente-medico.component';
+import { CitasMedicoComponent } from './vistas-medico/citas-medico/citas-medico.component';
+import { CitaMedicoComponent } from './vistas-medico/cita-medico/cita-medico.component';
+import { CitaInicioMedicoComponent } from './vistas-medico/cita-inicio-medico/cita-inicio-medico.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -112,6 +127,21 @@ registerLocaleData(es);
     FormularioCitaComponent,
     ExpedienteComponent,
     CitaInicioComponent,
+    CitaRegistroConfirmacionComponent,
+    CitasAsistenteComponent,
+    CitaRegistroAsistenteComponent,
+    CitaVisualizacionAsistenteComponent,
+    CitaRegistroConfirmacionAsistenteComponent,
+    ExpedientesAsistenteComponent,
+    ExpedienteRegistroAsistenteComponent,
+    ExpedienteRegistroConfirmacionAsistenteComponent,
+    ExpedienteRegistroVisualizacionAsistenteComponent,
+    ExpedientesMedicoComponent,
+    ExpedienteEdicionMedicoComponent,
+    ExpedienteMedicoComponent,
+    CitasMedicoComponent,
+    CitaMedicoComponent,
+    CitaInicioMedicoComponent,
   ],
   imports: [
     FlexLayoutModule,

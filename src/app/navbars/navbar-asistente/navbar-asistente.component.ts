@@ -25,15 +25,15 @@ export class NavbarAsistenteComponent implements OnInit {
     return this.paginaActual;
   }
 
-  vistaCitaRegistro() {
-    this.paginaActual = 'cita-registro';
-    this.router.navigate(['/cita-registro']);
+
+  vistaCitas() {
+    this.paginaActual = 'citas';
+    this.router.navigate(['/citas-asistente']);
   }
 
-  vistaExpedienteRegistro() {
-    //    this.paginaActual = 'expediente-registro';
-    //  this.router.navigate(['/expediente-registro']);
+  vistaExpedientes() {
+    this.paginaActual = 'expedientes';
+    this.router.navigate(['/expedientes-asistente']);
   }
-
 
 }

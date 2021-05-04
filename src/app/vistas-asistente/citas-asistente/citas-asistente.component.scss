@@ -1,0 +1,213 @@
+
+@import '~@angular/material/theming';
+
+.mi-table {
+  width: 100%;
+  border-collapse: separate!important;
+  overflow: hidden !important;
+  border-spacing:0 5px;
+}
+
+.mi-card{
+  width: 90%;
+  border-radius: 20px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mi-card2{
+  width: 90%;
+  border-radius: 20px !important;
+  
+ background-color: #F0F0F0;
+}
+
+::ng-deep .cal-month-view .cal-cell-top {
+  min-height: 10px;
+  flex: 1;
+}
+
+::ng-deep .cal-month-view .cal-day-cell {
+  min-height: 0px;
+}
+
+.mat-header-cell {
+  font-size:medium !important;
+  font-weight: 700;
+  color: #AAAAAA;
+}
+
+.mat-cell {
+  color: #AAAAAA;
+}
+
+.mi-header {
+  background-color: #fafafa;
+}
+
+.mi-row {
+  background-color: #F0F0F0;
+}
+
+.mi-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mi-boton{
+  border-radius: 20px !important;
+  line-height: 40px;
+  width: 130px !important; 
+  background-color: #AAAAAA; 
+  color: white;
+}
+
+.mi-primera-columna {
+  border-radius: 20px 0 0 20px;
+}
+
+.mi-ultima-columna {
+  border-radius: 0 20px 20px 0;
+}
+
+.mi-column {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-nombre{
+    flex: 0 0 25% !important;
+    width: 25% !important;
+}
+
+
+.mat-column-cedula{
+    flex: 0 0 25% !important;
+    width: 25% !important;
+}
+
+.mat-column-fechahora{
+  flex: 0 0 40% !important;
+  width: 40% !important;
+}
+
+.mat-column-descargar{
+    flex: 0 0 13% !important;
+    width: 13% !important;
+}
+
+.mat-column-editar{
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.mat-column-borrar{
+    flex: 0 0 8% !important;
+    width: 8% !important;
+}
+
+td {
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}
+
+td.mat-cell {
+  border-bottom: none !important;
+}
+
+
+mat-form-field mat-label {
+  margin-left: 20px;
+}
+mat-form-field input {
+  padding-left: 10px;
+} 
+
+
+::ng-deep .mat-dialog-container {
+  border-radius: 20px !important;
+  @include mat-elevation(20);
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px 0 !important;
+  border-bottom: 5px solid transparent;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end  {
+  border-radius: 0 40px 40px 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border-radius: 40px 0 0 40px !important;
+  flex-grow: 1;
+  max-width: 20px !important;
+}
+
+mat-form-field, ::ng-deep .mat-select-value{
+    color: #4F4E4E !important;
+  }
+  
+::ng-deep .mat-select-arrow{
+    margin: 0 10px !important;
+  }
+
+
+::ng-deep .cal-month-view .cal-open-day-events {
+  color: #4F4E4E;
+  background-color: #F0F0F0;
+  box-shadow: none;
+}
+
+::ng-deep .cal-month-view .cal-day-badge {
+  background-color: #AAAAAA;
+}
+
+::ng-deep .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+  color: rgba(0,0,0,.87);
+}
+
+::ng-deep .cal-month-view .cal-day-cell.cal-today {
+  background-color: #AAAAAA;
+}
+
+::ng-deep {
+  ng-scrollbar.scroll-event {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb-color: gray;
+    --scrollbar-hover-size: 12px;
+    --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+    --scrollbar-border-radius: 20px;
+    height: 5000px;
+    width: 5000px;
+  }
+}
+
+h3 {
+  margin: 0 0 10px;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+
+
+
+
+
+
+
+
+

@@ -45,6 +45,7 @@ import {
 import { HistorialFamiliarCitaService } from 'src/app/services/historial-familiar-cita.service';
 import { CitaInicioComponent } from '../cita-inicio/cita-inicio.component';
 import { Router } from '@angular/router';
+import { CitaRegistroConfirmacionComponent } from '../cita-registro-confirmacion/cita-registro-confirmacion.component';
 
 class CustomDateFormatter extends CalendarNativeDateFormatter {
 
@@ -202,15 +203,17 @@ export class CitasComponent implements OnInit {
     });
 
     referenciaDialogo.afterClosed().subscribe(result => {
+      console.log(result);
+
       if (result == undefined) return;
 
-      const referenciaDialogoNueva = this.dialog.open(CitasComponent, {
-        data: { cedula: result.cedula }, minWidth: 400
+      const referenciaDialogoNueva = this.dialog.open(CitaRegistroConfirmacionComponent, {
+        data: { idCita: result }, minWidth: 400
       });
 
       referenciaDialogoNueva.afterClosed().subscribe(result => {
         this.cargarCitas()
-        this.openSnackBar("Paciente registrado exitosamente!");
+        this.openSnackBar("¡Cita registrada exitosamente!");
       });
 
     });
@@ -291,7 +294,7 @@ export class CitasComponent implements OnInit {
   getFechaHora(cita: Cita) {
     let fhc = new Date(cita.fecha_hora_cita);
     fhc.setHours(fhc.getHours() + 6);
-    return this.datepipe.transform(fhc, 'dd/MM/yyyy hh:mm aa');
+    return this.datepipe.transform(fhc, 'hh:mm aa');
   }
 
   getHora(cita: Cita) {
