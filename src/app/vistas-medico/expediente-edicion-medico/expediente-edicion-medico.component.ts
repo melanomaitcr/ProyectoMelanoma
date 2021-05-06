@@ -20,6 +20,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class ExpedienteEdicionMedicoComponent implements OnInit {
 
+  identidadesEtnicas = ['Indígena', 'Negro(a) o afrodescendiente', 'Mulato(a)', 'Chino(a) o de origen chino/asiático', 'Mestizo(a)', 'Blanco(a)', 'Ninguna', 'No sabe']
+
   roles = ["Médico", "Asistente"]
 
   esconder = true;

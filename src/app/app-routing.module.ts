@@ -11,7 +11,9 @@ import { CitasComponent } from './vistas-administrador/citas/citas.component';
 import { ExpedientesComponent } from './vistas-administrador/expedientes/expedientes.component';
 import { InicioSesionGuard } from './guards/inicio-sesion.guard';
 import { AdministradorGuard } from './guards/administrador.guard';
-import { AsistenteAdministradorGuard } from './guards/asistente-administrador.guard';
+import { AsistenteGuard } from './guards/asistente.guard';
+import { MedicoGuard } from './guards/medico.guard';
+import { PacienteGuard } from './guards/paciente.guard';
 import { SesionAbiertaGuard } from './guards/sesion-abierta.guard';
 import { ExpedienteComponent } from './vistas-administrador/expediente/expediente.component';
 
@@ -33,23 +35,22 @@ const routes: Routes = [
   { path: 'ingreso-cita', component: IngresoCitaComponent, canActivate: [SesionAbiertaGuard] },
   { path: 'inicio-sesion', component: InicioSesionComponent, canActivate: [SesionAbiertaGuard] },
 
-  { path: 'citas', component: CitasComponent, canActivate: [InicioSesionGuard] },
-  { path: 'cita', component: CitaComponent, canActivate: [InicioSesionGuard] },
-  { path: 'cita-registro', component: CitaRegistroComponent, canActivate: [InicioSesionGuard, AsistenteAdministradorGuard] },
+  { path: 'citas', component: CitasComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
+  { path: 'cita', component: CitaComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
 
-  { path: 'expedientes', component: ExpedientesComponent, canActivate: [InicioSesionGuard] },
-  { path: 'expediente', component: ExpedienteComponent },
+  { path: 'expedientes', component: ExpedientesComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
+  { path: 'expediente', component: ExpedienteComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
 
-  { path: 'formulario-cita', component: FormularioCitaComponent },
+  { path: 'formulario-cita', component: FormularioCitaComponent, canActivate: [InicioSesionGuard, PacienteGuard] },
 
-  { path: 'citas-asistente', component: CitasAsistenteComponent, canActivate: [InicioSesionGuard] },
-  { path: 'expedientes-asistente', component: ExpedientesAsistenteComponent, canActivate: [InicioSesionGuard] },
+  { path: 'citas-asistente', component: CitasAsistenteComponent, canActivate: [InicioSesionGuard, AsistenteGuard] },
+  { path: 'expedientes-asistente', component: ExpedientesAsistenteComponent, canActivate: [InicioSesionGuard, AsistenteGuard] },
 
-  { path: 'citas-medico', component: CitasMedicoComponent, canActivate: [InicioSesionGuard] },
-  { path: 'cita-medico', component: CitaMedicoComponent, canActivate: [InicioSesionGuard] },
+  { path: 'citas-medico', component: CitasMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
+  { path: 'cita-medico', component: CitaMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
 
-  { path: 'expedientes-medico', component: ExpedientesMedicoComponent, canActivate: [InicioSesionGuard] },
-  { path: 'expediente-medico', component: ExpedienteMedicoComponent, canActivate: [InicioSesionGuard] },
+  { path: 'expedientes-medico', component: ExpedientesMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
+  { path: 'expediente-medico', component: ExpedienteMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
 ];
 
 

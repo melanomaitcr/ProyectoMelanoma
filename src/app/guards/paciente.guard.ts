@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AutenticacionService } from '../services/autenticacion.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SesionAbiertaGuard implements CanActivate {
+export class PacienteGuard implements CanActivate {
 
   constructor(private autenticacionService: AutenticacionService, private router: Router) { }
 
   canActivate() {
-    if (!this.autenticacionService.auth_token)
+    if (this.autenticacionService.rol == 'P')
       return true;
-
-    if (this.autenticacionService.rol == 'D')
+    else if (this.autenticacionService.rol == 'D')
       this.router.navigate(['/usuarios']);
-    else if (this.autenticacionService.rol == 'A')
-      this.router.navigate(['/citas-asistente']);
     else if (this.autenticacionService.rol == 'M')
       this.router.navigate(['/citas-medico']);
-    else if (this.autenticacionService.rol == 'P')
-      this.autenticacionService.cerrarSesion()
-    //this.router.navigate(['/jajaSalu2']);
+    else if (this.autenticacionService.rol == 'A')
+      this.router.navigate(['/citas-asistente']);
 
     return false;
-
   }
+
 
 }

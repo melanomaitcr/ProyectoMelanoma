@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 //const baseUrl = 'http://melanomaitcr.pythonanywhere.com/api/usuario';
-const baseUrl = 'http://localhost:4200/api/usuario';
+const baseUrl = window.location.origin + '/api/usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  //auth_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcxNDk4MDgsImlhdCI6MTYxNzA2MzQwOCwic3ViIjoiMTAxMTEwMTExIn0.TYmcPThDF6ZcYcR14nrN9FZ0UhVRdgRz7s3iRC3whBY";
-  //"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcxNDk2OTUsImlhdCI6MTYxNzA2MzI5NSwic3ViIjoiMTA1MjgwODcyIn0.05v4uc6ESxOC73C6JYahewuV0qdtcmYCHlYX1gJVQ30"; // 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MTcwNjA4NjQsImlhdCI6MTYxNzA2MDM2NCwic3ViIjoiMTAxMTEwMTExIn0.UsGcH3sFZy8Q27hyN4HVI2iKYgyn4QChYWGfRM3uTj8'
   constructor(private https: HttpClient) { }
 
   findAll() {
@@ -33,7 +31,7 @@ export class UsuarioService {
   }
 
   validarInicioSesion(data) {
-    return this.https.post("http://localhost:4200/api/inicio-sesion", data);
+    return this.https.post(window.location.origin + "/api/inicio-sesion", data);
   }
 
 
