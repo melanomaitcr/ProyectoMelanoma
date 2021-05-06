@@ -201,6 +201,7 @@ export class FormularioCitaComponent implements OnInit {
         reader.onload = async function () {
           // rwbjhbvbghuead
           let archivoBase64 = (reader.result as string).split(',')[1];
+          console.log(archivoBase64)
 
           let nombreArchivo = archivos[i].name;
           let tipoArchivo = (nombreArchivo.includes('.png') || nombreArchivo.includes('.jpg') || nombreArchivo.includes('.jpeg') || nombreArchivo.includes('.svg') || nombreArchivo.includes('.gif')) ? 'I' : 'A';

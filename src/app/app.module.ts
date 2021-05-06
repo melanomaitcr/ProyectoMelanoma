@@ -69,7 +69,6 @@ import { ExpedienteRegistroComponent } from './vistas-administrador/expediente-r
 import { ExpedienteRegistroConfirmacionComponent } from './vistas-administrador/expediente-registro-confirmacion/expediente-registro-confirmacion.component';
 import { CitaBorradoComponent } from './vistas-administrador/cita-borrado/cita-borrado.component';
 import { ExpedienteComponent } from './vistas-administrador/expediente/expediente.component';
-import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -190,7 +189,6 @@ registerLocaleData(es);
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    MaterialFileInputModule
   ],
   exports: [CitasComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }, DatePipe,
