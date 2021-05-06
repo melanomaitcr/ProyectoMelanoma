@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 //const baseUrl = 'http://melanomaitcr.pythonanywhere.com/api/historialPersonalCita';
-const baseUrl = 'http://localhost:4200/api/historialPersonalCita';
+const baseUrl = window.location.origin + '/api/historialPersonalCita';
 
 @Injectable({
   providedIn: 'root'

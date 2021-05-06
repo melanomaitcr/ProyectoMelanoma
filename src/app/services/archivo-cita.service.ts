@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { saveAs } from 'file-saver';
 
 //const baseUrl = 'http://melanomaitcr.pythonanywhere.com/api/archivoCita';
-const baseUrl = 'http://localhost:4200/api/archivoCita';
+const baseUrl = window.location.origin + '/api/archivoCita';
 
 @Injectable({
   providedIn: 'root'

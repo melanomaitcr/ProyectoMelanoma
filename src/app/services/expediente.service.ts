@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 //const baseUrl = 'http://melanomaitcr.pythonanywhere.com/api/expediente';
-const baseUrl = 'http://localhost:4200/api/expediente';
+const baseUrl = window.location.origin + '/api/expediente';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,6 @@ export class ExpedienteService {
   }
 
   validarIngresoCita(data) {
-    return this.https.post("http://localhost:4200/api/ingreso-cita", data);
+    return this.https.post(window.location.origin + "/api/ingreso-cita", data);
   }
 }

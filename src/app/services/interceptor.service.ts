@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AutenticacionService } from './autenticacion.service';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,14 @@ export class InterceptorService implements HttpInterceptor {
       return next.handle(req);
 
     req = req.clone({ headers: req.headers.set('auth-token', this.autenticacionService.auth_token) });
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.error["text"] == "INVALID_TOKEN")
+          this.autenticacionService.cerrarSesion()
+        let errorMsg = '';
+
+        return throwError(errorMsg);
+
+      }));
   }
 }
