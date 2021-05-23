@@ -1,0 +1,68 @@
+
+.title{
+    padding-top: 18px; 
+    flex: 1 1 80%; 
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 80px;
+    
+}
+
+.photo{
+    width: 25%;
+    height: 300px;
+    margin-left:min(1vw, 10px);
+    margin: 20px;
+    border-radius: 20px !important;
+}
+.botton-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+.mi-boton{
+    border-radius: 20px !important;
+    line-height: 40px;
+    width: 190px !important; 
+    background-color: #AAAAAA; 
+    color: white;
+}
+
+  
+.container-perfil {
+  width: 100%;
+  display: flex;
+  margin-top: 2%;
+  align-items: center;
+}
+
+.mi-card {
+  width: 25%;
+  height: 290px;
+  margin-left:min(1vw, 10px);
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.content{
+  text-align:center;
+  align-items: center;
+}
+
+.title-informacion{
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.mi-titulo {
+  font-size: 16px; 
+  font-weight: 500; 
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.mi-cuerpo {
+  font-size: 14px;
+}

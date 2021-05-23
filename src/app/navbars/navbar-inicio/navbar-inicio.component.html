@@ -2,6 +2,6 @@
     <button mat-button (click)="InicioSesion()" [disabled]="checkCurrentPage()=='inicio-sesion'"> Inicio de Sesión </button>
     
       <button mat-button (click)="IngresoCita()" [disabled]="checkCurrentPage()=='ingreso-cita'">Ingreso a Cita</button>
-      <button mat-button routerLink="inicio-sesion"routerLinkActive="active" [disabled]="checkCurrentPage()=='Acerca De'">Acerca de</button>
+      <button mat-button (click)="AcercaDe()" [disabled]="checkCurrentPage()=='acerca-de'">Acerca de</button>
   </mat-toolbar>
   <router-outlet></router-outlet>

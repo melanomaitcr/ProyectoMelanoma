@@ -18,6 +18,9 @@ export class NavbarInicioComponent implements OnInit {
   IngresoCita() {
     this.router.navigate(['/ingreso-cita']);
   }
+  AcercaDe() {
+    this.router.navigate(['/acerca-de']);
+  }
 
   checkCurrentPage(){
     return this.paginaActual;

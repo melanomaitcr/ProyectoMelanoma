@@ -1,0 +1,52 @@
+
+.container-photo{
+  margin-left: 15px;
+  margin-right: 15px;
+  text-align: center;
+}
+
+.photo{
+    width: 100%;
+    height: 230px;
+    border-radius: 20px !important;
+}
+  
+.container {
+  width: 100%;
+  display: flex;
+  margin-top: 2%;
+  align-items:flex-start;
+}
+
+.mi-card {
+  width: 23%;
+  height: 550px;
+  margin-left:min(1vw, 10px);
+  border-radius: 20px;
+  margin-left: 40px;
+  background-color:#F0F0F0 !important;
+}
+
+.content{
+  text-align:center;
+  align-items: center;
+}
+
+.paragraph{
+    display: block; 
+    padding-left: 4%; 
+    padding-right: 25%;
+    position: absolute;
+    right: 19%;
+    bottom: 35%;
+    text-align: justify;
+}
+
+/* 
+.photo{
+    width: 16%;
+    height: 235px;
+    margin-left:min(1vw, 10px);
+    margin: 20px;
+    border-radius: 20px !important;
+} */
