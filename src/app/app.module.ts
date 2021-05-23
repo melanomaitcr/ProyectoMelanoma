@@ -94,6 +94,9 @@ import { ExpedienteMedicoComponent } from './vistas-medico/expediente-medico/exp
 import { CitasMedicoComponent } from './vistas-medico/citas-medico/citas-medico.component';
 import { CitaMedicoComponent } from './vistas-medico/cita-medico/cita-medico.component';
 import { CitaInicioMedicoComponent } from './vistas-medico/cita-inicio-medico/cita-inicio-medico.component';
+import { InformacionPerfilComponent } from './vistas-administrador/informacion-perfil/informacion-perfil.component';
+import { EditarPerfilComponent } from './vistas-administrador/editar-perfil/editar-perfil.component';
+import { AcercaDeComponent } from './vistas-inicio/acerca-de/acerca-de.component';
 import { ExpedienteBitacoraComponent } from './vistas-administrador/expediente-bitacora/expediente-bitacora.component';
 registerLocaleData(es);
 
@@ -142,7 +145,6 @@ registerLocaleData(es);
     CitasMedicoComponent,
     CitaMedicoComponent,
     CitaInicioMedicoComponent,
-    ExpedienteBitacoraComponent,
   ],
   imports: [
     FlexLayoutModule,

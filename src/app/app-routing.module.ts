@@ -25,6 +25,9 @@ import { ExpedienteMedicoComponent } from './vistas-medico/expediente-medico/exp
 import { CitasMedicoComponent } from './vistas-medico/citas-medico/citas-medico.component';
 import { CitaMedicoComponent } from './vistas-medico/cita-medico/cita-medico.component';
 
+import { InformacionPerfilComponent } from './vistas-administrador/informacion-perfil/informacion-perfil.component';
+import { AcercaDeComponent } from './vistas-inicio/acerca-de/acerca-de.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },
 
@@ -51,6 +54,9 @@ const routes: Routes = [
 
   { path: 'expedientes-medico', component: ExpedientesMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
   { path: 'expediente-medico', component: ExpedienteMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
+
+  { path: 'informacion-perfil', component: InformacionPerfilComponent },
+  { path: 'acerca-de', component: AcercaDeComponent},
 ];
 
 

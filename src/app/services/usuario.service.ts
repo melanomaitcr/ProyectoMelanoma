@@ -34,7 +34,9 @@ export class UsuarioService {
     return this.https.post(window.location.origin + "/api/inicio-sesion", data);
   }
 
-
+  getInformacionPerfil() {
+    return this.https.get(window.location.origin + "/api/usuario-perfil");
+  }
 
 }
 
