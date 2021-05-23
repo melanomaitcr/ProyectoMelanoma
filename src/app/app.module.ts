@@ -98,6 +98,7 @@ import { InformacionPerfilComponent } from './vistas-administrador/informacion-p
 import { EditarPerfilComponent } from './vistas-administrador/editar-perfil/editar-perfil.component';
 import { AcercaDeComponent } from './vistas-inicio/acerca-de/acerca-de.component';
 import { ExpedienteBitacoraComponent } from './vistas-administrador/expediente-bitacora/expediente-bitacora.component';
+import { FamiliarCancerEdicionComponent } from './vistas-administrador/familiar-cancer-edicion/familiar-cancer-edicion.component';
 registerLocaleData(es);
 
 @NgModule({
@@ -145,6 +146,7 @@ registerLocaleData(es);
     CitasMedicoComponent,
     CitaMedicoComponent,
     CitaInicioMedicoComponent,
+    FamiliarCancerEdicionComponent,
   ],
   imports: [
     FlexLayoutModule,

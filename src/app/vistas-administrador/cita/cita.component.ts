@@ -5,7 +5,7 @@ import { Expediente } from '../../models/expediente';
 import { ExpedienteService } from '../../services/expediente.service';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ExpedienteEdicionComponent } from '../expediente-edicion/expediente-edicion.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ExpedienteBorradoComponent } from '../expediente-borrado/expediente-borrado.component';
@@ -27,6 +27,8 @@ import { HistorialFamiliarCita } from 'src/app/models/historialFamiliarCita';
 import { addHours } from 'date-fns';
 import { FamiliarOtroCancer } from 'src/app/models/familiarOtroCancer';
 import { FamiliarOtroCancerService } from 'src/app/services/familiar-otro-cancer.service';
+import { Familiar, ListaFamiliares } from 'src/app/vistas-paciente/formulario-cita/formulario-cita.component';
+import { FamiliarCancerEdicionComponent } from '../familiar-cancer-edicion/familiar-cancer-edicion.component';
 
 @Component({
   selector: 'app-cita',
@@ -45,11 +47,52 @@ export class CitaComponent implements OnInit {
   };
   hpc: HistorialPersonalCita = new HistorialPersonalCita(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,);
   hfc: HistorialFamiliarCita = new HistorialFamiliarCita(null, null, null, null, null,);
+  hpcMedico: HistorialPersonalCita = new HistorialPersonalCita(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,);
+  hfcMedico: HistorialFamiliarCita = new HistorialFamiliarCita(null, null, null, null, null,);
   imagenes: ArchivoCita[] = [];
   archivos: ArchivoCita[] = [];
   familiaresOtroCancer: FamiliarOtroCancer[] = [];
+  familiaresOtroCancerMedico: FamiliarOtroCancer[] = [];
   //insert into archivo_cita values('6', '1', 'Jaja.pdf', 'http://melanomaitcr.pythonanywhere.com/files/archivo_cita_2_Notas.pdf', 'A')
   public datepipe: DatePipe = new DatePipe('es-ES');
+  tabActual = 0
+  allComplete: boolean = false;
+  allCompleteMedico: boolean = false;
+  fsocMedico: FamiliarOtroCancer[] = []
+  listaFamiliares: ListaFamiliares = {
+    familiares: [
+      { name: "Madre", completed: false },
+      { name: "Hermana", completed: false },
+      { name: "Tía Materna", completed: false },
+      { name: "Tía Paterna", completed: false },
+      { name: "Abuela Materna", completed: false },
+      { name: "Abuela Paterna", completed: false },
+      { name: "Otro(s)", completed: false },
+      { name: "Padre", completed: false },
+      { name: "Hermano", completed: false },
+      { name: "Tío Materno", completed: false },
+      { name: "Tío Paterno", completed: false },
+      { name: "Abuelo Materno", completed: false },
+      { name: "Abuelo Paterno", completed: false },
+    ]
+  };
+  listaFamiliaresMedico: ListaFamiliares = {
+    familiares: [
+      { name: "Madre", completed: false },
+      { name: "Hermana", completed: false },
+      { name: "Tía Materna", completed: false },
+      { name: "Tía Paterna", completed: false },
+      { name: "Abuela Materna", completed: false },
+      { name: "Abuela Paterna", completed: false },
+      { name: "Otro(s)", completed: false },
+      { name: "Padre", completed: false },
+      { name: "Hermano", completed: false },
+      { name: "Tío Materno", completed: false },
+      { name: "Tío Paterno", completed: false },
+      { name: "Abuelo Materno", completed: false },
+      { name: "Abuelo Paterno", completed: false },
+    ]
+  };
 
   constructor(private expedienteService: ExpedienteService,
     private citaService: CitaService,
@@ -59,14 +102,88 @@ export class CitaComponent implements OnInit {
     private historialFamiliarCitaService: HistorialFamiliarCitaService,
     private familiarOtroCancerService: FamiliarOtroCancerService,
     public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private router: Router) {
   }
 
   ngOnInit(): void {
+    document.getElementById("Paciente").style.display = "block";
     this.idCita = this.route.snapshot.paramMap.get('idCita');
     this.cargarCita();
     this.cargarArchivos();
+  }
+
+  borrarFamiliar(i) {
+    this.familiaresOtroCancerMedico.splice(i, 1);
+  }
+
+  updateAllComplete() {
+    this.allComplete = this.listaFamiliares.familiares != null && this.listaFamiliares.familiares.every(t => t.completed);
+  }
+
+  updateAllCompleteMedico() {
+    this.allCompleteMedico = this.listaFamiliares.familiares != null && this.listaFamiliares.familiares.every(t => t.completed);
+  }
+
+  obtenerParientesConCancer() {
+    let familiarCancer = [];
+
+    for (let familiar of this.listaFamiliaresMedico.familiares)
+      if (familiar.completed)
+        familiarCancer.push(familiar.name);
+
+    return familiarCancer.join(",");
+  }
+
+  sacarParientesConCancer() {
+    for (let familiar of this.hfc.parientes_con_cancer_melanoma.split(",")) {
+      for (let fam of this.listaFamiliares.familiares) {
+        if (fam.name == familiar) fam.completed = true;
+      }
+    }
+  }
+
+  sacarParientesConCancerMedico() {
+    console.log(this.hfcMedico);
+
+    for (let familiar of this.hfcMedico.parientes_con_cancer_melanoma.split(",")) {
+      for (let fam of this.listaFamiliaresMedico.familiares) {
+        if (fam.name == familiar) fam.completed = true;
+      }
+    }
+  }
+
+  actualizarIMC() {
+    const re = /^\d*(\.\d+)?$/
+    if (String(this.hpcMedico.peso_kg) == "" || String(this.hpcMedico.estatura_cm) == "") { this.hpcMedico.imc = 0; return; }
+    if (!(String(this.hpcMedico.peso_kg).match(re) || !String(this.hpcMedico.estatura_cm).match(re))) { this.hpcMedico.imc = 0; return; }
+    try {
+      this.hpcMedico.imc = Number((this.hpcMedico.peso_kg / ((this.hpcMedico.estatura_cm / 100.0) * (this.hpcMedico.estatura_cm / 100.0))).toFixed(3))
+    } catch { this.hpcMedico.imc = 0 }
+  }
+
+  cambiarTab(nombreTab, pos) {
+    // Declare all variables
+    let i: number, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(nombreTab).style.display = "block";
+
+    if (pos == 1) {
+      document.getElementById(nombreTab).style.borderRadius = "10px";
+    }
+    this.tabActual = pos;
+
   }
 
   async cargarArchivos() {
@@ -204,18 +321,66 @@ export class CitaComponent implements OnInit {
 
   async getHistorialPersonal() {
     this.hpc = await this.historialPersonalCitaService.findByPk(this.cita.id_cita, '1').toPromise() as HistorialPersonalCita;
+    this.hpcMedico = await this.historialPersonalCitaService.findByPk(this.cita.id_cita, '0').toPromise() as HistorialPersonalCita;
+    this.actualizarIMC()
   }
 
   async getHistorialFamiliar() {
     this.hfc = await this.historialFamiliarCitaService.findByPk(this.cita.id_cita, '1').toPromise() as HistorialFamiliarCita;
     let fsoc = (await this.familiarOtroCancerService.findAll().toPromise())['data'] as FamiliarOtroCancer[];
     for (let foc of fsoc)
-      if (foc.id_cita == this.idCita)
+      if (foc.id_cita == this.idCita && foc.rellenado_por_paciente == '1')
         this.familiaresOtroCancer.push(foc);
+    this.sacarParientesConCancer()
+
+    this.hfcMedico = await this.historialFamiliarCitaService.findByPk(this.cita.id_cita, '0').toPromise() as HistorialFamiliarCita;
+    this.fsocMedico = (await this.familiarOtroCancerService.findAll().toPromise())['data'] as FamiliarOtroCancer[];
+    for (let foc of this.fsocMedico)
+      if (foc.id_cita == this.idCita && foc.rellenado_por_paciente == '0')
+        this.familiaresOtroCancerMedico.push(new FamiliarOtroCancer(foc.id_cita, foc.rellenado_por_paciente, foc.tipo_cancer, foc.parentesco));
+    this.sacarParientesConCancerMedico()
   }
 
   getNombre(expediente: Expediente) {
     return expediente.nombre + " " + expediente.primer_apellido + " " + expediente.segundo_apellido;
+  }
+
+  async actualizarHistoriales() {
+    await this.historialPersonalCitaService.update(this.idCita, '0', this.hpcMedico).toPromise();
+    this.hfcMedico.parientes_con_cancer_melanoma = this.obtenerParientesConCancer();
+    await this.historialFamiliarCitaService.update(this.idCita, '0', this.hfcMedico).toPromise();
+    for (let foc of this.fsocMedico)
+      if (foc.id_cita == this.idCita && foc.rellenado_por_paciente == '0')
+        await this.familiarOtroCancerService.delete(foc.id_cita, foc.rellenado_por_paciente, foc.tipo_cancer, foc.parentesco).toPromise();
+
+    for (let foc of this.familiaresOtroCancerMedico)
+      await this.familiarOtroCancerService.create(foc).toPromise();
+
+    this.openSnackBar('¡Historiales actualizados correctamente!')
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Cerrar", {
+      duration: 2000,
+    });
+  }
+
+  editarFamiliar(i) {
+    const referenciaDialogoNueva = this.dialog.open(FamiliarCancerEdicionComponent, {
+      data: this.familiaresOtroCancerMedico[i], minWidth: 200
+    });
+
+  }
+
+  nuevoFamiliar() {
+    const referenciaDialogoNueva = this.dialog.open(FamiliarCancerEdicionComponent, {
+      data: new FamiliarOtroCancer(this.idCita, '0', '', ''), minWidth: 200
+    });
+
+    referenciaDialogoNueva.afterClosed().subscribe(result => {
+      if (result == undefined) return;
+      this.familiaresOtroCancerMedico.push(result)
+    });
   }
 
 }

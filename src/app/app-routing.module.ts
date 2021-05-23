@@ -24,6 +24,7 @@ import { ExpedientesMedicoComponent } from './vistas-medico/expedientes-medico/e
 import { ExpedienteMedicoComponent } from './vistas-medico/expediente-medico/expediente-medico.component';
 import { CitasMedicoComponent } from './vistas-medico/citas-medico/citas-medico.component';
 import { CitaMedicoComponent } from './vistas-medico/cita-medico/cita-medico.component';
+import { parseHostBindings } from '@angular/compiler';
 
 import { InformacionPerfilComponent } from './vistas-administrador/informacion-perfil/informacion-perfil.component';
 import { AcercaDeComponent } from './vistas-inicio/acerca-de/acerca-de.component';
@@ -70,3 +71,75 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
+
+/**
+
+let x = {
+  "anotaciones": "El paciente se encuentra muy bien y est\u00e1 sano.",
+  "cedula_medico": "705420109",
+  "cedula_paciente": "301420857",
+  "cita_finalizada": "1",
+  "clave": "2bf3260c7e",
+  "datos_ingresados_paciente": "0",
+  "descripcion": "Cita de revisi\u00f3n peri\u00f3dica",
+  "fecha_hora_cita": "Mon, 03 May 2021 10:00:00 GMT",
+  "id_cita": "2",
+  "historiales_personales":
+    [{
+      "consume_bebidas_alcoholicas": "2",
+      "consume_bebidas_alcoholicas_total": 2,
+      "consume_bebidas_alcoholicas_total_otro": null,
+      "diagnostico_propio_cancer": "1",
+      "edad_empezo_fumar": 15,
+      "estatura_cm": 175.0,
+      "fuma_actualmente": "1",
+      "fuma_o_ha_fumado": "1",
+      "id_cita": "2",
+      "imc": 26.122,
+      "minutos_semana_actividad_fisica": 60,
+      "periodo_fumado": "3",
+      "peso_kg": 80.0,
+      "realizacion_actividad_fisica": "1",
+      "rellenado_por_paciente": "1",
+      "tipos_cancer_propios": "Est\u00f3mago"
+    },
+    {
+      "consume_bebidas_alcoholicas": "2",
+      "consume_bebidas_alcoholicas_total": 2,
+      "consume_bebidas_alcoholicas_total_otro": null,
+      "diagnostico_propio_cancer": "1",
+      "edad_empezo_fumar": 15,
+      "estatura_cm": 175.0,
+      "fuma_actualmente": "1",
+      "fuma_o_ha_fumado": "1",
+      "id_cita": "2",
+      "imc": 26.122,
+      "minutos_semana_actividad_fisica": 60,
+      "periodo_fumado": "3",
+      "peso_kg": 80.0,
+      "realizacion_actividad_fisica": "1",
+      "rellenado_por_paciente": "0",
+      "tipos_cancer_propios": "Est\u00f3mago"
+    }],
+
+  "archivos_cita": [
+    {
+      "id_archivo": "2",
+      "id_cita": "2",
+      "imagen_prediagnostico": null,
+      "nombre_archivo": "Archivo PDF.pdf",
+      "tipo_archivo": "A",
+      "url_archivo": "BASE_64"
+    }, {
+      "id_archivo": "5",
+      "id_cita": "2",
+      "imagen_prediagnostico": null,
+      "nombre_archivo": "Archivo PDF.pdf",
+      "tipo_archivo": "A",
+      "url_archivo": "BASE_64"
+    }
+  ]
+
+}
+
+*/

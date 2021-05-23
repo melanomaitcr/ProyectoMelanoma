@@ -50,10 +50,10 @@ export class FormularioCitaComponent implements OnInit {
       { name: "Otro(s)", completed: false },
       { name: "Padre", completed: false },
       { name: "Hermano", completed: false },
-      { name: "Tío Materna", completed: false },
-      { name: "Tío Paterna", completed: false },
-      { name: "Abuelo Materna", completed: false },
-      { name: "Abuelo Paterna", completed: false },
+      { name: "Tío Materno", completed: false },
+      { name: "Tío Paterno", completed: false },
+      { name: "Abuelo Materno", completed: false },
+      { name: "Abuelo Paterno", completed: false },
     ]
   };
 

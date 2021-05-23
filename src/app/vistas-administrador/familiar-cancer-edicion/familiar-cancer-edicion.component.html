@@ -1,0 +1,55 @@
+<mat-dialog-content>
+
+  <ng-scrollbar class="scroll-eventoABC" thumbClass="white-scrollbars" track="all">
+
+    <mat-card class="mi-card" style="box-shadow: none;">
+
+      <mat-card-header>
+
+        <mat-label
+          style="width: 100%; padding-top: 10px; padding-right: 40px; font-size: 24px; font-weight: 700; color: #4F4E4E;">
+          Familiar con cáncer
+        </mat-label>
+
+        <button mat-icon-button (click)="cerrar()"
+          style="color: #AAAAAA; position: absolute; margin-left: 87%; margin-top: -20px;">
+          <mat-icon>close</mat-icon>
+        </button>
+
+      </mat-card-header>
+      <br /><br />
+
+      <mat-card-content>
+
+        <form>
+
+          <div class="mi-form">
+            <mat-form-field appearance="outline" class="mi-field">
+              <mat-label>Tipo de cáncer</mat-label>
+              <input placeholder="Tipo de cáncer" matInput [(ngModel)]="data.tipo_cancer" name="cedula">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline" class="mi-field">
+              <mat-label>Parentesco</mat-label>
+              <input matInput placeholder="Parentesco" [(ngModel)]="data.parentesco" name="cedula">
+            </mat-form-field>
+          </div>
+
+        </form>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+
+
+        <button mat-raised-button class="mi-boton"
+          style="float: right; margin-top: -20px; margin-right: 25px; margin-bottom: 0 !important;"
+          (click)="registrar()">{{textoBoton}} </button>
+
+      </mat-card-actions>
+
+    </mat-card>
+
+  </ng-scrollbar>
+</mat-dialog-content>
