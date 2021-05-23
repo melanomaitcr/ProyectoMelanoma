@@ -1,0 +1,40 @@
+<mat-dialog-content>
+
+    <ng-scrollbar class="scroll-bitacora" thumbClass="white-scrollbars" track="all">
+
+        <mat-card class="mi-card" style="box-shadow: none;">
+
+            <mat-card-header>
+
+                <mat-label class="mi-titulo" style="padding-left: 10px;">
+                    Reporte de importación de {{tipo}}
+                </mat-label>
+
+            </mat-card-header>
+            <br /> <br />
+
+            <mat-card-content style="text-align: left !important; align-items: flex-start;">
+
+                <mat-label class="mi-titulo"> Nombre del archivo: </mat-label>
+                <mat-label class="mi-cuerpo">
+                    {{nombreArchivo}} <br /><br/> <br />
+                </mat-label>
+
+                <tr *ngFor="let item of resultado">
+                    <mat-label class="mi-titulo"> {{item.tipo_resultado}} </mat-label>
+                    <mat-label class="mi-cuerpo"> {{item.resultado}} <br /> <br /></mat-label>
+                </tr>
+
+            </mat-card-content>
+
+            <mat-card-actions style="align-self:center;">
+
+                <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
+
+            </mat-card-actions>
+
+        </mat-card>
+
+    </ng-scrollbar>
+
+</mat-dialog-content>

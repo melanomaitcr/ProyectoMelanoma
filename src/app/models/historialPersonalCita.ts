@@ -14,7 +14,7 @@ export class HistorialPersonalCita {
         public fuma_actualmente: string,
         public periodo_fumado: string,
         public consume_bebidas_alcoholicas: string,
-        public consume_bebidas_alcoholicas_total: number,
+        public consume_bebidas_alcoholicas_total: string,
         public consume_bebidas_alcoholicas_total_otro: string
     ) { }
 }

@@ -301,7 +301,7 @@ export class FormularioCitaComponent implements OnInit {
 
     if (this.familiaresConOtroCancerRadioButton != '1') this.familiaresOtroCancer = [];
 
-    let historialPersonalCita = new HistorialPersonalCita(this.idCita, "1", Number(this.peso), Number(this.estatura), Number(this.imc), this.actividadFisicaRadioButton, parseInt(this.actividadFisicaPorSemana), this.diagnosticadoCancerRadioButton, this.tipoCancer, this.fumaRadioButton, parseInt(this.empezoFumar), this.fumaActualmenteRadioButton, this.periodoFumado, this.bebidasAlcoholicasRadioButton, parseInt(this.consumoTotalRadioButton), null);
+    let historialPersonalCita = new HistorialPersonalCita(this.idCita, "1", Number(this.peso), Number(this.estatura), Number(this.imc), this.actividadFisicaRadioButton, parseInt(this.actividadFisicaPorSemana), this.diagnosticadoCancerRadioButton, this.tipoCancer, this.fumaRadioButton, parseInt(this.empezoFumar), this.fumaActualmenteRadioButton, this.periodoFumado, this.bebidasAlcoholicasRadioButton, this.consumoTotalRadioButton, null);
     let historialFamiliarCita = new HistorialFamiliarCita(this.idCita, "1", this.familiaresConCancerRadioButton, familiarConCancer, this.familiaresConOtroCancerRadioButton);
 
     await this.historialFamiliarCitaService.create(historialFamiliarCita).toPromise();

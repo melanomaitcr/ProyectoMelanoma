@@ -3,5 +3,11 @@
         "target": "http://melanomaitcr.pythonanywhere.com",
         "secure": false,
         "changeOrigin": true
+    },
+
+    "/files": {
+        "target": "http://melanomaitcr.pythonanywhere.com",
+        "secure": false,
+        "changeOrigin": true
     }
 }

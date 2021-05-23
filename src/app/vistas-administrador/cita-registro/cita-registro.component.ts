@@ -153,6 +153,7 @@ export class CitaRegistroComponent implements OnInit {
     this.cita.fecha_hora_cita = String(fechaCita);
 
     this.cita.cedula_medico = this.medicoSeleccionado.cedula;
+    console.log(this.cita)
     let respuesta = await this.citaService.create(this.cita).toPromise();
     let nuevaCita = respuesta as Cita;
 
