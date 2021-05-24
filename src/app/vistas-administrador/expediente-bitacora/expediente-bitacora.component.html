@@ -10,6 +10,11 @@
                     Reporte de importación de {{tipo}}
                 </mat-label>
 
+                <button mat-icon-button (click)="cerrar()"
+                    style="color: #AAAAAA; position: absolute; margin-left: 85%; margin-top: -15px;">
+                    <mat-icon>close</mat-icon>
+                </button>
+
             </mat-card-header>
             <br /> <br />
 
@@ -17,7 +22,7 @@
 
                 <mat-label class="mi-titulo"> Nombre del archivo: </mat-label>
                 <mat-label class="mi-cuerpo">
-                    {{nombreArchivo}} <br /><br/> <br />
+                    {{nombreArchivo}} <br /><br /> <br />
                 </mat-label>
 
                 <tr *ngFor="let item of resultado">
@@ -26,12 +31,6 @@
                 </tr>
 
             </mat-card-content>
-
-            <mat-card-actions style="align-self:center;">
-
-                <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
-
-            </mat-card-actions>
 
         </mat-card>
 

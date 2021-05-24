@@ -1,16 +1,8 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { Expediente } from '../../models/expediente';
 import { ExpedienteService } from '../../services/expediente.service';
-import { MatPaginatorIntl } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ExpedienteEdicionComponent } from '../expediente-edicion/expediente-edicion.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ExpedienteBorradoComponent } from '../expediente-borrado/expediente-borrado.component';
-import { ExpedienteRegistroComponent } from '../expediente-registro/expediente-registro.component';
-import { ExpedienteRegistroConfirmacionComponent } from '../expediente-registro-confirmacion/expediente-registro-confirmacion.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CitaService } from 'src/app/services/cita.service';
 import { Cita } from 'src/app/models/cita';
@@ -19,7 +11,6 @@ import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ArchivoCita } from 'src/app/models/archivoCita';
 import { ArchivoCitaService } from 'src/app/services/archivo-cita.service';
-import { stringify } from '@angular/compiler/src/util';
 import { HistorialPersonalCita } from 'src/app/models/historialPersonalCita';
 import { HistorialPersonalCitaService } from 'src/app/services/historial-personal-cita.service';
 import { HistorialFamiliarCitaService } from 'src/app/services/historial-familiar-cita.service';
@@ -27,7 +18,7 @@ import { HistorialFamiliarCita } from 'src/app/models/historialFamiliarCita';
 import { addHours } from 'date-fns';
 import { FamiliarOtroCancer } from 'src/app/models/familiarOtroCancer';
 import { FamiliarOtroCancerService } from 'src/app/services/familiar-otro-cancer.service';
-import { Familiar, ListaFamiliares } from 'src/app/vistas-paciente/formulario-cita/formulario-cita.component';
+import { ListaFamiliares } from 'src/app/vistas-paciente/formulario-cita/formulario-cita.component';
 import { FamiliarCancerEdicionComponent } from '../familiar-cancer-edicion/familiar-cancer-edicion.component';
 
 @Component({
@@ -53,7 +44,6 @@ export class CitaComponent implements OnInit {
   archivos: ArchivoCita[] = [];
   familiaresOtroCancer: FamiliarOtroCancer[] = [];
   familiaresOtroCancerMedico: FamiliarOtroCancer[] = [];
-  //insert into archivo_cita values('6', '1', 'Jaja.pdf', 'http://melanomaitcr.pythonanywhere.com/files/archivo_cita_2_Notas.pdf', 'A')
   public datepipe: DatePipe = new DatePipe('es-ES');
   tabActual = 0
   allComplete: boolean = false;
@@ -207,11 +197,6 @@ export class CitaComponent implements OnInit {
   }
 
   async cargarCita() {
-    //let historialPersonalCita = new HistorialPersonalCita(this.idCita, '1', 70.2, 1.75, 20, '1', 20, '0', null, '1', 20, '0', null, '0', null, null);
-    //await this.historialPersonalCitaService.create(historialPersonalCita).toPromise();
-    // insert into familiar_otro_cancer values('1','1','Pulmón','Madre');
-    // insert into familiar_otro_cancer values('1','1','Estómago','Tío Paterno');
-
     this.cita = await this.citaService.findByPk(this.idCita).toPromise() as Cita;
 
     let fhc = new Date(this.cita.fecha_hora_cita);

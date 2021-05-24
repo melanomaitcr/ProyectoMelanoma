@@ -172,12 +172,10 @@
 
             </mat-card-content>
 
-            <mat-card-actions style="margin-left: 48%; align-self: flex-end; ">
+            <mat-card-actions>
 
-                <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
-
-                <button mat-raised-button class="mi-boton" [disabled]="!formularioValido()" style="margin-left: 20px;"
-                    (click)="registrarExpediente()">Registrar</button>
+                <button mat-raised-button class="mi-boton" [disabled]="!formularioValido()"
+                    style="float: right; margin-right: 6%;" (click)="registrarExpediente()">Registrar</button>
 
             </mat-card-actions>
         </mat-card>

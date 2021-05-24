@@ -1,7 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,6 +16,7 @@ import { ExpedienteService } from 'src/app/services/expediente.service';
 import { FamiliarOtroCancerService } from 'src/app/services/familiar-otro-cancer.service';
 import { HistorialFamiliarCitaService } from 'src/app/services/historial-familiar-cita.service';
 import { HistorialPersonalCitaService } from 'src/app/services/historial-personal-cita.service';
+import { ListaFamiliares } from 'src/app/vistas-paciente/formulario-cita/formulario-cita.component';
 import { ExpedienteEdicionComponent } from '../expediente-edicion/expediente-edicion.component';
 
 
@@ -50,6 +50,36 @@ export class ExpedienteComponent implements OnInit {
   fechaAnual = "";
 
   expedientes: Expediente[];
+  allComplete: boolean = false;
+  listaFamiliares: ListaFamiliares = {
+    familiares: [
+      { name: "Madre", completed: false },
+      { name: "Hermana", completed: false },
+      { name: "Tía Materna", completed: false },
+      { name: "Tía Paterna", completed: false },
+      { name: "Abuela Materna", completed: false },
+      { name: "Abuela Paterna", completed: false },
+      { name: "Otro(s)", completed: false },
+      { name: "Padre", completed: false },
+      { name: "Hermano", completed: false },
+      { name: "Tío Materno", completed: false },
+      { name: "Tío Paterno", completed: false },
+      { name: "Abuelo Materno", completed: false },
+      { name: "Abuelo Paterno", completed: false },
+    ]
+  };
+
+  updateAllComplete() {
+    this.allComplete = this.listaFamiliares.familiares != null && this.listaFamiliares.familiares.every(t => t.completed);
+  }
+
+  sacarParientesConCancer() {
+    for (let familiar of this.hfc.parientes_con_cancer_melanoma.split(",")) {
+      for (let fam of this.listaFamiliares.familiares) {
+        if (fam.name == familiar) fam.completed = true;
+      }
+    }
+  }
 
   filtradoMensualCitas = (data: any, filter: string) => {
     console.log(data);
@@ -238,12 +268,12 @@ export class ExpedienteComponent implements OnInit {
 
   getFechaHora(cita: Cita) {
     let fhc = new Date(cita.fecha_hora_cita);
-    return this.datepipe.transform(fhc, 'dd/MM//yyyy hh:mm aa');
+    return this.datepipe.transform(fhc, 'dd/MM/yyyy hh:mm aa');
   }
 
   getFecha(data: any) {
     let fhc = new Date(data.fecha_hora_cita);
-    return this.datepipe.transform(fhc, 'dd/MM//yyyy');
+    return this.datepipe.transform(fhc, 'dd/MM/yyyy');
   }
 
   async cargarPaciente(cedulaPaciente: String) {
@@ -302,6 +332,8 @@ export class ExpedienteComponent implements OnInit {
 
   async getHistoriales() {
     let allCitas = (await this.citaService.findAll().toPromise())['data'] as Cita[];
+    console.log(allCitas);
+
     let idCita = "";
 
     let hpcs = (await this.historialPersonalCitaService.findAll().toPromise())['data'] as HistorialPersonalCita[];
@@ -309,36 +341,30 @@ export class ExpedienteComponent implements OnInit {
     let focs = (await this.familiarOtroCancerService.findAll().toPromise())['data'] as FamiliarOtroCancer[];
 
     for (let cita of allCitas)
-      for (let hpc of hpcs)
-        if (hpc.id_cita == cita.id_cita && cita.cedula_paciente == this.cedula)
-          idCita = cita.id_cita
+      if (cita.cedula_paciente == this.cedula && cita.datos_ingresados_paciente == '1') {
+        idCita = cita.id_cita; console.log(cita);
+      }
 
     for (let hpc of hpcs)
-      if (hpc.id_cita == idCita)
+      if (hpc.id_cita == idCita && hpc.rellenado_por_paciente == '0')
         this.hpc = hpc;
 
     for (let hfc of hfcs)
-      if (hfc.id_cita == idCita)
+      if (hfc.id_cita == idCita && hfc.rellenado_por_paciente == '0')
         this.hfc = hfc;
 
 
     for (let foc of focs)
-      if (foc.id_cita == idCita)
+      if (foc.id_cita == idCita && foc.rellenado_por_paciente == this.hfc.rellenado_por_paciente)
         this.familiaresOtroCancer.push(foc);
 
 
-    console.log(this.hpc); console.log(this.hfc); console.log(this.familiaresOtroCancer);
+    this.sacarParientesConCancer()
     return;
-    try {
-      this.hfc = await this.historialFamiliarCitaService.findByPk(idCita, '1').toPromise() as HistorialFamiliarCita;
-      let fsoc = (await this.familiarOtroCancerService.findAll().toPromise())['data'] as FamiliarOtroCancer[];
-      for (let foc of fsoc)
-        if (foc.id_cita == idCita)
-          this.familiaresOtroCancer.push(foc);
 
-    } catch (error) { }
+  }
 
-    console.log(this.hpc); console.log(this.hfc);
-
+  consultarCita(cita) {
+    this.router.navigate(['/cita-lectura', { idCita: cita.id_cita, origen: 'expediente' }]);
   }
 }

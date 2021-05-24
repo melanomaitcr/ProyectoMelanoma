@@ -202,7 +202,10 @@ export class CitasComponent implements OnInit {
     });
 
     referenciaDialogo.afterClosed().subscribe(result => {
-      if (result != undefined) this.router.navigate(['/cita', { idCita: cita.id_cita }])
+      if (result == undefined) return;
+      if (cita.cita_finalizada == '1')
+        this.router.navigate(['/cita-lectura', { idCita: cita.id_cita, origen: 'citas' }])
+      else this.router.navigate(['/cita', { idCita: cita.id_cita }])
       /**
       if (result != undefined) this.dataVista.visualizacion = "Cita";
       console.log("HERE2"); */

@@ -1,56 +1,72 @@
-<app-navbar-medico paginaActual="expedientes"> </app-navbar-medico>
+<app-navbar-administrador paginaActual="expedientes"> </app-navbar-administrador>
 <div class="contenedor-inicio-sesion" fxLayout="row">
     <div fxFlex=40% fxLayoutAlign="center center">
 
-        <mat-card class="card-inicio-sesion cardX">
-            <mat-card-header class="title-inicio-sesion">
-                <mat-card-title class="title-inicio-sesion">Datos Personales</mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="content-inicio-sesion">
-                <form class="form-inicio-sesion">
-                    <mat-label class="subtitulos-info-personal">Información Básica</mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Nombre: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{expediente.nombre +" "+ expediente.primer_apellido +" "+
-                        expediente.segundo_apellido}}</mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Fecha de Nacimiento: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{expediente.fecha_nacimiento}}</mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Edad: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{edad}}</mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Nacionalidad: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{expediente.nacionalidad}}</mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Domicilio: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{expediente.domicilio_distrito +", "+
-                        expediente.domicilio_canton +",
-                        "+ expediente.domicilio_provincia}}</mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Identidad étnica-racial: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{expediente.identidad_etnica}}</mat-label>
-                    <br><br><br>
-                    <mat-label class="subtitulos-info-personal">Información de Contacto</mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Correo electrónico: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{expediente.correo_electronico}} </mat-label>
-                    <br><br>
-                    <mat-label class="subtitulos-atributo">Número de teléfono: </mat-label>
-                    <mat-label class="subtitulos-contenido">{{expediente.numero_telefono}}</mat-label>
-                </form>
-            </mat-card-content>
-        </mat-card>
+        <div style="width: 100%;">
+            <button mat-raised-button class="mi-boton" (click)="volver()"
+                style="margin-left: 10%; margin-bottom: 5%; line-height: 35px; width: 110px !important;">
+                <mat-icon aria-hidden="false" style="font-size: 20px;">arrow_back</mat-icon> Volver
+            </button>
+
+            <mat-card class="card-inicio-sesion cardX" style="margin-left: 10%;">
+                <mat-card-header class="title-inicio-sesion">
+                    <mat-card-title class="title-inicio-sesion">Datos Personales
+                        <button mat-raised-button class="mi-boton" (click)="editar()"
+                            style="margin-top: -5px; margin-left: 7%; position: absolute; width: 100px !important; line-height: 35px;">
+                            <mat-icon aria-hidden="false" style="font-size: 20px;">edit</mat-icon> Editar
+                        </button>
+
+                    </mat-card-title>
+
+                </mat-card-header>
+                <mat-card-content class="content-inicio-sesion">
+                    <form class="form-inicio-sesion">
+                        <mat-label class="subtitulos-info-personal">Información Básica</mat-label>
+                        <br><br>
+                        <mat-label class="subtitulos-atributo">Nombre: </mat-label>
+                        <mat-label class="subtitulos-contenido">{{expediente.nombre +" "+ expediente.primer_apellido +"
+                            "+
+                            expediente.segundo_apellido}}</mat-label>
+                        <br><br>
+                        <mat-label class="subtitulos-atributo">Fecha de Nacimiento: </mat-label>
+                        <mat-label class="subtitulos-contenido">{{expediente.fecha_nacimiento}}</mat-label>
+                        <br><br>
+                        <mat-label class="subtitulos-atributo">Edad: </mat-label>
+                        <mat-label class="subtitulos-contenido">{{edad}}</mat-label>
+                        <br><br>
+                        <mat-label class="subtitulos-atributo">Nacionalidad: </mat-label>
+                        <mat-label class="subtitulos-contenido">{{expediente.nacionalidad}}</mat-label>
+                        <br><br>
+                        <mat-label class="subtitulos-atributo">Domicilio: </mat-label>
+                        <mat-label class="subtitulos-contenido">{{expediente.domicilio_distrito +", "+
+                            expediente.domicilio_canton
+                            +",
+                            "+ expediente.domicilio_provincia}}</mat-label>
+                        <!--
+              <br><br>
+            <mat-label class="subtitulos-atributo">Identidad étnica-racial: </mat-label>
+            <mat-label class="subtitulos-contenido">{{expediente.identidad_etnica}}</mat-label>
+            -->
+                        <br><br><br>
+                        <mat-label class="subtitulos-info-personal">Información de Contacto</mat-label>
+                        <br><br>
+                        <mat-label class="subtitulos-atributo">Correo electrónico: </mat-label>
+                        <mat-label class="subtitulos-contenido">{{expediente.correo_electronico}} </mat-label>
+                        <br><br>
+                        <mat-label class="subtitulos-atributo">Número de teléfono: </mat-label>
+                        <mat-label class="subtitulos-contenido">{{expediente.numero_telefono}}</mat-label>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
 
     <div fxFlex=55%>
 
-        <button mat-raised-button class="mi-boton" (click)="volver()"
-            style="position: absolute; margin-left: 33%; line-height: 35px; width: 100px !important;">
-            Atrás
-        </button>
 
-        <button mat-raised-button class="mi-boton" style="position: absolute; margin-left: 43%; line-height: 35px; ">
+
+        <button mat-raised-button class="mi-boton" style="position: absolute; margin-left: 43%; line-height: 35px; "
+            (click)="exportar()">
             Exportar expediente
         </button>
 
@@ -66,59 +82,151 @@
                 <mat-card-content class="expediente-info" fxLayout="row">
                     <div class="familiar" fxFlex=48%>
 
-                        <ng-scrollbar class="scroll-datosCita2" thumbClass="white-scrollbars" track="all">
+                        <ng-scrollbar class="scroll-datosCitaAA" thumbClass="white-scrollbars" track="all">
 
                             <mat-label class="mi-super-titulo">Historial Personal</mat-label>
-                            <br /><br />
-
-                            <div>
-                                <div fxFlex=45%>
-                                    <mat-label class="mi-titulo">Peso: </mat-label>
-                                    <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.peso_kg}} kg
-                                        &nbsp;&nbsp;&nbsp;
-                                    </mat-label>
-                                </div>
-                                <div fxFlex=55%>
-                                    <mat-label class="mi-titulo">Estatura: </mat-label>
-                                    <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.estatura_cm}}m
-                                        &nbsp;&nbsp;&nbsp;
-                                    </mat-label>
-                                </div>
-                            </div>
-
                             <br />
 
-                            <mat-label class="mi-titulo">IMC: </mat-label>
-                            <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.imc}} kg &nbsp;&nbsp;&nbsp;
+
+                            <div>
+                                <mat-label class="mi-titulo">Peso: &nbsp;&nbsp;</mat-label>
+                                <mat-form-field appearance="standard" style="width: 20%;">
+                                    <input disabled matInput [(ngModel)]="hpc.peso_kg" name="pesoFC">
+                                    <span matSuffix
+                                        style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">kg</span>
+                                </mat-form-field>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <!--
+                                  <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.peso_kg}} kg
+                                      &nbsp;&nbsp;&nbsp;
+                                  </mat-label>
+                                  -->
+
+                                &nbsp;
+                                <mat-label class="mi-titulo">Estatura: &nbsp;&nbsp;</mat-label>
+                                <mat-form-field appearance="standard" style="width: 23%;">
+                                    <input disabled matInput [(ngModel)]="hpc.estatura_cm" name="estaturaFC">
+                                    <span matSuffix
+                                        style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">cm</span>
+                                </mat-form-field>
+
+                            </div>
+
+
+
+                            <mat-label class="mi-titulo">IMC: &nbsp;&nbsp;</mat-label>
+                            <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;{{hpc.imc}} kg &nbsp;&nbsp;
                             </mat-label>
 
                             <br /><br />
 
-                            <mat-label class="mi-titulo">Actividad física:
+
+                            <mat-label class="mi-titulo">¿Realiza actividad Física?
                             </mat-label>
                             <mat-radio-group disabled [(ngModel)]="hpc.realizacion_actividad_fisica"
                                 name="realizacion_actividad_fisica">
                                 <mat-radio-button value="1">Sí</mat-radio-button>
                                 <mat-radio-button value="0">No</mat-radio-button>
                             </mat-radio-group>
-
-                            <br /><br />
-
-                            <mat-label class="mi-titulo">Consumo de bebidas alcohólicas: </mat-label>
                             <br />
-                            <mat-radio-group disabled [(ngModel)]="hpc.consume_bebidas_alcoholicas"
-                                name="consume_bebidas_alcoholicas">
-                                <mat-radio-button value="1">Sí</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
 
-                            <br /><br />
+                            <mat-label class="mi-titulo">¿Cuánto tiempo por semana? &nbsp;&nbsp;&nbsp;</mat-label>
+                            <mat-form-field appearance="standard" style="width: 23%;">
+                                <input disabled matInput [(ngModel)]="hpc.minutos_semana_actividad_fisica"
+                                    name="minutos_semana_actividad_fisica">
+                                <span matSuffix
+                                    style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">min</span>
+                            </mat-form-field>
 
-                            <mat-label class="mi-titulo">Fumador/a: </mat-label>
+                            <br />
+                            <mat-label class="mi-titulo">¿Fuma o ha fumado?
+                            </mat-label>
                             <mat-radio-group disabled [(ngModel)]="hpc.fuma_o_ha_fumado" name="fuma_o_ha_fumado">
                                 <mat-radio-button value="1">Sí</mat-radio-button>
                                 <mat-radio-button value="0">No</mat-radio-button>
                             </mat-radio-group>
+                            <br />
+
+                            <mat-label class="mi-titulo">¿A qué edad empezó a fumar? &nbsp;&nbsp;&nbsp;</mat-label>
+                            <mat-form-field appearance="standard" style="width: 22%;">
+                                <input disabled matInput [(ngModel)]="hpc.edad_empezo_fumar" name="edad_empezo_fumar">
+                                <span matSuffix
+                                    style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">años</span>
+                            </mat-form-field>
+                            <br />
+
+                            <mat-label class="mi-titulo">¿Fuma actualmente?
+                            </mat-label>
+                            <mat-radio-group disabled [(ngModel)]="hpc.fuma_actualmente" name="fuma_actualmente">
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+                            <br />
+
+                            <mat-label class="mi-titulo">¿Desde hace cuánto? &nbsp;&nbsp;&nbsp;</mat-label>
+                            <mat-form-field appearance="standard" style="width: 22%;">
+                                <input disabled matInput [(ngModel)]="hpc.periodo_fumado" name="periodo_fumado">
+                                <span matSuffix
+                                    style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">años</span>
+                            </mat-form-field>
+                            <br />
+
+                            <mat-label class="mi-titulo">¿Consume bebidas alcohólicas?
+                            </mat-label>
+                            <mat-radio-group disabled [(ngModel)]="hpc.consume_bebidas_alcoholicas"
+                                name="consume_bebidas_alcoholicas">
+                                <br />
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+                            <br /><br />
+
+                            <mat-label class="mi-titulo">¿Cuánto consume en total?
+                            </mat-label>
+                            <mat-radio-group disabled [(ngModel)]="hpc.consume_bebidas_alcoholicas_total"
+                                name="consume_bebidas_alcoholicas_total">
+                                <br />
+                                <mat-radio-button style="width: 0;" value="1">Más de 3 bebidas a la semana
+                                </mat-radio-button>
+                                <br />
+                                <mat-radio-button style="width: 0;" value="2">Más de 2 bebidas alcohólicas al día
+                                </mat-radio-button>
+                                <br />
+                                <mat-radio-button style="width: 0;" value="3">Otro
+                                </mat-radio-button>
+
+                                <br />
+                                <mat-radio-button style="width: 0;" value="4">Ninguna de las anteriores
+                                </mat-radio-button>
+                                <br />
+
+                            </mat-radio-group>
+
+                            <mat-form-field appearance="standard" style="width: 45%; margin-top: -20px;"
+                                *ngIf="hpc.consume_bebidas_alcoholicas_total == '3'">
+                                <input disabled matInput [(ngModel)]="hpc.consume_bebidas_alcoholicas_total_otro"
+                                    name="consume_bebidas_alcoholicas_total_otro">
+                                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;"> por
+                                    semana</span>
+                            </mat-form-field>
+
+                            <br />
+                            <mat-label class="mi-titulo">¿Le han diagnosticado algún otro tipo de cáncer?
+                            </mat-label>
+                            <mat-radio-group disabled [(ngModel)]="hpc.diagnostico_propio_cancer"
+                                name="diagnostico_propio_cancer">
+                                <br />
+                                <mat-radio-button value="1">Sí</mat-radio-button>
+                                <mat-radio-button value="0">No</mat-radio-button>
+                            </mat-radio-group>
+                            <br />
+
+                            <mat-label class="mi-titulo">¿De qué tipo(s)? &nbsp;&nbsp;&nbsp;</mat-label>
+                            <mat-form-field appearance="standard" style="width: 45%;">
+                                <input disabled matInput [(ngModel)]="hpc.tipos_cancer_propios"
+                                    name="tipos_cancer_propios">
+                            </mat-form-field>
+
 
                         </ng-scrollbar>
 
@@ -130,22 +238,37 @@
 
 
 
-                        <ng-scrollbar class="scroll-datosCita" thumbClass="white-scrollbars" track="all">
+                        <ng-scrollbar class="scroll-datosCitaBB" thumbClass="white-scrollbars" track="all">
                             <mat-label class="mi-super-titulo">Historial Familiar</mat-label>
 
                             <br /><br />
 
                             <mat-label class="mi-titulo">Familiares con cáncer de melanoma
                             </mat-label>
-                            <br />
                             <mat-radio-group disabled [(ngModel)]="hfc.familiares_con_cancer_melanoma"
                                 name="familiares_con_cancer_melanoma">
+                                <br />
                                 <mat-radio-button value="1">Sí</mat-radio-button>
                                 <mat-radio-button value="0">No</mat-radio-button>
                             </mat-radio-group>
 
-
                             <br /><br />
+                            <mat-label class="mi-titulo">Parentesco </mat-label>
+
+                            <section style="position: relative; width: 50%;">
+
+                                <span>
+                                    <ul class="cb-wrapper" [ngClass]="{'cb-vertival': !false }">
+                                        <li *ngFor="let x of listaFamiliares.familiares">
+                                            <mat-checkbox disabled [(ngModel)]="x.completed"
+                                                (ngModelChange)="updateAllComplete()" name="x.name">
+                                                {{x.name}}
+                                            </mat-checkbox>
+                                        </li>
+                                    </ul>
+                                </span>
+
+                            </section>
 
                             <mat-label class="mi-titulo">Familiares con otros tipos de cáncer
                             </mat-label>
@@ -156,8 +279,13 @@
                                 <mat-radio-button value="0">No</mat-radio-button>
                             </mat-radio-group>
 
+                            <br /><br />
+                            <mat-label class="mi-titulo">Familiares
+                            </mat-label>
+
+
                             <br style="padding-top: 100px;" />
-                            <mat-card *ngFor="let familiarOtroCancer of familiaresOtroCancer"
+                            <mat-card *ngFor="let familiarOtroCancer of familiaresOtroCancer; index as i;"
                                 style="padding: 5px; padding-left: 10px; box-shadow: none;">
 
                                 <mat-label class="mi-cuerpo-pequenno">
@@ -184,7 +312,152 @@
             </mat-card>
 
             <mat-card id="Historial" style="border-top-left-radius: 0px;" class="tabcontent mat-elevation-z3">
-                <mat-card-content style="margin-top: 20px;" fxLayout="row">
+                <mat-card-content>
+
+
+
+                    <mat-card style="box-shadow: none;">
+
+
+                        <mat-card-header>
+
+                            <mat-form-field appearance="outline"
+                                style=" width:20%; margin-left:-30px; margin-top: -10px;">
+                                <mat-select [(value)]="dataVista.visualizacionContenido"
+                                    (selectionChange)="cambioContenido()"
+                                    style="color: #4F4E4E !important; padding-left: 5px;">
+                                    <mat-option value="Citas">Citas</mat-option>
+                                    <mat-option value="Archivos">Archivos</mat-option>
+                                    <mat-option value="Imágenes">Imágenes</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <div
+                                style="width: 60%; padding-top: 5px; padding-left: 30px; color: #4F4E4E; text-align: center; font-size: 24px;">
+                                <button mat-icon-button (click)="fechaAnterior()">
+                                    <mat-icon style="font-size: 48px; margin-right: 50px;">arrow_left</mat-icon>
+                                </button>
+                                <mat-label style="padding-left: 10px; margin-top: 100px;"> {{getFechaActual()}}
+                                </mat-label>
+                                <button mat-icon-button (click)="fechaSiguiente()">
+                                    <mat-icon style="font-size: 48px;  margin-right: 30px;">arrow_right</mat-icon>
+                                </button>
+                            </div>
+
+                            <!--
+              <mat-card-title style="padding-left: 80%;font-size: 16px;color: #4F4E4E;">
+                Visualización:
+              </mat-card-title>-->
+                            <mat-form-field appearance="outline" style=" width:20%; margin-top: -10px;">
+                                <mat-select [(value)]="dataVista.visualizacionTiempo" (selectionChange)="cambioTiempo()"
+                                    style="color: #4F4E4E !important; padding-left:5px;">
+                                    <mat-option value="Mensual">Mensual</mat-option>
+                                    <mat-option value="Anual">Anual</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+
+                        </mat-card-header>
+
+
+                        <mat-card-content>
+
+                            <ng-scrollbar class="scroll-tabla" thumbClass="white-scrollbars" track="all">
+
+                                <table mat-table [dataSource]="dataSource" matSort class=" mi-table"
+                                    style="width: 95%;">
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="idcita" class="mi-column">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header
+                                            class="mi-primera-columna">
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Citas'"> Número de cita
+                                            </span>
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Archivos'"> Nombre </span>
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Imágenes'"> Imagen </span>
+                                        </th>
+                                        <td mat-cell *matCellDef="let data" class="mi-primera-columna">
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Citas'"> Cita No.
+                                                {{data.id_cita}} </span>
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Archivos'">
+                                                {{data.nombre_archivo}} </span>
+                                            <img *ngIf="dataVista.visualizacionContenido == 'Imágenes'"
+                                                [src]="data.url_archivo" height="75" style="border-radius: 15px;">
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="fechahora" class="mi-column">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Citas'"> Fecha y hora
+                                            </span>
+                                            <span
+                                                *ngIf="dataVista.visualizacionContenido == 'Archivos' || dataVista.visualizacionContenido == 'Imágenes'">
+                                                Fecha </span>
+                                        </th>
+                                        <td mat-cell *matCellDef="let data">
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Citas'">
+                                                {{getFechaHora(data)}} </span>
+                                            <span
+                                                *ngIf="dataVista.visualizacionContenido == 'Archivos' || dataVista.visualizacionContenido == 'Imágenes'">
+                                                {{getFecha(data)}} </span>
+                                        </td>
+                                    </ng-container>
+
+
+
+                                    <ng-container matColumnDef="acciones">
+                                        <th mat-header-cell *matHeaderCellDef class="mi-ultima-columna">
+                                            <span *ngIf="dataVista.visualizacionContenido == 'Citas'"> Acciones </span>
+                                            <span
+                                                *ngIf="dataVista.visualizacionContenido == 'Archivos' || dataVista.visualizacionContenido == 'Imágenes'">
+                                                Descargar </span>
+                                        </th>
+                                        <td mat-cell *matCellDef="let data" class="mi-ultima-columna">
+                                            <button mat-raised-button (click)="consultarCita(data)" class="mi-boton"
+                                                *ngIf="dataVista.visualizacionContenido == 'Citas'"
+                                                style="width: 100px !important; line-height: 40px !important;">
+                                                Ver cita
+                                            </button>
+
+                                            <button mat-icon-button (click)="descargarArchivo(data)"
+                                                *ngIf="dataVista.visualizacionContenido == 'Archivos' || dataVista.visualizacionContenido == 'Imágenes'"
+                                                style="color: white; background-color: #AAAAAA;  transform: scale(0.7, 0.7); margin-left: 20%;">
+                                                <mat-icon>get_app</mat-icon>
+                                            </button>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="mi-header"></tr>
+
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="mi-row"> </tr>
+
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="4">No se han encontrado {{getContenido()}} para
+                                            este {{getTiempo()}}
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+
+                            </ng-scrollbar>
+                        </mat-card-content>
+
+
+                    </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </mat-card-content>
             </mat-card>

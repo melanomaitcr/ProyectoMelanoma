@@ -36,4 +36,9 @@ export class NavbarMedicoComponent implements OnInit {
     this.router.navigate(['/expedientes-medico']);
   }
 
+  vistaPerfil() {
+    this.paginaActual = 'perfil';
+    this.router.navigate(['/informacion-perfil-medico']);
+  }
+
 }

@@ -64,14 +64,16 @@
   }
 
   .card-inicio-sesion .title-inicio-sesion{
-    text-align:center;
+    text-align:left;
     display:block;
-    font-size: min(2.8vw, 36px);
+    font-size: min(2.8vw, 32px);
   //  font-family: 'Roboto';
+  color: #4F4E4E;
     font-weight:700;
     font-style: normal;
-    margin-top: 20px;
-    line-height: 3vw;
+    margin-top: 10px;
+    margin-left: 5px;
+    line-height: 2vw;
   }
   
   .card-inicio-sesion .form-inicio-sesion{
@@ -89,6 +91,7 @@
     border-radius: 60px;
   }
   
+
   .card-inicio-sesion .actions-inicio-sesion{
     margin-left: 4vw;
     margin-right:4vw;
@@ -104,8 +107,9 @@
   }
 
   .vl {
-    border-left: 1px solid #4F4E4E;
-    height: 300px;
+    border-left: 2px solid #4F4E4E;
+    height: 365px;
+    margin-left: 15px;
     top: 0;
   }
 
@@ -121,7 +125,7 @@
   float: left;
   border: none;
   outline: none;
-  height: 50px;
+  height: 60px;
   border-radius: 0px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -255,27 +259,152 @@ mat-form-field, ::ng-deep .mat-select-value{
 
 
 ::ng-deep {
-  ng-scrollbar.scroll-datosCita {
+  ng-scrollbar.scroll-datosCitaBB {
     --scrollbar-size: 8px;
     --scrollbar-thumb-color: gray;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
 
-    height: 300px;
+    height: 350px;
     width: 650px;
   }
 }
 
 ::ng-deep {
-  ng-scrollbar.scroll-datosCita2 {
+  ng-scrollbar.scroll-datosCitaAA {
     --scrollbar-size: 8px;
     --scrollbar-thumb-color: gray;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
 
-    height: 300px;
+    height:350px;
     width: 650px;
   }
+}
+
+
+::ng-deep {
+  ng-scrollbar.scroll-tabla {
+    --scrollbar-size: 8px;
+    --scrollbar-thumb-color: gray;
+    --scrollbar-hover-size: 12px;
+    --scrollbar-track-color: rgba(0, 0, 0, 0.05);
+    --scrollbar-border-radius: 20px;
+
+    height: 350px;
+    width: 5000px;
+  }
+}
+
+.cb-wrapper {
+  display: flex;
+  justify-content:left;
+  align-items:baseline;
+  height: 13em;
+  padding-left: 5px;
+}
+
+
+
+.cb-vertival {
+  flex-flow: column;
+  flex-wrap: wrap;
+  column-gap: 15%;
+  row-gap: 2px;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label  {
+  font-size: 14px; 
+  color: #AAAAAA; 
+}
+
+
+
+
+
+
+
+
+
+.mi-table {
+  width: 100%;
+  border-collapse: separate!important;
+  overflow: hidden !important;
+  border-spacing:0 5px;
+}
+
+
+.mat-header-cell {
+  font-size:medium !important;
+  font-weight: 700;
+  color: #AAAAAA;
+}
+
+.mat-cell {
+  color: #AAAAAA;
+}
+
+.mi-header {
+  background-color: #fafafa;
+}
+
+.mi-row {
+  background-color: #F0F0F0;
+}
+
+
+.mi-primera-columna {
+  border-radius: 20px 0 0 20px;
+}
+
+.mi-ultima-columna {
+  border-radius: 0 20px 20px 0;
+}
+
+.mi-column {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.mat-column-idcita{
+    flex: 0 0 38% !important;
+    width: 38% !important;
+}
+
+
+.mat-column-fechahora{
+  flex: 0 0 38% !important;
+  width: 38% !important;
+}
+
+.mat-column-descargar{
+    flex: 0 0 13% !important;
+    width: 13% !important;
+}
+
+
+td {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+td.mat-cell {
+  border-bottom: none !important;
 }

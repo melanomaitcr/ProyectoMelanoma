@@ -15,6 +15,10 @@ export class CitaService {
     return this.https.get(baseUrl);
   }
 
+  findAllMedico() {
+    return this.https.get(baseUrl + 'All');
+  }
+
   findByPk(id_cita) {
     return this.https.get(`${baseUrl}/${id_cita}`);
   }

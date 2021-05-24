@@ -198,7 +198,11 @@ export class CitasMedicoComponent implements OnInit {
     });
 
     referenciaDialogo.afterClosed().subscribe(result => {
-      if (result != undefined) this.router.navigate(['/cita-medico', { idCita: cita.id_cita }])
+      if (result == undefined) return;
+
+      if (cita.cita_finalizada == '1')
+        this.router.navigate(['/cita-lectura-medico', { idCita: cita.id_cita, origen: 'citas' }])
+      else this.router.navigate(['/cita-medico', { idCita: cita.id_cita }])
       /**
       if (result != undefined) this.dataVista.visualizacion = "Cita";
       console.log("HERE2"); */

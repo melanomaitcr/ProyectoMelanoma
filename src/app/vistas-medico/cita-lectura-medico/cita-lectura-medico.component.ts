@@ -22,11 +22,11 @@ import { ListaFamiliares } from 'src/app/vistas-paciente/formulario-cita/formula
 import { FamiliarCancerEdicionComponent } from '../../vistas-administrador/familiar-cancer-edicion/familiar-cancer-edicion.component';
 
 @Component({
-  selector: 'app-cita-medico',
-  templateUrl: './cita-medico.component.html',
-  styleUrls: ['./cita-medico.component.scss']
+  selector: 'app-cita-lectura-medico',
+  templateUrl: './cita-lectura-medico.component.html',
+  styleUrls: ['./cita-lectura-medico.component.scss']
 })
-export class CitaMedicoComponent implements OnInit {
+export class CitaLecturaMedicoComponent implements OnInit {
 
   idCita = "1";
   cita: Cita = new Cita("", "", "", "", "", "", "", "", "");
@@ -237,7 +237,9 @@ export class CitaMedicoComponent implements OnInit {
   }
 
   abandonarCita() {
-    this.router.navigate(['citas']);
+    if (this.route.snapshot.paramMap.get('origen') == 'citas')
+      this.router.navigate(['/citas-medico']);
+    else this.router.navigate(['/expediente-medico', { cedula: this.cita.cedula_paciente }]);
   }
 
   subirArchivos() {

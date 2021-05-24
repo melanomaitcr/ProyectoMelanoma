@@ -107,8 +107,9 @@
   }
 
   .vl {
-    border-left: 1px solid #4F4E4E;
-    height: 300px;
+    border-left: 2px solid #4F4E4E;
+    height: 365px;
+    margin-left: 15px;
     top: 0;
   }
 
@@ -258,27 +259,27 @@ mat-form-field, ::ng-deep .mat-select-value{
 
 
 ::ng-deep {
-  ng-scrollbar.scroll-datosCita {
+  ng-scrollbar.scroll-datosCitaBB {
     --scrollbar-size: 8px;
     --scrollbar-thumb-color: gray;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
 
-    height: 300px;
+    height: 350px;
     width: 650px;
   }
 }
 
 ::ng-deep {
-  ng-scrollbar.scroll-datosCita2 {
+  ng-scrollbar.scroll-datosCitaAA {
     --scrollbar-size: 8px;
     --scrollbar-thumb-color: gray;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
 
-    height: 300px;
+    height:350px;
     width: 650px;
   }
 }
@@ -295,6 +296,34 @@ mat-form-field, ::ng-deep .mat-select-value{
     height: 350px;
     width: 5000px;
   }
+}
+
+.cb-wrapper {
+  display: flex;
+  justify-content:left;
+  align-items:baseline;
+  height: 13em;
+  padding-left: 5px;
+}
+
+
+
+.cb-vertival {
+  flex-flow: column;
+  flex-wrap: wrap;
+  column-gap: 15%;
+  row-gap: 2px;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+
+::ng-deep .mat-checkbox-layout .mat-checkbox-label  {
+  font-size: 14px; 
+  color: #AAAAAA; 
 }
 
 

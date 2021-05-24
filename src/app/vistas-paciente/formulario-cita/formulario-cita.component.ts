@@ -76,54 +76,54 @@ export class FormularioCitaComponent implements OnInit {
   };
   fechaNac = new Date();
 
-  //historialPersonal: HistorialPersonalCita = new HistorialPersonalCita(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-  //historialFamiliar: HistorialFamiliarCita = new HistorialFamiliarCita(null,null,null,null,null);
-  //familiarOtroCancer: FamiliarOtroCancer = new FamiliarOtroCancer(null,null,null,null);
+  //historialPersonal: HistorialPersonalCita = new HistorialPersonalCita("","","","","","","","","","","","","","","","");
+  //historialFamiliar: HistorialFamiliarCita = new HistorialFamiliarCita("","","","","");
+  //familiarOtroCancer: FamiliarOtroCancer = new FamiliarOtroCancer("","","","");
 
-  familiar = null;
-  nombre = null;
-  cedula = null;
-  fecha = null;
-  nacionalidad = null;
+  familiar = "";
+  nombre = "";
+  cedula = "";
+  fecha = "";
+  nacionalidad = "";
 
-  correoElectronico = null;
-  telefono = null;
-  provincia = null;
-  distrito = null;
-  canton = null;
+  correoElectronico = "";
+  telefono = "";
+  provincia = "";
+  distrito = "";
+  canton = "";
 
-  peso = null;
-  estatura = null;
-  imc = null;
+  peso = "";
+  estatura = "";
+  imc = "";
 
-  actividadFisicaPorSemana = null;
-  empezoFumar = null;
-  periodoFumado = null;
-  actividadFisicaRadioButton = null;
-  fumaRadioButton = null;
-  fumaActualmenteRadioButton = null;
+  actividadFisicaPorSemana = "";
+  empezoFumar = "";
+  periodoFumado = "";
+  actividadFisicaRadioButton = "";
+  fumaRadioButton = "";
+  fumaActualmenteRadioButton = "";
 
-  bebidasAlcoholicasRadioButton = null;
-  consumoTotalRadioButton = null;
-  diagnosticadoCancerRadioButton = null;
-  tipoCancer = null;
+  bebidasAlcoholicasRadioButton = "";
+  consumoTotalRadioButton = "";
+  diagnosticadoCancerRadioButton = "";
+  tipoCancer = "";
 
-  familiaresConCancerRadioButton = null;
-  otroFamiliarCancerMelanomaCheckbox = null;
+  familiaresConCancerRadioButton = "";
+  otroFamiliarCancerMelanomaCheckbox = "";
 
-  familiaresConOtroCancerRadioButton = null;
-  otroBebida = null;
-  parentesco = null;
-  tipoParentescoCancer = null;
+  familiaresConOtroCancerRadioButton = "";
+  otroBebida = "";
+  parentesco = "";
+  tipoParentescoCancer = "";
 
-  archivoImagenes = null;
-  archivoDocumentos = null;
+  archivoImagenes = "";
+  archivoDocumentos = "";
 
 
   allComplete: boolean = false;
 
   public datepipe: DatePipe = new DatePipe('es-ES');
-  expediente: Expediente = new Expediente("", "", "", "", "", "", "", "", "", "", "", null);
+  expediente: Expediente = new Expediente("", "", "", "", "", "", "", "", "", "", "", 0);
 
   constructor(
     private historialPersonalCitaService: HistorialPersonalCitaService,
@@ -206,7 +206,7 @@ export class FormularioCitaComponent implements OnInit {
           let nombreArchivo = archivos[i].name;
           let tipoArchivo = (nombreArchivo.includes('.png') || nombreArchivo.includes('.jpg') || nombreArchivo.includes('.jpeg') || nombreArchivo.includes('.svg') || nombreArchivo.includes('.gif')) ? 'I' : 'A';
 
-          let archivoCita = new ArchivoCita('1', ref.idCita, nombreArchivo, archivoBase64, tipoArchivo, null);
+          let archivoCita = new ArchivoCita('1', ref.idCita, nombreArchivo, archivoBase64, tipoArchivo, "");
           console.log(archivoCita);
 
           await ref.archivoCitaService.create(archivoCita).toPromise();
@@ -281,7 +281,7 @@ export class FormularioCitaComponent implements OnInit {
     result = familiarCancer.join(",")
     console.log(result);
 
-    if (!listaConCancer[6].completed) this.otroFamiliarCancerMelanomaCheckbox = null;
+    if (!listaConCancer[6].completed) this.otroFamiliarCancerMelanomaCheckbox = "";
     return result;
   }
 
@@ -291,13 +291,13 @@ export class FormularioCitaComponent implements OnInit {
 
     let familiarConCancer = this.obtenerParientesConCancer(this.listaFamiliares.familiares);
 
-    if (this.actividadFisicaRadioButton != '1') this.actividadFisicaPorSemana = null;
-    if (this.fumaRadioButton != '1') this.empezoFumar = null;
-    if (this.fumaActualmenteRadioButton != '1') this.periodoFumado = null;
-    if (this.bebidasAlcoholicasRadioButton != '1') this.consumoTotalRadioButton = null;
+    if (this.actividadFisicaRadioButton != '1') this.actividadFisicaPorSemana = "";
+    if (this.fumaRadioButton != '1') this.empezoFumar = "";
+    if (this.fumaActualmenteRadioButton != '1') this.periodoFumado = "";
+    if (this.bebidasAlcoholicasRadioButton != '1') this.consumoTotalRadioButton = "";
 
-    if (this.diagnosticadoCancerRadioButton != '1') this.tipoCancer = null;
-    if (this.familiaresConCancerRadioButton != '1') familiarConCancer = null;
+    if (this.diagnosticadoCancerRadioButton != '1') this.tipoCancer = "";
+    if (this.familiaresConCancerRadioButton != '1') familiarConCancer = "";
 
     if (this.familiaresConOtroCancerRadioButton != '1') this.familiaresOtroCancer = [];
 

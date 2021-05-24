@@ -4,9 +4,14 @@
 
         <mat-card-header>
 
-            <mat-label class="mi-titulo" style="padding-left: 50px;">
-                ¿Desea iniciar esta cita?
+            <mat-label class="mi-titulo" style="padding-left: 40px;">
+                ¿Desea {{accion}} esta cita?
             </mat-label>
+
+            <button mat-icon-button (click)="cerrar()"
+                style="color: #AAAAAA; position: absolute; margin-left: 82%; margin-top: -15px;">
+                <mat-icon>close</mat-icon>
+            </button>
 
         </mat-card-header>
         <br /> <br /><br />
@@ -30,12 +35,9 @@
 
         </mat-card-content>
 
-        <mat-card-actions style="align-self:center;">
+        <mat-card-actions>
 
-            <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
-
-            <button mat-raised-button class="mi-boton" style="margin-left: 20px; "
-                (click)="iniciarCita()">Aceptar</button>
+            <button mat-raised-button class="mi-boton" style="float: right;" (click)="iniciarCita()">Aceptar</button>
 
         </mat-card-actions>
 

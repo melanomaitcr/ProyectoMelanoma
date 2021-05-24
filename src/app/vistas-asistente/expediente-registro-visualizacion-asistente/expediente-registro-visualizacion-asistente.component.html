@@ -1,6 +1,6 @@
 <mat-dialog-content>
 
-    <ng-scrollbar class="scroll-evento2" thumbClass="white-scrollbars" track="all">
+    <ng-scrollbar class="scroll-eventoN" thumbClass="white-scrollbars" track="all">
 
         <mat-card class="mi-card" style="box-shadow: none;">
 
@@ -9,6 +9,11 @@
                 <mat-label class="mi-titulo" style="padding-left: 75px;">
                     Paciente registrado
                 </mat-label>
+
+                <button mat-icon-button (click)="cerrar()"
+                    style="color: #AAAAAA; position: absolute; margin-left: 82%; margin-top: -15px;">
+                    <mat-icon>close</mat-icon>
+                </button>
 
             </mat-card-header>
             <br /> <br /><br />
@@ -43,12 +48,6 @@
                 <mat-label class="mi-cuerpo"> {{expediente.numero_telefono}} <br /> <br /></mat-label>
 
             </mat-card-content>
-
-            <mat-card-actions style="margin-left: 50%; align-self: flex-end; ">
-
-                <button mat-raised-button class="mi-boton" (click)="cerrar()">Aceptar</button>
-
-            </mat-card-actions>
 
         </mat-card>
 

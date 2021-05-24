@@ -25,14 +25,14 @@
 }
 
 ::ng-deep {
-  ng-scrollbar.scroll-evento2 {
+  ng-scrollbar.scroll-eventoN {
     --scrollbar-size: 8px;
     --scrollbar-thumb-color: gray;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
 
-    height: 420px;
+    height: 375px;
     width: 400px;
   }
 }

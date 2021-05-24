@@ -5,12 +5,19 @@
         <mat-card class="mi-card" style="box-shadow: none;">
 
             <mat-card-header>
+
                 <mat-label
                     style="padding-top: 10px; padding-right: 40px; font-size: 32px; font-weight: 700; color: #4F4E4E;">
                     Registro de Cita
                 </mat-label>
+
+                <button mat-icon-button (click)="cerrar()"
+                    style="color: #AAAAAA; position: absolute; margin-left: 88%; margin-top: -15px;">
+                    <mat-icon>close</mat-icon>
+                </button>
+
             </mat-card-header>
-            <br/><br/>
+            <br /><br />
 
             <mat-card-content>
 
@@ -72,12 +79,11 @@
 
             </mat-card-content>
 
-            <mat-card-actions style="margin-left: 48%; align-self: flex-end; ">
+            <mat-card-actions>
 
-                <button mat-raised-button class="mi-boton" (click)="cerrar()">Cerrar</button>
 
-                <button mat-raised-button class="mi-boton" [disabled]="!formularioValido()" style="margin-left: 20px;"
-                    (click)="registrarCita()">Registrar</button>
+                <button mat-raised-button class="mi-boton" [disabled]="!formularioValido()"
+                    style="float: right; margin-right: 6%;" (click)="registrarCita()">Registrar</button>
 
             </mat-card-actions>
 

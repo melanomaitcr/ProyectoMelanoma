@@ -1,0 +1,73 @@
+<app-navbar-medico paginaActual="perfil"> </app-navbar-medico>
+
+<div style="margin-top: 3%;">
+  <div class="title">
+    <mat-label>Perfil</mat-label>
+  </div>
+  <div class="container-perfil" fxLayout="row">
+
+
+    <div fxFlex=3%></div>
+    <img fxFlex=25% src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"
+      class="photo">
+
+
+    <mat-card class="mi-carta" fxFlex=30%>
+
+      <mat-card-header class="title-informacion">
+        <mat-card-title class="title-informacion">Información básica</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="content" style="text-align: left !important; align-items: flex-start;">
+        <br />
+        <mat-label class="mi-titulo"> Usuario: </mat-label>
+        <mat-label class="mi-cuerpo"> {{this.usuario.nombre + " " + this.usuario.primer_apellido + " " +
+          this.usuario.segundo_apellido}}
+          <br /><br />
+        </mat-label>
+
+        <mat-label class="mi-titulo"> Cedula: </mat-label>
+        <mat-label class="mi-cuerpo"> {{this.usuario.cedula}}<br /><br />
+        </mat-label>
+
+        <mat-label class="mi-titulo"> Rol: </mat-label>
+        <mat-label class="mi-cuerpo" *ngIf="this.usuario.rol == 'M'"> Médico <br /> <br /></mat-label>
+        <mat-label class="mi-cuerpo" *ngIf="this.usuario.rol == 'A'"> Asistente <br /> <br /></mat-label>
+        <mat-label class="mi-cuerpo" *ngIf="this.usuario.rol == 'D'"> Administrador <br /> <br /></mat-label>
+        <mat-label class="mi-cuerpo" *ngIf="this.usuario.rol == ''"> <br /> <br /></mat-label>
+
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mi-carta" fxFlex=30%>
+      <mat-card-header class="title-informacion">
+        <mat-card-title class="title-informacion">Información de contacto</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="content" style="text-align: left !important; align-items: flex-start;">
+        <br />
+        <mat-label class="mi-titulo"> Correo electrónico: </mat-label>
+        <mat-label class="mi-cuerpo"> {{this.usuario.correo_electronico}}
+          <br /><br />
+        </mat-label>
+
+        <mat-label class="mi-titulo">Número de Telefono: </mat-label>
+        <mat-label class="mi-cuerpo"> {{this.telefono}}<br /> <br /></mat-label>
+
+
+      </mat-card-content>
+    </mat-card>
+    <div fxFlex=1%></div>
+  </div>
+  <br /> <br />
+  <div class="botton-container" style="float:right !important;  margin-right: 5%;">
+    <button mat-raised-button class="mi-boton" (click)="editarPerfil(this.usuario)"
+      style="width: 150px !important; line-height: 35px;">
+      <mat-icon style="font-size: 20px;">edit</mat-icon> Editar perfil
+    </button>
+
+  </div>
+</div>
+
+
+<!--
+-->

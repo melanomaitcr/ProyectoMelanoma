@@ -1,0 +1,601 @@
+<ng-scrollbar class="scroll-event" thumbClass="white-scrollbars" track="all">
+  <app-navbar-medico paginaActual="citas"> </app-navbar-medico>
+
+  <div class="mi-div">
+
+    <div>
+      <div fxFlex=2%></div>
+
+      <div fxFlex=23% style="width: 25vw; padding-top: 20px;">
+
+        <button mat-raised-button class="mi-boton" (click)="abandonarCita()"
+          style="margin-top: -20px; line-height: 35px; width: 100px !important; position: absolute;">
+          <mat-icon aria-hidden="false" style="font-size: 20px;">arrow_back</mat-icon> Volver
+        </button>
+
+        <div class="tab" style="width: 100%;">
+          <button mat-button class="tablinks" [disabled]="tabActual==0" style="padding-left: 30px;padding-right: 30px;"
+            (click)="cambiarTab('Paciente' ,0)">
+            Paciente</button>
+          <button mat-button [disabled]="tabActual==1" class="tablinks" style="padding-left: 30px;padding-right: 30px;"
+            (click)="cambiarTab('Médico',1)">Médico</button>
+        </div>
+
+        <mat-card id="Paciente" class="tabcontent mi-card mat-elevation-z2">
+
+          <mat-card-content style="padding-left: 5px;">
+
+            <ng-scrollbar class="scroll-datosCita" thumbClass="white-scrollbars" track="all">
+
+              <input type="file" style="display:none" (change)="archivosSubidos($event)" multiple>
+
+              <br />
+              <mat-label class="mi-super-titulo">Historial Personal</mat-label>
+
+              <div>
+                <mat-label class="mi-titulo">Peso: &nbsp;&nbsp;</mat-label>
+                <mat-form-field appearance="standard" style="width: 20%;">
+                  <input disabled matInput (keyup)="actualizarIMC()" [(ngModel)]="hpc.peso_kg" name="pesoFC">
+                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">kg</span>
+                </mat-form-field>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <!--
+                                  <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpc.peso_kg}} kg
+                                      &nbsp;&nbsp;&nbsp;
+                                  </mat-label>
+                                  -->
+
+                &nbsp;
+                <mat-label class="mi-titulo">Estatura: &nbsp;&nbsp;</mat-label>
+                <mat-form-field appearance="standard" style="width: 23%;">
+                  <input disabled matInput (keyup)="actualizarIMC()" [(ngModel)]="hpc.estatura_cm" name="estaturaFC">
+                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">cm</span>
+                </mat-form-field>
+
+              </div>
+
+
+
+              <mat-label class="mi-titulo">IMC: &nbsp;&nbsp;</mat-label>
+              <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;{{hpc.imc}} kg &nbsp;&nbsp;
+              </mat-label>
+
+              <br /><br />
+
+
+              <mat-label class="mi-titulo">¿Realiza actividad Física?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpc.realizacion_actividad_fisica"
+                name="realizacion_actividad_fisica">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+
+              <mat-label class="mi-titulo">¿Cuánto tiempo por semana? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 23%;">
+                <input disabled matInput [(ngModel)]="hpc.minutos_semana_actividad_fisica"
+                  name="minutos_semana_actividad_fisica">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">min</span>
+              </mat-form-field>
+
+
+              <mat-label class="mi-titulo">¿Fuma o ha fumado?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpc.fuma_o_ha_fumado" name="fuma_o_ha_fumado">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br />
+
+              <mat-label class="mi-titulo">¿A qué edad empezó a fumar? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 22%;">
+                <input disabled matInput [(ngModel)]="hpc.edad_empezo_fumar" name="edad_empezo_fumar">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">años</span>
+              </mat-form-field>
+              <br />
+
+              <mat-label class="mi-titulo">¿Fuma actualmente?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpc.fuma_actualmente" name="fuma_actualmente">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br />
+
+              <mat-label class="mi-titulo">¿Desde hace cuánto? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 22%;">
+                <input disabled matInput [(ngModel)]="hpc.periodo_fumado" name="periodo_fumado">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">años</span>
+              </mat-form-field>
+              <br />
+
+              <mat-label class="mi-titulo">¿Consume bebidas alcohólicas?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpc.consume_bebidas_alcoholicas"
+                name="consume_bebidas_alcoholicas">
+                <br />
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br /><br />
+
+              <mat-label class="mi-titulo">¿Cuánto consume en total?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpc.consume_bebidas_alcoholicas_total"
+                name="consume_bebidas_alcoholicas_total">
+                <br />
+                <mat-radio-button style="width: 0;" value="1">Más de 3 bebidas a la semana
+                </mat-radio-button>
+                <br />
+                <mat-radio-button style="width: 0;" value="2">Más de 2 bebidas alcohólicas al día
+                </mat-radio-button>
+                <br />
+                <mat-radio-button style="width: 0;" value="3">Otro
+                </mat-radio-button>
+
+                <br />
+                <mat-radio-button style="width: 0;" value="4">Ninguna de las anteriores
+                </mat-radio-button>
+                <br />
+
+              </mat-radio-group>
+
+              <mat-form-field appearance="standard" style="width: 45%; margin-top: -20px;"
+                *ngIf="hpc.consume_bebidas_alcoholicas_total == '3'">
+                <input disabled matInput [(ngModel)]="hpc.consume_bebidas_alcoholicas_total_otro"
+                  name="consume_bebidas_alcoholicas_total_otro">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;"> por semana</span>
+              </mat-form-field>
+
+              <br />
+              <mat-label class="mi-titulo">¿Le han diagnosticado algún otro tipo de cáncer?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpc.diagnostico_propio_cancer" name="diagnostico_propio_cancer">
+                <br />
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br />
+
+              <mat-label class="mi-titulo">¿De qué tipo(s)? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 45%;">
+                <input disabled matInput [(ngModel)]="hpc.tipos_cancer_propios" name="tipos_cancer_propios">
+              </mat-form-field>
+
+
+              <br /><br />
+              <mat-label class="mi-super-titulo">Historial Familiar</mat-label>
+
+              <br /><br />
+              <mat-label class="mi-titulo">Familiares con cáncer de melanoma
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hfc.familiares_con_cancer_melanoma"
+                name="familiares_con_cancer_melanoma">
+                <br />
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+
+              <br /><br />
+              <mat-label class="mi-titulo">Parentesco </mat-label>
+
+              <section style="position: relative; width: 50%;">
+
+                <span>
+                  <ul class="cb-wrapper" [ngClass]="{'cb-vertival': !false }">
+                    <li *ngFor="let x of listaFamiliares.familiares">
+                      <mat-checkbox disabled [(ngModel)]="x.completed" (ngModelChange)="updateAllComplete()"
+                        name="x.name">
+                        {{x.name}}
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+                </span>
+
+              </section>
+
+              <mat-label class="mi-titulo">Familiares con otros tipos de cáncer
+              </mat-label>
+              <br />
+              <mat-radio-group disabled [(ngModel)]="hfc.familiares_con_otro_tipo_cancer"
+                name="familiares_con_otro_tipo_cancer">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+
+              <br /><br />
+              <mat-label class="mi-titulo">Familiares
+              </mat-label>
+
+
+              <br style="padding-top: 100px;" />
+              <mat-card *ngFor="let familiarOtroCancer of familiaresOtroCancer; index as i;"
+                style="padding: 5px; padding-left: 10px; box-shadow: none;">
+
+                <mat-label class="mi-cuerpo-pequenno">
+                  Parentesco:
+                </mat-label>
+                <mat-label class="mi-cuerpo-pequenno">
+                  {{familiarOtroCancer.parentesco}}
+                </mat-label>
+                <br />
+                <mat-label class="mi-cuerpo-pequenno">
+                  Tipo de cáncer:
+                </mat-label>
+                <mat-label class="mi-cuerpo-pequenno">
+                  {{familiarOtroCancer.tipo_cancer}}
+                </mat-label>
+
+              </mat-card>
+
+            </ng-scrollbar>
+          </mat-card-content>
+        </mat-card>
+
+
+
+        <mat-card id="Médico" style="border-top-right-radius: 0px !important;"
+          class="tabcontent mi-card mat-elevation-z2">
+
+
+
+          <mat-card-content style="padding-left: 5px;">
+
+            <ng-scrollbar class="scroll-datosCita" thumbClass="white-scrollbars" track="all">
+
+              <input type="file" style="display:none" (change)="archivosSubidos($event)" multiple>
+
+              <br />
+              <mat-label class="mi-super-titulo">Historial Personal</mat-label>
+
+              <div>
+                <mat-label class="mi-titulo">Peso: &nbsp;&nbsp;</mat-label>
+                <mat-form-field appearance="standard" style="width: 20%;">
+                  <input disabled matInput (keyup)="actualizarIMC()" [(ngModel)]="hpcMedico.peso_kg" name="pesoFCMed">
+                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">kg</span>
+                </mat-form-field>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <!--
+                                  <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;&nbsp; {{hpcMedico.peso_kg}} kg
+                                      &nbsp;&nbsp;&nbsp;
+                                  </mat-label>
+                                  -->
+
+                &nbsp;
+                <mat-label class="mi-titulo">Estatura: &nbsp;&nbsp;</mat-label>
+                <mat-form-field appearance="standard" style="width: 23%;">
+                  <input disabled matInput (keyup)="actualizarIMC()" [(ngModel)]="hpcMedico.estatura_cm"
+                    name="estaturaFCMed">
+                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">cm</span>
+                </mat-form-field>
+
+              </div>
+
+
+
+              <mat-label class="mi-titulo">IMC: &nbsp;&nbsp;</mat-label>
+              <mat-label class="mi-cuerpo-subrayado">&nbsp;&nbsp;{{hpcMedico.imc}} kg &nbsp;&nbsp;
+              </mat-label>
+
+              <br /><br />
+
+
+              <mat-label class="mi-titulo">¿Realiza actividad Física?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpcMedico.realizacion_actividad_fisica"
+                name="realizacion_actividad_fisicaMed">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+
+              <mat-label class="mi-titulo">¿Cuánto tiempo por semana? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 23%;">
+                <input disabled matInput [(ngModel)]="hpcMedico.minutos_semana_actividad_fisica"
+                  name="minutos_semana_actividad_fisicaMed">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">min</span>
+              </mat-form-field>
+
+
+              <mat-label class="mi-titulo">¿Fuma o ha fumado?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpcMedico.fuma_o_ha_fumado" name="fuma_o_ha_fumadoMed">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br />
+
+              <mat-label class="mi-titulo">¿A qué edad empezó a fumar? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 22%;">
+                <input disabled matInput [(ngModel)]="hpcMedico.edad_empezo_fumar" name="edad_empezo_fumarMed">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">años</span>
+              </mat-form-field>
+              <br />
+
+              <mat-label class="mi-titulo">¿Fuma actualmente?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpcMedico.fuma_actualmente" name="fuma_actualmenteMed">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br />
+
+              <mat-label class="mi-titulo">¿Desde hace cuánto? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 22%;">
+                <input disabled matInput [(ngModel)]="hpcMedico.periodo_fumado" name="periodo_fumadoMed">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;">años</span>
+              </mat-form-field>
+              <br />
+
+              <mat-label class="mi-titulo">¿Consume bebidas alcohólicas?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpcMedico.consume_bebidas_alcoholicas"
+                name="consume_bebidas_alcoholicasMed">
+                <br />
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br /><br />
+
+              <mat-label class="mi-titulo">¿Cuánto consume en total?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpcMedico.consume_bebidas_alcoholicas_total"
+                name="consume_bebidas_alcoholicas_totalMed">
+                <br />
+                <mat-radio-button style="width: 0;" value="1">Más de 3 bebidas a la semana
+                </mat-radio-button>
+                <br />
+                <mat-radio-button style="width: 0;" value="2">Más de 2 bebidas alcohólicas al día
+                </mat-radio-button>
+                <br />
+                <mat-radio-button style="width: 0;" value="3">Otro
+                </mat-radio-button>
+
+                <br />
+                <mat-radio-button style="width: 0;" value="4">Ninguna de las anteriores
+                </mat-radio-button>
+                <br />
+
+              </mat-radio-group>
+
+              <mat-form-field appearance="standard" style="width: 45%; margin-top: -20px;"
+                *ngIf="hpcMedico.consume_bebidas_alcoholicas_total == '3'">
+                <input disabled matInput [(ngModel)]="hpcMedico.consume_bebidas_alcoholicas_total_otro"
+                  name="consume_bebidas_alcoholicas_total_otroMed">
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px;"> por semana</span>
+              </mat-form-field>
+
+              <br />
+              <mat-label class="mi-titulo">¿Le han diagnosticado algún otro tipo de cáncer?
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hpcMedico.diagnostico_propio_cancer"
+                name="diagnostico_propio_cancerMed">
+                <br />
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br />
+
+              <mat-label class="mi-titulo">¿De qué tipo(s)? &nbsp;&nbsp;&nbsp;</mat-label>
+              <mat-form-field appearance="standard" style="width: 45%;">
+                <input disabled matInput [(ngModel)]="hpcMedico.tipos_cancer_propios" name="tipos_cancer_propiosMed">
+              </mat-form-field>
+
+
+              <br /><br />
+              <mat-label class="mi-super-titulo">Historial Familiar</mat-label>
+
+              <br /><br />
+              <mat-label class="mi-titulo">Familiares con cáncer de melanoma
+              </mat-label>
+              <mat-radio-group disabled [(ngModel)]="hfcMedico.familiares_con_cancer_melanoma"
+                name="familiares_con_cancer_melanomaMed">
+                <br />
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+
+              <br /><br />
+              <mat-label class="mi-titulo">Parentesco </mat-label>
+
+              <section style="position: relative; width: 50%;">
+
+                <span>
+                  <ul class="cb-wrapper" [ngClass]="{'cb-vertival': !false }">
+                    <li *ngFor="let x of listaFamiliaresMedico.familiares">
+                      <mat-checkbox disabled [(ngModel)]="x.completed" (ngModelChange)="updateAllCompleteMedico()"
+                        name="x.name">
+                        {{x.name}}
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+                </span>
+
+              </section>
+
+              <mat-label class="mi-titulo">Familiares con otros tipos de cáncer
+              </mat-label>
+              <br />
+              <mat-radio-group disabled [(ngModel)]="hfcMedico.familiares_con_otro_tipo_cancer"
+                name="familiares_con_otro_tipo_cancerMed">
+                <mat-radio-button value="1">Sí</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+
+              <br /><br />
+              <mat-label class="mi-titulo">Familiares
+              </mat-label>
+
+
+              <br style="padding-top: 100px;" />
+              <mat-card *ngFor="let familiarOtroCancer of familiaresOtroCancerMedico; index as i;"
+                style="padding: 5px; padding-left: 10px; box-shadow: none;">
+
+                <mat-label class="mi-cuerpo-pequenno">
+                  Parentesco:
+                </mat-label>
+                <mat-label class="mi-cuerpo-pequenno">
+                  {{familiarOtroCancer.parentesco}}
+                </mat-label>
+                <br />
+                <mat-label class="mi-cuerpo-pequenno">
+                  Tipo de cáncer:
+                </mat-label>
+                <mat-label class="mi-cuerpo-pequenno">
+                  {{familiarOtroCancer.tipo_cancer}}
+                </mat-label>
+
+
+              </mat-card>
+
+            </ng-scrollbar>
+          </mat-card-content>
+
+
+        </mat-card>
+      </div>
+
+      <div fxFlex=5%></div>
+
+      <div fxFlex=70% style=" width: 70vw;">
+
+        <mat-card class="mi-card mat-elevation-z2">
+
+
+          <mat-card-content>
+
+            <div style="padding-left: 5%;">
+              <br />
+              <mat-label class="mi-super-titulo">Paciente: </mat-label>
+              <mat-label class="mi-cuerpo"> {{this.citaData.nombrePaciente}} </mat-label>
+
+              <mat-label
+                style="position: absolute; right: 20px; font-size: 12px !important; margin-top: -10px; padding-right: 30px;"
+                class="mi-cuerpo">
+                Fecha: {{this.citaData.fecha}} &nbsp;&nbsp;&nbsp; Hora:
+                {{this.citaData.hora}}
+              </mat-label>
+              <br /><br />
+
+              <mat-label class="mi-super-titulo">Médico: </mat-label>
+              <mat-label class="mi-cuerpo"> {{this.citaData.nombreMedico}} </mat-label>
+            </div>
+            <br />
+
+            <div>
+              <div fxFlex=5%></div>
+              <div fxFlex=40%>
+
+                <mat-form-field appearance="outline" class="mi-field" style="font-size: 16px; text-align: center;">
+
+                  <input disabled matInput style="color: #AAAAAA;" placeholder="Añadir descripción"
+                    [(ngModel)]="cita.descripcion">
+                </mat-form-field>
+
+                <br />
+
+                <mat-form-field appearance="outline" class="mi-field">
+                  <textarea disabled matInput placeholder="Anotaciones de la cita" [(ngModel)]="cita.anotaciones"
+                    style="color: #AAAAAA; padding-left: 15px; padding-top: 15px; height: 225px; width: 90%;">  </textarea>
+                </mat-form-field>
+              </div>
+
+              <div fxFlex=28% style="padding-left: 4%; padding-top: 1%;">
+
+                <mat-label class="mi-titulo" style="font-size: 16px;">Imágenes
+                  registradas
+                </mat-label>
+
+
+                <br /><br />
+
+                <ng-scrollbar class="scroll-imagenes" thumbClass="white-scrollbars" track="all">
+
+                  <div *ngFor="let imagen of imagenes">
+
+                    <img [src]="imagen.url_archivo" height="100" class="center" (click)="abrirImagen(imagen)">
+
+                    <div style="padding-top: 5px;">
+                      <mat-label fxFlex=65% class="mi-cuerpo" style="margin-top: 10px;">
+                        {{imagen.nombre_archivo}}
+                      </mat-label>
+
+                      <button mat-icon-button fxFlex=18% (click)="abrirImagen(imagen)"
+                        style="color: white; background-color: #AAAAAA;transform: scale(0.5, 0.5);">
+                        <mat-icon>get_app</mat-icon>
+                      </button>
+
+                      <div fxFlex=12%></div>
+                    </div>
+
+                    <button mat-raised-button class="mi-boton" *ngIf="imagen.imagen_prediagnostico == undefined"
+                      (click)="prediagnosticarImagen(imagen)">
+                      Prediagnóstico
+                    </button>
+
+                    <button mat-raised-button class="mi-boton" *ngIf="imagen.imagen_prediagnostico != undefined"
+                      (click)="descagarPrediagnostico(imagen)">
+                      Descargar resultado
+                    </button>
+
+                    <br /> <br />
+
+                  </div>
+
+                </ng-scrollbar>
+
+
+              </div>
+
+              <div fxFlex=25% style="padding-left: 3%; padding-top: 1%;">
+
+                <div style="text-align: center;">
+                  <mat-label class="mi-titulo" style="font-size: 16px;">Archivos
+                    adjuntos
+                  </mat-label>
+
+                </div>
+
+                <br />
+
+                <ng-scrollbar class="scroll-archivos" thumbClass="white-scrollbars" track="all">
+
+                  <div *ngFor="let archivo of archivos">
+
+                    <mat-label fxFlex=70% class="mi-cuerpo" style="margin-top: 10px !important; ">
+                      {{archivo.nombre_archivo}}
+                    </mat-label>
+
+                    <button mat-icon-button fxFlex=20% (click)="descargarArchivo(archivo)"
+                      style="color: white; background-color: #AAAAAA;transform: scale(0.5, 0.5);">
+                      <mat-icon>get_app</mat-icon>
+                    </button>
+
+
+                    <br />
+
+                  </div>
+
+                </ng-scrollbar>
+
+              </div>
+
+
+              <div fxFlex=3%></div>
+
+            </div>
+
+            <div style="margin-bottom: 35px;">
+
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+
+    </div>
+
+    <div fxFlex=2%></div>
+
+    <br />
+  </div>
+</ng-scrollbar>

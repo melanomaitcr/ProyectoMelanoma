@@ -551,11 +551,16 @@
                                                 {{imagen.nombre_archivo}}
                                             </mat-label>
 
-                                            <button fxFlex=20% mat-icon-button (click)="borrarArchivo(imagen)"
+                                            <button mat-icon-button fxFlex=18% (click)="abrirImagen(imagen)"
+                                                style="color: white; background-color: #AAAAAA;transform: scale(0.5, 0.5);">
+                                                <mat-icon>get_app</mat-icon>
+                                            </button>
+
+                                            <button fxFlex=10% mat-icon-button (click)="borrarArchivo(imagen)"
                                                 style="color: #AAAAAA;transform: scale(0.7, 0.7);">
                                                 <mat-icon>delete</mat-icon>
                                             </button>
-                                            <div fxFlex=20%></div>
+                                            <div fxFlex=12%></div>
                                         </div>
 
                                         <button mat-raised-button class="mi-boton"

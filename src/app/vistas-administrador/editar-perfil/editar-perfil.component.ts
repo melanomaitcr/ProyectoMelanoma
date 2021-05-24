@@ -5,6 +5,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroupDirective, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -34,7 +35,7 @@ export class EditarPerfilComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private router: Router,
+    private _snackBar: MatSnackBar,
     public referenciaDialogo: MatDialogRef<EditarPerfilComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
@@ -70,8 +71,7 @@ export class EditarPerfilComponent implements OnInit {
 
       let encontrado = false;
       for (let usuario of this.usuarios)
-        if (usuario.correo_electronico == control.value) encontrado = true;
-
+        if (usuario.correo_electronico == control.value && usuario.correo_electronico != this.usuario.correo_electronico) encontrado = true;
       return encontrado ? { correoDuplicado: { value: control.value } } : null;
     };
   }
@@ -93,6 +93,13 @@ export class EditarPerfilComponent implements OnInit {
     this.usuario.correo_electronico = this.correo_electronico;
     let respuesta = await this.usuarioService.update(this.cedula, this.usuario).toPromise();
     let nuevoPerfil = respuesta as Usuario;
+    this.openSnackBar("¡Información actualizada correctamente!")
     this.cerrar();
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Cerrar", {
+      duration: 2000,
+    });
   }
 }

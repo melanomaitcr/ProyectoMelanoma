@@ -36,4 +36,9 @@ export class NavbarAsistenteComponent implements OnInit {
     this.router.navigate(['/expedientes-asistente']);
   }
 
+  vistaPerfil() {
+    this.paginaActual = 'perfil';
+    this.router.navigate(['/informacion-perfil-asistente']);
+  }
+
 }

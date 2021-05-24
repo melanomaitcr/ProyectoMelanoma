@@ -28,6 +28,10 @@ import { parseHostBindings } from '@angular/compiler';
 
 import { InformacionPerfilComponent } from './vistas-administrador/informacion-perfil/informacion-perfil.component';
 import { AcercaDeComponent } from './vistas-inicio/acerca-de/acerca-de.component';
+import { CitaLecturaComponent } from './vistas-administrador/cita-lectura/cita-lectura.component';
+import { CitaLecturaMedicoComponent } from './vistas-medico/cita-lectura-medico/cita-lectura-medico.component';
+import { InformacionPerfilMedicoComponent } from './vistas-medico/informacion-perfil-medico/informacion-perfil-medico.component';
+import { InformacionPerfilAsistenteComponent } from './vistas-asistente/informacion-perfil-asistente/informacion-perfil-asistente.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },
@@ -41,6 +45,7 @@ const routes: Routes = [
 
   { path: 'citas', component: CitasComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
   { path: 'cita', component: CitaComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
+  { path: 'cita-lectura', component: CitaLecturaComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
 
   { path: 'expedientes', component: ExpedientesComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
   { path: 'expediente', component: ExpedienteComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
@@ -52,12 +57,16 @@ const routes: Routes = [
 
   { path: 'citas-medico', component: CitasMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
   { path: 'cita-medico', component: CitaMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
+  { path: 'cita-lectura-medico', component: CitaLecturaMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
 
   { path: 'expedientes-medico', component: ExpedientesMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
   { path: 'expediente-medico', component: ExpedienteMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
 
-  { path: 'informacion-perfil', component: InformacionPerfilComponent },
-  { path: 'acerca-de', component: AcercaDeComponent},
+  { path: 'informacion-perfil', component: InformacionPerfilComponent, canActivate: [InicioSesionGuard, AdministradorGuard] },
+  { path: 'informacion-perfil-medico', component: InformacionPerfilMedicoComponent, canActivate: [InicioSesionGuard, MedicoGuard] },
+  { path: 'informacion-perfil-asistente', component: InformacionPerfilAsistenteComponent, canActivate: [InicioSesionGuard, AsistenteGuard] },
+
+  { path: 'acerca-de', component: AcercaDeComponent, canActivate: [SesionAbiertaGuard] },
 ];
 
 
