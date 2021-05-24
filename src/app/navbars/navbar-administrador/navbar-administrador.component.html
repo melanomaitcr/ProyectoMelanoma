@@ -12,8 +12,9 @@
             style="margin-left: 40px;" class="mi-boton">
             Citas </button>
 
-
-        <button mat-raised-button style="margin-left: 40px;" class="mi-boton">Perfil</button>
+        <button mat-raised-button (click)="vistaPerfil()" [disabled]="getPaginaActual() == 'perfil'"
+            style="margin-left: 40px;" class="mi-boton">
+            Perfil </button>
 
         <span style="flex: 1 1 auto;"></span>
 

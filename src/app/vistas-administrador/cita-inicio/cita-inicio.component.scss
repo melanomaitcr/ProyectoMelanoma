@@ -23,3 +23,7 @@
     font-size: 14px;
     color: #AAAAAA;
   }
+
+  ::ng-deep mat-dialog {
+    border-radius: 20px;
+  }

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Cita } from 'src/app/models/cita';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
@@ -49,9 +49,14 @@ export class IngresoCitaComponent implements OnInit {
   }
 
   async dialogoDatosInvalidos() {
-
     const dialogRef = this.dialog.open(IngresoCitaComponentOkDialog, {
-      width: '400px'
+      data: { titulo: "Datos ingresados son incorrectos", texto: "El número de cédula o el código de cita ingresados no están asociados a una cita, por favor compruebe los datos e inténtelo nuevamente." }, width: '400px'
+    });
+  }
+
+  async dialogoFormularioRellenado() {
+    const dialogRef = this.dialog.open(IngresoCitaComponentOkDialog, {
+      data: { titulo: "Formulario previamente rellenado", texto: "Usted ya ha ingresado previamente los datos necesarios para esta cita, por lo que no se pueden ingresar nuevamente." }, width: '400px'
     });
   }
 
@@ -63,7 +68,11 @@ export class IngresoCitaComponent implements OnInit {
 
       this.autenticacionService.ingresarCita(informacion["auth_token"], informacion["rol"], informacion["id_cita"]);
     } catch (error) {
-      this.dialogoDatosInvalidos();
+      if (error.error.text == 'INVALID_LOGIN_INFO')
+        this.dialogoDatosInvalidos();
+      else
+        this.dialogoFormularioRellenado();
+      //this.dialogoFormularioRellenado();
     }
   }
 }
@@ -71,20 +80,47 @@ export class IngresoCitaComponent implements OnInit {
 @Component({
   selector: 'not-important',
   template: `
-  <h1 mat-dialog-title style="text-align:center;">Datos ingresados son incorrectos</h1>
-<div mat-dialog-content> 
-<div mat-label style="text-align:center;">El número de cédula o el código de cita ingresados no están asociados a una cita, por favor compruebe los datos e intentelo nuevamente.</div>
-</div>
-<div mat-dialog-actions style="justify-content: center;">
-<button mat-raised-button style="border-radius: 20px;margin-top: 15px; margin-bottom:15px"  color="primary" (click)=siClick()>Entendido</button>
-</div>
-  `
+
+  <mat-dialog-content >
+
+  <mat-card class="mi-card" style="box-shadow: none;">
+
+      <mat-card-header>
+
+          <mat-label class="mi-titulo" style="margin-left: -20px; font-size: 24px !important;">
+          {{data.titulo}} 
+          </mat-label>
+
+      </mat-card-header>
+      <br /> <br />
+
+      <mat-card-content style="text-align: left !important; align-items: flex-start;">
+
+          <mat-label class="mi-cuerpo">
+          {{data.texto}} 
+          </mat-label>
+
+      </mat-card-content>
+
+      <mat-card-actions style="align-self:flex-end;">
+
+          <button mat-raised-button class="mi-boton" (click)="siClick()">Cerrar</button>
+
+
+      </mat-card-actions>
+
+  </mat-card>
+
+</mat-dialog-content>
+
+  `, styleUrls: ['../../vistas-administrador/cita-inicio/cita-inicio.component.scss']
 })
 
 export class IngresoCitaComponentOkDialog {
 
   constructor(
-    public dialogRef: MatDialogRef<IngresoCitaComponentOkDialog>
+    public dialogRef: MatDialogRef<IngresoCitaComponentOkDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
 

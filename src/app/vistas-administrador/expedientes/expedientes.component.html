@@ -9,7 +9,7 @@
 
 
             <mat-card style="width: 80%; box-shadow: none;">
-                <input type="file" id="archivosExpedientes" style="display:none" (change) = "importarExpedientes($event)">
+                <input type="file" id="archivosExpedientes" style="display:none" (change)="importarExpedientes($event)">
 
                 <mat-card-header>
                     <mat-card-title
@@ -58,14 +58,14 @@
                         </ng-container>
 
                         <ng-container matColumnDef="descargar">
-                            
+
                             <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Descargar expediente
                             </th>
                             <td mat-cell *matCellDef="let expediente" style="text-align: center; ">
                                 <button mat-icon-button
                                     style="color: white; background-color: #AAAAAA;  transform: scale(0.8, 0.8);"
                                     (click)="exportarExpediente(expediente)">
-                                   
+
                                     <mat-icon>get_app</mat-icon>
                                 </button>
                             </td>
@@ -109,10 +109,13 @@
                         </tr>
 
                     </table>
-                            <button class="mi-boton" mat-raised-button style="float:left; margin-top: 7px; margin-bottom: 15px; " 
-                            
-                            (click)="subirExpedientes()">Importar</button>
-                          <mat-paginator [pageSizeOptions]="[5, 10, 20]" style="float: right" showFirstLastButtons></mat-paginator>
+                    <button class="mi-boton" mat-raised-button
+                        style="float:left; margin-top: 7px; width: 135px !important;" (click)="subirExpedientes()">
+                        <mat-icon aria-hidden="false" style="font-size: 20px;">upload</mat-icon>
+                        Importar
+                    </button>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" style="float: right" showFirstLastButtons>
+                    </mat-paginator>
 
                 </mat-card-content>
 

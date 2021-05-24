@@ -136,6 +136,10 @@ export class CitaComponent implements OnInit {
     return familiarCancer.join(",");
   }
 
+  print(str) {
+    console.log(str)
+  }
+
   sacarParientesConCancer() {
     for (let familiar of this.hfc.parientes_con_cancer_melanoma.split(",")) {
       for (let fam of this.listaFamiliares.familiares) {

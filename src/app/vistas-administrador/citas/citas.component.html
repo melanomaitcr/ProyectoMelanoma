@@ -3,7 +3,7 @@
 
     <div class="mi-div">
 
-        <input type="file" style="display:none" (change) = "importarCitas($event)" multiple>
+        <input type="file" style="display:none" (change)="importarCitas($event)">
 
         <mat-card class="mi-card mat-elevation-z4" *ngIf="dataVista.visualizacion == 'Diaria'">
 
@@ -121,8 +121,11 @@
                         </tr>
 
                     </table>
-
-                    <button class="mi-boton" mat-raised-button style="float:left; margin-top: 7px; margin-bottom: 15px;" (click)="subirCitas()">Importar</button>
+                    <button class="mi-boton" mat-raised-button
+                        style="float:left; margin-top: 7px; width: 135px !important;" (click)="subirCitas()">
+                        <mat-icon aria-hidden="false" style="font-size: 20px;">upload</mat-icon>
+                        Importar
+                    </button>
 
                     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 

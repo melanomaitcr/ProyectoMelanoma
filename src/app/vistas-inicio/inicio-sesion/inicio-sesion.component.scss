@@ -19,7 +19,7 @@
   display:block;
   font-size: min(2vw, 20px);
   line-height: 22px;
-  text-align:justify;
+  text-align:center;
   color: #AAAAAA !important;
 }
 
@@ -43,6 +43,7 @@
   font-size: min(2.8vw, 48px);
 //  font-family: 'Roboto';
   font-weight:700;
+  color: #4F4E4E;
   font-style: normal;
   margin-top: 20px;
   line-height: 3vw;
@@ -68,7 +69,7 @@
 }
 
 .card-inicio-sesion .boton-inicio-sesion{
-  border-radius: 20px;
+  border-radius: 40px;
   line-height: 50px;
   width: 100%;  background-color: #AAAAAA;
   color: white;
@@ -87,9 +88,6 @@ mat-form-field input {
   @include mat-elevation(20);
 }
 
-mat-form-field, ::ng-deep .mat-select-value{
-  color: #AAAAAA !important;
-}
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
       padding: 10px 0 10px 0 !important;

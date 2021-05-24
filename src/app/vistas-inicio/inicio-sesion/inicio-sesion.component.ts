@@ -5,6 +5,7 @@ import { UsuarioService } from '../../services/usuario.service'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { IngresoCitaComponentOkDialog } from '../ingreso-cita/ingreso-cita.component';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -47,11 +48,11 @@ export class InicioSesionComponent implements OnInit {
   }
 
   async dialogoDatosInvalidos() {
-
-    const dialogRef = this.dialog.open(InicioSesionComponentOkDialog, {
-      width: '400px'
+    const dialogRef = this.dialog.open(IngresoCitaComponentOkDialog, {
+      data: { titulo: "Datos ingresados son incorrectos", texto: "La cédula o contraseña ingresadas son incorrectas, por favor compruebe los datos e inténtelo nuevamente." }, width: '400px'
     });
   }
+
 
   async verificarDatos() {
     try {
@@ -68,29 +69,3 @@ export class InicioSesionComponent implements OnInit {
   }
 }
 
-
-@Component({
-  selector: 'not-important',
-  template: `
-    <h1 mat-dialog-title style="text-align:center;">Datos ingresados son incorrectos</h1>
-  <div mat-dialog-content> 
-  <div mat-label style="text-align:center;"> La cédula o contraseña ingresadas son incorrectas, por favor compruebe los datos e intentelo nuevamente.</div>
-  </div>
-  <div mat-dialog-actions style="justify-content: center;">
-  <button mat-raised-button style="border-radius:20px; margin-top: 15px; margin-bottom:15px;"  color="primary" (click)=siClick()>Entendido</button>
-  </div>
-    `
-})
-
-export class InicioSesionComponentOkDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<InicioSesionComponentOkDialog>
-  ) {
-  }
-
-
-  siClick(): void {
-    this.dialogRef.close("Ok");
-  }
-}

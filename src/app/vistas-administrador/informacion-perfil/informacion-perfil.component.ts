@@ -11,13 +11,13 @@ import { EditarPerfilComponent } from '../editar-perfil/editar-perfil.component'
 })
 export class InformacionPerfilComponent implements OnInit {
 
-  usuario: Usuario = new Usuario("","","","","","","");
+  usuario: Usuario = new Usuario("", "", "", "", "", "", "");
   telefono = "+506 8234 8747";
 
   constructor(
     public dialog: MatDialog,
     private usuarioService: UsuarioService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.cargarDatosUsuario();
@@ -29,7 +29,7 @@ export class InformacionPerfilComponent implements OnInit {
 
   editarPerfil(usuario: Usuario): void {
     const referenciaDialogo = this.dialog.open(EditarPerfilComponent, {
-      data: { cedula: usuario.cedula }
+      minWidth: 400, data: { cedula: usuario.cedula }
     });
 
     referenciaDialogo.afterClosed().subscribe(result => {

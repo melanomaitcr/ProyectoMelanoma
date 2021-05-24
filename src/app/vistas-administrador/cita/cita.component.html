@@ -546,17 +546,17 @@
                                         <img [src]="imagen.url_archivo" height="100" class="center"
                                             (click)="abrirImagen(imagen)">
 
+                                        <div style="padding-top: 5px;">
+                                            <mat-label fxFlex=60% class="mi-cuerpo" style="margin-top: 10px;">
+                                                {{imagen.nombre_archivo}}
+                                            </mat-label>
 
-                                        <mat-label class="mi-cuerpo" style="margin-top: -30px !important; ">
-                                            {{imagen.nombre_archivo}}
-                                        </mat-label>
-
-                                        <button mat-icon-button (click)="borrarArchivo(imagen)"
-                                            style="color: #AAAAAA;transform: scale(0.7, 0.7);">
-                                            <mat-icon>delete</mat-icon>
-                                        </button>
-
-                                        <br />
+                                            <button fxFlex=20% mat-icon-button (click)="borrarArchivo(imagen)"
+                                                style="color: #AAAAAA;transform: scale(0.7, 0.7);">
+                                                <mat-icon>delete</mat-icon>
+                                            </button>
+                                            <div fxFlex=20%></div>
+                                        </div>
 
                                         <button mat-raised-button class="mi-boton"
                                             *ngIf="imagen.imagen_prediagnostico == undefined"

@@ -40,4 +40,9 @@ export class NavbarAdministradorComponent implements OnInit {
     this.router.navigate(['/expedientes']);
   }
 
+  vistaPerfil() {
+    this.paginaActual = 'perfil';
+    this.router.navigate(['/informacion-perfil']);
+  }
+
 }

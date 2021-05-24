@@ -110,6 +110,22 @@ export class ExpedienteComponent implements OnInit {
     this.cargarArchivos();
   }
 
+  exportar() {
+    this.exportarExpediente(this.expediente)
+  }
+
+  exportarExpediente(expediente: Expediente) {
+    let jsonExpediente = `[\n {"cedula": "${expediente.cedula}",\n "nombre": "${expediente.nombre}",\n "primer_apellido": "${expediente.primer_apellido}",\n "segundo_apellido": "${expediente.segundo_apellido}",`
+    jsonExpediente += `\n "correo_electronico": "${expediente.correo_electronico}",\n "nacionalidad": "${expediente.nacionalidad}",\n "fecha_nacimiento": "${expediente.fecha_nacimiento}",`
+    jsonExpediente += `\n "domicilio_provincia": "${expediente.domicilio_provincia}",\n "domicilio_canton": "${expediente.domicilio_canton}",\n "domicilio_distrito": "${expediente.domicilio_distrito}",`
+    jsonExpediente += `\n "identidad_etnica": "${expediente.identidad_etnica}",\n "numero_telefono": ${expediente.numero_telefono}\n }\n]`
+
+    let expedienteResultante = new Blob([jsonExpediente], { type: '.json' });
+
+    saveAs(expedienteResultante, `Expediente - ${expediente.cedula}.json`);
+
+  }
+
   async cargarArchivos() {
     let archivosBD = await this.archivoCitaService.findAll().toPromise();
     let archivos = archivosBD["data"] as ArchivoCita[]

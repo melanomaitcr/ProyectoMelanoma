@@ -40,7 +40,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { IngresoCitaComponent, IngresoCitaComponentOkDialog } from './vistas-inicio/ingreso-cita/ingreso-cita.component';
-import { InicioSesionComponent, InicioSesionComponentOkDialog } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
+import { InicioSesionComponent } from './vistas-inicio/inicio-sesion/inicio-sesion.component';
 import { CitaRegistroComponent } from './vistas-administrador/cita-registro/cita-registro.component';
 import { UsuarioRegistroComponent } from './vistas-administrador/usuario-registro/usuario-registro.component';
 import { UsuarioEdicionComponent } from './vistas-administrador/usuario-edicion/usuario-edicion.component';
@@ -114,7 +114,6 @@ registerLocaleData(es);
     CitaRegistroComponent,
     InicioSesionComponent,
     IngresoCitaComponent,
-    InicioSesionComponentOkDialog,
     NavbarInicioComponent,
     NavbarMedicoComponent,
     NavbarAsistenteComponent,

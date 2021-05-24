@@ -23,9 +23,9 @@ export class EditarPerfilComponent implements OnInit {
   cedula = "";
   correo_electronico = "";
   telefono = "";
-  usuario: Usuario = new Usuario("","","","","","","");
+  usuario: Usuario = new Usuario("", "", "", "", "", "", "");
 
-  correoElectronicoFC = new FormControl('', [Validators.required,Validators.email, this.correoDuplicadoValidator()]);
+  correoElectronicoFC = new FormControl('', [Validators.required, Validators.email, this.correoDuplicadoValidator()]);
   telefonoFC = new FormControl('', [Validators.required]);
 
   usuarios: Usuario[];
@@ -37,14 +37,14 @@ export class EditarPerfilComponent implements OnInit {
     private router: Router,
     public referenciaDialogo: MatDialogRef<EditarPerfilComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.cedula = this.data['cedula'];
     this.cargarDatosUsuario();
     this.cargarUsuarios();
   }
-  
+
   async cargarUsuarios() {
     let usuariosBD = await this.usuarioService.findAll().toPromise();
     this.usuarios = usuariosBD["data"] as Usuario[]
@@ -52,6 +52,8 @@ export class EditarPerfilComponent implements OnInit {
 
   async cargarDatosUsuario() {
     this.usuario = await this.usuarioService.getInformacionPerfil().toPromise() as Usuario;
+    this.correo_electronico = this.usuario.correo_electronico;
+    this.telefono = "88888888"
   }
 
   cerrar(cita?) {
@@ -80,7 +82,7 @@ export class EditarPerfilComponent implements OnInit {
       return 'Debe ingresar un ' + campo;
     } else if (fc.hasError('email')) {
       return 'Debe ingresar un correo electrónico válido';
-    }  else if (fc.hasError('correoDuplicado')) {
+    } else if (fc.hasError('correoDuplicado')) {
       return 'Ya existe un usuario con ese correo electrónico';
     }
     return '';

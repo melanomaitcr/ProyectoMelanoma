@@ -24,6 +24,8 @@ export class CitaInicioComponent implements OnInit {
     fecha: "",
     hora: "",
   };
+  accion = "";
+
   public datepipe: DatePipe = new DatePipe('es-ES');
 
   constructor(private citaService: CitaService,
@@ -49,6 +51,7 @@ export class CitaInicioComponent implements OnInit {
     this.citaData.fecha = this.capitalizar(this.datepipe.transform(new Date(fhc), 'EEEE, d ')) + 'de ' + this.capitalizar(this.datepipe.transform(new Date(fhc), 'MMMM'));
     this.citaData.hora = this.datepipe.transform(new Date(fhc), 'hh:mm') + this.datepipe.transform(new Date(fhc), ' a').toLowerCase();
 
+    this.accion = (this.cita.cita_finalizada == '1') ? "consultar" : "iniciar";
     await this.getNombrePaciente();
     await this.getNombreMedico();
   }

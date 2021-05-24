@@ -1,11 +1,13 @@
 
+@import '~@angular/material/theming';
+
 .title{
     padding-top: 18px; 
     flex: 1 1 80%; 
     font-size: 30px;
     font-weight: 600;
     margin-left: 80px;
-    
+    color: #4F4E4E;
 }
 
 .photo{
@@ -37,12 +39,14 @@
   align-items: center;
 }
 
-.mi-card {
+.mi-carta {
   width: 25%;
   height: 290px;
   margin-left:min(1vw, 10px);
   border-radius: 20px;
   margin: 20px;
+  box-shadow: none;
+  background-color: #F0F0F0;
 }
 
 .content{
@@ -51,9 +55,11 @@
 }
 
 .title-informacion{
-  justify-content: center;
+  justify-content: left;
   margin-top: 30px;
+  margin-left: 2px;
   margin-bottom: 20px;
+  color: #4F4E4E;
 }
 
 .mi-titulo {
@@ -61,8 +67,30 @@
   font-weight: 500; 
   margin-top: 10px;
   margin-left: 20px;
+  color: #4F4E4E;
 }
 
 .mi-cuerpo {
   font-size: 14px;
+  color: #4F4E4E;
+}
+
+::ng-deep .mat-dialog-container {
+  border-radius: 20px !important;
+  @include mat-elevation(20);
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px 0 !important;
+  border-bottom: 5px solid transparent;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end  {
+  border-radius: 0 40px 40px 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+  border-radius: 40px 0 0 40px !important;
+  flex-grow: 1;
+  max-width: 20px !important;
 }

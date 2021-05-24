@@ -147,6 +147,7 @@ export class FormularioCitaComponent implements OnInit {
 
     let fhc = new Date(this.cita.fecha_hora_cita);
     fhc.setHours(fhc.getHours() + 6);
+    this.cita.fecha_hora_cita = fhc.toString();
 
     this.citaData.fecha = this.capitalizar(this.datepipe.transform(new Date(fhc), 'EEEE, d ')) + 'de ' + this.capitalizar(this.datepipe.transform(new Date(fhc), 'MMMM'));
     this.citaData.hora = this.datepipe.transform(new Date(fhc), 'hh:mm') + this.datepipe.transform(new Date(fhc), ' a').toLowerCase();
@@ -157,7 +158,6 @@ export class FormularioCitaComponent implements OnInit {
   }
 
   async getExpediente() {
-    console.log(this.cita);
     this.expediente = await this.expedienteService.findByPk(this.cita.cedula_paciente).toPromise() as Expediente
     this.expediente.nombre = this.expediente.nombre + " " + this.expediente.primer_apellido + " " + this.expediente.segundo_apellido;
 
@@ -301,17 +301,27 @@ export class FormularioCitaComponent implements OnInit {
 
     if (this.familiaresConOtroCancerRadioButton != '1') this.familiaresOtroCancer = [];
 
-    let historialPersonalCita = new HistorialPersonalCita(this.idCita, "1", Number(this.peso), Number(this.estatura), Number(this.imc), this.actividadFisicaRadioButton, parseInt(this.actividadFisicaPorSemana), this.diagnosticadoCancerRadioButton, this.tipoCancer, this.fumaRadioButton, parseInt(this.empezoFumar), this.fumaActualmenteRadioButton, this.periodoFumado, this.bebidasAlcoholicasRadioButton, this.consumoTotalRadioButton, null);
+    let historialPersonalCita = new HistorialPersonalCita(this.idCita, "1", Number(this.peso), Number(this.estatura), Number(this.imc), this.actividadFisicaRadioButton, parseInt(this.actividadFisicaPorSemana), this.diagnosticadoCancerRadioButton, this.tipoCancer, this.fumaRadioButton, parseInt(this.empezoFumar), this.fumaActualmenteRadioButton, this.periodoFumado, this.bebidasAlcoholicasRadioButton, this.consumoTotalRadioButton, this.otroBebida);
     let historialFamiliarCita = new HistorialFamiliarCita(this.idCita, "1", this.familiaresConCancerRadioButton, familiarConCancer, this.familiaresConOtroCancerRadioButton);
 
     await this.historialFamiliarCitaService.create(historialFamiliarCita).toPromise();
     await this.historialPersonalCitaService.create(historialPersonalCita).toPromise();
 
+    historialPersonalCita.rellenado_por_paciente = '0'
+    historialFamiliarCita.rellenado_por_paciente = '0'
+    await this.historialFamiliarCitaService.create(historialFamiliarCita).toPromise();
+    await this.historialPersonalCitaService.create(historialPersonalCita).toPromise();
 
     for (let foc_ of this.familiaresOtroCancer) {
       let foc = new FamiliarOtroCancer(this.idCita, '1', foc_['tipoCancer'], foc_['parentesco'])
       await this.familiarOtroCancerService.create(foc).toPromise();
+      let foc2 = new FamiliarOtroCancer(this.idCita, '0', foc_['tipoCancer'], foc_['parentesco'])
+      await this.familiarOtroCancerService.create(foc2).toPromise();
     }
+
+
+    this.cita.datos_ingresados_paciente = '1'
+    await this.citaService.update(this.idCita, this.cita).toPromise()
     /*
         let familiarOtroCancer = new FamiliarOtroCancer("", "1", this.tipoParentescoCancer, this.parentesco)
     
