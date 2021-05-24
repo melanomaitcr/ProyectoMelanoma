@@ -104,6 +104,10 @@ registerLocaleData(es);
 @NgModule({
   declarations: [
     AppComponent,
+    InformacionPerfilComponent,
+    EditarPerfilComponent,
+    AcercaDeComponent,
+    ExpedienteBitacoraComponent,
     UsuariosComponent,
     UsuarioEdicionComponent,
     UsuarioRegistroComponent,
