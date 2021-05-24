@@ -91,6 +91,11 @@ export class IngresoCitaComponent implements OnInit {
           {{data.titulo}} 
           </mat-label>
 
+          <button mat-icon-button (click)="cerrar()"
+                    style="color: #AAAAAA; position: absolute; margin-left: 85%; margin-top: -15px;">
+                    <mat-icon>close</mat-icon>
+                </button>
+
       </mat-card-header>
       <br /> <br />
 
@@ -102,12 +107,7 @@ export class IngresoCitaComponent implements OnInit {
 
       </mat-card-content>
 
-      <mat-card-actions style="align-self:flex-end;">
 
-          <button mat-raised-button class="mi-boton" (click)="siClick()">Cerrar</button>
-
-
-      </mat-card-actions>
 
   </mat-card>
 
@@ -125,7 +125,7 @@ export class IngresoCitaComponentOkDialog {
   }
 
 
-  siClick(): void {
+  cerrar(): void {
     this.dialogRef.close("Ok");
   }
 }

@@ -245,6 +245,8 @@ export class CitaMedicoComponent implements OnInit {
   }
 
   async finalizarCita() {
+    await this.actualizarHistoriales();
+
     this.cita.fecha_hora_cita = String(addHours(new Date(this.cita.fecha_hora_cita), 6));
     this.cita.cita_finalizada = '1';
     await this.citaService.update(this.idCita, this.cita).toPromise();
