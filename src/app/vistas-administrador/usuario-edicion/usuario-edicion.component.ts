@@ -25,7 +25,7 @@ export class UsuarioEdicionComponent implements OnInit {
   roles = ["Médico", "Asistente"]
 
   esconder = true;
-  usuario: Usuario = new Usuario(null, null, null, null, null, null, null);
+  usuario: Usuario = new Usuario(null, null, null, null, null, null, null, "", "");
   cedulaFC = new FormControl('', [Validators.required, this.pkDuplicadaValidator(), Validators.pattern('[0-9]*')]);
   nombreFC = new FormControl('', [Validators.required]);
   primer_apellidoFC = new FormControl('', [Validators.required]);

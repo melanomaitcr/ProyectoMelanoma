@@ -7,12 +7,12 @@
       <mat-card-header>
 
         <mat-label
-          style="width: 100%; padding-top: 10px; padding-right: 40px; font-size: 24px; font-weight: 700; color: #4F4E4E;">
+          style="width: 100%; padding-top: 10px; padding-right: 40px; font-size: 24px; font-weight: 700; color: #036262;">
           Familiar con cáncer
         </mat-label>
 
         <button mat-icon-button (click)="cerrar()"
-          style="color: #AAAAAA; position: absolute; margin-left: 87%; margin-top: -20px;">
+          style="color: #036262; position: absolute; margin-left: 87%; margin-top: -20px;">
           <mat-icon>close</mat-icon>
         </button>
 
@@ -26,13 +26,13 @@
           <div class="mi-form">
             <mat-form-field appearance="outline" class="mi-field">
               <mat-label>Tipo de cáncer</mat-label>
-              <input placeholder="Tipo de cáncer" matInput [(ngModel)]="data.tipo_cancer" name="cedula">
+              <input placeholder="Tipo de cáncer" matInput [(ngModel)]="data.tipo_cancer" name="tipo_cancer">
             </mat-form-field>
 
 
             <mat-form-field appearance="outline" class="mi-field">
               <mat-label>Parentesco</mat-label>
-              <input matInput placeholder="Parentesco" [(ngModel)]="data.parentesco" name="cedula">
+              <input matInput placeholder="Parentesco" [(ngModel)]="data.parentesco" name="parentesco">
             </mat-form-field>
           </div>
 

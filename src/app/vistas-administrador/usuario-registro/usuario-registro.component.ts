@@ -24,7 +24,7 @@ export class UsuarioRegistroComponent implements OnInit {
   roles = ["Médico", "Asistente"]
 
   esconder = true;
-  usuario: Usuario = new Usuario("", "", "", "", "", "", "M");
+  usuario: Usuario = new Usuario("", "", "", "", "", "", "M", "", "http://melanomaitcr.pythonanywhere.com/files/NoUser.png");
   cedulaFC = new FormControl('', [Validators.required, this.pkDuplicadaValidator(), Validators.pattern('[0-9]*')]);
   nombreFC = new FormControl('', [Validators.required]);
   primer_apellidoFC = new FormControl('', [Validators.required]);

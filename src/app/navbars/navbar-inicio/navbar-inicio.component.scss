@@ -9,10 +9,25 @@
     margin-left: 45px;
     width: 135px;
     line-height: 35px;
-    color: #4F4E4E;
+    color: #036262;
 }
 
 .mat-button:disabled{
     border-radius: 20px;
-    background-color: #F5F5F5;
+    background-color: #E9F5F5;
+    color: #036262;
 }
+
+
+.mat-raised-button.mat-button-disabled {
+  background-color: #E9F5F5;
+  color: #036262;
+}
+
+.mi-navbar {
+  justify-content: flex-start;  
+  background-color: white;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+

@@ -11,7 +11,7 @@ import { EditarPerfilComponent } from '../editar-perfil/editar-perfil.component'
 })
 export class InformacionPerfilComponent implements OnInit {
 
-  usuario: Usuario = new Usuario("", "", "", "", "", "", "");
+  usuario: Usuario = new Usuario("", "", "", "", "", "", "", "", "");
   telefono = "+506 8234 8747";
 
   constructor(
@@ -25,6 +25,7 @@ export class InformacionPerfilComponent implements OnInit {
 
   async cargarDatosUsuario() {
     this.usuario = await this.usuarioService.getInformacionPerfil().toPromise() as Usuario;
+    this.usuario.url_foto_usuario = this.usuario.url_foto_usuario + "?" + new Date().getTime();
   }
 
   editarPerfil(usuario: Usuario): void {

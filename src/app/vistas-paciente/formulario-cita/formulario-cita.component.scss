@@ -2,29 +2,29 @@
 .mi-super-titulo {
   font-size: 28px; 
   font-weight: 700; 
-  color: #4F4E4E; 
+  color: #036262; 
 }
 
 
 .mi-segundo-titulo {
   font-size: 22px; 
-  color: #AAAAAA; 
+  color: #036262; 
 }
 
 .mi-cuerpo {
   font-size: 14px;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mi-titulo {
   font-size: 22px; 
   font-weight: 700; 
-  color: #AAAAAA; 
+  color: #036262; 
 }
 
 ::ng-deep .mat-radio-label-content, ::ng-deep .mat-checkbox-layout .mat-checkbox-label  {
   font-size: 14px; 
-  color: #AAAAAA; 
+  color: #036262; 
 }
 
 ::ng-deep .mat-radio-outer-circle, ::ng-deep .mat-checkbox-inner-container, ::ng-deep .mat-checkbox .mat-checkbox-fram {
@@ -35,7 +35,7 @@
 ::ng-deep {
   ng-scrollbar.scroll-eventoYY {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
@@ -52,7 +52,7 @@
   line-height: 45px;
   width: 250px !important; 
   font-size: 22px;
-  background-color: #AAAAAA; 
+  background-color: #036262; 
   color: white;
 }
 
@@ -60,7 +60,7 @@
   border-radius: 20px !important;
   line-height: 40px;
   width: 160px !important; 
-  background-color: #AAAAAA; 
+  background-color: #036262; 
   color: white;
 }
 
@@ -71,11 +71,11 @@
 
 
 ::ng-deep .mat-progress-bar-fill::after {
-  background-color: #AAAAAA;
+  background-color: #036262;
 }
 
 ::ng-deep .mat-progress-bar-buffer {
-  background: #F0F0F0;
+  background: #E9F5F5;
 }
 
 ::ng-deep .mat-progress-bar {
@@ -157,7 +157,7 @@ mat-form-field input , mat-form-field mat-select, mat-error {
 }
 
 mat-form-field, ::ng-deep .mat-select-value{
-    color: #AAAAAA !important;
+    color: #036262 !important;
   }
   
 ::ng-deep .mat-select-arrow{
@@ -178,7 +178,7 @@ mat-form-field, ::ng-deep .mat-select-value{
 .radio-group-label{
   font-size: 16px; 
   font-weight: 700; 
-  color: #AAAAAA; 
+  color: #036262; 
 }
 
 /* Radio Button Vertical */
@@ -219,7 +219,7 @@ ul {
 ::ng-deep {
   ng-scrollbar.scroll-imagenes {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
@@ -231,7 +231,7 @@ ul {
 ::ng-deep {
   ng-scrollbar.scroll-archivos {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;

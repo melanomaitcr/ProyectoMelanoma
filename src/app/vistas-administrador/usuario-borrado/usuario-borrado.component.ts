@@ -14,7 +14,7 @@ let ROLES_BASICOS = { 'A': 'Asistente', 'M': 'Médico', 'D': 'Administrador', 'P
 export class UsuarioBorradoComponent implements OnInit {
 
   cedulaUsuario: String;
-  usuario: Usuario = new Usuario("", "", "", "", "", "", "M");
+  usuario: Usuario = new Usuario("", "", "", "", "", "", "M", "", "");
 
   constructor(private usuarioService: UsuarioService,
     private _snackBar: MatSnackBar,

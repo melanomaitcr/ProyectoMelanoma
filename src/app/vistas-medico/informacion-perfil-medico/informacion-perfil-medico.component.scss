@@ -7,15 +7,14 @@
     font-size: 30px;
     font-weight: 600;
     margin-left: 80px;
-    color: #4F4E4E;
+    color: #036262;
 }
 
 .photo{
-    width: 25%;
-    height: 300px;
-    margin-left:min(1vw, 10px);
-    margin: 20px;
-    border-radius: 20px !important;
+  width: 300px;
+  margin-left:min(1vw, 10px);
+  margin: 20px;
+  border-radius: 20px !important;
 }
 .botton-container{
   display: flex;
@@ -27,7 +26,7 @@
     border-radius: 20px !important;
     line-height: 40px;
     width: 190px !important; 
-    background-color: #AAAAAA; 
+    background-color: #036262; 
     color: white;
 }
 
@@ -46,7 +45,7 @@
   border-radius: 20px;
   margin: 20px;
   box-shadow: none;
-  background-color: #F0F0F0;
+  background-color: #E9F5F5;
 }
 
 .content{
@@ -60,7 +59,7 @@
   margin-left: 2px;
   margin-bottom: 20px;
   font-size: 24px;
-  color: #4F4E4E;
+  color: #036262;
 }
 
 .mi-titulo {
@@ -68,12 +67,12 @@
   font-weight: 500; 
   margin-top: 10px;
   margin-left: 20px;
-  color: #4F4E4E;
+  color: #036262;
 }
 
 .mi-cuerpo {
   font-size: 14px;
-  color: #4F4E4E;
+  color: #036262;
 }
 
 ::ng-deep .mat-dialog-container {

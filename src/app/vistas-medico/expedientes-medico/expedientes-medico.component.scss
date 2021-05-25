@@ -19,11 +19,11 @@
 .mat-header-cell {
   font-size:medium !important;
   font-weight: 700;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mat-cell {
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mi-header {
@@ -31,7 +31,7 @@
 }
 
 .mi-row {
-  background-color: #F0F0F0;
+  background-color: #E9F5F5;
 }
 
 .mi-div {
@@ -44,7 +44,7 @@
   border-radius: 20px !important;
   line-height: 40px;
   width: 130px !important; 
-  background-color: #AAAAAA; 
+  background-color: #036262; 
   color: white;
 }
 
@@ -138,7 +138,7 @@ mat-form-field input {
 ::ng-deep {
   ng-scrollbar.scroll-event {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;

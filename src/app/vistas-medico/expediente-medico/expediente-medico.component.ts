@@ -328,7 +328,7 @@ export class ExpedienteMedicoComponent implements OnInit {
   }
 
   volver() {
-    this.router.navigate(['/expedientes'])
+    this.router.navigate(['/expedientes-medico'])
   }
 
   async getHistoriales() {

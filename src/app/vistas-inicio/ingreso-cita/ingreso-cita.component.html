@@ -4,19 +4,24 @@
     <mat-card class="mat-elevation-z0 card-descripcion-logo" fxLayoutAlign="center center">
       <mat-card-content>
         <img class="logo" src="http://melanomaitcr.pythonanywhere.com/files/Prodermis.png">
+        <br /><br /><br /><br />
         <mat-label class="descripcion">Nuestro sistema gestor de citas y expendientes médicos y asistente de predicción
           de cáncer de piel tipo melanoma mediante imágenes</mat-label>
+        <br />
+        <mat-label class="descripcion">• Visite la página web para gestionar su información y actividades
+          médicas<br />
+          • Descargue la aplicación móvil para revisar sus citas y enviar archivos a su médico</mat-label>
       </mat-card-content>
     </mat-card>
   </div>
   <div fxFlex=45% fxLayoutAlign="center center">
-    <mat-card class="card-ingreso-cita" style="box-shadow: none; background-color: #F0F0F0;">
+    <mat-card class="card-ingreso-cita" style="box-shadow: none; background-color: #E9F5F5;">
       <mat-card-header class="title-ingreso-cita">
-        <mat-card-title class="title-ingreso-cita">¡Bienvenido al <br /> Sistema Praesidia!</mat-card-title>
+        <mat-card-title class="title-ingreso-cita">¡Bienvenido al <br /> Sistema Prodermis!</mat-card-title>
       </mat-card-header>
       <mat-card-content class="content-ingreso-cita">
         <form class="form-ingreso-cita">
-          <mat-form-field appearance="outline" class="field-ingreso-cita" style="color: #4F4E4E">
+          <mat-form-field appearance="outline" class="field-ingreso-cita" style="color: #036262">
             <mat-label>Número de cédula</mat-label>
             <input [(ngModel)]="cedula" matInput placeholder="Ingrese su número de cédula" name="cedula"
               [formControl]="cedulaFC" [errorStateMatcher]="matcher" required>
@@ -24,7 +29,7 @@
             </mat-error>
           </mat-form-field>
           <br><br>
-          <mat-form-field appearance="outline" class="field-ingreso-cita" style="color: #4F4E4E">
+          <mat-form-field appearance="outline" class="field-ingreso-cita" style="color: #036262">
             <mat-label>Código de la cita</mat-label>
             <input [(ngModel)]="codigo" matInput placeholder="Ingrese el código de la cita" name="codigo"
               [formControl]="codigoFC" [errorStateMatcher]="matcher" required>

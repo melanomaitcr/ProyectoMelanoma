@@ -4,19 +4,24 @@
     <mat-card class="mat-elevation-z0 card-descripcion-logo" fxLayoutAlign="center center">
       <mat-card-content>
         <img class="logo" src="http://melanomaitcr.pythonanywhere.com/files/Prodermis.png">
+        <br /><br /><br /><br />
         <mat-label class="descripcion">Nuestro sistema gestor de citas y expendientes médicos y asistente de predicción
           de cáncer de piel tipo melanoma mediante imágenes</mat-label>
+        <br />
+        <mat-label class="descripcion">• Visite la página web para gestionar su información y actividades
+          médicas<br />
+          • Descargue la aplicación móvil para revisar sus citas y enviar archivos a su médico</mat-label>
       </mat-card-content>
     </mat-card>
   </div>
   <div fxFlex=45% fxLayoutAlign="center center">
-    <mat-card class="card-inicio-sesion" style="box-shadow: none; background-color: #F0F0F0;">
+    <mat-card class="card-inicio-sesion" style="box-shadow: none; background-color: #E9F5F5;">
       <mat-card-header class="title-inicio-sesion">
-        <mat-card-title class="title-inicio-sesion">¡Bienvenido al <br />Sistema Praesidia!</mat-card-title>
+        <mat-card-title class="title-inicio-sesion">¡Bienvenido al <br />Sistema Prodermis!</mat-card-title>
       </mat-card-header>
       <mat-card-content class="content-inicio-sesion">
         <form class="form-inicio-sesion">
-          <mat-form-field appearance="outline" class="field-inicio-sesion" style="color: #4F4E4E">
+          <mat-form-field appearance="outline" class="field-inicio-sesion" style="color: #036262">
             <mat-label>Número de cédula</mat-label>
             <input matInput [errorStateMatcher]="matcher" placeholder="Ingrese su número de cédula" [(ngModel)]="cedula"
               name="cedula" [formControl]="cedulaFC" required>
@@ -24,7 +29,7 @@
             </mat-error>
           </mat-form-field>
           <br><br>
-          <mat-form-field appearance="outline" class="field-inicio-sesion" style="color: #4F4E4E">
+          <mat-form-field appearance="outline" class="field-inicio-sesion" style="color: #036262">
             <mat-label>Contraseña</mat-label>
             <input matInput placeholder="Ingrese su contraseña" [type]="esconder ? 'password' : 'text'"
               name="contrasenna" [errorStateMatcher]="matcher" [(ngModel)]="contrasenna" [formControl]="contrasennaFC"

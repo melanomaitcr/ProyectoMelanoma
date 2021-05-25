@@ -8,8 +8,7 @@
 
 
     <div fxFlex=3%></div>
-    <img fxFlex=25% src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"
-      class="photo">
+    <img fxFlex=25% src="{{usuario.url_foto_usuario}}" alt="Photo of a Shiba Inu" class="photo">
 
 
     <mat-card class="mi-carta" fxFlex=30%>
@@ -50,8 +49,8 @@
           <br /><br />
         </mat-label>
 
-        <mat-label class="mi-titulo">Número de Telefono: </mat-label>
-        <mat-label class="mi-cuerpo"> {{this.telefono}}<br /> <br /></mat-label>
+        <mat-label class="mi-titulo">Número de teléfono: </mat-label>
+        <mat-label class="mi-cuerpo"> {{this.usuario.numero_telefono}}<br /> <br /></mat-label>
 
 
       </mat-card-content>

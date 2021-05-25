@@ -24,7 +24,7 @@ export class EditarPerfilComponent implements OnInit {
   cedula = "";
   correo_electronico = "";
   telefono = "";
-  usuario: Usuario = new Usuario("", "", "", "", "", "", "");
+  usuario: Usuario = new Usuario("", "", "", "", "", "", "", "", "");
 
   correoElectronicoFC = new FormControl('', [Validators.required, Validators.email, this.correoDuplicadoValidator()]);
   telefonoFC = new FormControl('', [Validators.required]);
@@ -32,6 +32,7 @@ export class EditarPerfilComponent implements OnInit {
   usuarios: Usuario[];
   matcher = new MyErrorStateMatcher();
 
+  url = ""
 
   constructor(
     private usuarioService: UsuarioService,
@@ -54,7 +55,11 @@ export class EditarPerfilComponent implements OnInit {
   async cargarDatosUsuario() {
     this.usuario = await this.usuarioService.getInformacionPerfil().toPromise() as Usuario;
     this.correo_electronico = this.usuario.correo_electronico;
-    this.telefono = "88888888"
+    this.telefono = this.usuario.numero_telefono;
+
+    this.url = "";
+    this.url = this.usuario.url_foto_usuario + "?" + new Date().getTime();
+
   }
 
   cerrar(cita?) {
@@ -91,6 +96,7 @@ export class EditarPerfilComponent implements OnInit {
   async actualizarPerfil() {
 
     this.usuario.correo_electronico = this.correo_electronico;
+    this.usuario.numero_telefono = this.telefono;
     let respuesta = await this.usuarioService.update(this.cedula, this.usuario).toPromise();
     let nuevoPerfil = respuesta as Usuario;
     this.openSnackBar("¡Información actualizada correctamente!")
@@ -101,5 +107,34 @@ export class EditarPerfilComponent implements OnInit {
     this._snackBar.open(message, "Cerrar", {
       duration: 2000,
     });
+  }
+
+  subirArchivo() {
+    document.querySelector('input').click()
+  }
+
+
+  async archivosSubidos(evento) {
+    let archivos: FileList = evento.srcElement.files;
+    console.log(archivos);
+
+
+    for (let i = 0; i <= archivos.length; i++) {
+      let reader = new FileReader();
+
+      try {
+        reader.readAsDataURL(archivos[i]);
+        let ref = this;
+        reader.onload = async function () {
+          let archivoBase64 = (reader.result as string).split(',')[1];
+          ref.usuario.url_foto_usuario = archivoBase64;
+          await ref.usuarioService.update(ref.cedula, ref.usuario).toPromise();
+
+          await ref.cargarDatosUsuario()
+        };
+
+      } catch (error) { }
+    }
+
   }
 }

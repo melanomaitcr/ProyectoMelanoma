@@ -11,12 +11,12 @@
             <mat-card style="width: 80%; box-shadow: none;">
 
                 <mat-card-header>
-                    <mat-card-title style="padding-top: 18px; flex: 1 1 80%; font-size: 16px;color: #4F4E4E;">
+                    <mat-card-title style="padding-top: 18px; flex: 1 1 80%; font-size: 16px;color: #036262;">
                         Visualización:
                     </mat-card-title>
                     <mat-form-field appearance="outline" style=" width:12%;">
                         <mat-select [(value)]="dataVista.visualizacion"
-                            style="color: #4F4E4E !important; padding-left:5px;">
+                            style="color: #036262 !important; padding-left:5px;">
                             <mat-option value="Diaria">Diaria</mat-option>
                             <mat-option value="Mensual">Mensual</mat-option>
                         </mat-select>
@@ -24,7 +24,7 @@
 
 
                     <div
-                        style="width: 50%; padding-top: 5px; padding-left: 30px; color: #4F4E4E; text-align: center; font-size: 24px;">
+                        style="width: 50%; padding-top: 5px; padding-left: 30px; color: #036262; text-align: center; font-size: 24px;">
                         <button mat-icon-button (click)="fechaAnterior()">
                             <mat-icon style="font-size: 48px; margin-right: 50px;">arrow_left</mat-icon>
                         </button>
@@ -111,7 +111,7 @@
                 <mat-card-header>
 
                     <div fxFlex="78%"
-                        style="width: 50%; padding-top: 5px; color: #4F4E4E; text-align: center; font-size: 24px;">
+                        style="width: 50%; padding-top: 5px; color: #036262; text-align: center; font-size: 24px;">
                         <button mat-icon-button mwlCalendarPreviousView (click)="mesAnterior()" [view]="view"
                             [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
                             <mat-icon style="font-size: 48px; margin-right: 50px;">arrow_left</mat-icon>
@@ -124,12 +124,12 @@
                     </div>
 
                     <div fxFlex="22%">
-                        <mat-label style="padding-top: 18px; flex: 1 1 80%; font-size: 16px;color: #4F4E4E;">
+                        <mat-label style="padding-top: 18px; flex: 1 1 80%; font-size: 16px;color: #036262;">
                             Visualización: &nbsp;&nbsp;
                         </mat-label>
                         <mat-form-field appearance="outline" style=" width:50%;">
                             <mat-select [(value)]="dataVista.visualizacion"
-                                style="color: #4F4E4E !important; padding-left:5px;">
+                                style="color: #036262 !important; padding-left:5px;">
                                 <mat-option value="Diaria">Diaria</mat-option>
                                 <mat-option value="Mensual">Mensual</mat-option>
                             </mat-select>
@@ -155,20 +155,20 @@
 
                         <mat-card class="mi-card2" style="text-align: center;">
                             <mat-card-header>
-                                <mat-label style="font-size: 16px;color: #4F4E4E; padding-left: 10px;">{{fechaDia}}
+                                <mat-label style="font-size: 16px;color: #036262; padding-left: 10px;">{{fechaDia}}
                                 </mat-label>
                             </mat-card-header>
 
                             <br />
                             <mat-card-content>
-                                <p *ngFor="let ev of eventosDia" style="color: #4F4E4E; font-size: 10px !important;">
+                                <p *ngFor="let ev of eventosDia" style="color: #036262; font-size: 10px !important;">
                                     <mat-label fxFlex="100%">
                                         {{ev.title}}
                                     </mat-label>
 
                                 </p>
 
-                                <p *ngIf="eventosDia.length == 0" style="color: #4F4E4E; font-size: 10px !important;">
+                                <p *ngIf="eventosDia.length == 0" style="color: #036262; font-size: 10px !important;">
                                     <mat-label fxFlex="85%">
                                         No hay citas para este día
                                     </mat-label>

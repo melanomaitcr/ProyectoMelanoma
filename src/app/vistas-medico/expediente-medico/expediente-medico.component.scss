@@ -44,22 +44,22 @@
   .subtitulos-info-personal{
     font-weight: bold;
     font-size: 15px;
-    color: #4F4E4E;
+    color: #036262;
   }
 
   .subtitulos-atributo{
     font-weight: bold;
     font-size: 14px;
-    color: #AAAAAA;
+    color: #036262;
   }
   
   .subtitulos-contenido{
     font-size: 14px;
-    color: #AAAAAA;
+    color: #036262;
   }
 
   .cardX {
-    background-color: #F0F0F0 !important;
+    background-color: #E9F5F5 !important;
     box-shadow: none;
   }
 
@@ -68,7 +68,7 @@
     display:block;
     font-size: min(2.8vw, 32px);
   //  font-family: 'Roboto';
-  color: #4F4E4E;
+  color: #036262;
     font-weight:700;
     font-style: normal;
     margin-top: 10px;
@@ -107,7 +107,7 @@
   }
 
   .vl {
-    border-left: 2px solid #4F4E4E;
+    border-left: 2px solid #036262;
     height: 365px;
     margin-left: 15px;
     top: 0;
@@ -151,7 +151,7 @@
   z-index: 1;
   background-color: white;
   @include mat-elevation(3);
-  color: #4F4E4E !important;
+  color: #036262 !important;
   text-decoration: underline;
 
 }
@@ -173,33 +173,33 @@
 .mi-super-titulo {
   font-size: 18px; 
   font-weight: 700; 
-  color: #AAAAAA; 
+  color: #036262; 
 }
 
 .mi-titulo {
   font-size: 14px; 
   font-weight: 700; 
-  color: #AAAAAA; 
+  color: #036262; 
 }
 
 .mi-cuerpo {
   font-size: 14px;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mi-cuerpo-pequenno {
   font-size: 12px;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 ::ng-deep .mat-radio-label-content {
   font-size: 20px;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mi-cuerpo-subrayado {
   font-size: 14px;
-  color: #AAAAAA;
+  color: #036262;
   text-decoration: underline;
 }
 
@@ -212,13 +212,13 @@
   border-radius: 20px !important;
   line-height: 30px;
   width: 170px !important; 
-  background-color: #AAAAAA; 
+  background-color: #036262; 
   color: white;
 }
 
 .mi-field {
   width: 100%;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 
@@ -250,7 +250,7 @@ mat-form-field mat-label {
 }
 
 mat-form-field, ::ng-deep .mat-select-value{
-    color: #4F4E4E !important;
+    color: #036262 !important;
   }
   
 ::ng-deep .mat-select-arrow{
@@ -261,7 +261,7 @@ mat-form-field, ::ng-deep .mat-select-value{
 ::ng-deep {
   ng-scrollbar.scroll-datosCitaBB {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
@@ -274,7 +274,7 @@ mat-form-field, ::ng-deep .mat-select-value{
 ::ng-deep {
   ng-scrollbar.scroll-datosCitaAA {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
@@ -288,7 +288,7 @@ mat-form-field, ::ng-deep .mat-select-value{
 ::ng-deep {
   ng-scrollbar.scroll-tabla {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;
@@ -323,7 +323,7 @@ ul {
 
 ::ng-deep .mat-checkbox-layout .mat-checkbox-label  {
   font-size: 14px; 
-  color: #AAAAAA; 
+  color: #036262; 
 }
 
 
@@ -345,11 +345,11 @@ ul {
 .mat-header-cell {
   font-size:medium !important;
   font-weight: 700;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mat-cell {
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mi-header {
@@ -357,7 +357,7 @@ ul {
 }
 
 .mi-row {
-  background-color: #F0F0F0;
+  background-color: #E9F5F5;
 }
 
 

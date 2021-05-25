@@ -163,7 +163,7 @@ export class CitasMedicoComponent implements OnInit {
         start: startOfDay(fhc),
         end: addHours(startOfDay(fhc), 1),
         title: this.getNombre(cita) + ": " + this.getHora(cita),
-        color: { primary: '#4F4E4E', secondary: '#AAAAAA', },
+        color: { primary: '#036262', secondary: '#036262', },
         actions: [],
         resizable: { beforeStart: false, afterEnd: false, },
         draggable: false,

@@ -245,7 +245,7 @@ export class CitaComponent implements OnInit {
   }
 
   async finalizarCita() {
-    await this.actualizarHistoriales();
+    await this.actualizarHistoriales("");
 
     this.cita.fecha_hora_cita = String(addHours(new Date(this.cita.fecha_hora_cita), 6));
     this.cita.cita_finalizada = '1';
@@ -336,7 +336,7 @@ export class CitaComponent implements OnInit {
     return expediente.nombre + " " + expediente.primer_apellido + " " + expediente.segundo_apellido;
   }
 
-  async actualizarHistoriales() {
+  async actualizarHistoriales(str?) {
     await this.historialPersonalCitaService.update(this.idCita, '0', this.hpcMedico).toPromise();
     this.hfcMedico.parientes_con_cancer_melanoma = this.obtenerParientesConCancer();
     await this.historialFamiliarCitaService.update(this.idCita, '0', this.hfcMedico).toPromise();
@@ -347,7 +347,7 @@ export class CitaComponent implements OnInit {
     for (let foc of this.familiaresOtroCancerMedico)
       await this.familiarOtroCancerService.create(foc).toPromise();
 
-    this.openSnackBar('¡Historiales actualizados correctamente!')
+    if (str == undefined) this.openSnackBar('¡Historiales actualizados correctamente!')
   }
 
   openSnackBar(message: string) {

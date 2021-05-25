@@ -20,7 +20,7 @@
   width: 90%;
   border-radius: 20px !important;
   
- background-color: #F0F0F0;
+ background-color: #E9F5F5;
 }
 
 ::ng-deep .cal-month-view .cal-cell-top {
@@ -35,11 +35,11 @@
 .mat-header-cell {
   font-size:medium !important;
   font-weight: 700;
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mat-cell {
-  color: #AAAAAA;
+  color: #036262;
 }
 
 .mi-header {
@@ -47,7 +47,7 @@
 }
 
 .mi-row {
-  background-color: #F0F0F0;
+  background-color: #E9F5F5;
 }
 
 .mi-div {
@@ -60,7 +60,7 @@
   border-radius: 20px !important;
   line-height: 40px;
   width: 130px !important; 
-  background-color: #AAAAAA; 
+  background-color: #036262; 
   color: white;
 }
 
@@ -156,7 +156,7 @@ mat-form-field input {
 }
 
 mat-form-field, ::ng-deep .mat-select-value{
-    color: #4F4E4E !important;
+    color: #036262 !important;
   }
   
 ::ng-deep .mat-select-arrow{
@@ -165,27 +165,35 @@ mat-form-field, ::ng-deep .mat-select-value{
 
 
 ::ng-deep .cal-month-view .cal-open-day-events {
-  color: #4F4E4E;
-  background-color: #F0F0F0;
+  color: #036262;
+  background-color: #E9F5F5;
   box-shadow: none;
 }
 
 ::ng-deep .cal-month-view .cal-day-badge {
-  background-color: #AAAAAA;
+  background-color: #036262;
 }
 
 ::ng-deep .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
   color: rgba(0,0,0,.87);
 }
 
+::ng-deep .cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color: #E9F5F5 !important;
+}
+
+::ng-deep .cal-month-view .cal-cell:hover {
+  background-color: #E9F5F5 !important;
+}
+
 ::ng-deep .cal-month-view .cal-day-cell.cal-today {
-  background-color: #AAAAAA;
+  background-color: #4BD2D280;
 }
 
 ::ng-deep {
   ng-scrollbar.scroll-event {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;

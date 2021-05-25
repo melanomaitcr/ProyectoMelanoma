@@ -5,10 +5,13 @@
   border-radius: 20px !important;
   width: 120px;  
   box-shadow: none;
+  color: #036262;
 }
 
 .mat-raised-button.mat-button-disabled {
   @include mat-elevation(2);
+  background-color: #E9F5F5;
+  color: #036262;
 }
 
 .mi-navbar {

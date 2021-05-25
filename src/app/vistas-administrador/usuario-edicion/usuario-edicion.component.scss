@@ -23,7 +23,7 @@
   line-height: 40px;
   margin-bottom: 15px !important;
   width: 120px !important; 
-  background-color: #AAAAAA; 
+  background-color: #036262; 
   color: white;
 }
 
@@ -42,7 +42,7 @@ mat-form-field input , mat-form-field mat-select, mat-error {
 }
 
 mat-form-field, ::ng-deep .mat-select-value{
-  color: #AAAAAA !important;
+  color: #036262 !important;
 }
 
 ::ng-deep .mat-select-arrow{
@@ -52,7 +52,7 @@ mat-form-field, ::ng-deep .mat-select-value{
 ::ng-deep {
   ng-scrollbar.scroll-evento {
     --scrollbar-size: 8px;
-    --scrollbar-thumb-color: gray;
+    --scrollbar-thumb-color: #036262;
     --scrollbar-hover-size: 12px;
     --scrollbar-track-color: rgba(0, 0, 0, 0.05);
     --scrollbar-border-radius: 20px;

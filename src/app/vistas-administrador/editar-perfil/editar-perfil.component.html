@@ -6,13 +6,13 @@
 
             <mat-card-header>
                 <mat-label
-                    style="margin-left: -23px; padding-top: 10px;font-size: 32px; font-weight: 700; color: #4F4E4E;">
+                    style="margin-left: -23px; padding-top: 10px;font-size: 32px; font-weight: 700; color: #036262;">
                     Editar Perfil
                 </mat-label>
 
 
                 <button mat-icon-button (click)="cerrar()"
-                    style="color: #AAAAAA; position: absolute; margin-left: 88%; margin-top: -10px;">
+                    style="color: #036262; position: absolute; margin-left: 88%; margin-top: -10px;">
                     <mat-icon>close</mat-icon>
                 </button>
 
@@ -21,14 +21,16 @@
 
             <mat-card-content>
 
+                <input type="file" style="display:none" (change)="archivosSubidos($event)" accept="image/png">
+
                 <form>
                     <div fxFlex=40%>
-                        <mat-label style="font-size: 20; color: #AAAAAA; font-weight: 700;"> Imagen de Perfil
+                        <mat-label style="font-size: 20; color: #036262; font-weight: 700;"> Imagen de Perfil
                         </mat-label> <br /><br />
-                        <img style="border-radius: 20px !important;"
-                            src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"
-                            class="photo" width="230">
-                        <button mat-raised-button class="mi-boton-editar">Importar imagen</button>
+                        <img style="border-radius: 20px !important;" src="{{url}}" alt="Photo of a Shiba Inu"
+                            class="photo" width="200">
+                        <button mat-raised-button class="mi-boton-editar" (click)="subirArchivo()">Importar
+                            imagen</button>
                     </div>
 
                     <div fxFlex=60% class="mi-form" style="margin-left: 30px; margin-top: 20px;">

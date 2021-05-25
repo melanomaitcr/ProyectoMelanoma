@@ -89,7 +89,7 @@
                 <mat-label class="mi-titulo">Peso: &nbsp;&nbsp;</mat-label>
                 <mat-form-field appearance="standard" style="width: 20%;">
                   <input disabled matInput [(ngModel)]="hpc.peso_kg" name="pesoFC">
-                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">kg</span>
+                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #036262;">kg</span>
                 </mat-form-field>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <!--
@@ -102,7 +102,7 @@
                 <mat-label class="mi-titulo">Estatura: &nbsp;&nbsp;</mat-label>
                 <mat-form-field appearance="standard" style="width: 23%;">
                   <input disabled matInput [(ngModel)]="hpc.estatura_cm" name="estaturaFC">
-                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">cm</span>
+                  <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #036262;">cm</span>
                 </mat-form-field>
 
               </div>
@@ -129,7 +129,7 @@
               <mat-form-field appearance="standard" style="width: 23%;">
                 <input disabled matInput [(ngModel)]="hpc.minutos_semana_actividad_fisica"
                   name="minutos_semana_actividad_fisica">
-                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">min</span>
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #036262;">min</span>
               </mat-form-field>
 
               <br />
@@ -144,7 +144,7 @@
               <mat-label class="mi-titulo">¿A qué edad empezó a fumar? &nbsp;&nbsp;&nbsp;</mat-label>
               <mat-form-field appearance="standard" style="width: 22%;">
                 <input disabled matInput [(ngModel)]="hpc.edad_empezo_fumar" name="edad_empezo_fumar">
-                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">años</span>
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #036262;">años</span>
               </mat-form-field>
               <br />
 
@@ -159,7 +159,7 @@
               <mat-label class="mi-titulo">¿Desde hace cuánto? &nbsp;&nbsp;&nbsp;</mat-label>
               <mat-form-field appearance="standard" style="width: 22%;">
                 <input disabled matInput [(ngModel)]="hpc.periodo_fumado" name="periodo_fumado">
-                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;">años</span>
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #036262;">años</span>
               </mat-form-field>
               <br />
 
@@ -198,7 +198,7 @@
                 *ngIf="hpc.consume_bebidas_alcoholicas_total == '3'">
                 <input disabled matInput [(ngModel)]="hpc.consume_bebidas_alcoholicas_total_otro"
                   name="consume_bebidas_alcoholicas_total_otro">
-                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #AAAAAA;"> por semana</span>
+                <span matSuffix style="margin-right: 10px; margin-bottom: 20px; color: #036262;"> por semana</span>
               </mat-form-field>
 
               <br />
@@ -312,7 +312,7 @@
 
               <mat-form-field appearance="outline" style=" width:20%; margin-left:-30px; margin-top: -10px;">
                 <mat-select [(value)]="dataVista.visualizacionContenido" (selectionChange)="cambioContenido()"
-                  style="color: #4F4E4E !important; padding-left: 5px;">
+                  style="color: #036262 !important; padding-left: 5px;">
                   <mat-option value="Citas">Citas</mat-option>
                   <mat-option value="Archivos">Archivos</mat-option>
                   <mat-option value="Imágenes">Imágenes</mat-option>
@@ -320,7 +320,7 @@
               </mat-form-field>
 
               <div
-                style="width: 60%; padding-top: 5px; padding-left: 30px; color: #4F4E4E; text-align: center; font-size: 24px;">
+                style="width: 60%; padding-top: 5px; padding-left: 30px; color: #036262; text-align: center; font-size: 24px;">
                 <button mat-icon-button (click)="fechaAnterior()">
                   <mat-icon style="font-size: 48px; margin-right: 50px;">arrow_left</mat-icon>
                 </button>
@@ -331,12 +331,12 @@
               </div>
 
               <!--
-              <mat-card-title style="padding-left: 80%;font-size: 16px;color: #4F4E4E;">
+              <mat-card-title style="padding-left: 80%;font-size: 16px;color: #036262;">
                 Visualización:
               </mat-card-title>-->
               <mat-form-field appearance="outline" style=" width:20%; margin-top: -10px;">
                 <mat-select [(value)]="dataVista.visualizacionTiempo" (selectionChange)="cambioTiempo()"
-                  style="color: #4F4E4E !important; padding-left:5px;">
+                  style="color: #036262 !important; padding-left:5px;">
                   <mat-option value="Mensual">Mensual</mat-option>
                   <mat-option value="Anual">Anual</mat-option>
                 </mat-select>
@@ -401,7 +401,7 @@
 
                       <button mat-icon-button (click)="descargarArchivo(data)"
                         *ngIf="dataVista.visualizacionContenido == 'Archivos' || dataVista.visualizacionContenido == 'Imágenes'"
-                        style="color: white; background-color: #AAAAAA;  transform: scale(0.7, 0.7); margin-left: 20%;">
+                        style="color: white; background-color: #036262;  transform: scale(0.7, 0.7); margin-left: 20%;">
                         <mat-icon>get_app</mat-icon>
                       </button>
                     </td>
