@@ -178,8 +178,16 @@ mat-form-field, ::ng-deep .mat-select-value{
   color: rgba(0,0,0,.87);
 }
 
+::ng-deep .cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color: #E9F5F5 !important;
+}
+
+::ng-deep .cal-month-view .cal-cell:hover {
+  background-color: #E9F5F5 !important;
+}
+
 ::ng-deep .cal-month-view .cal-day-cell.cal-today {
-  background-color: #036262;
+  background-color: #4BD2D280;
 }
 
 ::ng-deep {

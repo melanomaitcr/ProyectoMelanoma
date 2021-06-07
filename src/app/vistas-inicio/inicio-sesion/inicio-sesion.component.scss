@@ -9,17 +9,13 @@
   width: 15*2.54vw;
 }
 
-.logo{
-  width: 15*3vw;
-}
-
 .descripcion{
   padding-top: 20px;
   display:block;
-  font-size: min(2vw, 20px);
+  font-size: 18px;
   line-height: 22px;
-  text-align:center;
-  color: #4BD2D2 !important;
+  text-align:left;
+  color: #036262 !important;
 }
 
 .card-inicio-sesion{
@@ -42,7 +38,7 @@
   font-size: min(2.8vw, 48px);
 //  font-family: 'Roboto';
   font-weight:700;
-  color: #036262;
+  color: #054141;
   font-style: normal;
   margin-top: 20px;
   line-height: 3vw;
@@ -63,7 +59,6 @@
 .card-inicio-sesion .actions-inicio-sesion{
   margin-left: 4vw;
   margin-right:4vw;
-  margin-top: 10vh;
   margin-bottom: 20px;
 }
 

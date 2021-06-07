@@ -1,3 +1,6 @@
+
+@import '~@angular/material/theming';
+
 .navbar-inicio {
     background-color:transparent;
     justify-content: flex-end;
@@ -15,8 +18,9 @@
 .mat-button:disabled{
     border-radius: 20px;
     background-color: #E9F5F5;
-    color: #036262;
-}
+    color: #054141;
+    @include mat-elevation(2);
+  }
 
 
 .mat-raised-button.mat-button-disabled {

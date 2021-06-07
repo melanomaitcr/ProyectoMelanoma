@@ -1,16 +1,29 @@
 <app-navbar-inicio paginaActual="inicio-sesion"></app-navbar-inicio>
 <div class="contenedor-inicio-sesion" fxLayout="row">
   <div fxFlex=55% fxLayoutAlign="center">
-    <mat-card class="mat-elevation-z0 card-descripcion-logo" fxLayoutAlign="center center">
+    <mat-card class="mat-elevation-z0 card-descripcion-logo" fxLayoutAlign="center left">
       <mat-card-content>
-        <img class="logo" src="http://melanomaitcr.pythonanywhere.com/files/Prodermis.png">
+        <img width="600" src="http://melanomaitcr.pythonanywhere.com/files/Prodermis.svg">
         <br /><br /><br /><br />
-        <mat-label class="descripcion">Nuestro sistema gestor de citas y expendientes médicos y asistente de predicción
-          de cáncer de piel tipo melanoma mediante imágenes</mat-label>
-        <br />
-        <mat-label class="descripcion">• Visite la página web para gestionar su información y actividades
-          médicas<br />
-          • Descargue la aplicación móvil para revisar sus citas y enviar archivos a su médico</mat-label>
+        <mat-label style="color: #036262; font-weight: 700; font-size: 16px;"> Nuestro sistema gestor de citas,
+          expedientes médicos y
+          asistente de
+          predicción de cáncer de piel
+          tipo melanoma mediante imágenes</mat-label>
+        <br><br>
+        <mat-label style="color: #036262;  font-size: 16px; "> Visite la página web para gestionar su
+          información y
+          actividades médicas.</mat-label>
+        <br>
+        <mat-label style="color: #036262;  font-size: 16px; line-height: 40px;"> Haga uso de las herramientas de
+          inteligencia
+          artificial para predecir el
+          padecimiento.
+        </mat-label>
+        <br>
+        <mat-label style="color: #036262;  font-size: 16px;"> Descargue la aplicación móvil para revisar sus citas y
+          enviar archivos a tu médico.
+        </mat-label>
       </mat-card-content>
     </mat-card>
   </div>
@@ -21,6 +34,7 @@
       </mat-card-header>
       <mat-card-content class="content-inicio-sesion">
         <form class="form-inicio-sesion">
+          <br><br><br><br>
           <mat-form-field appearance="outline" class="field-inicio-sesion" style="color: #036262">
             <mat-label>Número de cédula</mat-label>
             <input matInput [errorStateMatcher]="matcher" placeholder="Ingrese su número de cédula" [(ngModel)]="cedula"
@@ -48,4 +62,6 @@
       </mat-card-actions>
     </mat-card>
   </div>
+  <img src="http://melanomaitcr.pythonanywhere.com/files/Inicio_Mancha.svg" width="300"
+    style="position: absolute; bottom: 0;">
 </div>

@@ -13,12 +13,12 @@
 
                 <mat-card-header>
 
-                    <mat-label fxFlex=15% style="padding-top: 18px; font-size: 32px; font-weight: 700; color: #036262;">
+                    <mat-label fxFlex=15% style="padding-top: 18px; font-size: 32px; font-weight: 700; color: #054141;">
                         Citas
                     </mat-label>
 
                     <div fxFlex=35%
-                        style=" padding-top: 5px; padding-left: 30px; color: #036262; text-align: center; font-size: 24px;">
+                        style=" padding-top: 5px; padding-left: 30px; color: #054141; text-align: center; font-size: 24px;">
                         <button mat-icon-button (click)="fechaAnterior()">
                             <mat-icon style="font-size: 48px; margin-right: 50px;">arrow_left</mat-icon>
                         </button>
@@ -30,13 +30,13 @@
                     <div fxFlex=5%></div>
 
 
-                    <mat-label fxFlex=11% style="padding-top: 18px; font-size: 16px;color: #036262;">
+                    <mat-label fxFlex=11% style="padding-top: 18px; font-size: 16px;color: #054141;">
                         Visualización:
                     </mat-label>
 
                     <mat-form-field fxFlex=14% appearance="outline">
                         <mat-select [(value)]="dataVista.visualizacion"
-                            style="color: #036262 !important; padding-left:5px;">
+                            style="color: #054141 !important; padding-left:5px;">
                             <mat-option value="Diaria">Diaria</mat-option>
                             <mat-option value="Mensual">Mensual</mat-option>
                         </mat-select>
@@ -152,12 +152,12 @@
 
                 <mat-card-header style="padding-left: 80px; padding-right: 80px;">
 
-                    <mat-label fxFlex=15% style="padding-top: 18px; font-size: 32px; font-weight: 700; color: #036262;">
+                    <mat-label fxFlex=15% style="padding-top: 18px; font-size: 32px; font-weight: 700; color: #054141;">
                         Citas
                     </mat-label>
 
                     <div fxFlex=35%
-                        style="width: 50%; padding-top: 5px; color: #036262; text-align: center; font-size: 24px;">
+                        style="width: 50%; padding-top: 5px; color: #054141; text-align: center; font-size: 24px;">
                         <button mat-icon-button mwlCalendarPreviousView (click)="mesAnterior()" [view]="view"
                             [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
                             <mat-icon style="font-size: 48px; margin-right: 50px;">arrow_left</mat-icon>
@@ -171,13 +171,13 @@
                     <div fxFlex=5%></div>
 
 
-                    <mat-label fxFlex=11% style="padding-top: 18px; font-size: 16px;color: #036262;">
+                    <mat-label fxFlex=11% style="padding-top: 18px; font-size: 16px;color: #054141;">
                         Visualización:
                     </mat-label>
 
                     <mat-form-field fxFlex=14% appearance="outline">
                         <mat-select [(value)]="dataVista.visualizacion"
-                            style="color: #036262 !important; padding-left:5px;">
+                            style="color: #054141 !important; padding-left:5px;">
                             <mat-option value="Diaria">Diaria</mat-option>
                             <mat-option value="Mensual">Mensual</mat-option>
                         </mat-select>
@@ -208,29 +208,31 @@
 
                         <mat-card class="mi-card2" style="text-align: center;">
                             <mat-card-header>
-                                <mat-label style="font-size: 16px;color: #036262; padding-left: 10px;">{{fechaDia}}
+                                <mat-label style="font-size: 16px;color: #054141; padding-left: 10px;">{{fechaDia}}
                                 </mat-label>
                             </mat-card-header>
 
                             <br />
                             <mat-card-content>
-                                <p *ngFor="let ev of eventosDia" style="color: #036262; font-size: 10px !important;">
+                                <p *ngFor="let ev of eventosDia" style="color: #054141; font-size: 10px !important;">
                                     <mat-label fxFlex="85%">
                                         {{ev.title}}
                                     </mat-label>
-                                    <button mat-icon-button style="width: 20px; height: 20px; margin-top: -10px;"
+                                    <button mat-icon-button
+                                        style="width: 20px; height: 20px; margin-top: -10px; color: #054141;"
                                         (click)="editarCita(getCita(ev.id))">
                                         <mat-icon [inline]="true" fxFlex="10%">edit</mat-icon>
                                     </button>
 
-                                    <button mat-icon-button style="width: 20px; height: 20px; margin-top: -10px;"
+                                    <button mat-icon-button
+                                        style="width: 20px; height: 20px; margin-top: -10px; color: #054141;"
                                         (click)="borrarCita(getCita(ev.id))">
                                         <mat-icon [inline]="true" fxFlex="10%">delete</mat-icon>
                                     </button>
 
                                 </p>
 
-                                <p *ngIf="eventosDia.length == 0" style="color: #036262; font-size: 10px !important;">
+                                <p *ngIf="eventosDia.length == 0" style="color: #054141; font-size: 10px !important;">
                                     <mat-label fxFlex="85%">
                                         No hay citas para este día
                                     </mat-label>

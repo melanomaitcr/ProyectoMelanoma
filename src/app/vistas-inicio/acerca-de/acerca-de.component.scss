@@ -1,10 +1,4 @@
 
-.container-photo{
-  margin-left: 15px;
-  margin-right: 15px;
-  text-align: center;
-}
-
 .photo{
     border-radius: 20px !important;
 }
@@ -14,6 +8,11 @@
   display: flex;
   margin-top: 2%;
   align-items:flex-start;
+}
+
+.textoImagen {
+  font-style: italic;
+  color: #036262;
 }
 
 .mi-card {

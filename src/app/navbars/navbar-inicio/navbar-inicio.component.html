@@ -1,7 +1,8 @@
 <mat-toolbar class="navbar-inicio">
-    <button mat-button (click)="InicioSesion()" [disabled]="checkCurrentPage()=='inicio-sesion'"> Inicio de Sesión </button>
-    
-      <button mat-button (click)="IngresoCita()" [disabled]="checkCurrentPage()=='ingreso-cita'">Ingreso a Cita</button>
-      <button mat-button (click)="AcercaDe()" [disabled]="checkCurrentPage()=='acerca-de'">Acerca de</button>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
+  <button mat-button (click)="InicioSesion()" [disabled]="checkCurrentPage()=='inicio-sesion'"> Inicio de Sesión
+  </button>
+
+  <button mat-button (click)="IngresoCita()" [disabled]="checkCurrentPage()=='ingreso-cita'">Ingreso a Cita</button>
+  <button mat-button (click)="AcercaDe()" [disabled]="checkCurrentPage()=='acerca-de'">Nosotros</button>
+</mat-toolbar>
+<router-outlet></router-outlet>
